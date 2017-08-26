@@ -74,6 +74,7 @@ namespace ProductionSchedulerProgram
                 thisBin.ItemStatus.moveReservedToAllocatedQuantity(20);
                 thisBin.ItemStatus.moveAllocatedToProductionQuantity(30);
                 thisBin.ItemStatus.moveToFinishGoods(70);
+                thisBin.ItemStatus.scrapFromWarehouseQuantity(2);
                 
             }
             #endregion

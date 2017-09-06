@@ -27,7 +27,7 @@ namespace ProductionSchedulerProgram
             {
                 empList.Add(new SFC_Employee(emp, TextGenerator.RandomNumbers(8), TextGenerator.RandomNames(), TextGenerator.RandomNames(1, 1), TextGenerator.RandomNames()));
             }
-            shopFloor.AddEmployeeList(1, empList);
+            shopFloor.AddEmployeeList(company.Id, empList);
             //shopFloor.ShowEmployees(1);
             #endregion
 
@@ -39,7 +39,7 @@ namespace ProductionSchedulerProgram
                 SFC_Item thisItem = new SFC_Item(ShopFloorControl.NextItemCount(), TextGenerator.RandomNames());
                 itemList.Add(thisItem);
             }
-            shopFloor.AddItemList(1, itemList);
+            shopFloor.AddItemList(company.Id, itemList);
             //shopFloor.ShowItems(1);
             #endregion
 
@@ -62,7 +62,7 @@ namespace ProductionSchedulerProgram
             int randomCount = 20;
             for (int i = 0; i < randomCount; i++)
             {
-                SFC_Item thisItem = shopFloor.getRandomItem(1);
+                SFC_Item thisItem = shopFloor.getRandomItem(company.Id);
                 SFC_ItemLotBin thisBin = new SFC_ItemLotBin(ShopFloorControl.NextBinCount(), thisItem, "PO", TextGenerator.RandomNumbers(4));
                 thisBin.ItemStatus.purchaseOrderQuantity(100);
                 thisBin.ItemStatus.ItemLotBin.LotNo = TextGenerator.RandomNumbers(4);
@@ -74,11 +74,43 @@ namespace ProductionSchedulerProgram
                 thisBin.ItemStatus.moveReservedToAllocatedQuantity(20);
                 thisBin.ItemStatus.moveAllocatedToProductionQuantity(30);
                 thisBin.ItemStatus.moveToFinishGoods(70);
-                thisBin.ItemStatus.scrapFromWarehouseQuantity(2);
-                
+                thisBin.ItemStatus.scrapFromWarehouseQuantity(2);               
             }
+
+            shopFloor.ShowItems(company.Id);
             #endregion
-            shopFloor.ShowItems(1);
+
+            #region Add Machine type
+
+            List<SFC_MachineType> machineTypeList = new List<SFC_MachineType>();
+            SFC_MachineType lathe = new SFC_MachineType(1, "Lathe");
+            SFC_MachineType hmill = new SFC_MachineType(2, "H. Mill");
+            SFC_MachineType vmill = new SFC_MachineType(3, "V. Mill");
+            SFC_MachineType rdrill = new SFC_MachineType(4, "Robo Drill");
+            SFC_MachineType cutter = new SFC_MachineType(5, "Cutter");
+            machineTypeList.Add(lathe);
+            machineTypeList.Add(hmill);
+            machineTypeList.Add(vmill);
+            machineTypeList.Add(rdrill);
+            machineTypeList.Add(cutter);
+
+            shopFloor.AddMachineType(company.Id, machineTypeList);
+            #endregion
+
+            #region Add Machine
+            int machineCount = 20;
+            List<SFC_Machine> machineList = new List<SFC_Machine>();
+            for (int machine = 1; machine <= machineCount; machine++)
+            {
+                SFC_MachineType mtype = shopFloor.getRandomMachineType(company.Id);
+                SFC_Machine thisMachine = new SFC_Machine(machine, mtype, TextGenerator.RandomNumbers(3));
+                machineList.Add(thisMachine);
+            }
+            shopFloor.AddMachines(company.Id, machineList);
+
+            shopFloor.ShowMachineTypes(company.Id);
+            shopFloor.ShowMachines(company.Id);
+            #endregion
 
 
             Thread.Sleep(1000);

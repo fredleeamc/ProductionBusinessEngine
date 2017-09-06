@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SFC_MachineType.cs" />
     <Compile Include="SFC_Department.cs" />
     <Compile Include="SFC_ItemStatus.cs" />
     <Compile Include="SFC_Customer.cs" />

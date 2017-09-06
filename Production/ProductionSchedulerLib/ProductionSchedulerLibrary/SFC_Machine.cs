@@ -10,9 +10,11 @@ namespace ProductionSchedulerLibrary
     {
         private readonly long id;
 
-        private long machineTypeId;
+        private SFC_MachineType machineType;
 
         private String machineName;
+
+        private SFC_WorkCenter workCenter;
 
         public long Id
         {
@@ -22,16 +24,16 @@ namespace ProductionSchedulerLibrary
             }
         }
 
-        public long MachineTypeId
+        public SFC_MachineType MachineType
         {
             get
             {
-                return machineTypeId;
+                return machineType;
             }
 
             protected set
             {
-                machineTypeId = value;
+                machineType = value;
             }
         }
 
@@ -48,11 +50,31 @@ namespace ProductionSchedulerLibrary
             }
         }
 
-        public SFC_Machine(long id, long machineTypeId, string machineName)
+        public SFC_WorkCenter WorkCenter
+        {
+            get
+            {
+                return workCenter;
+            }
+
+            protected set
+            {
+                workCenter = value;
+            }
+        }
+
+        public SFC_Machine(long id, SFC_MachineType machineTypeId, string machineName)
         {
             this.id = id;
-            this.machineTypeId = machineTypeId;
+            this.machineType = machineTypeId;
             this.machineName = machineName;
         }
+
+        public override string ToString()
+        {
+            return id + " " + machineType + " " + machineName;
+
+        }
+
     }
 }

@@ -13,6 +13,9 @@ namespace ProductionSchedulerProgram
 
         static void Main(string[] args)
         {
+
+            DateTime ts1 = DateTime.Now;
+            
             #region Initialize Shop Floor Control
             SFC_Company company = new SFC_Company(1, "Vision");
             ShopFloorControl shopFloor = ShopFloorControl.GetInstance();
@@ -28,8 +31,8 @@ namespace ProductionSchedulerProgram
                 empList.Add(new SFC_Employee(emp, TextGenerator.RandomNumbers(8), TextGenerator.RandomNames(), TextGenerator.RandomNames(1, 1), TextGenerator.RandomNames()));
             }
             shopFloor.AddEmployeeList(company.Id, empList);
-            //shopFloor.ShowEmployees(1);
             #endregion
+            shopFloor.ShowEmployees(company.Id);
 
             #region Add Items
             int itemCount = 10;
@@ -40,8 +43,9 @@ namespace ProductionSchedulerProgram
                 itemList.Add(thisItem);
             }
             shopFloor.AddItemList(company.Id, itemList);
-            //shopFloor.ShowItems(1);
+
             #endregion
+            shopFloor.ShowItems(company.Id);
 
             #region Add LotBin Begin Balance
             int lotBinCount = 5;
@@ -54,9 +58,9 @@ namespace ProductionSchedulerProgram
                 binList.Add(thisBin);
             }
             shopFloor.AddBomList(1, binList);
-            //shopFloor.ShowLotBin(1);
-            //shopFloor.ShowItems(1);
             #endregion
+            shopFloor.ShowLotBin(company.Id);
+            shopFloor.ShowItems(company.Id);
 
             #region Simulate Production
             int randomCount = 20;
@@ -80,6 +84,27 @@ namespace ProductionSchedulerProgram
             shopFloor.ShowItems(company.Id);
             #endregion
 
+            #region work center type
+            List<SFC_WorkCenterType> workCenterTypeList = new List<SFC_WorkCenterType>();
+            SFC_WorkCenterType finite = new SFC_WorkCenterType(1, "FINITE");
+            SFC_WorkCenterType infinite = new SFC_WorkCenterType(2, "INFINITE");
+            workCenterTypeList.Add(finite);
+            workCenterTypeList.Add(infinite);
+            shopFloor.AddWorkCenterTypes(company.Id, workCenterTypeList);
+            #endregion
+
+            #region Add Work Center
+            int workCenterCount = 3;
+            List<SFC_WorkCenter> workCenterList = new List<SFC_WorkCenter>();
+            for (int workCenter = 1; workCenter <= workCenterCount; workCenter++)
+            {
+                SFC_WorkCenterType mtype = shopFloor.getRandomWorkCenterType(company.Id);
+                SFC_WorkCenter thisWorkCenter = new SFC_WorkCenter(workCenter, "WC" + TextGenerator.RandomNumbers(3), mtype);
+                workCenterList.Add(thisWorkCenter);
+            }
+            shopFloor.AddWorkCenters(company.Id, workCenterList);
+            #endregion
+
             #region Add Machine type
 
             List<SFC_MachineType> machineTypeList = new List<SFC_MachineType>();
@@ -98,24 +123,27 @@ namespace ProductionSchedulerProgram
             #endregion
 
             #region Add Machine
-            int machineCount = 20;
+            int machineCount = 10;
             List<SFC_Machine> machineList = new List<SFC_Machine>();
             for (int machine = 1; machine <= machineCount; machine++)
             {
                 SFC_MachineType mtype = shopFloor.getRandomMachineType(company.Id);
-                SFC_Machine thisMachine = new SFC_Machine(machine, mtype, TextGenerator.RandomNumbers(3));
+                SFC_Machine thisMachine = new SFC_Machine(machine, TextGenerator.RandomNumbers(3), mtype);
+                while( !thisMachine.setWorkCenter(shopFloor.getRandomWorkCenter(company.Id)));
                 machineList.Add(thisMachine);
             }
             shopFloor.AddMachines(company.Id, machineList);
+            #endregion
 
             shopFloor.ShowMachineTypes(company.Id);
             shopFloor.ShowMachines(company.Id);
-            #endregion
+            shopFloor.ShowWorkCenters(company.Id);
+            //Thread.Sleep(1000);
 
+            DateTime ts2 = DateTime.Now;
+            Console.WriteLine("Total millisecs:"+ts2.Subtract(ts1).TotalMilliseconds);
 
-            Thread.Sleep(1000);
-            
-
+            Thread.Sleep(2000);
         }
     }
 }

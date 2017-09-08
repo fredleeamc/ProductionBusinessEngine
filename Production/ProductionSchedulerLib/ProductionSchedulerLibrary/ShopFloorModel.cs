@@ -244,13 +244,50 @@ namespace ProductionSchedulerLibrary
             }
         }
 
-        public SFC_MachineType getRandomMachineTypes()
+        public SFC_MachineType getRandomMachineType()
         {
-            int rand = ShopFloorModel.rnd.Next(1, machineTypes.Count + 1);
-            return machineTypes[rand];
+            if (machineTypes.Count != 0)
+            {
+                int rand = ShopFloorModel.rnd.Next(1, machineTypes.Count + 1);
+                return machineTypes[rand];
+            }
+            else
+                return SFC_MachineType.NONE;
         }
 
 
+
+        #endregion
+
+        #region work center type
+        public void AddWorkCenterType(SFC_WorkCenterType workCenterType)
+        {
+            workCenterTypes.Add(workCenterType.Id, workCenterType);
+        }
+
+        public void RemoveWorkCenterType(SFC_WorkCenterType workCenterType)
+        {
+            workCenterTypes.Remove(workCenterType.Id);
+        }
+
+        public void ShowWorkCenterTypes()
+        {
+            foreach (long workCenterId in workCenterTypes.Keys)
+            {
+                Console.WriteLine(items[workCenterId]);
+            }
+        }
+
+        public SFC_WorkCenterType getRandomWorkCenterType()
+        {
+            if (workCenterTypes.Count != 0)
+            {
+                int rand = ShopFloorModel.rnd.Next(1, workCenterTypes.Count + 1);
+                return workCenterTypes[rand];
+            }
+            else
+                return SFC_WorkCenterType.NONE;          
+        }
         #endregion
 
         #region machines
@@ -274,8 +311,46 @@ namespace ProductionSchedulerLibrary
 
         public SFC_Machine getRandomMachine()
         {
-            int rand = ShopFloorModel.rnd.Next(1, machines.Count + 1);
-            return machines[rand];
+            if (machines.Count != 0)
+            {
+                int rand = ShopFloorModel.rnd.Next(1, machines.Count + 1);
+                return machines[rand];
+            }
+            else
+                return SFC_Machine.NONE;
+
+        }
+        #endregion
+
+        #region work center
+        public void AddWorkCenter(SFC_WorkCenter workCenter)
+        {
+            workCenters.Add(workCenter.Id, workCenter);
+        }
+
+        public void RemoveWorkCenter(SFC_WorkCenter workCenter)
+        {
+            workCenters.Remove(workCenter.Id);
+        }
+
+        public void ShowWorkCenters()
+        {
+            foreach (long workCenterId in workCenters.Keys)
+            {
+                Console.WriteLine(workCenters[workCenterId]);
+            }
+        }
+
+        public SFC_WorkCenter getRandomWorkCenter()
+        {
+            if (workCenters.Count != 0)
+            {
+                int rand = ShopFloorModel.rnd.Next(1, workCenters.Count + 1);
+                return workCenters[rand];
+            }
+            else
+                return SFC_WorkCenter.NONE;
+
         }
         #endregion
     }

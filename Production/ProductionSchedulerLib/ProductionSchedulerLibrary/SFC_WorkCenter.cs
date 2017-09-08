@@ -14,12 +14,11 @@ namespace ProductionSchedulerLibrary
 
         private SFC_WorkCenterType workCenterType;
 
-        public SFC_WorkCenter(long id, string workCenterName, SFC_WorkCenterType workCenterType)
-        {
-            this.id = id;
-            this.workCenterName = workCenterName;
-            this.workCenterType = workCenterType;
-        }
+        private SFC_MachineType machineType;
+
+        private List<SFC_Machine> wcMachines;
+
+        public readonly static SFC_WorkCenter NONE = new SFC_WorkCenter(0, "NONE", SFC_WorkCenterType.NONE);
 
         public long Id
         {
@@ -53,6 +52,48 @@ namespace ProductionSchedulerLibrary
             {
                 workCenterType = value;
             }
+        }
+
+        public override string ToString()
+        {
+            return workCenterName + "[" + workCenterType + "]";
+        }
+
+
+        public SFC_WorkCenter(long id, string workCenterName, SFC_WorkCenterType workCenterType)
+        {
+            this.id = id;
+            this.workCenterName = workCenterName;
+            this.workCenterType = workCenterType;
+            this.machineType = SFC_MachineType.NONE;
+            this.wcMachines = new List<SFC_Machine>();
+        }
+
+        public bool isCompatible(SFC_Machine machine)
+        {
+            
+            bool result = false;
+            if (machine != null)
+                if (machineType.Equals(SFC_MachineType.NONE))
+                {
+                    machineType = machine.MachineType;
+                    result = true;
+                } else if (machineType == machine.MachineType)
+                {
+                    result = true;
+                }
+            return result;
+        }
+
+        public bool AddMachineToWorkCenter(SFC_Machine machine)
+        {
+            bool result = false;
+            if (isCompatible(machine))
+            {
+                wcMachines.Add(machine);
+                result = true;
+            }
+            return result;
         }
     }
 }

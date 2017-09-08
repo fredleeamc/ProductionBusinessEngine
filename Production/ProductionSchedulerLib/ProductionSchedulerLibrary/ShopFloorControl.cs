@@ -148,7 +148,7 @@ namespace ProductionSchedulerLibrary
 
         public SFC_MachineType getRandomMachineType(long companyId)
         {
-            return shopControlList[companyId].getRandomMachineTypes();
+            return shopControlList[companyId].getRandomMachineType();
         }
         #endregion
 
@@ -172,6 +172,49 @@ namespace ProductionSchedulerLibrary
             shopControlList[companyId].ShowMachines();
         }
         #endregion
+
+        #region work center type
+        public void AddWorkCenterTypes(long companyId, List<SFC_WorkCenterType> list)
+        {
+            foreach (SFC_WorkCenterType t in list)
+            {
+                if (!shopControlList[companyId].WorkCenterTypes.ContainsKey(t.Id))
+                    shopControlList[companyId].AddWorkCenterType(t);
+            }
+        }
+
+        public SFC_WorkCenterType getRandomWorkCenterType(long companyId)
+        {
+            return shopControlList[companyId].getRandomWorkCenterType();
+        }
+
+        public void ShowWorkCenterTypes(long companyId)
+        {
+            shopControlList[companyId].ShowWorkCenterTypes();
+        }
+        #endregion
+
+        #region work center
+        public void AddWorkCenters(long companyId, List<SFC_WorkCenter> workCenterList)
+        {
+            foreach (SFC_WorkCenter workCenter in workCenterList)
+            {
+                if (!shopControlList[companyId].WorkCenters.ContainsKey(workCenter.Id))
+                    shopControlList[companyId].AddWorkCenter(workCenter);
+            }
+        }
+
+        public SFC_WorkCenter getRandomWorkCenter(long companyId)
+        {
+            return shopControlList[companyId].getRandomWorkCenter();
+        }
+
+        public void ShowWorkCenters(long companyId)
+        {
+            shopControlList[companyId].ShowWorkCenters();
+        }
+        #endregion
+
 
     }
 }

@@ -12,6 +12,8 @@ namespace ProductionSchedulerLibrary
 
         private String name;
 
+        public readonly static SFC_MachineType NONE = new SFC_MachineType(0, "NONE");
+
         public SFC_MachineType(int id, string name)
         {
             this.id = id;

@@ -17,7 +17,15 @@ namespace ProductionSchedulerLibrary
         static private String input4 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         static private String input5 = "abcdefghijklmnopqrstuvwxyz";
 
- 
+        public static Random getRandom()
+        {
+            return rnd;
+        }
+
+        public static int RandomInt(int size)
+        {
+            return rnd.Next(0, size);
+        }
 
         public static string RandomString(int size)
         {            

@@ -54,6 +54,23 @@ namespace ProductionSchedulerLibrary
             }
         }
 
+        public SFC_MachineType MachineType
+        {
+            get
+            {
+                return machineType;
+            }
+            set
+            {
+                if (machineType != null)
+                {
+                    SFC_MachineType.RemoveWorkCenter(this);
+                }                
+                machineType = value;
+                SFC_MachineType.AddWorkCenter(machineType, this);
+            }
+        }
+
         public override string ToString()
         {
             return workCenterName + "[" + workCenterType + "]";
@@ -65,33 +82,45 @@ namespace ProductionSchedulerLibrary
             this.id = id;
             this.workCenterName = workCenterName;
             this.workCenterType = workCenterType;
+
             this.machineType = SFC_MachineType.NONE;
             this.wcMachines = new List<SFC_Machine>();
         }
 
         public bool isCompatible(SFC_Machine machine)
         {
-            
+
             bool result = false;
             if (machine != null)
                 if (machineType.Equals(SFC_MachineType.NONE))
                 {
                     machineType = machine.MachineType;
                     result = true;
-                } else if (machineType == machine.MachineType)
+                }
+                else if (machineType == machine.MachineType)
                 {
                     result = true;
                 }
             return result;
         }
 
-        public bool AddMachineToWorkCenter(SFC_Machine machine)
+        public bool AddMachine(SFC_Machine machine)
         {
             bool result = false;
             if (isCompatible(machine))
             {
                 wcMachines.Add(machine);
                 result = true;
+            }
+            return result;
+        }
+
+        public bool RemoveMachine(SFC_Machine machine)
+        {
+            bool result = false;
+            if (wcMachines.Contains(machine))
+            {
+                result = wcMachines.Remove(machine);
             }
             return result;
         }

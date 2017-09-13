@@ -12,7 +12,8 @@ namespace ProductionSchedulerLibrary
 
         private String workCenterTypeName;
 
-        public readonly static SFC_WorkCenterType NONE = new SFC_WorkCenterType(0,"NONE");
+
+        public readonly static SFC_WorkCenterType NONE = new SFC_WorkCenterType(0, "NONE");
 
         public SFC_WorkCenterType(long id, string workCenterTypeName)
         {
@@ -40,6 +41,9 @@ namespace ProductionSchedulerLibrary
                 workCenterTypeName = value;
             }
         }
+
+
+
 
         public override string ToString()
         {

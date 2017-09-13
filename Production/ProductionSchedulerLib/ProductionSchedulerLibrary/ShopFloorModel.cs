@@ -19,6 +19,8 @@ namespace ProductionSchedulerLibrary
 
         private Dictionary<long, SFC_Employee> employees;
 
+        private Dictionary<long, SFC_Customer> customers;
+
         private Dictionary<long, SFC_ItemLotBin> lotBin;
 
         private Dictionary<long, SFC_Item> items;
@@ -30,6 +32,8 @@ namespace ProductionSchedulerLibrary
         private Dictionary<long, SFC_WorkCenterType> workCenterTypes;
 
         private Dictionary<long, SFC_WorkCenter> workCenters;
+
+        private Dictionary<long, SFC_Bom> boms;
         #endregion
 
         #region property
@@ -123,6 +127,19 @@ namespace ProductionSchedulerLibrary
                 workCenters = value;
             }
         }
+
+        public Dictionary<long, SFC_Customer> Customers
+        {
+            get => customers;
+            protected set => customers = value;
+        }
+
+        public Dictionary<long, SFC_Bom> Boms
+        {
+            get => boms;
+            protected set => boms = value;
+        }
+
         #endregion
 
         #region constructor
@@ -137,6 +154,7 @@ namespace ProductionSchedulerLibrary
             this.machines = new Dictionary<long, SFC_Machine>();
             this.workCenterTypes = new Dictionary<long, SFC_WorkCenterType>();
             this.workCenters = new Dictionary<long, SFC_WorkCenter>();
+            this.boms = new Dictionary<long, SFC_Bom>();
         }
         #endregion
 
@@ -144,6 +162,32 @@ namespace ProductionSchedulerLibrary
         public SFC_Company GetCompany()
         {
             return this.company;
+        }
+        #endregion
+
+        #region customers
+        public void AddCustomer(SFC_Customer scheduledCustomer)
+        {
+            customers.Add(scheduledCustomer.Id, scheduledCustomer);
+        }
+
+        public void RemoveCustomer(SFC_Customer removeCustomer)
+        {
+            customers.Remove(removeCustomer.Id);
+        }
+
+        public void ShowCustomers()
+        {
+            foreach (long custId in customers.Keys)
+            {
+                Console.WriteLine(customers[custId]);
+            }
+        }
+
+        public SFC_Customer getRandomCustomer()
+        {
+            int rand = ShopFloorModel.rnd.Next(1, customers.Count + 1);
+            return customers[rand];
         }
         #endregion
 
@@ -168,7 +212,7 @@ namespace ProductionSchedulerLibrary
 
         public SFC_Employee getRandomEmployee()
         {
-            int rand = ShopFloorModel.rnd.Next(0, employees.Count);
+            int rand = ShopFloorModel.rnd.Next(1, employees.Count + 1);
             return employees[rand];
         }
         #endregion
@@ -194,7 +238,7 @@ namespace ProductionSchedulerLibrary
         }
         public SFC_ItemLotBin getRandomLotBin()
         {
-            int rand = ShopFloorModel.rnd.Next(1, lotBin.Count+1);
+            int rand = ShopFloorModel.rnd.Next(1, lotBin.Count + 1);
             return lotBin[rand];
         }
         #endregion
@@ -220,7 +264,7 @@ namespace ProductionSchedulerLibrary
 
         public SFC_Item getRandomItem()
         {
-            int rand = ShopFloorModel.rnd.Next(1, items.Count+1);
+            int rand = ShopFloorModel.rnd.Next(1, items.Count + 1);
             return items[rand];
         }
         #endregion
@@ -286,7 +330,7 @@ namespace ProductionSchedulerLibrary
                 return workCenterTypes[rand];
             }
             else
-                return SFC_WorkCenterType.NONE;          
+                return SFC_WorkCenterType.NONE;
         }
         #endregion
 
@@ -353,5 +397,30 @@ namespace ProductionSchedulerLibrary
 
         }
         #endregion
+
+        public void AddBom(SFC_Bom bom)
+        {
+            boms.Add(bom.Id, bom);
+        }
+
+        public void RemoveBom(SFC_Bom bom)
+        {
+            boms.Remove(bom.Id);
+        }
+
+        public void ShowBoms()
+        {
+            foreach (long bomId in boms.Keys)
+            {
+                Console.WriteLine(boms[bomId]);
+            }
+        }
+
+        public SFC_Bom getRandomBom()
+        {
+            int rand = ShopFloorModel.rnd.Next(1, boms.Count + 1);
+            return boms[rand];
+        }
+
     }
 }

@@ -10,7 +10,7 @@ namespace ProductionSchedulerLibrary
     {
         private readonly long id;
 
-        private SFC_Company company;
+        private long company;
 
         private String customerCode;
 
@@ -24,7 +24,7 @@ namespace ProductionSchedulerLibrary
             }
         }
 
-        public SFC_Company Company
+        public long Company
         {
             get
             {
@@ -63,7 +63,7 @@ namespace ProductionSchedulerLibrary
             }
         }
 
-        public SFC_Customer(long id, SFC_Company company, string customerCode, string accountNo)
+        public SFC_Customer(long id, long company, string customerCode, string accountNo)
         {
             this.id = id;
             this.company = company;

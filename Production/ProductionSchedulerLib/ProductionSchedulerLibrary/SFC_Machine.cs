@@ -75,16 +75,23 @@ namespace ProductionSchedulerLibrary
 
         public bool setWorkCenter(SFC_WorkCenter wc)
         {
-            bool result = true;
-            this.WorkCenter = wc;
+            bool result = false;            
             if (wc != null)
+            {
                 if (!wc.isCompatible(this))
                 {
-                    this.workCenter = SFC_WorkCenter.NONE;
+                    this.WorkCenter = SFC_WorkCenter.NONE;
                     result = false;
+                } else
+                {
+                    this.WorkCenter = wc;
+                    result = true;
                 }
+            } 
             return result;
         }
+
+
 
         public override string ToString()
         {

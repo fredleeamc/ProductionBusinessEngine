@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using ProductionSchedulerLibrary;
 using System.Threading;
 
+
 namespace ProductionSchedulerProgram
 {
     class Program
@@ -93,20 +94,7 @@ namespace ProductionSchedulerProgram
             shopFloor.AddWorkCenterTypes(company.Id, workCenterTypeList);
             #endregion
 
-            #region Add Work Center
-            int workCenterCount = 3;
-            List<SFC_WorkCenter> workCenterList = new List<SFC_WorkCenter>();
-            for (int workCenter = 1; workCenter <= workCenterCount; workCenter++)
-            {
-                SFC_WorkCenterType mtype = shopFloor.getRandomWorkCenterType(company.Id);
-                SFC_WorkCenter thisWorkCenter = new SFC_WorkCenter(workCenter, "WC" + TextGenerator.RandomNumbers(3), mtype);
-                workCenterList.Add(thisWorkCenter);
-            }
-            shopFloor.AddWorkCenters(company.Id, workCenterList);
-            #endregion
-
             #region Add Machine type
-
             List<SFC_MachineType> machineTypeList = new List<SFC_MachineType>();
             SFC_MachineType lathe = new SFC_MachineType(1, "Lathe");
             SFC_MachineType hmill = new SFC_MachineType(2, "H. Mill");
@@ -122,14 +110,27 @@ namespace ProductionSchedulerProgram
             shopFloor.AddMachineType(company.Id, machineTypeList);
             #endregion
 
+            #region Add Work Center
+            int workCenterCount = 10;
+            List<SFC_WorkCenter> workCenterList = new List<SFC_WorkCenter>();
+            for (int workCenter = 1; workCenter <= workCenterCount; workCenter++)
+            {
+                SFC_WorkCenterType mtype = shopFloor.getRandomWorkCenterType(company.Id);
+                SFC_WorkCenter thisWorkCenter = new SFC_WorkCenter(workCenter, "WC" + TextGenerator.RandomNumbers(3), finite);
+                thisWorkCenter.MachineType = shopFloor.getRandomMachineType(company.Id);
+                workCenterList.Add(thisWorkCenter);
+            }
+            shopFloor.AddWorkCenters(company.Id, workCenterList);
+            #endregion
+
             #region Add Machine
             int machineCount = 10;
             List<SFC_Machine> machineList = new List<SFC_Machine>();
             for (int machine = 1; machine <= machineCount; machine++)
             {
-                SFC_MachineType mtype = shopFloor.getRandomMachineType(company.Id);
-                SFC_Machine thisMachine = new SFC_Machine(machine, TextGenerator.RandomNumbers(3), mtype);
-                while( !thisMachine.setWorkCenter(shopFloor.getRandomWorkCenter(company.Id)));
+                SFC_MachineType mtype = shopFloor.getRandomMachineType(company.Id); 
+                 SFC_Machine thisMachine = new SFC_Machine(machine, TextGenerator.RandomNumbers(3), mtype);
+                thisMachine.setWorkCenter(SFC_MachineType.GetRandomWorkCenter(mtype));
                 machineList.Add(thisMachine);
             }
             shopFloor.AddMachines(company.Id, machineList);
@@ -139,6 +140,20 @@ namespace ProductionSchedulerProgram
             shopFloor.ShowMachines(company.Id);
             shopFloor.ShowWorkCenters(company.Id);
             //Thread.Sleep(1000);
+
+
+            #region work orders
+            List<SFC_WorkOrder> workOrders = new List<SFC_WorkOrder>();
+            SFC_Customer cust = new SFC_Customer(0, 0 , TextGenerator.RandomNames(5,10), TextGenerator.RandomNumbers(4));
+
+
+
+            #endregion
+
+
+
+
+
 
             DateTime ts2 = DateTime.Now;
             Console.WriteLine("Total millisecs:"+ts2.Subtract(ts1).TotalMilliseconds);

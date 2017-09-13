@@ -21,6 +21,8 @@ namespace ProductionSchedulerLibrary
 
         private static long workCenterCont = 1;
 
+        private static long bomCount = 1;
+
 
         #endregion
 
@@ -35,10 +37,6 @@ namespace ProductionSchedulerLibrary
 
         }
 
-        public static long NextBinCount()
-        {
-            return binCount++;
-        }
 
 
 
@@ -64,6 +62,27 @@ namespace ProductionSchedulerLibrary
         }
         #endregion
 
+        #region customer
+        public void AddCustomerList(long companyId, List<SFC_Customer> customerList)
+        {
+            foreach (SFC_Customer cust in customerList)
+            {
+                if (!shopControlList[companyId].Customers.ContainsKey(cust.Id))
+                    shopControlList[companyId].AddCustomer(cust);
+            }
+        }
+
+        public SFC_Customer getRandomCustomer(long companyId)
+        {
+            return shopControlList[companyId].getRandomCustomer();
+        }
+
+        public void ShowCustomers(long companyId)
+        {
+            shopControlList[companyId].ShowCustomers();
+        }
+        #endregion
+
         #region bom list
         public void AddBomList(long companyId, List<SFC_ItemLotBin> itemLotBinList)
         {
@@ -83,6 +102,11 @@ namespace ProductionSchedulerLibrary
                 if (!shopControlList[companyId].Employees.ContainsKey(emp.Id))
                     shopControlList[companyId].AddEmployee(emp);
             }
+        }
+
+        public SFC_Employee getRandomEmployee(long companyId)
+        {
+            return shopControlList[companyId].getRandomEmployee();
         }
 
         public void ShowEmployees(long companyId)
@@ -117,9 +141,12 @@ namespace ProductionSchedulerLibrary
         }
         #endregion
 
-
-
         #region lot bin
+        public static long NextBinCount()
+        {
+            return binCount++;
+        }
+
         public void ShowLotBin(long companyId)
         {
             shopControlList[companyId].ShowLotbin();
@@ -215,6 +242,32 @@ namespace ProductionSchedulerLibrary
         }
         #endregion
 
+        #region bom
+        public static long NextBomCount()
+        {
+            return bomCount++;
+        }
 
+        public void AddBomList(long companyId, List<SFC_Bom> bomList)
+        {
+            foreach (SFC_Bom bom in bomList)
+            {
+                if (!shopControlList[companyId].Boms.ContainsKey(bom.Id))
+                    shopControlList[companyId].AddBom(bom);
+            }
+        }
+
+        public void ShowBoms(long companyId)
+        {
+            shopControlList[companyId].ShowBoms();
+        }
+
+        public SFC_Bom getRandomBom(long companyId)
+        {
+            return shopControlList[companyId].getRandomBom();
+        }
+
+
+        #endregion
     }
 }

@@ -18,8 +18,8 @@ namespace ProductionSchedulerLibrary
 
         public SFC_Item(long id, string itemCode)
         {
-            this.id = id;
-            this.itemCode = itemCode;
+            //this.id = id;
+            //this.itemCode = itemCode;
             this.itemStatus = new SFC_ItemStatus(this);
             this.bins = new List<SFC_ItemLotBin>();
         }

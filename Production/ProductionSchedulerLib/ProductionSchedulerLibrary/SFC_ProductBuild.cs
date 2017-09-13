@@ -10,12 +10,12 @@ namespace ProductionSchedulerLibrary
     {
         private readonly long id;
 
-        private long workOrderId;
+        private SFC_WorkOrder workOrder;
 
-        private long employeeId;
+        private SFC_Employee employee;
 
-        private long routerProcessId;
+        private long routerProcess;
 
-      
+        private SFC_Bom bomList;
     }
 }

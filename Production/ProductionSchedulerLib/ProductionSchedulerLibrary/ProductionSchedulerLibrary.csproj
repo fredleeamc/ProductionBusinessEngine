@@ -48,6 +48,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SFC_BomComposite.cs" />
+    <Compile Include="SFC_BomItem.cs" />
+    <Compile Include="SFC_BomComponent.cs" />
     <Compile Include="SFC_MachineType.cs" />
     <Compile Include="SFC_Department.cs" />
     <Compile Include="SFC_ItemStatus.cs" />

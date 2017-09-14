@@ -8,8 +8,8 @@ namespace ProductionSchedulerLibrary
 {
     public class SFC_BomItem : SFC_BomComponent
     {
-        
-        public SFC_BomItem(long id, SFC_Item item, long quantity) : base(id, item, quantity)
+
+        public SFC_BomItem(long id, SFC_Item item, double quantity) : base(id, item, quantity)
         {
             this.isLeaf = true;
         }
@@ -21,12 +21,38 @@ namespace ProductionSchedulerLibrary
 
         public override string Display(int depth)
         {
-            return new String('-', depth) + id + ":" + item;
+            return new String('-', depth) + id + ":" + item + ":" + quantity + "\n";
+        }
+
+        public override bool IsItem()
+        {
+            return isLeaf;
         }
 
         public override void Remove(SFC_BomComponent component)
         {
             Console.WriteLine("Cannot Remove");
+        }
+
+        public override int CountItems()
+        {
+            return 1;
+        }
+
+        public override double EstimatedCost()
+        {
+            return this.UnitCost * this.Quantity;
+        }
+
+        public override void BillOfMaterials(ref Dictionary<SFC_Item, double> materials)
+        {
+            if (materials.ContainsKey(this.Item))
+            {
+                materials[this.Item] += this.Quantity;
+            } else
+            {
+                materials.Add(this.Item, this.Quantity);
+            }
         }
     }
 }

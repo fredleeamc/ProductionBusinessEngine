@@ -9,9 +9,9 @@ namespace ProductionSchedulerLibrary
 
     public class SFC_ItemStatus
     {
-        private SFC_Item item;
+        private readonly SFC_Item item;
         private SFC_ItemLotBin itemLotBin;
-        private bool isItem;
+        private readonly bool isItem;
         private decimal beginBalance;
         private decimal receive;
         private decimal onHand;
@@ -29,217 +29,30 @@ namespace ProductionSchedulerLibrary
         private decimal minAutoOrder;
         private decimal reorderPoint;
 
-        public SFC_Item Item
-        {
-            get
-            {
-                return item;
-            }
 
-            protected set
-            {
-                item = value;
-            }
-        }
+        public SFC_Item Item => item;
 
-        public decimal OnHand
-        {
-            get
-            {
-                return onHand;
-            }
+        public SFC_ItemLotBin ItemLotBin { get => itemLotBin; set => itemLotBin = value; }
 
-            protected set
-            {
-                onHand = value;
-            }
-        }
+        public bool IsItem => isItem;
 
-        public decimal OnPurchase
-        {
-            get
-            {
-                return onPurchase;
-            }
+        public decimal BeginBalance { get => beginBalance; set => beginBalance = value; }
+        public decimal Receive { get => receive; set => receive = value; }
+        public decimal OnHand { get => onHand; set => onHand = value; }
+        public decimal OnPurchase { get => onPurchase; set => onPurchase = value; }
+        public decimal InProduction { get => inProduction; set => inProduction = value; }
+        public decimal Allocated { get => allocated; set => allocated = value; }
+        public decimal Reserved { get => reserved; set => reserved = value; }
+        public decimal TotalAvailable { get => totalAvailable; set => totalAvailable = value; }
+        public decimal TotalRequired { get => totalRequired; set => totalRequired = value; }
+        public decimal Scrap { get => scrap; set => scrap = value; }
+        public decimal NetUsed { get => netUsed; set => netUsed = value; }
+        public decimal VendorReturn { get => vendorReturn; set => vendorReturn = value; }
+        public decimal AdjustmentIn { get => adjustmentIn; set => adjustmentIn = value; }
+        public decimal AdjustmentOut { get => adjustmentOut; set => adjustmentOut = value; }
+        public decimal MinAutoOrder { get => minAutoOrder; set => minAutoOrder = value; }
+        public decimal ReorderPoint { get => reorderPoint; set => reorderPoint = value; }
 
-            protected set
-            {
-                onPurchase = value;
-            }
-        }
-
-        public decimal InProduction
-        {
-            get
-            {
-                return inProduction;
-            }
-
-            protected set
-            {
-                inProduction = value;
-            }
-        }
-
-        public decimal Allocated
-        {
-            get
-            {
-                return allocated;
-            }
-
-            protected set
-            {
-                allocated = value;
-            }
-        }
-
-        public decimal Reserved
-        {
-            get
-            {
-                return reserved;
-            }
-
-            protected set
-            {
-                reserved = value;
-            }
-        }
-
-        public decimal TotalAvailable
-        {
-            get
-            {
-                return totalAvailable;
-            }
-
-            protected set
-            {
-                totalAvailable = value;
-            }
-        }
-
-        public decimal TotalRequired
-        {
-            get
-            {
-                return totalRequired;
-            }
-
-            protected set
-            {
-                totalRequired = value;
-            }
-        }
-
-        public decimal Scrap
-        {
-            get
-            {
-                return scrap;
-            }
-
-            protected set
-            {
-                scrap = value;
-            }
-        }
-
-        public SFC_ItemLotBin ItemLotBin
-        {
-            get
-            {
-                return itemLotBin;
-            }
-
-            protected set
-            {
-                itemLotBin = value;
-            }
-        }
-
-        private bool IsItem
-        {
-            get
-            {
-                return isItem;
-            }
-
-            set
-            {
-                isItem = value;
-            }
-        }
-
-        public decimal Used
-        {
-            get
-            {
-                return netUsed;
-            }
-
-            protected set
-            {
-                netUsed = value;
-            }
-        }
-
-        public decimal AdjustmentIn
-        {
-            get
-            {
-                return adjustmentIn;
-            }
-
-            protected set
-            {
-                adjustmentIn = value;
-            }
-        }
-
-        public decimal AdjustmentOut
-        {
-            get
-            {
-                return adjustmentOut;
-            }
-
-            protected set
-            {
-                adjustmentOut = value;
-            }
-        }
-
-        public decimal BeginQty
-        {
-            get
-            {
-                return beginBalance;
-            }
-
-            protected set
-            {
-                beginBalance = value;
-            }
-        }
-
-        public decimal Receive
-        {
-            get
-            {
-                return receive;
-            }
-
-            protected set
-            {
-                receive = value;
-            }
-        }
-
-        /**
-         * 
-         */
         public SFC_ItemStatus(SFC_Item thisItem)
         {
             this.item = thisItem;
@@ -253,7 +66,7 @@ namespace ProductionSchedulerLibrary
         }
 
         /*
-         * 
+         * Split lotbin but maintain lotbin number
          */
         public bool splitLotBin(SFC_ItemLotBin newLotBin, decimal qtyToTransfer)
         {
@@ -570,6 +383,8 @@ namespace ProductionSchedulerLibrary
 
          //private static String SFormat1 = "{0, 40}|{1,10}|{2,10}|{3,10}|{4,10}|{5,10}|{6,10}|{7,10}|{8,10}|{9,10}|{10,10}|{11,10}|{12,10}|{13,10}";
          private static String SFormat2 = "{0, 10}|{1,10}|<{2,10}|{3,10}|{4,10}>|<{5,10}|{6,10}|{7,10}|{8,10}>|{9,10}|{10,10}|{11,10}|{12,10}|{13,10}";
+
+ 
 
         public override string ToString()
         {

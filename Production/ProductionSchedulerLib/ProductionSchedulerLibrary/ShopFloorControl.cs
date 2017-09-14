@@ -135,6 +135,11 @@ namespace ProductionSchedulerLibrary
             shopControlList[companyId].ShowItems();
         }
 
+        public void ShowItemStatus(long companyId)
+        {
+            shopControlList[companyId].ShowItemStatus();
+        }
+
         public SFC_Item getRandomItem(long companyId)
         {
             return shopControlList[companyId].getRandomItem();

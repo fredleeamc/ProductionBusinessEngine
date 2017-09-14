@@ -148,6 +148,7 @@ namespace ProductionSchedulerLibrary
             this.companyId = companyId;
             company = new SFC_Company(companyId, companyName);
             this.employees = new Dictionary<long, SFC_Employee>();
+            this.customers = new Dictionary<long, SFC_Customer>();
             this.lotBin = new Dictionary<long, SFC_ItemLotBin>();
             this.items = new Dictionary<long, SFC_Item>();
             this.machineTypes = new Dictionary<long, SFC_MachineType>();
@@ -262,6 +263,14 @@ namespace ProductionSchedulerLibrary
             }
         }
 
+        public void ShowItemStatus()
+        {
+            foreach (long itemId in items.Keys)
+            {
+                Console.WriteLine(items[itemId].PrintStatus());
+            }
+        }
+
         public SFC_Item getRandomItem()
         {
             int rand = ShopFloorModel.rnd.Next(1, items.Count + 1);
@@ -284,7 +293,7 @@ namespace ProductionSchedulerLibrary
         {
             foreach (long machineId in machineTypes.Keys)
             {
-                Console.WriteLine(items[machineId]);
+                Console.WriteLine(machineTypes[machineId]);
             }
         }
 

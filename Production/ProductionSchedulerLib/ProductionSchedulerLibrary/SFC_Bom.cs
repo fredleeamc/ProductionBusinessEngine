@@ -12,42 +12,59 @@ namespace ProductionSchedulerLibrary
     {
         private readonly long id;
 
-        private SFC_Item itemId;
+        private readonly string partName;
 
-        private SFC_BomComposite thisBom;
+        private readonly string partNo;
+
+        private readonly SFC_BomComposite thisBom;
+
+        private Dictionary<SFC_Item, double> materials;
+
 
         public long Id => id;
 
-        public SFC_Item ItemId { get => itemId; protected set => itemId = value; }
+        public string PartName => partName;
 
+        public string PartNo => partNo;
 
-        public SFC_Bom(long id, SFC_Item itemId)
+        public SFC_Bom(long id, string partName, string partNo, SFC_BomComposite bom)
         {
             this.id = id;
-            this.itemId = itemId;
-            this.thisBom = new SFC_BomComposite(id, itemId, 1);
+            this.partName = partName;
+            this.partNo = partNo;
+            this.thisBom = bom;
+            materials = new Dictionary<SFC_Item, double>();
         }
 
 
-        public void Add(SFC_BomComponent c)
-        {
-            this.thisBom.Add(c);
-        }
-
-        public void Remove(SFC_BomComponent c)
-        {
-            this.thisBom.Remove(c);
-        }
 
         public override string ToString()
         {        
             StringBuilder sb = new StringBuilder();
-            sb.Append("BOM:" + this.itemId);
+            sb.Append("BOM("+PartName+":"+PartNo+"):\n");
             sb.Append(this.thisBom.Display(1));
             return sb.ToString();
         }
 
-       
+        public long CountItems()
+        {
+            return thisBom.CountItems();
+        }
+
+        public IOrderedEnumerable<KeyValuePair<SFC_Item, double>> BuildBillOfMaterials()
+        {
+            this.thisBom.BillOfMaterials(ref materials);
+
+            var items = from pair in materials
+                        orderby pair.Key.ItemCode
+                        select pair;
+
+            //foreach (KeyValuePair<SFC_Item, double> pair in items)
+            //{
+            //    Console.WriteLine("{0}:{1}", pair.Key, pair.Value);
+            //}
+            return items;
+        }
 
     }
 

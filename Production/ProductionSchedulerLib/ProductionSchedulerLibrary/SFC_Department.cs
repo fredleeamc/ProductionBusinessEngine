@@ -12,27 +12,16 @@ namespace ProductionSchedulerLibrary
     {
         private readonly long id;
 
-        private String departmentName;
+        private readonly String departmentName;
 
-        public long Id
+        public SFC_Department(long id, string departmentName)
         {
-            get
-            {
-                return id;
-            }
+            this.id = id;
+            this.departmentName = departmentName;
         }
 
-        public string DepartmentName
-        {
-            get
-            {
-                return departmentName;
-            }
+        public long Id => id;
 
-            set
-            {
-                departmentName = value;
-            }
-        }
+        public string DepartmentName => departmentName;
     }
 }

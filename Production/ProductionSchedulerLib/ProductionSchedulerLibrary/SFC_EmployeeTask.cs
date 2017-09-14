@@ -16,6 +16,11 @@ namespace ProductionSchedulerLibrary
         /// </summary>
         private readonly long id;
 
-        
+        public SFC_EmployeeTask(long id)
+        {
+            this.id = id;
+        }
+
+        public long Id => id;
     }
 }

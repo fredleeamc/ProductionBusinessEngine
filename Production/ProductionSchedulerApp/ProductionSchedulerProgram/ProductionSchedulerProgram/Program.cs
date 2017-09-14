@@ -30,8 +30,11 @@ namespace ProductionSchedulerProgram
             shopFloor.CreateShopFloorModel(company);
             #endregion
 
+            //Task t1 = new Task(() =>
+            //           {
             // Start getting resources by company only
             #region Add Employee
+
             int employeeCount = 10;
             List<SFC_Employee> empList = new List<SFC_Employee>();
             for (int emp = 1; emp <= employeeCount; emp++)
@@ -41,8 +44,16 @@ namespace ProductionSchedulerProgram
             shopFloor.AddEmployeeList(company.Id, empList);
             #endregion
             shopFloor.ShowEmployees(company.Id);
+            //           });
+            //t1.Start();
 
+            //ManualResetEventSlim rst = new ManualResetEventSlim();
+            //rst.Reset();
+
+            //Task t2 = new Task(() =>
+            //       {
             #region Add Items
+
             int itemCount = 10;
             List<SFC_Item> itemList = new List<SFC_Item>();
             for (int itemId = 1; itemId <= itemCount; itemId++)
@@ -51,6 +62,7 @@ namespace ProductionSchedulerProgram
                 itemList.Add(thisItem);
             }
             shopFloor.AddItemList(company.Id, itemList);
+
 
             #endregion
             //shopFloor.ShowItems(company.Id);
@@ -77,7 +89,7 @@ namespace ProductionSchedulerProgram
                 SFC_Item thisItem = shopFloor.getRandomItem(company.Id);
                 SFC_ItemLotBin thisBin = new SFC_ItemLotBin(ShopFloorControl.NextBinCount(), thisItem, "PO", TextGenerator.RandomNumbers(4));
                 thisBin.ItemStatus.purchaseOrderQuantity(100);
-                thisBin.ItemStatus.ItemLotBin.LotNo = TextGenerator.RandomNumbers(4);
+                thisBin.ItemStatus.ItemLotBin.HeatNo = TextGenerator.RandomNumbers(4);
                 thisBin.ItemStatus.ItemLotBin.BinNo = TextGenerator.RandomNumbers(3);
                 thisBin.ItemStatus.movePurchaseOrderToReceiveQuantity(100);
                 thisBin.ItemStatus.reserveQuantity(20);
@@ -91,6 +103,14 @@ namespace ProductionSchedulerProgram
 
             shopFloor.ShowItemStatus(company.Id);
             #endregion
+            //rst.Set();
+
+            //});
+
+            //t2.Start();
+
+            //Task t3 = new Task(() =>
+            //{
 
             #region work center type
             List<SFC_WorkCenterType> workCenterTypeList = new List<SFC_WorkCenterType>();
@@ -123,7 +143,7 @@ namespace ProductionSchedulerProgram
             for (int workCenter = 1; workCenter <= workCenterCount; workCenter++)
             {
                 SFC_WorkCenterType mtype = shopFloor.getRandomWorkCenterType(company.Id);
-                SFC_WorkCenter thisWorkCenter = new SFC_WorkCenter(workCenter, "WC" + TextGenerator.RandomNumbers(3), finite);
+                SFC_WorkCenter thisWorkCenter = new SFC_WorkCenter(ShopFloorControl.NextWorkCenterCount(), "WC" + TextGenerator.RandomNumbers(3), finite);
                 thisWorkCenter.MachineType = shopFloor.getRandomMachineType(company.Id);
                 workCenterList.Add(thisWorkCenter);
             }
@@ -136,7 +156,7 @@ namespace ProductionSchedulerProgram
             for (int machine = 1; machine <= machineCount; machine++)
             {
                 SFC_MachineType mtype = shopFloor.getRandomMachineType(company.Id);
-                SFC_Machine thisMachine = new SFC_Machine(machine, TextGenerator.RandomNumbers(3), mtype);
+                SFC_Machine thisMachine = new SFC_Machine(ShopFloorControl.NextMachine(), TextGenerator.RandomNumbers(3), mtype);
                 thisMachine.setWorkCenter(SFC_MachineType.GetRandomWorkCenter(mtype));
                 machineList.Add(thisMachine);
             }
@@ -147,21 +167,43 @@ namespace ProductionSchedulerProgram
             shopFloor.ShowMachines(company.Id);
             shopFloor.ShowWorkCenters(company.Id);
             //Thread.Sleep(1000);
+            //});
 
+            //t3.Start();
 
+            //Task t4 = new Task(() =>
+            //{
+            //    rst.Wait();
             #region bom
             SFC_BomComposite meter = new SFC_BomComposite(1, new SFC_Item(ShopFloorControl.NextItemCount(), "Meter"), 1);
+            meter.UnitCost = 12.00;
+            meter.Unit = "EACH";
             SFC_Bom meterbom = new SFC_Bom(1, "FM1S", "XAA111", meter);
 
             SFC_Item pcbItem = new SFC_Item(ShopFloorControl.NextItemCount(), "16-5");
-            
+
             SFC_BomComponent pcb = new SFC_BomComposite(1, pcbItem, 1);
-            SFC_BomComponent resistor = new SFC_BomComposite(2, new SFC_Item(1000, "Resistor 5K"), 10);
+            pcb.UnitCost = 5;
+            pcb.Unit = "PC";
 
-            SFC_BomComponent resistor2 = new SFC_BomComposite(2, new SFC_Item(1000, "Resistor 5K"), 30);
+            SFC_Item resistorItem = new SFC_Item(1000, "Resistor 5K");
 
-            SFC_BomComponent carbon = new SFC_BomComposite(3, new SFC_Item(ShopFloorControl.NextItemCount(), "Carbon"), 33);
-            SFC_BomComponent metal = new SFC_BomItem(4, new SFC_Item(ShopFloorControl.NextItemCount(), "Metal"), 1.25);
+            SFC_BomComponent resistor = new SFC_BomComposite(2, resistorItem, 20);
+            resistor.UnitCost = 4;
+            resistor.Unit = "PC";
+
+            SFC_BomComponent resistor2 = new SFC_BomComposite(2, resistorItem, 10);
+            resistor2.UnitCost = 3;
+            resistor2.Unit = "PC";
+
+            SFC_BomComponent carbon = new SFC_BomComposite(3, new SFC_Item(ShopFloorControl.NextItemCount(), "Carbon"), 10);
+            carbon.UnitCost = 2;
+            carbon.Unit = "PC";
+
+            SFC_BomComponent metal = new SFC_BomItem(4, new SFC_Item(ShopFloorControl.NextItemCount(), "Metal"), 0.5);
+            metal.UnitCost = 1;
+            metal.Unit = "PC";
+
             pcb.Add(resistor);
             pcb.Add(resistor2);
             resistor.Add(carbon);
@@ -172,16 +214,29 @@ namespace ProductionSchedulerProgram
             resistor.Add(metal);
             resistor.Add(metal);
             carbon.Add(meter);
-            
-            Console.WriteLine(meterbom);
-            Console.WriteLine("Count:"+meterbom.CountItems());
 
-            foreach(KeyValuePair<SFC_Item, double> pair in  meterbom.BuildBillOfMaterials())
+
+
+            Console.WriteLine(meterbom);
+            Console.WriteLine("Count:" + meterbom.CountItems());
+
+            Console.WriteLine("Meter:$" + meter.EstimatedCost());
+            Console.WriteLine("Pcb:$" + pcb.EstimatedCost());
+            Console.WriteLine("Resistor:$" + resistor.EstimatedCost());
+            Console.WriteLine("Carbon:$" + carbon.EstimatedCost());
+            Console.WriteLine("Metal:$" + metal.EstimatedCost());
+
+
+            Console.WriteLine("Bill of materials");
+            foreach (KeyValuePair<SFC_Item, double> pair in meterbom.BuildBillOfMaterials())
             {
                 Console.WriteLine("{0}:{1}", pair.Key, pair.Value);
             }
 
             #endregion
+            //});
+
+            //t4.Start();
 
             #region work orders
             List<SFC_WorkOrder> workOrders = new List<SFC_WorkOrder>();

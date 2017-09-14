@@ -9,7 +9,9 @@ namespace ProductionSchedulerLibrary
     /// <summary>
     /// 
     /// </summary>
-    public class SFC_WorkCenter
+    /// <seealso cref="System.IEquatable{ProductionSchedulerLibrary.SFC_WorkCenter}" />
+    /// <seealso cref="System.IComparable{ProductionSchedulerLibrary.SFC_WorkCenter}" />
+    public class SFC_WorkCenter : IEquatable<SFC_WorkCenter>, IComparable<SFC_WorkCenter>
     {
         /// <summary>
         /// The identifier
@@ -19,7 +21,7 @@ namespace ProductionSchedulerLibrary
         /// <summary>
         /// The work center name
         /// </summary>
-        private String workCenterName;
+        private readonly String workCenterName;
 
         /// <summary>
         /// The work center type
@@ -41,57 +43,6 @@ namespace ProductionSchedulerLibrary
         /// </summary>
         public readonly static SFC_WorkCenter NONE = new SFC_WorkCenter(0, "NONE", SFC_WorkCenterType.NONE);
 
-        /// <summary>
-        /// Gets the identifier.
-        /// </summary>
-        /// <value>
-        /// The identifier.
-        /// </value>
-        public long Id
-        {
-            get
-            {
-                return id;
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets the name of the work center.
-        /// </summary>
-        /// <value>
-        /// The name of the work center.
-        /// </value>
-        public string WorkCenterName
-        {
-            get
-            {
-                return workCenterName;
-            }
-
-            protected set
-            {
-                workCenterName = value;
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets the type of the work center.
-        /// </summary>
-        /// <value>
-        /// The type of the work center.
-        /// </value>
-        public SFC_WorkCenterType WorkCenterType
-        {
-            get
-            {
-                return workCenterType;
-            }
-
-            protected set
-            {
-                workCenterType = value;
-            }
-        }
 
         /// <summary>
         /// Gets or sets the type of the machine.
@@ -117,6 +68,30 @@ namespace ProductionSchedulerLibrary
         }
 
         /// <summary>
+        /// Gets the identifier.
+        /// </summary>
+        /// <value>
+        /// The identifier.
+        /// </value>
+        public long Id => id;
+
+        /// <summary>
+        /// Gets the name of the work center.
+        /// </summary>
+        /// <value>
+        /// The name of the work center.
+        /// </value>
+        public string WorkCenterName => workCenterName;
+
+        /// <summary>
+        /// Gets or sets the type of the work center.
+        /// </summary>
+        /// <value>
+        /// The type of the work center.
+        /// </value>
+        public SFC_WorkCenterType WorkCenterType { get => workCenterType; set => workCenterType = value; }
+
+        /// <summary>
         /// Returns a <see cref="System.String" /> that represents this instance.
         /// </summary>
         /// <returns>
@@ -129,7 +104,7 @@ namespace ProductionSchedulerLibrary
 
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SFC_WorkCenter"/> class.
+        /// Initializes a new instance of the <see cref="SFC_WorkCenter" /> class.
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <param name="workCenterName">Name of the work center.</param>
@@ -197,6 +172,45 @@ namespace ProductionSchedulerLibrary
                 result = wcMachines.Remove(machine);
             }
             return result;
+        }
+
+        /// <summary>
+        /// Indicates whether the current object is equal to another object of the same type.
+        /// </summary>
+        /// <param name="other">An object to compare with this object.</param>
+        /// <returns>
+        /// true if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.
+        /// </returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public bool Equals(SFC_WorkCenter other)
+        {
+            return other != null && this.workCenterName == other.workCenterName; 
+        }
+
+        /// <summary>
+        /// Compares the current object with another object of the same type.
+        /// </summary>
+        /// <param name="other">An object to compare with this object.</param>
+        /// <returns>
+        /// A value that indicates the relative order of the objects being compared. The return value has the following meanings: Value Meaning Less than zero This object is less than the <paramref name="other" /> parameter.Zero This object is equal to <paramref name="other" />. Greater than zero This object is greater than <paramref name="other" />.
+        /// </returns>
+        /// <exception cref="ArgumentException">Object is not a SFC_WorkCenter</exception>
+        /// <exception cref="NotImplementedException"></exception>
+        public int CompareTo(SFC_WorkCenter other)
+        {
+            if (other == null)
+                return 1;
+
+            SFC_WorkCenter otherItem = other as SFC_WorkCenter;
+            if (otherItem != null)
+            {
+                if (this.id == other.id)
+                    return this.workCenterName.CompareTo(otherItem.workCenterName);
+                else
+                    return this.id.CompareTo(other.Id);
+            }
+            else
+                throw new ArgumentException("Object is not a SFC_WorkCenter");
         }
     }
 }

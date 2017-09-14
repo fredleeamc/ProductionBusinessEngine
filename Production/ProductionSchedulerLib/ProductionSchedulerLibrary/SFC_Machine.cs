@@ -9,7 +9,7 @@ namespace ProductionSchedulerLibrary
     /// <summary>
     /// 
     /// </summary>
-    public class SFC_Machine
+    public class SFC_Machine : IEquatable<SFC_Machine>, IComparable<SFC_Machine>
     {
         /// <summary>
         /// The identifier
@@ -19,12 +19,12 @@ namespace ProductionSchedulerLibrary
         /// <summary>
         /// The machine type
         /// </summary>
-        private SFC_MachineType machineType;
+        private readonly SFC_MachineType machineType;
 
         /// <summary>
         /// The machine name
         /// </summary>
-        private String machineName;
+        private readonly String machineName;
 
         /// <summary>
         /// The work center
@@ -36,76 +36,15 @@ namespace ProductionSchedulerLibrary
         /// </summary>
         public readonly static SFC_Machine NONE = new SFC_Machine(0, "NONE", SFC_MachineType.NONE);
 
-        /// <summary>
-        /// Gets the identifier.
-        /// </summary>
-        /// <value>
-        /// The identifier.
-        /// </value>
-        public long Id
-        {
-            get
-            {
-                return id;
-            }
-        }
+        public long Id => id;
 
-        /// <summary>
-        /// Gets or sets the type of the machine.
-        /// </summary>
-        /// <value>
-        /// The type of the machine.
-        /// </value>
-        public SFC_MachineType MachineType
-        {
-            get
-            {
-                return machineType;
-            }
+        public SFC_MachineType MachineType => machineType;
 
-            protected set
-            {
-                machineType = value;
-            }
-        }
+        public string MachineName => machineName;
 
-        /// <summary>
-        /// Gets or sets the name of the machine.
-        /// </summary>
-        /// <value>
-        /// The name of the machine.
-        /// </value>
-        public string MachineName
-        {
-            get
-            {
-                return machineName;
-            }
+        public SFC_WorkCenter WorkCenter { get => workCenter; set => workCenter = value; }
 
-            protected set
-            {
-                machineName = value;
-            }
-        }
 
-        /// <summary>
-        /// Gets or sets the work center.
-        /// </summary>
-        /// <value>
-        /// The work center.
-        /// </value>
-        public SFC_WorkCenter WorkCenter
-        {
-            get
-            {
-                return workCenter;
-            }
-
-            protected set
-            {
-                workCenter = value;
-            }
-        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SFC_Machine"/> class.
@@ -128,19 +67,20 @@ namespace ProductionSchedulerLibrary
         /// <returns></returns>
         public bool setWorkCenter(SFC_WorkCenter wc)
         {
-            bool result = false;            
+            bool result = false;
             if (wc != null)
             {
                 if (!wc.isCompatible(this))
                 {
                     this.WorkCenter = SFC_WorkCenter.NONE;
                     result = false;
-                } else
+                }
+                else
                 {
                     this.WorkCenter = wc;
                     result = true;
                 }
-            } 
+            }
             return result;
         }
 
@@ -158,5 +98,26 @@ namespace ProductionSchedulerLibrary
 
         }
 
+        public bool Equals(SFC_Machine other)
+        {
+            return other != null && this.machineName == other.machineName;
+        }
+
+        public int CompareTo(SFC_Machine other)
+        {
+            if (other == null)
+                return 1;
+
+            SFC_Machine otherItem = other as SFC_Machine;
+            if (otherItem != null)
+            {
+                if (this.id == other.id)
+                    return this.machineName.CompareTo(otherItem.machineName);
+                else
+                    return this.id.CompareTo(other.Id);
+            }
+            else
+                throw new ArgumentException("Object is not a SFC_Machine");
+        }
     }
 }

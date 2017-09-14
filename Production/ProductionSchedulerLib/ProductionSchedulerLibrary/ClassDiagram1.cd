@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ProductionSchedulerLibrary.SFC_Bom" Collapsed="true">
+    <Position X="7.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEACAAQAQAQAAAAEAAAAAAAAAAAAAAAAAACIAARAigA=</HashCode>
+      <FileName>SFC_Bom.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProductionSchedulerLibrary.SFC_BomComponent" Collapsed="true">
+    <Position X="4" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAKCAAAAQAAiAABAIAQAJQAEADAAAICAAEQAgABAAgA=</HashCode>
+      <FileName>SFC_BomComponent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProductionSchedulerLibrary.SFC_BomComposite">
+    <Position X="2.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAQAACAAQAAAAABQAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>SFC_BomComposite.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProductionSchedulerLibrary.SFC_BomItem" Collapsed="true">
+    <Position X="5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAQAACAAAAAAAABQAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>SFC_BomItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

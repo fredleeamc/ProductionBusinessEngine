@@ -307,6 +307,14 @@ namespace ProductionSchedulerLibrary
 
         #region machine
         /// <summary>
+        /// Nexts the machine count.
+        /// </summary>
+        /// <returns></returns>
+        public static long NextMachine()
+        {
+            return machineCount++;
+        }
+        /// <summary>
         /// Adds the machines.
         /// </summary>
         /// <param name="companyId">The company identifier.</param>
@@ -376,6 +384,14 @@ namespace ProductionSchedulerLibrary
         #endregion
 
         #region work center
+        /// <summary>
+        /// Nexts the item count.
+        /// </summary>
+        /// <returns></returns>
+        public static long NextWorkCenterCount()
+        {
+            return workCenterCount++;
+        }
         /// <summary>
         /// Adds the work centers.
         /// </summary>

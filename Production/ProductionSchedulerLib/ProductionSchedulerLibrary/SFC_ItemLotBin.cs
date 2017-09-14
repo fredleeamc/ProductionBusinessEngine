@@ -18,11 +18,11 @@ namespace ProductionSchedulerLibrary
         /// <summary>
         /// The item identifier
         /// </summary>
-        private long itemId;
+        private readonly long itemId;
         /// <summary>
         /// The lot no
         /// </summary>
-        private String lotNo;
+        private readonly String lotNo;
         /// <summary>
         /// The bin no
         /// </summary>
@@ -30,7 +30,7 @@ namespace ProductionSchedulerLibrary
         /// <summary>
         /// The batch no
         /// </summary>
-        private String batchNo;
+        private readonly String batchNo;
         /// <summary>
         /// The heat no
         /// </summary>
@@ -38,161 +38,45 @@ namespace ProductionSchedulerLibrary
         /// <summary>
         /// The item status
         /// </summary>
-        private SFC_ItemStatus itemStatus;
-
-        /// <summary>
-        /// Gets the identifier.
-        /// </summary>
-        /// <value>
-        /// The identifier.
-        /// </value>
-        public long Id
-        {
-            get
-            {
-                return id;
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets the item identifier.
-        /// </summary>
-        /// <value>
-        /// The item identifier.
-        /// </value>
-        public long ItemId
-        {
-            get
-            {
-                return itemId;
-            }
-
-            protected set
-            {
-                itemId = value;
-            }
-        }
-
+        private readonly SFC_ItemStatus itemStatus;
         /// <summary>
         /// The item
         /// </summary>
-        private SFC_Item item;
+        private readonly SFC_Item item;
+        /// <summary>
+        /// The unit cost
+        /// </summary>
+        private double unitCost;
 
         /// <summary>
-        /// Gets or sets the item.
+        /// The unit
         /// </summary>
-        /// <value>
-        /// The item.
-        /// </value>
-        public SFC_Item Item
-        {
-            get
-            {
-                return item;
-            }
+        private string unit;
 
-            protected set
-            {
-                item = value;
-            }
-        }
+  
 
+        public double UnitCost { get => unitCost; set => unitCost = value; }
 
+        public string Unit { get => unit; set => unit = value; }
 
-        /// <summary>
-        /// Gets or sets the lot no.
-        /// </summary>
-        /// <value>
-        /// The lot no.
-        /// </value>
-        public string LotNo
-        {
-            get
-            {
-                return lotNo;
-            }
+        public long Id => id;
 
-            set
-            {
-                lotNo = value;
-            }
-        }
+        public long ItemId => itemId;
 
-        /// <summary>
-        /// Gets or sets the bin no.
-        /// </summary>
-        /// <value>
-        /// The bin no.
-        /// </value>
-        public string BinNo
-        {
-            get
-            {
-                return binNo;
-            }
+        public string LotNo => lotNo;
 
-            set
-            {
-                binNo = value;
-            }
-        }
+        public string BinNo { get => binNo; set => binNo = value; }
 
-        /// <summary>
-        /// Gets or sets the item status.
-        /// </summary>
-        /// <value>
-        /// The item status.
-        /// </value>
-        public SFC_ItemStatus ItemStatus
-        {
-            get
-            {
-                return itemStatus;
-            }
+        public string BatchNo => batchNo;
 
-            protected set
-            {
-                itemStatus = value;
-            }
-        }
+        public string HeatNo { get => heatNo; set => heatNo = value; }
 
-        /// <summary>
-        /// Gets or sets the batch no.
-        /// </summary>
-        /// <value>
-        /// The batch no.
-        /// </value>
-        public string BatchNo
-        {
-            get
-            {
-                return batchNo;
-            }
+        public SFC_ItemStatus ItemStatus => itemStatus;
 
-            set
-            {
-                batchNo = value;
-            }
-        }
+        public SFC_Item Item => item;
 
-        /// <summary>
-        /// Gets or sets the heat no.
-        /// </summary>
-        /// <value>
-        /// The heat no.
-        /// </value>
-        public string HeatNo
-        {
-            get
-            {
-                return heatNo;
-            }
-
-            set
-            {
-                heatNo = value;
-            }
-        }
+        public double UnitCost1 { get => unitCost; set => unitCost = value; }
+        public string Unit1 { get => unit; set => unit = value; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SFC_ItemLotBin"/> class.
@@ -201,15 +85,15 @@ namespace ProductionSchedulerLibrary
         /// <param name="item">The item.</param>
         /// <param name="lotNo">The lot no.</param>
         /// <param name="binNo">The bin no.</param>
-        public SFC_ItemLotBin(long id, SFC_Item item, string lotNo, string binNo)
+        public SFC_ItemLotBin(long id, SFC_Item item, string lotNo, string batchNo)
         {
             this.id = id;
             this.item = item;
             this.item.addLotBin(this);
-            this.ItemId = item.Id;
+            this.itemId = item.Id;
             this.itemStatus = new SFC_ItemStatus(this);
             this.lotNo = lotNo;
-            this.binNo = binNo;
+            this.batchNo = batchNo;
         }
 
 

@@ -78,14 +78,14 @@ namespace ProductionSchedulerLibrary
         /// <value>
         /// The unit cost.
         /// </value>
-        protected double UnitCost { get => unitCost; set => unitCost = value; }
+        public double UnitCost { get => unitCost; set => unitCost = value; }
         /// <summary>
         /// Gets or sets the unit.
         /// </summary>
         /// <value>
         /// The unit.
         /// </value>
-        protected string Unit { get => unit; set => unit = value; }
+        public string Unit { get => unit; set => unit = value; }
         /// <summary>
         /// Gets or sets the bom cost.
         /// </summary>

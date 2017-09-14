@@ -63,6 +63,19 @@ namespace ProductionSchedulerLibrary
         /// </value>
         public string PartNo => partNo;
 
+        public long Id1 => id;
+
+        public string PartName1 => partName;
+
+        public string PartNo1 => partNo;
+
+        public SFC_BomComposite ThisBom => thisBom;
+
+        public Dictionary<SFC_Item, double> Materials { get => materials; set => materials = value; }
+
+
+
+
         /// <summary>
         /// Initializes a new instance of the <see cref="SFC_Bom"/> class.
         /// </summary>

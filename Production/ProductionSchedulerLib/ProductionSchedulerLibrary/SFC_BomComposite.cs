@@ -109,7 +109,22 @@ namespace ProductionSchedulerLibrary
         /// <exception cref="NotImplementedException"></exception>
         public override double EstimatedCost()
         {
-            throw new NotImplementedException();
+            double thisCost = 0;
+            if (children.Count > 0)
+            {
+                foreach (SFC_BomComponent component in children)
+                {
+                    double t = component.EstimatedCost();
+                    thisCost += t;
+                    Console.WriteLine(component.Item + "-" + t + " Total:" + thisCost);
+                }
+                this.BomCost = thisCost;
+            }
+            else
+            {
+                thisCost = this.UnitCost * this.Quantity;
+            }
+            return thisCost;
         }
 
 

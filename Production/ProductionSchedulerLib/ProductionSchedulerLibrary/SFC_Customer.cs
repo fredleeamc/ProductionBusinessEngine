@@ -6,16 +6,37 @@ using System.Threading.Tasks;
 
 namespace ProductionSchedulerLibrary
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class SFC_Customer
     {
+        /// <summary>
+        /// The identifier
+        /// </summary>
         private readonly long id;
 
+        /// <summary>
+        /// The company
+        /// </summary>
         private long company;
 
+        /// <summary>
+        /// The customer code
+        /// </summary>
         private String customerCode;
 
+        /// <summary>
+        /// The account no
+        /// </summary>
         private String accountNo;
 
+        /// <summary>
+        /// Gets the identifier.
+        /// </summary>
+        /// <value>
+        /// The identifier.
+        /// </value>
         public long Id
         {
             get
@@ -24,6 +45,12 @@ namespace ProductionSchedulerLibrary
             }
         }
 
+        /// <summary>
+        /// Gets or sets the company.
+        /// </summary>
+        /// <value>
+        /// The company.
+        /// </value>
         public long Company
         {
             get
@@ -37,6 +64,12 @@ namespace ProductionSchedulerLibrary
             }
         }
 
+        /// <summary>
+        /// Gets or sets the customer code.
+        /// </summary>
+        /// <value>
+        /// The customer code.
+        /// </value>
         public string CustomerCode
         {
             get
@@ -50,6 +83,12 @@ namespace ProductionSchedulerLibrary
             }
         }
 
+        /// <summary>
+        /// Gets or sets the account no.
+        /// </summary>
+        /// <value>
+        /// The account no.
+        /// </value>
         public string AccountNo
         {
             get
@@ -63,6 +102,13 @@ namespace ProductionSchedulerLibrary
             }
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SFC_Customer"/> class.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="company">The company.</param>
+        /// <param name="customerCode">The customer code.</param>
+        /// <param name="accountNo">The account no.</param>
         public SFC_Customer(long id, long company, string customerCode, string accountNo)
         {
             this.id = id;

@@ -6,33 +6,97 @@ using System.Threading.Tasks;
 
 namespace ProductionSchedulerLibrary
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <seealso cref="System.IEquatable{ProductionSchedulerLibrary.SFC_Item}" />
+    /// <seealso cref="System.IComparable{ProductionSchedulerLibrary.SFC_Item}" />
     public class SFC_Item : IEquatable<SFC_Item>, IComparable<SFC_Item>
     {
+        /// <summary>
+        /// The identifier
+        /// </summary>
         private readonly long id;
 
+        /// <summary>
+        /// The item code
+        /// </summary>
         private readonly String itemCode;
 
+        /// <summary>
+        /// The item status
+        /// </summary>
         private readonly SFC_ItemStatus itemStatus;
 
+        /// <summary>
+        /// The bins
+        /// </summary>
         private readonly List<SFC_ItemLotBin> bins;
 
+        /// <summary>
+        /// The is bom
+        /// </summary>
         private bool isBom;
 
+        /// <summary>
+        /// The bom
+        /// </summary>
         private SFC_BomComposite bom;
 
 
+        /// <summary>
+        /// Gets a value indicating whether this instance is bom.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if this instance is bom; otherwise, <c>false</c>.
+        /// </value>
         public bool IsBom { get => isBom; }
 
+        /// <summary>
+        /// Gets the bom.
+        /// </summary>
+        /// <value>
+        /// The bom.
+        /// </value>
         public SFC_BomComposite Bom { get => bom; }
 
+        /// <summary>
+        /// Gets the identifier.
+        /// </summary>
+        /// <value>
+        /// The identifier.
+        /// </value>
         public long Id => id;
 
+        /// <summary>
+        /// Gets the item code.
+        /// </summary>
+        /// <value>
+        /// The item code.
+        /// </value>
         public string ItemCode => itemCode;
 
+        /// <summary>
+        /// Gets the item status.
+        /// </summary>
+        /// <value>
+        /// The item status.
+        /// </value>
         public SFC_ItemStatus ItemStatus => itemStatus;
 
+        /// <summary>
+        /// Gets the bins.
+        /// </summary>
+        /// <value>
+        /// The bins.
+        /// </value>
         public List<SFC_ItemLotBin> Bins => bins;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SFC_Item"/> class.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="itemCode">The item code.</param>
         public SFC_Item(long id, string itemCode)
         {
             this.id = id;
@@ -43,12 +107,21 @@ namespace ProductionSchedulerLibrary
             this.bom = null;
         }
 
+        /// <summary>
+        /// Sets the bom.
+        /// </summary>
+        /// <param name="bom">The bom.</param>
         public void SetBom(SFC_BomComposite bom)
         {
             this.isBom = true;
             this.bom = bom;
         }
 
+        /// <summary>
+        /// Adds the lot bin.
+        /// </summary>
+        /// <param name="bin">The bin.</param>
+        /// <returns></returns>
         public bool addLotBin(SFC_ItemLotBin bin)
         {
             if (!bins.Contains(bin))
@@ -63,6 +136,12 @@ namespace ProductionSchedulerLibrary
 
 
 
+        /// <summary>
+        /// Returns a <see cref="System.String" /> that represents this instance.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="System.String" /> that represents this instance.
+        /// </returns>
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
@@ -77,6 +156,10 @@ namespace ProductionSchedulerLibrary
             return sb.ToString();
         }
 
+        /// <summary>
+        /// Prints the status.
+        /// </summary>
+        /// <returns></returns>
         public string PrintStatus()
         {
             StringBuilder sb = new StringBuilder();
@@ -91,17 +174,37 @@ namespace ProductionSchedulerLibrary
             return sb.ToString();
         }
 
+        /// <summary>
+        /// Determines whether the specified <see cref="System.Object" />, is equal to this instance.
+        /// </summary>
+        /// <param name="obj">The <see cref="System.Object" /> to compare with this instance.</param>
+        /// <returns>
+        ///   <c>true</c> if the specified <see cref="System.Object" /> is equal to this instance; otherwise, <c>false</c>.
+        /// </returns>
         public override bool Equals(object obj)
         {
             return Equals(obj as SFC_Item);
         }
 
+        /// <summary>
+        /// Indicates whether the current object is equal to another object of the same type.
+        /// </summary>
+        /// <param name="other">An object to compare with this object.</param>
+        /// <returns>
+        /// true if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.
+        /// </returns>
         public bool Equals(SFC_Item other)
         {
             return other != null &&
                    itemCode == other.itemCode;
         }
 
+        /// <summary>
+        /// Returns a hash code for this instance.
+        /// </summary>
+        /// <returns>
+        /// A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table. 
+        /// </returns>
         public override int GetHashCode()
         {
             var hashCode = 1763693883;
@@ -110,12 +213,27 @@ namespace ProductionSchedulerLibrary
             return hashCode;
         }
 
+        /// <summary>
+        /// Compares the current object with another object of the same type.
+        /// </summary>
+        /// <param name="other">An object to compare with this object.</param>
+        /// <returns>
+        /// A value that indicates the relative order of the objects being compared. The return value has the following meanings: Value Meaning Less than zero This object is less than the <paramref name="other" /> parameter.Zero This object is equal to <paramref name="other" />. Greater than zero This object is greater than <paramref name="other" />.
+        /// </returns>
         int IComparable<SFC_Item>.CompareTo(SFC_Item other)
         {
             return this.CompareTo(other);
 
         }
 
+        /// <summary>
+        /// Compares the current object with another object of the same type.
+        /// </summary>
+        /// <param name="other">An object to compare with this object.</param>
+        /// <returns>
+        /// A value that indicates the relative order of the objects being compared. The return value has the following meanings: Value Meaning Less than zero This object is less than the <paramref name="other" /> parameter.Zero This object is equal to <paramref name="other" />. Greater than zero This object is greater than <paramref name="other" />.
+        /// </returns>
+        /// <exception cref="ArgumentException">Object is not a SFC_Item</exception>
         public int CompareTo(SFC_Item other)
         {
 
@@ -134,35 +252,83 @@ namespace ProductionSchedulerLibrary
                 throw new ArgumentException("Object is not a SFC_Item");
         }
 
+        /// <summary>
+        /// Implements the operator ==.
+        /// </summary>
+        /// <param name="item1">The item1.</param>
+        /// <param name="item2">The item2.</param>
+        /// <returns>
+        /// The result of the operator.
+        /// </returns>
         public static bool operator ==(SFC_Item item1, SFC_Item item2)
         {
             return EqualityComparer<SFC_Item>.Default.Equals(item1, item2);
         }
 
+        /// <summary>
+        /// Implements the operator !=.
+        /// </summary>
+        /// <param name="item1">The item1.</param>
+        /// <param name="item2">The item2.</param>
+        /// <returns>
+        /// The result of the operator.
+        /// </returns>
         public static bool operator !=(SFC_Item item1, SFC_Item item2)
         {
             return !(item1 == item2);
         }
 
         // Define the is greater than operator.
+        /// <summary>
+        /// Implements the operator &gt;.
+        /// </summary>
+        /// <param name="operand1">The operand1.</param>
+        /// <param name="operand2">The operand2.</param>
+        /// <returns>
+        /// The result of the operator.
+        /// </returns>
         public static bool operator >(SFC_Item operand1, SFC_Item operand2)
         {
             return operand1.CompareTo(operand2) == 1;
         }
 
         // Define the is less than operator.
+        /// <summary>
+        /// Implements the operator &lt;.
+        /// </summary>
+        /// <param name="operand1">The operand1.</param>
+        /// <param name="operand2">The operand2.</param>
+        /// <returns>
+        /// The result of the operator.
+        /// </returns>
         public static bool operator <(SFC_Item operand1, SFC_Item operand2)
         {
             return operand1.CompareTo(operand2) == -1;
         }
 
         // Define the is greater than or equal to operator.
+        /// <summary>
+        /// Implements the operator &gt;=.
+        /// </summary>
+        /// <param name="operand1">The operand1.</param>
+        /// <param name="operand2">The operand2.</param>
+        /// <returns>
+        /// The result of the operator.
+        /// </returns>
         public static bool operator >=(SFC_Item operand1, SFC_Item operand2)
         {
             return operand1.CompareTo(operand2) >= 0;
         }
 
         // Define the is less than or equal to operator.
+        /// <summary>
+        /// Implements the operator &lt;=.
+        /// </summary>
+        /// <param name="operand1">The operand1.</param>
+        /// <param name="operand2">The operand2.</param>
+        /// <returns>
+        /// The result of the operator.
+        /// </returns>
         public static bool operator <=(SFC_Item operand1, SFC_Item operand2)
         {
             return operand1.CompareTo(operand2) <= 0;

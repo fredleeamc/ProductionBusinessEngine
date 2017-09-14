@@ -7,26 +7,61 @@ using System.Threading.Tasks;
 
 namespace ProductionSchedulerLibrary
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class TextGenerator
     {
+        /// <summary>
+        /// The random
+        /// </summary>
         static private Random rnd = new Random();
 
+        /// <summary>
+        /// The input1
+        /// </summary>
         static private String input1 = "abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        /// <summary>
+        /// The input2
+        /// </summary>
         static private String input2 = "1234567890";
+        /// <summary>
+        /// The input3
+        /// </summary>
         static private String input3 = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        /// <summary>
+        /// The input4
+        /// </summary>
         static private String input4 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        /// <summary>
+        /// The input5
+        /// </summary>
         static private String input5 = "abcdefghijklmnopqrstuvwxyz";
 
+        /// <summary>
+        /// Gets the random.
+        /// </summary>
+        /// <returns></returns>
         public static Random getRandom()
         {
             return rnd;
         }
 
+        /// <summary>
+        /// Randoms the int.
+        /// </summary>
+        /// <param name="size">The size.</param>
+        /// <returns></returns>
         public static int RandomInt(int size)
         {
             return rnd.Next(0, size);
         }
 
+        /// <summary>
+        /// Randoms the string.
+        /// </summary>
+        /// <param name="size">The size.</param>
+        /// <returns></returns>
         public static string RandomString(int size)
         {            
             var chars = Enumerable.Range(0, size)
@@ -34,6 +69,11 @@ namespace ProductionSchedulerLibrary
             return new string(chars.ToArray());
         }
 
+        /// <summary>
+        /// Randoms the numbers.
+        /// </summary>
+        /// <param name="size">The size.</param>
+        /// <returns></returns>
         public static string RandomNumbers(int size)
         {
             var chars = Enumerable.Range(0, size)
@@ -41,6 +81,11 @@ namespace ProductionSchedulerLibrary
             return new string(chars.ToArray());
         }
 
+        /// <summary>
+        /// Randoms the chars.
+        /// </summary>
+        /// <param name="size">The size.</param>
+        /// <returns></returns>
         public static string RandomChars(int size)
         {
             var chars = Enumerable.Range(0, size)
@@ -48,6 +93,12 @@ namespace ProductionSchedulerLibrary
             return new string(chars.ToArray());
         }
 
+        /// <summary>
+        /// Randoms the chars.
+        /// </summary>
+        /// <param name="minLength">The minimum length.</param>
+        /// <param name="size">The size.</param>
+        /// <returns></returns>
         public static string RandomChars(int minLength, int size)
         {
             if (minLength == 0)
@@ -61,6 +112,12 @@ namespace ProductionSchedulerLibrary
             return new string(chars.ToArray());
         }
 
+        /// <summary>
+        /// Randoms the names.
+        /// </summary>
+        /// <param name="minLength">The minimum length.</param>
+        /// <param name="size">The size.</param>
+        /// <returns></returns>
         public static string RandomNames(int minLength, int size)
         {
             if (minLength == 0)
@@ -78,6 +135,10 @@ namespace ProductionSchedulerLibrary
             return sb.ToString();
         }
 
+        /// <summary>
+        /// Randoms the names.
+        /// </summary>
+        /// <returns></returns>
         public static string RandomNames()
         {
             return RandomNames(8, 15);

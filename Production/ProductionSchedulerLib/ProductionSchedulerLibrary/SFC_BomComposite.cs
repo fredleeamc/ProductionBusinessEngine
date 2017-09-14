@@ -6,10 +6,23 @@ using System.Threading.Tasks;
 
 namespace ProductionSchedulerLibrary
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <seealso cref="ProductionSchedulerLibrary.SFC_BomComponent" />
     public class SFC_BomComposite : SFC_BomComponent
     {
+        /// <summary>
+        /// The children
+        /// </summary>
         private List<SFC_BomComponent> children;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SFC_BomComposite"/> class.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="item">The item.</param>
+        /// <param name="qty">The qty.</param>
         public SFC_BomComposite(long id, SFC_Item item, long qty) : base(id, item, qty)
         {
             children = new List<SFC_BomComponent>();
@@ -17,6 +30,10 @@ namespace ProductionSchedulerLibrary
             item.SetBom(this);
         }
 
+        /// <summary>
+        /// Adds the specified component.
+        /// </summary>
+        /// <param name="component">The component.</param>
         public override void Add(SFC_BomComponent component)
         {
             if (!this.IsCircular(component))
@@ -32,6 +49,11 @@ namespace ProductionSchedulerLibrary
 
 
 
+        /// <summary>
+        /// Displays the specified depth.
+        /// </summary>
+        /// <param name="depth">The depth.</param>
+        /// <returns></returns>
         public override string Display(int depth)
         {
 
@@ -45,16 +67,30 @@ namespace ProductionSchedulerLibrary
             return sb.ToString();
         }
 
+        /// <summary>
+        /// Determines whether this instance is item.
+        /// </summary>
+        /// <returns>
+        ///   <c>true</c> if this instance is item; otherwise, <c>false</c>.
+        /// </returns>
         public override bool IsItem()
         {
             return isLeaf;
         }
 
+        /// <summary>
+        /// Removes the specified component.
+        /// </summary>
+        /// <param name="component">The component.</param>
         public override void Remove(SFC_BomComponent component)
         {
             children.Remove(component);
         }
 
+        /// <summary>
+        /// Counts the items.
+        /// </summary>
+        /// <returns></returns>
         public override int CountItems()
         {
             int count = 1;
@@ -66,12 +102,21 @@ namespace ProductionSchedulerLibrary
         }
 
 
+        /// <summary>
+        /// Estimateds the cost.
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
         public override double EstimatedCost()
         {
             throw new NotImplementedException();
         }
 
 
+        /// <summary>
+        /// Bills the of materials.
+        /// </summary>
+        /// <param name="materials">The materials.</param>
         public override void BillOfMaterials(ref Dictionary<SFC_Item, double> materials)
         {
             if (materials.ContainsKey(this.Item))

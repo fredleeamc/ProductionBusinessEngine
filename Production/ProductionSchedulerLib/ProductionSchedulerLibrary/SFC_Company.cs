@@ -8,18 +8,38 @@ using System.Threading.Tasks;
 namespace ProductionSchedulerLibrary
 {
 
+    /// <summary>
+    /// 
+    /// </summary>
     public class SFC_Company
     {
+        /// <summary>
+        /// The identifier
+        /// </summary>
         private readonly long id;
 
+        /// <summary>
+        /// The company name
+        /// </summary>
         private String companyName;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SFC_Company"/> class.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="companyName">Name of the company.</param>
         public SFC_Company(long id, string companyName)
         {
             this.id = id;
             this.companyName = companyName;
         }
 
+        /// <summary>
+        /// Gets the identifier.
+        /// </summary>
+        /// <value>
+        /// The identifier.
+        /// </value>
         public long Id
         {
             get
@@ -28,6 +48,12 @@ namespace ProductionSchedulerLibrary
             }
         }
 
+        /// <summary>
+        /// Gets or sets the name of the company.
+        /// </summary>
+        /// <value>
+        /// The name of the company.
+        /// </value>
         public string CompanyName
         {
             get

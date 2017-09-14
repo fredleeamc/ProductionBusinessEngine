@@ -6,26 +6,54 @@ using System.Threading.Tasks;
 
 namespace ProductionSchedulerLibrary
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class ShopFloorControl
     {
         #region field
+        /// <summary>
+        /// The shop control list
+        /// </summary>
         protected static Dictionary<long, ShopFloorModel> shopControlList = null;
 
+        /// <summary>
+        /// The instance SFC
+        /// </summary>
         private static ShopFloorControl instanceSFC = null;
 
+        /// <summary>
+        /// The bin count
+        /// </summary>
         private static long binCount = 1;
 
+        /// <summary>
+        /// The item count
+        /// </summary>
         private static long itemCount = 1;
 
+        /// <summary>
+        /// The machine count
+        /// </summary>
         private static long machineCount = 1;
 
-        private static long workCenterCont = 1;
+        /// <summary>
+        /// The work center cont
+        /// </summary>
+        private static long workCenterCount = 1;
 
+        /// <summary>
+        /// The bom count
+        /// </summary>
         private static long bomCount = 1;
 
 
         #endregion
 
+        /// <summary>
+        /// Gets the instance.
+        /// </summary>
+        /// <returns></returns>
         public static ShopFloorControl GetInstance()
         {
             if (instanceSFC == null)
@@ -41,11 +69,22 @@ namespace ProductionSchedulerLibrary
 
 
         #region shop floor model
+        /// <summary>
+        /// Creates the shop floor model.
+        /// </summary>
+        /// <param name="company">The company.</param>
+        /// <returns></returns>
         public ShopFloorModel CreateShopFloorModel(SFC_Company company)
         {
             return CreateShopFloorModel(company.Id, company.CompanyName);
         }
 
+        /// <summary>
+        /// Creates the shop floor model.
+        /// </summary>
+        /// <param name="companyId">The company identifier.</param>
+        /// <param name="companyName">Name of the company.</param>
+        /// <returns></returns>
         public ShopFloorModel CreateShopFloorModel(long companyId, String companyName)
         {
             ShopFloorModel model = null;
@@ -63,6 +102,11 @@ namespace ProductionSchedulerLibrary
         #endregion
 
         #region customer
+        /// <summary>
+        /// Adds the customer list.
+        /// </summary>
+        /// <param name="companyId">The company identifier.</param>
+        /// <param name="customerList">The customer list.</param>
         public void AddCustomerList(long companyId, List<SFC_Customer> customerList)
         {
             foreach (SFC_Customer cust in customerList)
@@ -72,11 +116,20 @@ namespace ProductionSchedulerLibrary
             }
         }
 
+        /// <summary>
+        /// Gets the random customer.
+        /// </summary>
+        /// <param name="companyId">The company identifier.</param>
+        /// <returns></returns>
         public SFC_Customer getRandomCustomer(long companyId)
         {
             return shopControlList[companyId].getRandomCustomer();
         }
 
+        /// <summary>
+        /// Shows the customers.
+        /// </summary>
+        /// <param name="companyId">The company identifier.</param>
         public void ShowCustomers(long companyId)
         {
             shopControlList[companyId].ShowCustomers();
@@ -84,6 +137,11 @@ namespace ProductionSchedulerLibrary
         #endregion
 
         #region bom list
+        /// <summary>
+        /// Adds the bom list.
+        /// </summary>
+        /// <param name="companyId">The company identifier.</param>
+        /// <param name="itemLotBinList">The item lot bin list.</param>
         public void AddBomList(long companyId, List<SFC_ItemLotBin> itemLotBinList)
         {
             foreach (SFC_ItemLotBin bin in itemLotBinList)
@@ -95,6 +153,11 @@ namespace ProductionSchedulerLibrary
         #endregion
 
         #region employee
+        /// <summary>
+        /// Adds the employee list.
+        /// </summary>
+        /// <param name="companyId">The company identifier.</param>
+        /// <param name="employeeList">The employee list.</param>
         public void AddEmployeeList(long companyId, List<SFC_Employee> employeeList)
         {
             foreach (SFC_Employee emp in employeeList)
@@ -104,11 +167,20 @@ namespace ProductionSchedulerLibrary
             }
         }
 
+        /// <summary>
+        /// Gets the random employee.
+        /// </summary>
+        /// <param name="companyId">The company identifier.</param>
+        /// <returns></returns>
         public SFC_Employee getRandomEmployee(long companyId)
         {
             return shopControlList[companyId].getRandomEmployee();
         }
 
+        /// <summary>
+        /// Shows the employees.
+        /// </summary>
+        /// <param name="companyId">The company identifier.</param>
         public void ShowEmployees(long companyId)
         {
             shopControlList[companyId].ShowEmployees();
@@ -116,11 +188,20 @@ namespace ProductionSchedulerLibrary
         #endregion
 
         #region item
+        /// <summary>
+        /// Nexts the item count.
+        /// </summary>
+        /// <returns></returns>
         public static long NextItemCount()
         {
             return itemCount++;
         }
 
+        /// <summary>
+        /// Adds the item list.
+        /// </summary>
+        /// <param name="companyId">The company identifier.</param>
+        /// <param name="itemList">The item list.</param>
         public void AddItemList(long companyId, List<SFC_Item> itemList)
         {
             foreach (SFC_Item item in itemList)
@@ -130,16 +211,29 @@ namespace ProductionSchedulerLibrary
             }
         }
 
+        /// <summary>
+        /// Shows the items.
+        /// </summary>
+        /// <param name="companyId">The company identifier.</param>
         public void ShowItems(long companyId)
         {
             shopControlList[companyId].ShowItems();
         }
 
+        /// <summary>
+        /// Shows the item status.
+        /// </summary>
+        /// <param name="companyId">The company identifier.</param>
         public void ShowItemStatus(long companyId)
         {
             shopControlList[companyId].ShowItemStatus();
         }
 
+        /// <summary>
+        /// Gets the random item.
+        /// </summary>
+        /// <param name="companyId">The company identifier.</param>
+        /// <returns></returns>
         public SFC_Item getRandomItem(long companyId)
         {
             return shopControlList[companyId].getRandomItem();
@@ -147,16 +241,29 @@ namespace ProductionSchedulerLibrary
         #endregion
 
         #region lot bin
+        /// <summary>
+        /// Nexts the bin count.
+        /// </summary>
+        /// <returns></returns>
         public static long NextBinCount()
         {
             return binCount++;
         }
 
+        /// <summary>
+        /// Shows the lot bin.
+        /// </summary>
+        /// <param name="companyId">The company identifier.</param>
         public void ShowLotBin(long companyId)
         {
             shopControlList[companyId].ShowLotbin();
         }
 
+        /// <summary>
+        /// Gets the random item lot bin.
+        /// </summary>
+        /// <param name="companyId">The company identifier.</param>
+        /// <returns></returns>
         public SFC_ItemLotBin getRandomItemLotBin(long companyId)
         {
             return shopControlList[companyId].getRandomLotBin();
@@ -165,6 +272,11 @@ namespace ProductionSchedulerLibrary
 
         #region machine type
 
+        /// <summary>
+        /// Adds the type of the machine.
+        /// </summary>
+        /// <param name="companyId">The company identifier.</param>
+        /// <param name="machineTypeList">The machine type list.</param>
         public void AddMachineType(long companyId, List<SFC_MachineType> machineTypeList)
         {
             foreach (SFC_MachineType machineType in machineTypeList)
@@ -173,11 +285,20 @@ namespace ProductionSchedulerLibrary
                     shopControlList[companyId].AddMachineType(machineType);
             }
         }
+        /// <summary>
+        /// Shows the machine types.
+        /// </summary>
+        /// <param name="companyId">The company identifier.</param>
         public void ShowMachineTypes(long companyId)
         {
             shopControlList[companyId].ShowMachineTypes();
         }
 
+        /// <summary>
+        /// Gets the random type of the machine.
+        /// </summary>
+        /// <param name="companyId">The company identifier.</param>
+        /// <returns></returns>
         public SFC_MachineType getRandomMachineType(long companyId)
         {
             return shopControlList[companyId].getRandomMachineType();
@@ -185,6 +306,11 @@ namespace ProductionSchedulerLibrary
         #endregion
 
         #region machine
+        /// <summary>
+        /// Adds the machines.
+        /// </summary>
+        /// <param name="companyId">The company identifier.</param>
+        /// <param name="machineList">The machine list.</param>
         public void AddMachines(long companyId, List<SFC_Machine> machineList)
         {
             foreach (SFC_Machine machineType in machineList)
@@ -194,11 +320,20 @@ namespace ProductionSchedulerLibrary
             }
         }
 
+        /// <summary>
+        /// Gets the random machine.
+        /// </summary>
+        /// <param name="companyId">The company identifier.</param>
+        /// <returns></returns>
         public SFC_Machine getRandomMachine(long companyId)
         {
             return shopControlList[companyId].getRandomMachine();
         }
 
+        /// <summary>
+        /// Shows the machines.
+        /// </summary>
+        /// <param name="companyId">The company identifier.</param>
         public void ShowMachines(long companyId)
         {
             shopControlList[companyId].ShowMachines();
@@ -206,6 +341,11 @@ namespace ProductionSchedulerLibrary
         #endregion
 
         #region work center type
+        /// <summary>
+        /// Adds the work center types.
+        /// </summary>
+        /// <param name="companyId">The company identifier.</param>
+        /// <param name="list">The list.</param>
         public void AddWorkCenterTypes(long companyId, List<SFC_WorkCenterType> list)
         {
             foreach (SFC_WorkCenterType t in list)
@@ -215,11 +355,20 @@ namespace ProductionSchedulerLibrary
             }
         }
 
+        /// <summary>
+        /// Gets the random type of the work center.
+        /// </summary>
+        /// <param name="companyId">The company identifier.</param>
+        /// <returns></returns>
         public SFC_WorkCenterType getRandomWorkCenterType(long companyId)
         {
             return shopControlList[companyId].getRandomWorkCenterType();
         }
 
+        /// <summary>
+        /// Shows the work center types.
+        /// </summary>
+        /// <param name="companyId">The company identifier.</param>
         public void ShowWorkCenterTypes(long companyId)
         {
             shopControlList[companyId].ShowWorkCenterTypes();
@@ -227,6 +376,11 @@ namespace ProductionSchedulerLibrary
         #endregion
 
         #region work center
+        /// <summary>
+        /// Adds the work centers.
+        /// </summary>
+        /// <param name="companyId">The company identifier.</param>
+        /// <param name="workCenterList">The work center list.</param>
         public void AddWorkCenters(long companyId, List<SFC_WorkCenter> workCenterList)
         {
             foreach (SFC_WorkCenter workCenter in workCenterList)
@@ -236,11 +390,20 @@ namespace ProductionSchedulerLibrary
             }
         }
 
+        /// <summary>
+        /// Gets the random work center.
+        /// </summary>
+        /// <param name="companyId">The company identifier.</param>
+        /// <returns></returns>
         public SFC_WorkCenter getRandomWorkCenter(long companyId)
         {
             return shopControlList[companyId].getRandomWorkCenter();
         }
 
+        /// <summary>
+        /// Shows the work centers.
+        /// </summary>
+        /// <param name="companyId">The company identifier.</param>
         public void ShowWorkCenters(long companyId)
         {
             shopControlList[companyId].ShowWorkCenters();
@@ -248,11 +411,20 @@ namespace ProductionSchedulerLibrary
         #endregion
 
         #region bom
+        /// <summary>
+        /// Nexts the bom count.
+        /// </summary>
+        /// <returns></returns>
         public static long NextBomCount()
         {
             return bomCount++;
         }
 
+        /// <summary>
+        /// Adds the bom list.
+        /// </summary>
+        /// <param name="companyId">The company identifier.</param>
+        /// <param name="bomList">The bom list.</param>
         public void AddBomList(long companyId, List<SFC_Bom> bomList)
         {
             foreach (SFC_Bom bom in bomList)
@@ -262,11 +434,20 @@ namespace ProductionSchedulerLibrary
             }
         }
 
+        /// <summary>
+        /// Shows the boms.
+        /// </summary>
+        /// <param name="companyId">The company identifier.</param>
         public void ShowBoms(long companyId)
         {
             shopControlList[companyId].ShowBoms();
         }
 
+        /// <summary>
+        /// Gets the random bom.
+        /// </summary>
+        /// <param name="companyId">The company identifier.</param>
+        /// <returns></returns>
         public SFC_Bom getRandomBom(long companyId)
         {
             return shopControlList[companyId].getRandomBom();

@@ -6,22 +6,48 @@ using System.Threading.Tasks;
 
 namespace ProductionSchedulerLibrary
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class SFC_MachineType
     {
+        /// <summary>
+        /// The identifier
+        /// </summary>
         private readonly int id;
 
+        /// <summary>
+        /// The name
+        /// </summary>
         private String name;
 
+        /// <summary>
+        /// The type library
+        /// </summary>
         private static Dictionary<SFC_MachineType, List<SFC_WorkCenter>> typeLib = new Dictionary<SFC_MachineType, List<SFC_WorkCenter>>();
 
+        /// <summary>
+        /// The none
+        /// </summary>
         public readonly static SFC_MachineType NONE = new SFC_MachineType(0, "NONE");
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SFC_MachineType"/> class.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="name">The name.</param>
         public SFC_MachineType(int id, string name)
         {
             this.id = id;
             this.name = name;
         }
 
+        /// <summary>
+        /// Gets the identifier.
+        /// </summary>
+        /// <value>
+        /// The identifier.
+        /// </value>
         public int Id
         {
             get
@@ -30,6 +56,12 @@ namespace ProductionSchedulerLibrary
             }
         }
 
+        /// <summary>
+        /// Gets or sets the name.
+        /// </summary>
+        /// <value>
+        /// The name.
+        /// </value>
         public string Name
         {
             get
@@ -43,6 +75,11 @@ namespace ProductionSchedulerLibrary
             }
         }
 
+        /// <summary>
+        /// Adds the work center.
+        /// </summary>
+        /// <param name="mType">Type of the m.</param>
+        /// <param name="wc">The wc.</param>
         public static void AddWorkCenter(SFC_MachineType mType, SFC_WorkCenter wc)
         {
             if(typeLib.ContainsKey(mType))
@@ -62,6 +99,10 @@ namespace ProductionSchedulerLibrary
             }
         }
 
+        /// <summary>
+        /// Removes the work center.
+        /// </summary>
+        /// <param name="wc">The wc.</param>
         public static void RemoveWorkCenter(SFC_WorkCenter wc)
         {
             SFC_MachineType mType = wc.MachineType;
@@ -81,6 +122,11 @@ namespace ProductionSchedulerLibrary
             }
         }
 
+        /// <summary>
+        /// Gets the work centers.
+        /// </summary>
+        /// <param name="mType">Type of the m.</param>
+        /// <returns></returns>
         public static List<SFC_WorkCenter> GetWorkCenters(SFC_MachineType mType)
         {
             if (typeLib.ContainsKey(mType))
@@ -92,6 +138,11 @@ namespace ProductionSchedulerLibrary
             }
         }
 
+        /// <summary>
+        /// Gets the random work center.
+        /// </summary>
+        /// <param name="mType">Type of the m.</param>
+        /// <returns></returns>
         public static SFC_WorkCenter GetRandomWorkCenter(SFC_MachineType mType)
         {
             if (typeLib.ContainsKey(mType))
@@ -105,6 +156,12 @@ namespace ProductionSchedulerLibrary
             }
         }
 
+        /// <summary>
+        /// Returns a <see cref="System.String" /> that represents this instance.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="System.String" /> that represents this instance.
+        /// </returns>
         public override string ToString()
         {
             return name;

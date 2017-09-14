@@ -9,9 +9,16 @@ using System.Threading;
 
 namespace ProductionSchedulerProgram
 {
+    /// <summary>
+    /// 
+    /// </summary>
     class Program
     {
 
+        /// <summary>
+        /// Mains the specified arguments.
+        /// </summary>
+        /// <param name="args">The arguments.</param>
         static void Main(string[] args)
         {
 

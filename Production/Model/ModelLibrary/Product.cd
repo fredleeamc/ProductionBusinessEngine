@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ModelLibrary.ProductBuild" Collapsed="true">
+    <Position X="5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ADACYAViSpJAYA0qoEAAUAAFTMASCBAQwAQMBUAJoAA=</HashCode>
+      <FileName>ProductBuild.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ModelLibrary.ProductBuildBomLink" Collapsed="true">
+    <Position X="6.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABACIABAAAAAAAAAAAAIAAAACAICAAAAAAEAAQAAAAA=</HashCode>
+      <FileName>ProductBuildBomLink.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ModelLibrary.ProductBuildDetail" Collapsed="true">
+    <Position X="8.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACIIBAQQgAAAAAAAAIAAAACAACCAARAAEAAQAAAAA=</HashCode>
+      <FileName>ProductBuildDetail.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ModelLibrary.ProductBuildDevelopmentLabor" Collapsed="true">
+    <Position X="5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACIIBgQgAAAAEAAECJACAACAACAAAAAAEAAQgAAAQ=</HashCode>
+      <FileName>ProductBuildDevelopmentLabor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ModelLibrary.ProductBuildDraft" Collapsed="true">
+    <Position X="6.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACACIARiSgIAAAkooEAIEAIECEACCAAAgAUEBQAJIAA=</HashCode>
+      <FileName>ProductBuildDraft.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ModelLibrary.ProductBuildInvestment" Collapsed="true">
+    <Position X="8.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACKARAAAAgAAAAAECIBCAACEACAAAAgAEAAQAAQAA=</HashCode>
+      <FileName>ProductBuildInvestment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ModelLibrary.ProductBuildMaterial" Collapsed="true">
+    <Position X="5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACIABAAAAAAgAAAAAAAAEACAACAAAQAAAAAYAAAAA=</HashCode>
+      <FileName>ProductBuildMaterial.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

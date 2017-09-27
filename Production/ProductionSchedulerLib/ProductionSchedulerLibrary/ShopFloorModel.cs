@@ -72,7 +72,7 @@ namespace ProductionSchedulerLibrary
         /// <summary>
         /// The boms
         /// </summary>
-        private Dictionary<long, SFC_Bom> boms;
+        private SFC_Boms boms;
         #endregion
 
         #region property
@@ -220,18 +220,9 @@ namespace ProductionSchedulerLibrary
             get => customers;
             protected set => customers = value;
         }
+        public SFC_Boms Boms { get => boms; set => boms = value; }
 
-        /// <summary>
-        /// Gets or sets the boms.
-        /// </summary>
-        /// <value>
-        /// The boms.
-        /// </value>
-        public Dictionary<long, SFC_Bom> Boms
-        {
-            get => boms;
-            protected set => boms = value;
-        }
+
 
         #endregion
 
@@ -253,7 +244,7 @@ namespace ProductionSchedulerLibrary
             this.machines = new Dictionary<long, SFC_Machine>();
             this.workCenterTypes = new Dictionary<long, SFC_WorkCenterType>();
             this.workCenters = new Dictionary<long, SFC_WorkCenter>();
-            this.boms = new Dictionary<long, SFC_Bom>();
+            this.Boms = new SFC_Boms();
         }
         #endregion
 
@@ -632,44 +623,7 @@ namespace ProductionSchedulerLibrary
         }
         #endregion
 
-        /// <summary>
-        /// Adds the bom.
-        /// </summary>
-        /// <param name="bom">The bom.</param>
-        public void AddBom(SFC_Bom bom)
-        {
-            boms.Add(bom.Id, bom);
-        }
-
-        /// <summary>
-        /// Removes the bom.
-        /// </summary>
-        /// <param name="bom">The bom.</param>
-        public void RemoveBom(SFC_Bom bom)
-        {
-            boms.Remove(bom.Id);
-        }
-
-        /// <summary>
-        /// Shows the boms.
-        /// </summary>
-        public void ShowBoms()
-        {
-            foreach (long bomId in boms.Keys)
-            {
-                Console.WriteLine(boms[bomId]);
-            }
-        }
-
-        /// <summary>
-        /// Gets the random bom.
-        /// </summary>
-        /// <returns></returns>
-        public SFC_Bom getRandomBom()
-        {
-            int rand = ShopFloorModel.rnd.Next(1, boms.Count + 1);
-            return boms[rand];
-        }
+ 
 
     }
 }

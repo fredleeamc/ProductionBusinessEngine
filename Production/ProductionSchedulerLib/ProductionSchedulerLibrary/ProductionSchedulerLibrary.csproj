@@ -51,6 +51,7 @@
     <Compile Include="SFC_BomComposite.cs" />
     <Compile Include="SFC_BomItem.cs" />
     <Compile Include="SFC_BomComponent.cs" />
+    <Compile Include="SFC_Boms.cs" />
     <Compile Include="SFC_MachineType.cs" />
     <Compile Include="SFC_Department.cs" />
     <Compile Include="SFC_ItemStatus.cs" />
@@ -67,6 +68,7 @@
     <Compile Include="SFC_MachineQueue.cs" />
     <Compile Include="SFC_Vendor.cs" />
     <Compile Include="SFC_WorkCenterType.cs" />
+    <Compile Include="SFC_WorkOrderDetails.cs" />
     <Compile Include="ShopFloorControl.cs" />
     <Compile Include="ShopFloorModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -77,7 +79,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="ClassDiagram1.cd" />
+    <None Include="BomModel.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

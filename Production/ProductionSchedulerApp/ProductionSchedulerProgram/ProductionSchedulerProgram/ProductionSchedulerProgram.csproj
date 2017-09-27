@@ -39,9 +39,6 @@
     <StartupObject>ProductionSchedulerProgram.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ProductionSchedulerLibrary">
-      <HintPath>..\..\..\ProductionSchedulerLib\ProductionSchedulerLibrary\bin\Debug\ProductionSchedulerLibrary.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />

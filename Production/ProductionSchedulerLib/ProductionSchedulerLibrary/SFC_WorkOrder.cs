@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ModelLibrary;
 
 namespace ProductionSchedulerLibrary
 {
@@ -41,6 +42,8 @@ namespace ProductionSchedulerLibrary
         /// </summary>
         private bool isReadyStart;
 
+        private readonly SortedList<long, SFC_WorkOrderDetails> details;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="SFC_WorkOrder"/> class.
         /// </summary>
@@ -58,7 +61,39 @@ namespace ProductionSchedulerLibrary
             this.dueDate = dueDate;
             this.item = item;
             this.isReadyStart = isReadyStart;
+            details = new SortedList<long, SFC_WorkOrderDetails>();
         }
+
+        public void AddWorkOrderDetails(long key, SFC_WorkOrderDetails line)
+        {
+            if (!details.ContainsKey(key))
+            {
+                details.Add(key, line);
+            } else
+            {
+                details[key] = line;
+            }
+        }
+
+        public void RemoveWorkOrderDetails(long key)
+        {
+            if (details.ContainsKey(key))
+            {
+                details.Remove(key);
+            }
+        }
+
+        public SFC_WorkOrderDetails GetWorkOrderDetails(long key)
+        {
+            if (details.ContainsKey(key))
+            {
+                return details[key];
+            } else
+            {
+                return SFC_WorkOrderDetails.NONE;
+            }
+        }
+
 
         /// <summary>
         /// Gets the identifier.
@@ -96,5 +131,7 @@ namespace ProductionSchedulerLibrary
         /// The item.
         /// </value>
         public SFC_Item Item { get => item; set => item = value; }
+
+        public SortedList<long, SFC_WorkOrderDetails> Details => details;
     }
 }

@@ -42,10 +42,7 @@ namespace ProductionSchedulerLibrary
         /// </summary>
         private static long workCenterCount = 1;
 
-        /// <summary>
-        /// The bom count
-        /// </summary>
-        private static long bomCount = 1;
+
 
 
         #endregion
@@ -384,6 +381,7 @@ namespace ProductionSchedulerLibrary
         #endregion
 
         #region work center
+
         /// <summary>
         /// Nexts the item count.
         /// </summary>
@@ -426,14 +424,15 @@ namespace ProductionSchedulerLibrary
         }
         #endregion
 
-        #region bom
+        
+        #region bill of materials
         /// <summary>
         /// Nexts the bom count.
         /// </summary>
         /// <returns></returns>
-        public static long NextBomCount()
+        public static long NextBomCount(long companyId)
         {
-            return bomCount++;
+            return shopControlList[companyId].Boms.Count;
         }
 
         /// <summary>
@@ -445,8 +444,8 @@ namespace ProductionSchedulerLibrary
         {
             foreach (SFC_Bom bom in bomList)
             {
-                if (!shopControlList[companyId].Boms.ContainsKey(bom.Id))
-                    shopControlList[companyId].AddBom(bom);
+                if (!shopControlList[companyId].Boms.Lists.ContainsKey(bom.Id))
+                    shopControlList[companyId].Boms.Add(bom);
             }
         }
 
@@ -456,7 +455,7 @@ namespace ProductionSchedulerLibrary
         /// <param name="companyId">The company identifier.</param>
         public void ShowBoms(long companyId)
         {
-            shopControlList[companyId].ShowBoms();
+            shopControlList[companyId].Boms.ShowList();
         }
 
         /// <summary>
@@ -466,7 +465,7 @@ namespace ProductionSchedulerLibrary
         /// <returns></returns>
         public SFC_Bom getRandomBom(long companyId)
         {
-            return shopControlList[companyId].getRandomBom();
+            return shopControlList[companyId].Boms.GetRandom();
         }
 
 

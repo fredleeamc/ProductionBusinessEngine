@@ -37,8 +37,7 @@ namespace ProductionSchedulerLibrary
         /// The materials
         /// </summary>
         private Dictionary<SFC_Item, double> materials;
-
-
+        
         /// <summary>
         /// Gets the identifier.
         /// </summary>

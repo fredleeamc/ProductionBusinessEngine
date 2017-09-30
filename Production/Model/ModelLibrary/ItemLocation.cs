@@ -17,7 +17,6 @@ namespace ModelLibrary
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ItemLocation()
         {
-            this.PhysicalDetails = new HashSet<PhysicalDetail>();
             this.StockMovementDetails = new HashSet<StockMovementDetail>();
             this.StockMovementDetails1 = new HashSet<StockMovementDetail>();
         }
@@ -41,13 +40,11 @@ namespace ModelLibrary
         public virtual Company Company { get; set; }
         public virtual Item Item { get; set; }
         public virtual Location Location { get; set; }
+        public virtual Employee Employee { get; set; }
         public virtual ItemLotBin ItemLotBin { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PhysicalDetail> PhysicalDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StockMovementDetail> StockMovementDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StockMovementDetail> StockMovementDetails1 { get; set; }
-        public virtual Employee Employee { get; set; }
     }
 }

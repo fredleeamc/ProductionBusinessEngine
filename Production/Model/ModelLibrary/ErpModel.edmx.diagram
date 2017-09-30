@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="db6c427e5b664a378e125e2acf63dc30" Name="Diagram1">
+        <EntityTypeShape EntityType="ERPModel.Bom" Width="1.5" PointX="3" PointY="111.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPModel.BomDetail" Width="1.5" PointX="16.5" PointY="111.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPModel.BomItemType" Width="1.5" PointX="14.25" PointY="110.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPModel.BomMfgConsumable" Width="1.5" PointX="14.25" PointY="118.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPModel.BomOtherCostDetail" Width="1.5" PointX="19.25" PointY="114" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPModel.EngineeringChangeStatu" Width="1.5" PointX="6" PointY="113.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPModel.EngineeringPhase" Width="1.5" PointX="9" PointY="113.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPModel.FamilyRouter" Width="1.5" PointX="6" PointY="108.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPModel.FamilyRouterLink" Width="1.5" PointX="38.75" PointY="114.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPModel.ManufacturedComponent" Width="1.5" PointX="19.25" PointY="119" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPModel.ManufacturedSubComponent" Width="1.5" PointX="27.5" PointY="115.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPModel.ProductBuild" Width="1.5" PointX="22.25" PointY="110.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPModel.ProductBuildBomLink" Width="1.5" PointX="19.25" PointY="109.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPModel.ProductBuildDetail" Width="1.5" PointX="27.5" PointY="110.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPModel.ProductBuildDevelopmentLabor" Width="1.5" PointX="38.75" PointY="118.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPModel.ProductBuildDraft" Width="1.5" PointX="33.5" PointY="112.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPModel.ProductBuildInvestment" Width="1.5" PointX="27.5" PointY="104.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPModel.ProductBuildMaterial" Width="1.5" PointX="19.75" PointY="105.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPModel.ProductBuildRouterLink" Width="1.5" PointX="38.75" PointY="110.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPModel.Router" Width="1.5" PointX="30.5" PointY="110.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPModel.RouterAction" Width="1.5" PointX="14.25" PointY="114.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPModel.RouterDetail" Width="1.5" PointX="38.75" PointY="124.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPModel.RouterOutsideDetail" Width="1.5" PointX="41.75" PointY="115.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPModel.RouterProcess" Width="1.5" PointX="27.5" PointY="121.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPModel.RouterProcessDetail" Width="1.5" PointX="32.75" PointY="128.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPModel.RouterType" Width="1.5" PointX="6" PointY="120.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPModel.Company" Width="1.5" PointX="0.75" PointY="111.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPModel.Customer" Width="1.5" PointX="9" PointY="107.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPModel.Item" Width="1.5" PointX="25.25" PointY="110.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPModel.ItemStatu" Width="1.5" PointX="33.5" PointY="121.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPModel.Location" Width="1.5" PointX="14.25" PointY="105.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPModel.LocationDetail" Width="1.5" PointX="16.5" PointY="121.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPModel.Vendor" Width="1.5" PointX="14.25" PointY="123.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPModel.Employee" Width="1.5" PointX="12" PointY="107.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPModel.ItemLocation" Width="1.5" PointX="30.5" PointY="104.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPModel.ItemLotBin" Width="1.5" PointX="36.5" PointY="122.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPModel.ItemSerial" Width="1.5" PointX="36.5" PointY="104.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPModel.Machine" Width="1.5" PointX="29.75" PointY="129" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPModel.MachineType" Width="1.5" PointX="22.25" PointY="106.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPModel.StockMovement" Width="1.5" PointX="22.25" PointY="123.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPModel.StockMovementDetail" Width="1.5" PointX="41.75" PointY="121.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPModel.MfgConsumable" Width="1.5" PointX="33.5" PointY="101.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPModel.MfgConsumableType" Width="1.5" PointX="17.25" PointY="105.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPModel.ScheduledWorkOrder" Width="1.5" PointX="41.75" PointY="110.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPModel.TeamGroup" Width="1.5" PointX="25.25" PointY="106.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPModel.TeamGroupEmployeeDetail" Width="1.5" PointX="33.5" PointY="108.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPModel.TeamGroupMachineDetail" Width="1.5" PointX="39" PointY="130" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPModel.ToolSet" Width="1.5" PointX="14.25" PointY="158.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPModel.ToolSetDetail" Width="1.5" PointX="16.5" PointY="133.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPModel.WorkCenter" Width="1.5" PointX="27.5" PointY="129.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPModel.WorkCenterGroup" Width="1.5" PointX="19.5" PointY="129.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPModel.WorkCenterType" Width="1.5" PointX="25.25" PointY="123.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPModel.WorkOrder" Width="1.5" PointX="36.5" PointY="110.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERPModel.WorkOrderDetail" Width="1.5" PointX="44" PointY="115.375" IsExpanded="true" />
+        <AssociationConnector Association="ERPModel.FK_Bom_BomItemTypeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_Bom_CompanyId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_Bom_EngineeringChangeStatusId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_Bom_EngineeringPhaseId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_Bom_ModifiedByEmployeeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_Bom_ParentBomId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_BomDetails_BomId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_BomDetails_ChildBomId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_BomMfgConsumable_BomId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_BomOtherCostDetails_BomId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_ProductBuildBom_BomId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_BomDetails_BomItemTypeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_BomDetails_EmployeeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_BomDetails_ManufacturedComponentId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_BomDetails_VendorId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_ProductBuildMaterials_BomDetailsId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_BomItemType_EmployeeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_BomMfgConsumable_EmployeeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_BomMfgConsumable_MfgConsumableId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_BomOtherCostDetails_EmployeeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_EngineeringChangeStatus_CompanyId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_EngineeringChangeStatus_ModifiedByEmployeeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_ManufacturedComponent_EngineeringChangeStatusId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_Router_EngineeringChangeStatusId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_RouterOutsideProcessDetails_EngineeringChangeStatusId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_RouterProcess_EngineeringChangeStatusId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_RouterProcessInsideDetails_EngineeringChangeStatusId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_EngineeringPhase_CompanyId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_EngineeringPhase_EmployeeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_ManufacturedComponent_EngineeringPhaseId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_ProductBuild_EngineeringPhaseId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_Router_EngineeringPhaseId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_FamilyRouter_CompanyId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_FamilyRouter_EmployeeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_FamilyRouterLink_FamilyRouterId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_Router_FamilyRouterId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_FamilyRouterLink_EmployeeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_FamilyRouterLink_RouterId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_ManufacturedComponent_CompanyId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_ManufacturedComponent_EmployeeId_0" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_ManufacturedComponent_ItemId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_ManufacturedSubComponent_ChildManufacturedComponentId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_ManufacturedSubComponent_ManufacturedComponentId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_ProductBuildDetails_ManufacturedComponentId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_Router_ManufacturedComponentId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_RouterProcess_ManufacturedComponentId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_ManufacturedSubComponent_EmployeeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_ProductBuild_CompanyId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_ProductBuild_EmployeeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_ProductBuild_ItemId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_ProductBuild_ProductBuildId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_ProductBuildBom_ProductBuildId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_ProductBuildDetails_ProductBuildId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_ProductBuildDevelopmentLabor_ProductBuildId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_ProductBuildDraft_ProductBuildId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_ProductBuildInvestment_InvestmentProductBuildId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_ProductBuildInvestment_ProductBuildId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_ProductBuildRouterLink_ProductBuildId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_WorkOrder_ProductBuildId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_ProductBuildBomLink_EmployeeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_ProductBuildDetails_EmployeeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_ProductBuildDetails_RouterProcessId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_ProductBuildMaterials_ProductBuildDetailsId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_ProductBuildDevelopmentLabor_EmployeeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_ProductBuildDevelopmentLabor_RouterId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_ProductBuildDraft_CompanyId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_ProductBuildDraft_EmployeeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_ProductBuildDraft_ItemId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_ProductBuildInvestment_EmployeeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_ProductBuildMaterials_EmployeeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_ProductBuildRouterLink_EmployeeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_ProductBuildRouterLink_RouterId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_Router_CompanyId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_Router_ItemId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_Router_ModifiedByEmployeeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_Router_ReplacedByRouterId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_Router_RouterActionId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_Router_RouterTypeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_RouterDetails_RouterId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_RouterDetails_RouterId_Child" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_RouterOutsideDetails_RouterId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_RouterAction_EmployeeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK__WorkOrder__Route__6F170DA5" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_RouterDetails_EmployeeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_RouterDetails_RouterProcessId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_RouterOutsideDetails_EmployeeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_RouterOutsideDetails_VendorId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_RouterProcess_EmployeeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_RouterProcessDetails_RouterProcessId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_RouterProcessDetails_EmployeeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_RouterProcessDetails_WorkCenterGroupId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_RouterProcessDetails_WorkCenterId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_RouterType_CompanyId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_RouterType_EmployeeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_Company_ModifiedByEmployeeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_Customer_CompanyId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_Customer_CustomerCompanyId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_Employee_CompanyId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_Item_CompanyId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_ItemLocation_CompanyId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_ItemLotBin_CompanyId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_ItemSerial_CompanyId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_Location_CompanyId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_Machine_CompanyId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_MachineType_CompanyId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_MfgConsumable_CompanyId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_MfgConsumableType_CompanyId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_ScheduledWorkOrder_CompanyId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_StockMovement_CompanyId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_TeamGroup_CompanyId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_ToolSetDetails_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_Vendor_CompanyId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_Vendor_VendorCompanyId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_WorkCenter_CompanyId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_WorkCenterGroup_CompanyId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_WorkCenterType_CompanyId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_WorkOrder_CompanyId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_Customer_ModifiedByEmployeeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_WorkOrder_CustomerId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_Item_ModifiedByEmployeeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_ItemLocation_ItemId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_ItemLotBin_ItemId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_ItemSerial_ItemId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_ItemStatus_ItemId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_Machine_ItemId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_MfgConsumable_ItemId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_StockMovementDetails_ItemId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_WorkOrder_ItemId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_ItemStatus_ModifiedByEmployeeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_Employee_LocationId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_ItemLocation_LocationId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_Location_ModifiedByEmployeeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_LocationDetails_LocationId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_Machine_LocationId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_WorkCenter_LocationId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_LocationDetails_EmployeeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_Vendor_ModifiedByEmployeeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_Employee_ModifiedByEmployeeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_ItemLocation_ModifiedByEmployeeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_ItemLotBin_ModifiedByEmployeeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_ItemSerial_ModifiedByEmployeeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_Machine_ModifiedByEmployeeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_MachineType_ModifiedByEmployeeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_MfgConsumable_EmployeeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_MfgConsumableType_EmployeeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_ScheduledWorkOrder_EmployeeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_StockMovement_ModifiedByEmployeeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_StockMovement_MovedByEmployeeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_StockMovementDetails_EmployeeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_TeamGroup_EmployeeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_TeamGroupEmployeeDetails_EmployeeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_TeamGroupEmployeeDetails_EmployeeId_0" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_TeamGroupMachineDetails_EmployeeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_ToolSet_EmployeeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_ToolSetDetails_EmployeeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_WorkCenter_ModifiedByEmployeeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_WorkCenterGroup_ModifiedByEmployeeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_WorkCenterType_ModifiedByEmployeeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_WorkOrder_ModifiedByEmployeeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_WorkOrderDetails_EmployeeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_ItemLocation_ItemLotBinId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_StockMovementDetails_FromItemLocationId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_StockMovementDetails_ToItemLocationId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_StockMovementDetails_ItemLotBinId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK__TeamGroup__Machi__6E22E96C" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_Machine_MachineTypeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_Machine_ToolSetId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_Machine_WorkCenterId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_StockMovementDetails_StockMovementId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_MfgConsumable_MfgConsumableTypeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK__Scheduled__WorkO__700B31DE" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK__TeamGroup__TeamG__71F37A50" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_TeamGroupEmployeeDetails_TeamGroupId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_TeamGroupMachineDetails_TeamGroupId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_ToolSetDetails_ToolSetId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_WorkCenter_ToolSetId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_WorkCenterGroup_ToolSetId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_WorkCenter_WorkCenterGroupId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_WorkCenter_WorkCenterTypeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ERPModel.FK_WorkOrderDetails_WorkOrderId" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

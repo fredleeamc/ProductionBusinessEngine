@@ -45,17 +45,14 @@ namespace ModelLibrary
         public Nullable<long> ModifiedByEmployeeId { get; set; }
         public bool IsCompleted { get; set; }
     
-        public virtual Currency Currency { get; set; }
         public virtual EngineeringChangeStatu EngineeringChangeStatu { get; set; }
         public virtual ManufacturedComponent ManufacturedComponent { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProductBuildDetail> ProductBuildDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RouterDetail> RouterDetails { get; set; }
-        public virtual CurrencyExchange CurrencyExchange { get; set; }
-        public virtual WorkInstruction WorkInstruction { get; set; }
+        public virtual Employee Employee { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RouterProcessDetail> RouterProcessDetails { get; set; }
-        public virtual Employee Employee { get; set; }
     }
 }

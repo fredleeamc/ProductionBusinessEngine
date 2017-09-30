@@ -17,14 +17,11 @@ namespace ModelLibrary
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Location()
         {
-            this.Assets = new HashSet<Asset>();
+            this.Employees = new HashSet<Employee>();
             this.ItemLocations = new HashSet<ItemLocation>();
             this.LocationDetails = new HashSet<LocationDetail>();
             this.Machines = new HashSet<Machine>();
-            this.Physicals = new HashSet<Physical>();
             this.WorkCenters = new HashSet<WorkCenter>();
-            this.DocumentLists = new HashSet<DocumentList>();
-            this.DocumentListTemplates = new HashSet<DocumentListTemplate>();
         }
     
         public long Id { get; set; }
@@ -38,21 +35,15 @@ namespace ModelLibrary
     
         public virtual Company Company { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Asset> Assets { get; set; }
+        public virtual ICollection<Employee> Employees { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ItemLocation> ItemLocations { get; set; }
+        public virtual Employee Employee { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LocationDetail> LocationDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Machine> Machines { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Physical> Physicals { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<WorkCenter> WorkCenters { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DocumentList> DocumentLists { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DocumentListTemplate> DocumentListTemplates { get; set; }
-        public virtual Employee Employee { get; set; }
     }
 }

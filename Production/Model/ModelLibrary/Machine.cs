@@ -17,7 +17,7 @@ namespace ModelLibrary
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Machine()
         {
-            this.EmployeeSkillMatrixDetails = new HashSet<EmployeeSkillMatrixDetail>();
+            this.TeamGroupMachineDetails = new HashSet<TeamGroupMachineDetail>();
         }
     
         public long Id { get; set; }
@@ -57,19 +57,14 @@ namespace ModelLibrary
         public Nullable<long> ToolSetId { get; set; }
         public Nullable<long> WorkCenterId { get; set; }
     
-        public virtual Currency Currency { get; set; }
         public virtual Company Company { get; set; }
-        public virtual CurrencyExchange CurrencyExchange { get; set; }
-        public virtual Department Department { get; set; }
         public virtual Item Item { get; set; }
         public virtual Location Location { get; set; }
-        public virtual Specification Specification { get; set; }
-        public virtual Asset Asset { get; set; }
+        public virtual Employee Employee { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TeamGroupMachineDetail> TeamGroupMachineDetails { get; set; }
         public virtual MachineType MachineType { get; set; }
         public virtual ToolSet ToolSet { get; set; }
         public virtual WorkCenter WorkCenter { get; set; }
-        public virtual Employee Employee { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EmployeeSkillMatrixDetail> EmployeeSkillMatrixDetails { get; set; }
     }
 }

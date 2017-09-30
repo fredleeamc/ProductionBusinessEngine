@@ -60,15 +60,12 @@ namespace ModelLibrary
         public Nullable<decimal> Returns { get; set; }
         public Nullable<decimal> NetUsed { get; set; }
     
-        public virtual Currency Currency { get; set; }
-        public virtual Unit Unit { get; set; }
         public virtual Company Company { get; set; }
-        public virtual CurrencyExchange CurrencyExchange { get; set; }
         public virtual Item Item { get; set; }
+        public virtual Employee Employee { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ItemLocation> ItemLocations { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StockMovementDetail> StockMovementDetails { get; set; }
-        public virtual Employee Employee { get; set; }
     }
 }

@@ -57,20 +57,17 @@ namespace ModelLibrary
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
         public Nullable<long> SpecificationId { get; set; }
+        public Nullable<long> BranchId { get; set; }
     
-        public virtual Unit Unit { get; set; }
-        public virtual Unit Unit1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RouterProcessDetail> RouterProcessDetails { get; set; }
         public virtual Company Company { get; set; }
-        public virtual Department Department { get; set; }
         public virtual Location Location { get; set; }
-        public virtual Specification Specification { get; set; }
+        public virtual Employee Employee { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Machine> Machines { get; set; }
         public virtual ToolSet ToolSet { get; set; }
         public virtual WorkCenterGroup WorkCenterGroup { get; set; }
         public virtual WorkCenterType WorkCenterType { get; set; }
-        public virtual Employee Employee { get; set; }
     }
 }

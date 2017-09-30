@@ -17,55 +17,11 @@ namespace ModelLibrary
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Employee()
         {
-            this.AccountNorms = new HashSet<AccountNorm>();
-            this.AccountSpecificTypes = new HashSet<AccountSpecificType>();
-            this.AccountSubTypes = new HashSet<AccountSubType>();
-            this.AccountTypes = new HashSet<AccountType>();
-            this.AddressTypes = new HashSet<AddressType>();
-            this.ApprovalTypes = new HashSet<ApprovalType>();
-            this.AssetTypes = new HashSet<AssetType>();
-            this.AuthorizationTypes = new HashSet<AuthorizationType>();
-            this.CashFlowClasses = new HashSet<CashFlowClass>();
-            this.Colors = new HashSet<Color>();
-            this.CompanyTypes = new HashSet<CompanyType>();
-            this.ConversionUnits = new HashSet<ConversionUnit>();
-            this.CountryCodes = new HashSet<CountryCode>();
-            this.Currencies = new HashSet<Currency>();
-            this.DepreciationMethods = new HashSet<DepreciationMethod>();
-            this.EmailTypes = new HashSet<EmailType>();
-            this.Industries = new HashSet<Industry>();
-            this.ItemClasses = new HashSet<ItemClass>();
-            this.JobPriorities = new HashSet<JobPriority>();
-            this.LocationClasses = new HashSet<LocationClass>();
-            this.Materials = new HashSet<Material>();
-            this.MessagePriorities = new HashSet<MessagePriority>();
-            this.PaymentMethods = new HashSet<PaymentMethod>();
-            this.PhoneTypes = new HashSet<PhoneType>();
-            this.ProcurementTypes = new HashSet<ProcurementType>();
-            this.SalesTaxTypes = new HashSet<SalesTaxType>();
-            this.SecurityClearances = new HashSet<SecurityClearance>();
-            this.ServiceModes = new HashSet<ServiceMode>();
-            this.ShippingMovements = new HashSet<ShippingMovement>();
-            this.ShippingPayModes = new HashSet<ShippingPayMode>();
-            this.ShippingTerms = new HashSet<ShippingTerm>();
-            this.Terms = new HashSet<Term>();
-            this.TransactionTypes = new HashSet<TransactionType>();
-            this.Units = new HashSet<Unit>();
-            this.VatTypes = new HashSet<VatType>();
-            this.Attachments = new HashSet<Attachment>();
-            this.DocumentLists = new HashSet<DocumentList>();
-            this.DocumentListTemplates = new HashSet<DocumentListTemplate>();
-            this.DocumentRevisions = new HashSet<DocumentRevision>();
-            this.DocumentSets = new HashSet<DocumentSet>();
-            this.DocumentSets1 = new HashSet<DocumentSet>();
-            this.DocumentSetTemplates = new HashSet<DocumentSetTemplate>();
-            this.DocumentTypes = new HashSet<DocumentType>();
             this.Boms = new HashSet<Bom>();
             this.BomDetails = new HashSet<BomDetail>();
             this.BomItemTypes = new HashSet<BomItemType>();
             this.BomMfgConsumables = new HashSet<BomMfgConsumable>();
             this.BomOtherCostDetails = new HashSet<BomOtherCostDetail>();
-            this.Diagrams = new HashSet<Diagram>();
             this.EngineeringChangeStatus = new HashSet<EngineeringChangeStatu>();
             this.EngineeringPhases = new HashSet<EngineeringPhase>();
             this.FamilyRouters = new HashSet<FamilyRouter>();
@@ -87,97 +43,29 @@ namespace ModelLibrary
             this.RouterProcesses = new HashSet<RouterProcess>();
             this.RouterProcessDetails = new HashSet<RouterProcessDetail>();
             this.RouterTypes = new HashSet<RouterType>();
-            this.WorkInstructions = new HashSet<WorkInstruction>();
-            this.Accounts = new HashSet<Account>();
-            this.AccountCharts = new HashSet<AccountChart>();
-            this.AccountCompanies = new HashSet<AccountCompany>();
-            this.Addresses = new HashSet<Address>();
-            this.ApprovedVendors = new HashSet<ApprovedVendor>();
-            this.AutoNumbers = new HashSet<AutoNumber>();
-            this.Banks = new HashSet<Bank>();
-            this.Branches = new HashSet<Branch>();
             this.Companies = new HashSet<Company>();
-            this.CompanyLogoes = new HashSet<CompanyLogo>();
-            this.CompanySettings = new HashSet<CompanySetting>();
-            this.CompanyToAddresses = new HashSet<CompanyToAddress>();
-            this.CompanyToPersons = new HashSet<CompanyToPerson>();
-            this.CompanyWorkCalendars = new HashSet<CompanyWorkCalendar>();
-            this.CreditCardPaymentMethods = new HashSet<CreditCardPaymentMethod>();
-            this.CurrencyExchanges = new HashSet<CurrencyExchange>();
             this.Customers = new HashSet<Customer>();
-            this.CustomerTypes = new HashSet<CustomerType>();
-            this.Departments = new HashSet<Department>();
-            this.Descriptions = new HashSet<Description>();
-            this.Emails = new HashSet<Email>();
-            this.ForeignItemBuys = new HashSet<ForeignItemBuy>();
-            this.ForeignItemSales = new HashSet<ForeignItemSale>();
-            this.FormSpecificationCategories = new HashSet<FormSpecificationCategory>();
             this.Items = new HashSet<Item>();
-            this.ItemBuys = new HashSet<ItemBuy>();
-            this.ItemBuyXrefs = new HashSet<ItemBuyXref>();
-            this.ItemCategories = new HashSet<ItemCategory>();
-            this.ItemSales = new HashSet<ItemSale>();
-            this.ItemSalesXrefs = new HashSet<ItemSalesXref>();
             this.ItemStatus = new HashSet<ItemStatu>();
-            this.ItemSubcategories = new HashSet<ItemSubcategory>();
             this.Locations = new HashSet<Location>();
-            this.LocationCategories = new HashSet<LocationCategory>();
-            this.LocationCategoryDetails = new HashSet<LocationCategoryDetail>();
             this.LocationDetails = new HashSet<LocationDetail>();
-            this.Memos = new HashSet<Memo>();
-            this.People = new HashSet<Person>();
-            this.PersonToAddresses = new HashSet<PersonToAddress>();
-            this.PersonToEmails = new HashSet<PersonToEmail>();
-            this.PersonToPhones = new HashSet<PersonToPhone>();
-            this.Phones = new HashSet<Phone>();
-            this.ProductLines = new HashSet<ProductLine>();
-            this.Specifications = new HashSet<Specification>();
-            this.SpecificationCategories = new HashSet<SpecificationCategory>();
-            this.SpecificationCategoryDetails = new HashSet<SpecificationCategoryDetail>();
-            this.SpecificationDetails = new HashSet<SpecificationDetail>();
-            this.Subsidiaries = new HashSet<Subsidiary>();
-            this.TaxInfoes = new HashSet<TaxInfo>();
-            this.TaxRegistrations = new HashSet<TaxRegistration>();
-            this.UserColorSettings = new HashSet<UserColorSetting>();
-            this.UserColorSettings1 = new HashSet<UserColorSetting>();
-            this.VatRegistrations = new HashSet<VatRegistration>();
             this.Vendors = new HashSet<Vendor>();
-            this.VendorTypes = new HashSet<VendorType>();
-            this.DailyRates = new HashSet<DailyRate>();
-            this.Assemblies = new HashSet<Assembly>();
-            this.AssemblyDetails = new HashSet<AssemblyDetail>();
-            this.Assets = new HashSet<Asset>();
-            this.AssetInvestmentActions = new HashSet<AssetInvestmentAction>();
             this.Employee1 = new HashSet<Employee>();
-            this.EmployeeDailyHours = new HashSet<EmployeeDailyHour>();
-            this.EmployeeDailyHours1 = new HashSet<EmployeeDailyHour>();
-            this.EmployeeDailySchedules = new HashSet<EmployeeDailySchedule>();
-            this.EmployeeDailySchedules1 = new HashSet<EmployeeDailySchedule>();
-            this.EmployeeSkillMatrices = new HashSet<EmployeeSkillMatrix>();
-            this.EmployeeSkillMatrices1 = new HashSet<EmployeeSkillMatrix>();
-            this.EmployeeSkillMatrixDetails = new HashSet<EmployeeSkillMatrixDetail>();
-            this.EmployeeTypes = new HashSet<EmployeeType>();
-            this.EmployeeWorkCalendars = new HashSet<EmployeeWorkCalendar>();
-            this.Equipments = new HashSet<Equipment>();
-            this.EquipmentTypes = new HashSet<EquipmentType>();
             this.ItemLocations = new HashSet<ItemLocation>();
             this.ItemLotBins = new HashSet<ItemLotBin>();
             this.ItemSerials = new HashSet<ItemSerial>();
             this.Machines = new HashSet<Machine>();
-            this.MachineFixtures = new HashSet<MachineFixture>();
-            this.MachineTools = new HashSet<MachineTool>();
-            this.MachineToolTypes = new HashSet<MachineToolType>();
             this.MachineTypes = new HashSet<MachineType>();
-            this.MaterialIssuances = new HashSet<MaterialIssuance>();
-            this.MaterialIssuances1 = new HashSet<MaterialIssuance>();
             this.MfgConsumables = new HashSet<MfgConsumable>();
             this.MfgConsumableTypes = new HashSet<MfgConsumableType>();
-            this.Physicals = new HashSet<Physical>();
-            this.Physicals1 = new HashSet<Physical>();
-            this.PhysicalDetails = new HashSet<PhysicalDetail>();
+            this.ScheduledWorkOrders = new HashSet<ScheduledWorkOrder>();
             this.StockMovements = new HashSet<StockMovement>();
             this.StockMovements1 = new HashSet<StockMovement>();
             this.StockMovementDetails = new HashSet<StockMovementDetail>();
+            this.TeamGroups = new HashSet<TeamGroup>();
+            this.TeamGroupEmployeeDetails = new HashSet<TeamGroupEmployeeDetail>();
+            this.TeamGroupEmployeeDetails1 = new HashSet<TeamGroupEmployeeDetail>();
+            this.TeamGroupMachineDetails = new HashSet<TeamGroupMachineDetail>();
             this.ToolSets = new HashSet<ToolSet>();
             this.ToolSetDetails = new HashSet<ToolSetDetail>();
             this.WorkCenters = new HashSet<WorkCenter>();
@@ -213,96 +101,9 @@ namespace ModelLibrary
         public Nullable<long> SpecificationId { get; set; }
         public bool IsTerminated { get; set; }
         public bool IsInactive { get; set; }
-        public Nullable<long> EmployeeRecordSetId { get; set; }
         public Nullable<int> SecurityClearanceId { get; set; }
+        public Nullable<long> AssignedLocatoinId { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AccountNorm> AccountNorms { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AccountSpecificType> AccountSpecificTypes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AccountSubType> AccountSubTypes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AccountType> AccountTypes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AddressType> AddressTypes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ApprovalType> ApprovalTypes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AssetType> AssetTypes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AuthorizationType> AuthorizationTypes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CashFlowClass> CashFlowClasses { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Color> Colors { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CompanyType> CompanyTypes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ConversionUnit> ConversionUnits { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CountryCode> CountryCodes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Currency> Currencies { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DepreciationMethod> DepreciationMethods { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EmailType> EmailTypes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Industry> Industries { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ItemClass> ItemClasses { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<JobPriority> JobPriorities { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LocationClass> LocationClasses { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Material> Materials { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MessagePriority> MessagePriorities { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PaymentMethod> PaymentMethods { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PhoneType> PhoneTypes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProcurementType> ProcurementTypes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SalesTaxType> SalesTaxTypes { get; set; }
-        public virtual SecurityClearance SecurityClearance { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SecurityClearance> SecurityClearances { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ServiceMode> ServiceModes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ShippingMovement> ShippingMovements { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ShippingPayMode> ShippingPayModes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ShippingTerm> ShippingTerms { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Term> Terms { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TransactionType> TransactionTypes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Unit> Units { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<VatType> VatTypes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Attachment> Attachments { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DocumentList> DocumentLists { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DocumentListTemplate> DocumentListTemplates { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DocumentRevision> DocumentRevisions { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DocumentSet> DocumentSets { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DocumentSet> DocumentSets1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DocumentSetTemplate> DocumentSetTemplates { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DocumentType> DocumentTypes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Bom> Boms { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -313,8 +114,6 @@ namespace ModelLibrary
         public virtual ICollection<BomMfgConsumable> BomMfgConsumables { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BomOtherCostDetail> BomOtherCostDetails { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Diagram> Diagrams { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EngineeringChangeStatu> EngineeringChangeStatus { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -358,158 +157,24 @@ namespace ModelLibrary
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RouterType> RouterTypes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<WorkInstruction> WorkInstructions { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Account> Accounts { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AccountChart> AccountCharts { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AccountCompany> AccountCompanies { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Address> Addresses { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ApprovedVendor> ApprovedVendors { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AutoNumber> AutoNumbers { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Bank> Banks { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Branch> Branches { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Company> Companies { get; set; }
         public virtual Company Company { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CompanyLogo> CompanyLogoes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CompanySetting> CompanySettings { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CompanyToAddress> CompanyToAddresses { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CompanyToPerson> CompanyToPersons { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CompanyWorkCalendar> CompanyWorkCalendars { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CreditCardPaymentMethod> CreditCardPaymentMethods { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CurrencyExchange> CurrencyExchanges { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Customer> Customers { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CustomerType> CustomerTypes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Department> Departments { get; set; }
-        public virtual Department Department { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Description> Descriptions { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Email> Emails { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ForeignItemBuy> ForeignItemBuys { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ForeignItemSale> ForeignItemSales { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<FormSpecificationCategory> FormSpecificationCategories { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Item> Items { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ItemBuy> ItemBuys { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ItemBuyXref> ItemBuyXrefs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ItemCategory> ItemCategories { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ItemSale> ItemSales { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ItemSalesXref> ItemSalesXrefs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ItemStatu> ItemStatus { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ItemSubcategory> ItemSubcategories { get; set; }
+        public virtual Location Location { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Location> Locations { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LocationCategory> LocationCategories { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LocationCategoryDetail> LocationCategoryDetails { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LocationDetail> LocationDetails { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Memo> Memos { get; set; }
-        public virtual Person Person { get; set; }
-        public virtual Person Person1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Person> People { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PersonToAddress> PersonToAddresses { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PersonToEmail> PersonToEmails { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PersonToPhone> PersonToPhones { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Phone> Phones { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductLine> ProductLines { get; set; }
-        public virtual Specification Specification { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Specification> Specifications { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SpecificationCategory> SpecificationCategories { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SpecificationCategoryDetail> SpecificationCategoryDetails { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SpecificationDetail> SpecificationDetails { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Subsidiary> Subsidiaries { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TaxInfo> TaxInfoes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TaxRegistration> TaxRegistrations { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserColorSetting> UserColorSettings { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserColorSetting> UserColorSettings1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<VatRegistration> VatRegistrations { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Vendor> Vendors { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<VendorType> VendorTypes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DailyRate> DailyRates { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Assembly> Assemblies { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AssemblyDetail> AssemblyDetails { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Asset> Assets { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AssetInvestmentAction> AssetInvestmentActions { get; set; }
-        public virtual EmployeeType EmployeeType { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Employee> Employee1 { get; set; }
         public virtual Employee Employee2 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EmployeeDailyHour> EmployeeDailyHours { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EmployeeDailyHour> EmployeeDailyHours1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EmployeeDailySchedule> EmployeeDailySchedules { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EmployeeDailySchedule> EmployeeDailySchedules1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EmployeeSkillMatrix> EmployeeSkillMatrices { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EmployeeSkillMatrix> EmployeeSkillMatrices1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EmployeeSkillMatrixDetail> EmployeeSkillMatrixDetails { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EmployeeType> EmployeeTypes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EmployeeWorkCalendar> EmployeeWorkCalendars { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Equipment> Equipments { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EquipmentType> EquipmentTypes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ItemLocation> ItemLocations { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -519,33 +184,27 @@ namespace ModelLibrary
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Machine> Machines { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MachineFixture> MachineFixtures { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MachineTool> MachineTools { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MachineToolType> MachineToolTypes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MachineType> MachineTypes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MaterialIssuance> MaterialIssuances { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MaterialIssuance> MaterialIssuances1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MfgConsumable> MfgConsumables { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MfgConsumableType> MfgConsumableTypes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Physical> Physicals { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Physical> Physicals1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PhysicalDetail> PhysicalDetails { get; set; }
+        public virtual ICollection<ScheduledWorkOrder> ScheduledWorkOrders { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StockMovement> StockMovements { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StockMovement> StockMovements1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StockMovementDetail> StockMovementDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TeamGroup> TeamGroups { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TeamGroupEmployeeDetail> TeamGroupEmployeeDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TeamGroupEmployeeDetail> TeamGroupEmployeeDetails1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TeamGroupMachineDetail> TeamGroupMachineDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ToolSet> ToolSets { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

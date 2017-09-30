@@ -18,7 +18,6 @@ namespace ModelLibrary
         public MachineType()
         {
             this.Machines = new HashSet<Machine>();
-            this.EmployeeSkillMatrixDetails = new HashSet<EmployeeSkillMatrixDetail>();
         }
     
         public int Id { get; set; }
@@ -31,10 +30,8 @@ namespace ModelLibrary
         public Nullable<System.DateTime> ModifiedOn { get; set; }
     
         public virtual Company Company { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Machine> Machines { get; set; }
         public virtual Employee Employee { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EmployeeSkillMatrixDetail> EmployeeSkillMatrixDetails { get; set; }
+        public virtual ICollection<Machine> Machines { get; set; }
     }
 }

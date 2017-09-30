@@ -16,7 +16,6 @@ namespace ModelLibrary
     {
         public long Id { get; set; }
         public Nullable<long> WorkOrderId { get; set; }
-        public Nullable<long> ProductBuildDetailsId { get; set; }
         public Nullable<decimal> OrderedQuantity { get; set; }
         public Nullable<decimal> ProducedQuantity { get; set; }
         public Nullable<decimal> ScrapQuantity { get; set; }
@@ -31,9 +30,11 @@ namespace ModelLibrary
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
         public Nullable<long> ModifiedByEmployeeId { get; set; }
+        public Nullable<long> RouterDetailsId { get; set; }
+        public Nullable<long> OperationSequence { get; set; }
     
-        public virtual ProductBuildDetail ProductBuildDetail { get; set; }
-        public virtual WorkOrder WorkOrder { get; set; }
+        public virtual RouterDetail RouterDetail { get; set; }
         public virtual Employee Employee { get; set; }
+        public virtual WorkOrder WorkOrder { get; set; }
     }
 }

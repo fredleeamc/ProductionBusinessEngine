@@ -25,8 +25,7 @@ namespace ModelLibrary
         public Nullable<long> ModifiedByEmployeeId { get; set; }
     
         public virtual Company Company { get; set; }
-        public virtual MachineTool MachineTool { get; set; }
-        public virtual ToolSet ToolSet { get; set; }
         public virtual Employee Employee { get; set; }
+        public virtual ToolSet ToolSet { get; set; }
     }
 }

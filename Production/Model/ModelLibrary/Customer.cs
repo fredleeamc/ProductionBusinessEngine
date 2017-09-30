@@ -17,8 +17,6 @@ namespace ModelLibrary
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Customer()
         {
-            this.ApprovedVendors = new HashSet<ApprovedVendor>();
-            this.ItemSalesXrefs = new HashSet<ItemSalesXref>();
             this.WorkOrders = new HashSet<WorkOrder>();
         }
     
@@ -43,21 +41,10 @@ namespace ModelLibrary
         public Nullable<System.DateTime> ModifiedOn { get; set; }
         public string CustomerCode { get; set; }
     
-        public virtual Currency Currency { get; set; }
-        public virtual Term Term { get; set; }
-        public virtual Account Account { get; set; }
-        public virtual Account Account1 { get; set; }
-        public virtual Account Account2 { get; set; }
-        public virtual Account Account3 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ApprovedVendor> ApprovedVendors { get; set; }
         public virtual Company Company { get; set; }
         public virtual Company Company1 { get; set; }
-        public virtual CustomerType CustomerType { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ItemSalesXref> ItemSalesXrefs { get; set; }
+        public virtual Employee Employee { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<WorkOrder> WorkOrders { get; set; }
-        public virtual Employee Employee { get; set; }
     }
 }

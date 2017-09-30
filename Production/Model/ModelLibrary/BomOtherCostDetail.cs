@@ -29,10 +29,7 @@ namespace ModelLibrary
         public Nullable<System.DateTime> ModifiedOn { get; set; }
         public Nullable<long> ModifiedByEmployeeId { get; set; }
     
-        public virtual Unit Unit { get; set; }
         public virtual Bom Bom { get; set; }
-        public virtual Account Account { get; set; }
-        public virtual DocumentSet DocumentSet { get; set; }
         public virtual Employee Employee { get; set; }
     }
 }

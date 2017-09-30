@@ -19,9 +19,6 @@ namespace ModelLibrary
         {
             this.BomDetails = new HashSet<BomDetail>();
             this.RouterOutsideDetails = new HashSet<RouterOutsideDetail>();
-            this.ApprovedVendors = new HashSet<ApprovedVendor>();
-            this.ItemBuys = new HashSet<ItemBuy>();
-            this.ItemBuyXrefs = new HashSet<ItemBuyXref>();
         }
     
         public long Id { get; set; }
@@ -44,23 +41,12 @@ namespace ModelLibrary
         public Nullable<System.DateTime> ModifiedOn { get; set; }
         public string VendorCode { get; set; }
     
-        public virtual ApprovalType ApprovalType { get; set; }
-        public virtual Currency Currency { get; set; }
-        public virtual Term Term { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BomDetail> BomDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RouterOutsideDetail> RouterOutsideDetails { get; set; }
-        public virtual Account Account { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ApprovedVendor> ApprovedVendors { get; set; }
         public virtual Company Company { get; set; }
         public virtual Company Company1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ItemBuy> ItemBuys { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ItemBuyXref> ItemBuyXrefs { get; set; }
-        public virtual VendorType VendorType { get; set; }
         public virtual Employee Employee { get; set; }
     }
 }

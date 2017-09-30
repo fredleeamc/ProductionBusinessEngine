@@ -147,8 +147,8 @@ namespace ProductionSchedulerLibrary
         {
             if (typeLib.ContainsKey(mType))
             {
-                TextGenerator.getRandom().Next(0, typeLib[mType].Count);
-                return typeLib[mType][TextGenerator.getRandom().Next(0, typeLib[mType].Count)];
+                TextGenerator.GetRandom().Next(0, typeLib[mType].Count);
+                return typeLib[mType][TextGenerator.GetRandom().Next(0, typeLib[mType].Count)];
             }
             else
             {

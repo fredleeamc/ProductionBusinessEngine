@@ -32,7 +32,7 @@ namespace ModelLibrary
         public Nullable<long> ModifiedByEmployeeId { get; set; }
         public Nullable<long> SpecificationId { get; set; }
     
-        public virtual Specification Specification { get; set; }
+        public virtual Employee Employee { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Machine> Machines { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -41,6 +41,5 @@ namespace ModelLibrary
         public virtual ICollection<WorkCenter> WorkCenters { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<WorkCenterGroup> WorkCenterGroups { get; set; }
-        public virtual Employee Employee { get; set; }
     }
 }

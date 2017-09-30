@@ -23,7 +23,6 @@ namespace ModelLibrary
         public Nullable<System.DateTime> ModifiedOn { get; set; }
         public Nullable<long> ModifiedByEmployeeId { get; set; }
     
-        public virtual LocationClass LocationClass { get; set; }
         public virtual Location Location { get; set; }
         public virtual Employee Employee { get; set; }
     }

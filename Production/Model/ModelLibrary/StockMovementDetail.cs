@@ -27,10 +27,10 @@ namespace ModelLibrary
         public Nullable<long> ModifiedByEmployeeId { get; set; }
     
         public virtual Item Item { get; set; }
+        public virtual Employee Employee { get; set; }
         public virtual ItemLocation ItemLocation { get; set; }
         public virtual ItemLocation ItemLocation1 { get; set; }
         public virtual ItemLotBin ItemLotBin { get; set; }
         public virtual StockMovement StockMovement { get; set; }
-        public virtual Employee Employee { get; set; }
     }
 }

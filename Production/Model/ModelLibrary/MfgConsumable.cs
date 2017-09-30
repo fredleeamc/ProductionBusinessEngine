@@ -37,15 +37,11 @@ namespace ModelLibrary
         public Nullable<long> ModifiedByEmployeeId { get; set; }
         public Nullable<long> SpecificationId { get; set; }
     
-        public virtual Currency Currency { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BomMfgConsumable> BomMfgConsumables { get; set; }
         public virtual Company Company { get; set; }
-        public virtual CurrencyExchange CurrencyExchange { get; set; }
         public virtual Item Item { get; set; }
-        public virtual ItemBuy ItemBuy { get; set; }
-        public virtual Specification Specification { get; set; }
-        public virtual MfgConsumableType MfgConsumableType { get; set; }
         public virtual Employee Employee { get; set; }
+        public virtual MfgConsumableType MfgConsumableType { get; set; }
     }
 }

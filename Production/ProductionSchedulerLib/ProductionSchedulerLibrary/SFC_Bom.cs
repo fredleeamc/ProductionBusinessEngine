@@ -11,7 +11,7 @@ namespace ProductionSchedulerLibrary
     /// <summary>
     /// 
     /// </summary>
-    public class SFC_Bom 
+    public class SFC_Bom
     {
         /// <summary>
         /// The identifier
@@ -37,7 +37,7 @@ namespace ProductionSchedulerLibrary
         /// The materials
         /// </summary>
         private Dictionary<SFC_Item, double> materials;
-        
+
         /// <summary>
         /// Gets the identifier.
         /// </summary>
@@ -70,11 +70,7 @@ namespace ProductionSchedulerLibrary
 
         public SFC_BomComposite ThisBom => thisBom;
 
-        public Dictionary<SFC_Item, double> Materials { get => materials; set => materials = value; }
-
-
-
-
+        
         /// <summary>
         /// Initializes a new instance of the <see cref="SFC_Bom"/> class.
         /// </summary>
@@ -100,9 +96,9 @@ namespace ProductionSchedulerLibrary
         /// A <see cref="System.String" /> that represents this instance.
         /// </returns>
         public override string ToString()
-        {        
+        {
             StringBuilder sb = new StringBuilder();
-            sb.Append("BOM("+PartName+":"+PartNo+"):\n");
+            sb.Append("BOM(" + PartName + ":" + PartNo + "):\n");
             sb.Append(this.thisBom.Display(1));
             return sb.ToString();
         }

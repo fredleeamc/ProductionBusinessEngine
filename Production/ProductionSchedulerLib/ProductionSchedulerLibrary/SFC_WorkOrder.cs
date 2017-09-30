@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ModelLibrary;
+
 
 namespace ProductionSchedulerLibrary
 {
@@ -25,7 +25,7 @@ namespace ProductionSchedulerLibrary
         /// <summary>
         /// The target completion date
         /// </summary>
-        private DateTime targetCompletionDate;
+        private DateTime? targetCompletionDate;
 
         /// <summary>
         /// The due date
@@ -42,9 +42,69 @@ namespace ProductionSchedulerLibrary
         /// </summary>
         private bool isReadyStart;
 
-        private readonly SortedList<long, SFC_WorkOrderDetails> details;
+        /// <summary>
+        /// The unit price
+        /// </summary>
+        private decimal? unitPrice;
+        /// <summary>
+        /// The estimated unit cost
+        /// </summary>
+        private decimal? estimatedUnitCost;
+        /// <summary>
+        /// The estimated total labor hours
+        /// </summary>
+        private DateTime? estimatedTotalLaborHours;
+        /// <summary>
+        /// The estimated total labor cost
+        /// </summary>
+        private decimal? estimatedTotalLaborCost;
+        /// <summary>
+        /// The estimated total material cost
+        /// </summary>
+        private decimal? estimatedTotalMaterialCost;
+        /// <summary>
+        /// The ordered build quantity
+        /// </summary>
+        private decimal? orderedBuildQuantity;
+        /// <summary>
+        /// The actual build quantity
+        /// </summary>
+        private decimal? actualBuildQuantity;
+        /// <summary>
+        /// The actual unit cost
+        /// </summary>
+        private decimal? actualUnitCost;
+        /// <summary>
+        /// The actual total labor hours
+        /// </summary>
+        private DateTime? actualTotalLaborHours;
+        /// <summary>
+        /// The actual total labor cost
+        /// </summary>
+        private decimal? actualTotalLaborCost;
+        /// <summary>
+        /// The actual total material cost
+        /// </summary>
+        private decimal? actualTotalMaterialCost;
+        /// <summary>
+        /// The estimated profit
+        /// </summary>
+        private decimal? estimatedProfit;
+        /// <summary>
+        /// The scheduled start date
+        /// </summary>
+        private DateTime? scheduledStartDate;
+        /// <summary>
+        /// The scheduled completion date
+        /// </summary>
+        private DateTime? scheduledCompletionDate;
 
         /// <summary>
+        /// The details
+        /// </summary>
+        private readonly SortedList<long, SFC_WorkOrderDetail> details;
+
+        /// <summary> Constructor
         /// Initializes a new instance of the <see cref="SFC_WorkOrder"/> class.
         /// </summary>
         /// <param name="id">The identifier.</param>
@@ -53,7 +113,7 @@ namespace ProductionSchedulerLibrary
         /// <param name="dueDate">The due date.</param>
         /// <param name="item">The item.</param>
         /// <param name="isReadyStart">if set to <c>true</c> [is ready start].</param>
-        public SFC_WorkOrder(long id, SFC_Customer customer, DateTime targetCompletionDate, DateTime dueDate, SFC_Item item, bool isReadyStart)
+        public SFC_WorkOrder(long id, SFC_Customer customer, DateTime? targetCompletionDate, DateTime dueDate, SFC_Item item, bool isReadyStart)
         {
             this.id = id;
             this.customer = customer;
@@ -61,36 +121,53 @@ namespace ProductionSchedulerLibrary
             this.dueDate = dueDate;
             this.item = item;
             this.isReadyStart = isReadyStart;
-            details = new SortedList<long, SFC_WorkOrderDetails>();
+            details = new SortedList<long, SFC_WorkOrderDetail>();
         }
 
-        public void AddWorkOrderDetails(long key, SFC_WorkOrderDetails line)
+        /// <summary>
+        /// Adds the work order details.
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <param name="line">The line.</param>
+        public void AddWorkOrderDetails(SFC_WorkOrderDetail line)
         {
+            long key = line.OperationSequence;
             if (!details.ContainsKey(key))
             {
                 details.Add(key, line);
-            } else
+            }
+            else
             {
                 details[key] = line;
             }
         }
 
-        public void RemoveWorkOrderDetails(long key)
+        /// <summary>
+        /// Removes the work order details.
+        /// </summary>
+        /// <param name="operationSequence">The key.</param>
+        public void RemoveWorkOrderDetails(long operationSequence)
         {
-            if (details.ContainsKey(key))
+            if (details.ContainsKey(operationSequence))
             {
-                details.Remove(key);
+                details.Remove(operationSequence);
             }
         }
 
-        public SFC_WorkOrderDetails GetWorkOrderDetails(long key)
+        /// <summary>
+        /// Gets the work order details.
+        /// </summary>
+        /// <param name="operationSequence">The key.</param>
+        /// <returns></returns>
+        public SFC_WorkOrderDetail GetWorkOrderDetails(long operationSequence)
         {
-            if (details.ContainsKey(key))
+            if (details.ContainsKey(operationSequence))
             {
-                return details[key];
-            } else
+                return details[operationSequence];
+            }
+            else
             {
-                return SFC_WorkOrderDetails.NONE;
+                return SFC_WorkOrderDetail.NONE;
             }
         }
 
@@ -116,7 +193,7 @@ namespace ProductionSchedulerLibrary
         /// <value>
         /// The target completion date.
         /// </value>
-        public DateTime TargetCompletionDate { get => targetCompletionDate; set => targetCompletionDate = value; }
+        public DateTime? TargetCompletionDate { get => targetCompletionDate; set => targetCompletionDate = value; }
         /// <summary>
         /// Gets or sets the due date.
         /// </summary>
@@ -132,6 +209,111 @@ namespace ProductionSchedulerLibrary
         /// </value>
         public SFC_Item Item { get => item; set => item = value; }
 
-        public SortedList<long, SFC_WorkOrderDetails> Details => details;
+        /// <summary>
+        /// Gets the details.
+        /// </summary>
+        /// <value>
+        /// The details.
+        /// </value>
+        public SortedList<long, SFC_WorkOrderDetail> Details => details;
+
+        /// <summary>
+        /// Gets or sets the unit price.
+        /// </summary>
+        /// <value>
+        /// The unit price.
+        /// </value>
+        public decimal? UnitPrice { get => unitPrice; set => unitPrice = value; }
+        /// <summary>
+        /// Gets or sets the estimated unit cost.
+        /// </summary>
+        /// <value>
+        /// The estimated unit cost.
+        /// </value>
+        public decimal? EstimatedUnitCost { get => estimatedUnitCost; set => estimatedUnitCost = value; }
+        /// <summary>
+        /// Gets or sets the estimated total labor hours.
+        /// </summary>
+        /// <value>
+        /// The estimated total labor hours.
+        /// </value>
+        public DateTime? EstimatedTotalLaborHours { get => estimatedTotalLaborHours; set => estimatedTotalLaborHours = value; }
+        /// <summary>
+        /// Gets or sets the estimated total labor cost.
+        /// </summary>
+        /// <value>
+        /// The estimated total labor cost.
+        /// </value>
+        public decimal? EstimatedTotalLaborCost { get => estimatedTotalLaborCost; set => estimatedTotalLaborCost = value; }
+        /// <summary>
+        /// Gets or sets the estimated total material cost.
+        /// </summary>
+        /// <value>
+        /// The estimated total material cost.
+        /// </value>
+        public decimal? EstimatedTotalMaterialCost { get => estimatedTotalMaterialCost; set => estimatedTotalMaterialCost = value; }
+        /// <summary>
+        /// Gets or sets the ordered build quantity.
+        /// </summary>
+        /// <value>
+        /// The ordered build quantity.
+        /// </value>
+        public decimal? OrderedBuildQuantity { get => orderedBuildQuantity; set => orderedBuildQuantity = value; }
+        /// <summary>
+        /// Gets or sets the actual build quantity.
+        /// </summary>
+        /// <value>
+        /// The actual build quantity.
+        /// </value>
+        public decimal? ActualBuildQuantity { get => actualBuildQuantity; set => actualBuildQuantity = value; }
+        /// <summary>
+        /// Gets or sets the actual unit cost.
+        /// </summary>
+        /// <value>
+        /// The actual unit cost.
+        /// </value>
+        public decimal? ActualUnitCost { get => actualUnitCost; set => actualUnitCost = value; }
+        /// <summary>
+        /// Gets or sets the actual total labor hours.
+        /// </summary>
+        /// <value>
+        /// The actual total labor hours.
+        /// </value>
+        public DateTime? ActualTotalLaborHours { get => actualTotalLaborHours; set => actualTotalLaborHours = value; }
+        /// <summary>
+        /// Gets or sets the actual total labor cost.
+        /// </summary>
+        /// <value>
+        /// The actual total labor cost.
+        /// </value>
+        public decimal? ActualTotalLaborCost { get => actualTotalLaborCost; set => actualTotalLaborCost = value; }
+        /// <summary>
+        /// Gets or sets the actual total material cost.
+        /// </summary>
+        /// <value>
+        /// The actual total material cost.
+        /// </value>
+        public decimal? ActualTotalMaterialCost { get => actualTotalMaterialCost; set => actualTotalMaterialCost = value; }
+        /// <summary>
+        /// Gets or sets the estimated profit.
+        /// </summary>
+        /// <value>
+        /// The estimated profit.
+        /// </value>
+        public decimal? EstimatedProfit { get => estimatedProfit; set => estimatedProfit = value; }
+        /// <summary>
+        /// Gets or sets the scheduled start date.
+        /// </summary>
+        /// <value>
+        /// The scheduled start date.
+        /// </value>
+        public DateTime? ScheduledStartDate { get => scheduledStartDate; set => scheduledStartDate = value; }
+        /// <summary>
+        /// Gets or sets the scheduled completion date.
+        /// </summary>
+        /// <value>
+        /// The scheduled completion date.
+        /// </value>
+        public DateTime? ScheduledCompletionDate { get => scheduledCompletionDate; set => scheduledCompletionDate = value; }
     }
 }

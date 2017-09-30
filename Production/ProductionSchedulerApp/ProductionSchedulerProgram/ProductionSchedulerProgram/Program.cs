@@ -26,7 +26,8 @@ namespace ProductionSchedulerProgram
 
             #region Initialize Shop Floor Control
             SFC_Company company = new SFC_Company(1, "Vision");
-            ShopFloorControl shopFloor = ShopFloorControl.GetInstance();
+            ShopFloorControl shopFloor = ShopFloorControl.Instance;
+            ShopSequenceGenerator seqGen = ShopSequenceGenerator.Instance;
             shopFloor.CreateShopFloorModel(company);
             #endregion
 
@@ -34,12 +35,13 @@ namespace ProductionSchedulerProgram
             //           {
             // Start getting resources by company only
             #region Add Employee
-
-            int employeeCount = 10;
+            seqGen.CreateNewSequence("EMP", 0);
+            seqGen.FormatSpecifier("EMP", "{0:D8}", true);
+            int employeeCount = 1000;
             List<SFC_Employee> empList = new List<SFC_Employee>();
             for (int emp = 1; emp <= employeeCount; emp++)
             {
-                empList.Add(new SFC_Employee(emp, TextGenerator.RandomNumbers(8), TextGenerator.RandomNames(), TextGenerator.RandomNames(1, 1), TextGenerator.RandomNames()));
+                empList.Add(new SFC_Employee(seqGen.GetNext("EMP"), seqGen.GetPattern("EMP"), TextGenerator.RandomNames(), TextGenerator.RandomNames(1, 1), TextGenerator.RandomNames()));
             }
             shopFloor.AddEmployeeList(company.Id, empList);
             #endregion
@@ -49,60 +51,82 @@ namespace ProductionSchedulerProgram
 
             //ManualResetEventSlim rst = new ManualResetEventSlim();
             //rst.Reset();
-
-            //Task t2 = new Task(() =>
-            //       {
-            #region Add Items
-
-            int itemCount = 10;
-            List<SFC_Item> itemList = new List<SFC_Item>();
-            for (int itemId = 1; itemId <= itemCount; itemId++)
+            seqGen.CreateNewSequence("RM", 0);
+            seqGen.FormatSpecifier("RM","{0:D10}", true);
+            Task t2 = new Task(() =>
             {
-                SFC_Item thisItem = new SFC_Item(ShopFloorControl.NextItemCount(), TextGenerator.RandomNames());
-                itemList.Add(thisItem);
-            }
-            shopFloor.AddItemList(company.Id, itemList);
+                #region Add Items
+
+                int itemCount = 10000;
+                List<SFC_Item> itemList = new List<SFC_Item>();
+                for (int itemId = 1; itemId <= itemCount; itemId++)
+                {
+                    SFC_Item thisItem = new SFC_Item(seqGen.GetNext("RM"), seqGen.GetPattern("RM")+":"+TextGenerator.RandomNames());
+                    itemList.Add(thisItem);
+                }
+                shopFloor.AddItemList(company.Id, itemList);
+                shopFloor.ShowItems(company.Id);
+
+            });
 
 
             #endregion
             //shopFloor.ShowItems(company.Id);
 
             #region Add LotBin Begin Balance
-            int lotBinCount = 5;
-            List<SFC_ItemLotBin> binList = new List<SFC_ItemLotBin>();
-            for (int bin = 1; bin <= lotBinCount; bin++)
+            seqGen.CreateNewSequence("BIN", 0);
+            seqGen.FormatSpecifier("BIN", "{0:D10}", true);
+            Task t3 = new Task(() =>
             {
-                SFC_Item thisItem = shopFloor.getRandomItem(company.Id);
-                SFC_ItemLotBin thisBin = new SFC_ItemLotBin(ShopFloorControl.NextBinCount(), thisItem, "BEGIN", "BEGIN");
-                thisBin.ItemStatus.beginQuantity(1000);
-                binList.Add(thisBin);
-            }
-            shopFloor.AddBomList(1, binList);
+                int lotBinCount = 500;
+                List<SFC_ItemLotBin> binList = new List<SFC_ItemLotBin>();
+                for (int bin = 1; bin <= lotBinCount; bin++)
+                {
+                    SFC_Item thisItem = shopFloor.getRandomItem(company.Id);
+                    if (thisItem != null)
+                    {
+                        SFC_ItemLotBin thisBin = new SFC_ItemLotBin(seqGen.GetNext("Bin"), thisItem, "BEGIN", "BEGIN");
+                        thisBin.ItemStatus.beginQuantity(1000);
+                        binList.Add(thisBin);
+                    }
+                }
+                shopFloor.AddBomList(1, binList);
+            });
+
             #endregion
             //shopFloor.ShowLotBin(company.Id);
             //shopFloor.ShowItems(company.Id);
-
-            #region Simulate Production
-            int randomCount = 20;
-            for (int i = 1; i < randomCount; i++)
+            Task t4 = new Task(() =>
             {
-                SFC_Item thisItem = shopFloor.getRandomItem(company.Id);
-                SFC_ItemLotBin thisBin = new SFC_ItemLotBin(ShopFloorControl.NextBinCount(), thisItem, "PO", TextGenerator.RandomNumbers(4));
-                thisBin.ItemStatus.purchaseOrderQuantity(100);
-                thisBin.ItemStatus.ItemLotBin.HeatNo = TextGenerator.RandomNumbers(4);
-                thisBin.ItemStatus.ItemLotBin.BinNo = TextGenerator.RandomNumbers(3);
-                thisBin.ItemStatus.movePurchaseOrderToReceiveQuantity(100);
-                thisBin.ItemStatus.reserveQuantity(20);
-                thisBin.ItemStatus.allocateToWorkOrderQuantity(50);
-                thisBin.ItemStatus.moveAllocatedToProductionQuantity(40);
-                thisBin.ItemStatus.moveReservedToAllocatedQuantity(20);
-                thisBin.ItemStatus.moveAllocatedToProductionQuantity(30);
-                thisBin.ItemStatus.moveToFinishGoods(70);
-                thisBin.ItemStatus.scrapFromWarehouseQuantity(2);
-            }
-
-            shopFloor.ShowItemStatus(company.Id);
+                #region Simulate Production
+                int randomCount = 5000;
+                for (int i = 1; i < randomCount; i++)
+                {
+                    SFC_Item thisItem = shopFloor.getRandomItem(company.Id);
+                    if (thisItem != null)
+                    {
+                        SFC_ItemLotBin thisBin = new SFC_ItemLotBin(seqGen.GetNext("BIN"), thisItem, seqGen.GetYYYYMMPattern("BIN"), TextGenerator.RandomNumbers(4));
+                        thisBin.ItemStatus.purchaseOrderQuantity(100);
+                        thisBin.ItemStatus.ItemLotBin.HeatNo = TextGenerator.RandomNumbers(4);
+                        thisBin.ItemStatus.ItemLotBin.BinNo = TextGenerator.RandomNumbers(3);
+                        thisBin.ItemStatus.movePurchaseOrderToReceiveQuantity(100);
+                        thisBin.ItemStatus.reserveQuantity(20);
+                        thisBin.ItemStatus.allocateToWorkOrderQuantity(50);
+                        thisBin.ItemStatus.moveAllocatedToProductionQuantity(40);
+                        thisBin.ItemStatus.moveReservedToAllocatedQuantity(20);
+                        thisBin.ItemStatus.moveAllocatedToProductionQuantity(30);
+                        thisBin.ItemStatus.moveToFinishGoods(70);
+                        thisBin.ItemStatus.scrapFromWarehouseQuantity(2);
+                    }
+                }
+                shopFloor.ShowItemStatus(company.Id);
+            });
             #endregion
+            t2.Start();
+            t4.Start();
+            t3.Start();
+
+
             //rst.Set();
 
             //});
@@ -138,12 +162,12 @@ namespace ProductionSchedulerProgram
             #endregion
 
             #region Add Work Center
-            int workCenterCount = 10;
+            int workCenterCount = 100;
             List<SFC_WorkCenter> workCenterList = new List<SFC_WorkCenter>();
             for (int workCenter = 1; workCenter <= workCenterCount; workCenter++)
             {
                 SFC_WorkCenterType mtype = shopFloor.getRandomWorkCenterType(company.Id);
-                SFC_WorkCenter thisWorkCenter = new SFC_WorkCenter(ShopFloorControl.NextWorkCenterCount(), "WC" + TextGenerator.RandomNumbers(3), finite);
+                SFC_WorkCenter thisWorkCenter = new SFC_WorkCenter(workCenter, "WC" + TextGenerator.RandomNumbers(3), finite);
                 thisWorkCenter.MachineType = shopFloor.getRandomMachineType(company.Id);
                 workCenterList.Add(thisWorkCenter);
             }
@@ -151,12 +175,12 @@ namespace ProductionSchedulerProgram
             #endregion
 
             #region Add Machine
-            int machineCount = 10;
+            int machineCount = 1000;
             List<SFC_Machine> machineList = new List<SFC_Machine>();
             for (int machine = 1; machine <= machineCount; machine++)
             {
                 SFC_MachineType mtype = shopFloor.getRandomMachineType(company.Id);
-                SFC_Machine thisMachine = new SFC_Machine(ShopFloorControl.NextMachine(), TextGenerator.RandomNumbers(3), mtype);
+                SFC_Machine thisMachine = new SFC_Machine(machine, TextGenerator.RandomNumbers(3), mtype);
                 thisMachine.setWorkCenter(SFC_MachineType.GetRandomWorkCenter(mtype));
                 machineList.Add(thisMachine);
             }
@@ -175,18 +199,18 @@ namespace ProductionSchedulerProgram
             //{
             //    rst.Wait();
             #region bom
-            SFC_BomComposite meter = new SFC_BomComposite(1, new SFC_Item(ShopFloorControl.NextItemCount(), "Meter"), 1);
+            SFC_BomComposite meter = new SFC_BomComposite(1, new SFC_Item(seqGen.GetNext("RM"), "Meter"), 1);
             meter.UnitCost = 12.00;
             meter.Unit = "EACH";
             SFC_Bom meterbom = new SFC_Bom(1, "FM1S", "XAA111", meter);
 
-            SFC_Item pcbItem = new SFC_Item(ShopFloorControl.NextItemCount(), "16-5");
+            SFC_Item pcbItem = new SFC_Item(seqGen.GetNext("RM"), "16-5");
 
             SFC_BomComponent pcb = new SFC_BomComposite(1, pcbItem, 1);
             pcb.UnitCost = 5;
             pcb.Unit = "PC";
 
-            SFC_Item resistorItem = new SFC_Item(1000, "Resistor 5K");
+            SFC_Item resistorItem = new SFC_Item(seqGen.GetNext("RM"), "Resistor 5K");
 
             SFC_BomComponent resistor = new SFC_BomComposite(2, resistorItem, 20);
             resistor.UnitCost = 4;
@@ -196,11 +220,11 @@ namespace ProductionSchedulerProgram
             resistor2.UnitCost = 3;
             resistor2.Unit = "PC";
 
-            SFC_BomComponent carbon = new SFC_BomComposite(3, new SFC_Item(ShopFloorControl.NextItemCount(), "Carbon"), 10);
+            SFC_BomComponent carbon = new SFC_BomComposite(3, new SFC_Item(seqGen.GetNext("RM"), "Carbon"), 10);
             carbon.UnitCost = 2;
             carbon.Unit = "PC";
 
-            SFC_BomComponent metal = new SFC_BomItem(4, new SFC_Item(ShopFloorControl.NextItemCount(), "Metal"), 0.5);
+            SFC_BomComponent metal = new SFC_BomItem(4, new SFC_Item(seqGen.GetNext("RM"), "Metal"), 0.5);
             metal.UnitCost = 1;
             metal.Unit = "PC";
 
@@ -240,10 +264,9 @@ namespace ProductionSchedulerProgram
 
             #region work orders
             List<SFC_WorkOrder> workOrders = new List<SFC_WorkOrder>();
-            SFC_Customer cust = new SFC_Customer(0, 0, TextGenerator.RandomNames(5, 10), TextGenerator.RandomNumbers(4));
-
-
-
+            SFC_Customer cust = new SFC_Customer(0, new SFC_Company(TextGenerator.RandomInt(100), TextGenerator.RandomNames()), TextGenerator.RandomNames(5, 10), TextGenerator.RandomNumbers(4));
+            SFC_WorkOrder wo1 = new SFC_WorkOrder(1, shopFloor.getRandomCustomer(company.Id), null, DateTime.Now, shopFloor.getRandomItem(company.Id), false);
+            
             #endregion
 
 

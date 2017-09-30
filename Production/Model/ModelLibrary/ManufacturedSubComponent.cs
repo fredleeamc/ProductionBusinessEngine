@@ -32,13 +32,8 @@ namespace ModelLibrary
         public Nullable<System.DateTime> ModifiedOn { get; set; }
         public Nullable<long> ModifiedByEmployeeId { get; set; }
     
-        public virtual Unit Unit { get; set; }
         public virtual ManufacturedComponent ManufacturedComponent { get; set; }
         public virtual ManufacturedComponent ManufacturedComponent1 { get; set; }
-        public virtual Description Description { get; set; }
-        public virtual ItemBuy ItemBuy { get; set; }
-        public virtual Attachment Attachment { get; set; }
-        public virtual DocumentSet DocumentSet { get; set; }
         public virtual Employee Employee { get; set; }
     }
 }

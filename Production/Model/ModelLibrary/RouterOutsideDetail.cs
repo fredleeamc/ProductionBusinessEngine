@@ -37,9 +37,7 @@ namespace ModelLibrary
     
         public virtual EngineeringChangeStatu EngineeringChangeStatu { get; set; }
         public virtual Router Router { get; set; }
-        public virtual Address Address { get; set; }
-        public virtual Vendor Vendor { get; set; }
-        public virtual WorkInstruction WorkInstruction { get; set; }
         public virtual Employee Employee { get; set; }
+        public virtual Vendor Vendor { get; set; }
     }
 }

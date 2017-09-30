@@ -30,10 +30,10 @@ namespace ModelLibrary
         public Nullable<long> CompanyId { get; set; }
     
         public virtual Company Company { get; set; }
+        public virtual Employee Employee { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FamilyRouterLink> FamilyRouterLinks { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Router> Routers { get; set; }
-        public virtual Employee Employee { get; set; }
     }
 }

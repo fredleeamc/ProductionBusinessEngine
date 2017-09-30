@@ -48,16 +48,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SFC_Customers.cs" />
     <Compile Include="SFC_BomComposite.cs" />
     <Compile Include="SFC_BomItem.cs" />
     <Compile Include="SFC_BomComponent.cs" />
     <Compile Include="SFC_Boms.cs" />
+    <Compile Include="SFC_Container.cs" />
+    <Compile Include="SFC_Departments.cs" />
+    <Compile Include="SFC_Employees.cs" />
+    <Compile Include="ISFC_Enumerable.cs" />
+    <Compile Include="SFC_ItemLotBins.cs" />
+    <Compile Include="SFC_Items.cs" />
+    <Compile Include="SFC_Machines.cs" />
     <Compile Include="SFC_MachineType.cs" />
     <Compile Include="SFC_Department.cs" />
     <Compile Include="SFC_ItemStatus.cs" />
     <Compile Include="SFC_Customer.cs" />
     <Compile Include="SFC_ItemLotBin.cs" />
     <Compile Include="SFC_Bom.cs" />
+    <Compile Include="SFC_MachineTypes.cs" />
     <Compile Include="SFC_ProductBuild.cs" />
     <Compile Include="SFC_Company.cs" />
     <Compile Include="SFC_EngineeringChange.cs" />
@@ -66,15 +75,23 @@
     <Compile Include="SFC_Item.cs" />
     <Compile Include="SFC_Machine.cs" />
     <Compile Include="SFC_MachineQueue.cs" />
+    <Compile Include="SFC_ProductBuilds.cs" />
+    <Compile Include="SFC_RouterProcess.cs" />
+    <Compile Include="SFC_RouterProcessDetail.cs" />
     <Compile Include="SFC_Vendor.cs" />
+    <Compile Include="SFC_Vendors.cs" />
+    <Compile Include="SFC_WorkCenters.cs" />
     <Compile Include="SFC_WorkCenterType.cs" />
-    <Compile Include="SFC_WorkOrderDetails.cs" />
+    <Compile Include="SFC_WorkCenterTypes.cs" />
+    <Compile Include="SFC_WorkOrderDetail.cs" />
+    <Compile Include="SFC_WorkOrders.cs" />
     <Compile Include="ShopFloorControl.cs" />
     <Compile Include="ShopFloorModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SFC_WorkCenter.cs" />
     <Compile Include="SFC_WorkOrder.cs" />
     <Compile Include="ShopFloorScheduler.cs" />
+    <Compile Include="ShopSequenceGenerator.cs" />
     <Compile Include="TextGenerator.cs" />
   </ItemGroup>
   <ItemGroup>

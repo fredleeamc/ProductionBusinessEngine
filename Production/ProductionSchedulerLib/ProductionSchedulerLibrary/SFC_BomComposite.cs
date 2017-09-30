@@ -116,7 +116,7 @@ namespace ProductionSchedulerLibrary
                 {
                     double t = component.EstimatedCost();
                     thisCost += t;
-                    Console.WriteLine(component.Item + "-" + t + " Total:" + thisCost);
+                    Console.WriteLine(component.Item + "=" + t + " Total:" + thisCost);
                 }
                 this.BomCost = thisCost;
             }

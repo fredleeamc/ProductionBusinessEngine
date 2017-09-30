@@ -17,7 +17,7 @@ namespace ModelLibrary
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public WorkOrder()
         {
-            this.MaterialIssuances = new HashSet<MaterialIssuance>();
+            this.ScheduledWorkOrders = new HashSet<ScheduledWorkOrder>();
             this.WorkOrderDetails = new HashSet<WorkOrderDetail>();
         }
     
@@ -47,19 +47,31 @@ namespace ModelLibrary
         public bool IsClosed { get; set; }
         public Nullable<long> SpecificationId { get; set; }
         public System.DateTime DueDate { get; set; }
+        public bool IsScheduled { get; set; }
+        public Nullable<decimal> UnitPrice { get; set; }
+        public Nullable<decimal> EstimatedUnitCost { get; set; }
+        public Nullable<System.DateTime> EstimatedTotalLaborHours { get; set; }
+        public Nullable<decimal> EstimatedTotalLaborCost { get; set; }
+        public Nullable<decimal> EstimatedTotalMaterialCost { get; set; }
+        public Nullable<decimal> OrderedBuildQuantity { get; set; }
+        public Nullable<decimal> ActualBuildQuantity { get; set; }
+        public Nullable<decimal> ActualUnitCost { get; set; }
+        public Nullable<System.DateTime> ActualTotalLaborHours { get; set; }
+        public Nullable<decimal> ActualTotalLaborCost { get; set; }
+        public Nullable<decimal> ActualTotalMaterialCost { get; set; }
+        public Nullable<decimal> EstimatedProfit { get; set; }
+        public Nullable<System.DateTime> ScheduledStartDate { get; set; }
+        public Nullable<System.DateTime> ScheduledCompletionDate { get; set; }
+        public string RefNo { get; set; }
     
-        public virtual Currency Currency { get; set; }
         public virtual ProductBuild ProductBuild { get; set; }
         public virtual Company Company { get; set; }
-        public virtual CurrencyExchange CurrencyExchange { get; set; }
         public virtual Customer Customer { get; set; }
         public virtual Item Item { get; set; }
-        public virtual Specification Specification { get; set; }
+        public virtual Employee Employee { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MaterialIssuance> MaterialIssuances { get; set; }
+        public virtual ICollection<ScheduledWorkOrder> ScheduledWorkOrders { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<WorkOrderDetail> WorkOrderDetails { get; set; }
-        public virtual DocumentSet DocumentSet { get; set; }
-        public virtual Employee Employee { get; set; }
     }
 }

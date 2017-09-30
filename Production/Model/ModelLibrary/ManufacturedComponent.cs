@@ -51,30 +51,22 @@ namespace ModelLibrary
         public Nullable<System.DateTime> ModifiedOn { get; set; }
         public Nullable<long> ModifiedByEmployeeId { get; set; }
     
-        public virtual Currency Currency { get; set; }
-        public virtual Unit Unit { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BomDetail> BomDetails { get; set; }
         public virtual EngineeringChangeStatu EngineeringChangeStatu { get; set; }
         public virtual EngineeringPhase EngineeringPhase { get; set; }
         public virtual Company Company { get; set; }
-        public virtual CurrencyExchange CurrencyExchange { get; set; }
-        public virtual Description Description { get; set; }
-        public virtual Account Account { get; set; }
+        public virtual Employee Employee { get; set; }
         public virtual Item Item { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ManufacturedSubComponent> ManufacturedSubComponents { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ManufacturedSubComponent> ManufacturedSubComponents1 { get; set; }
-        public virtual Account Account1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProductBuildDetail> ProductBuildDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Router> Routers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RouterProcess> RouterProcesses { get; set; }
-        public virtual Attachment Attachment { get; set; }
-        public virtual DocumentSet DocumentSet { get; set; }
-        public virtual Employee Employee { get; set; }
     }
 }

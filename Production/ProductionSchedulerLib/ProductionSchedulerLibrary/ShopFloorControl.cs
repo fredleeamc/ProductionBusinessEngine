@@ -21,44 +21,28 @@ namespace ProductionSchedulerLibrary
         /// The instance SFC
         /// </summary>
         private static ShopFloorControl instanceSFC = null;
-
-        /// <summary>
-        /// The bin count
-        /// </summary>
-        private static long binCount = 1;
-
-        /// <summary>
-        /// The item count
-        /// </summary>
-        private static long itemCount = 1;
-
-        /// <summary>
-        /// The machine count
-        /// </summary>
-        private static long machineCount = 1;
-
-        /// <summary>
-        /// The work center cont
-        /// </summary>
-        private static long workCenterCount = 1;
-
-
-
-
         #endregion
+
+        private static Object lockObject = new Object();
 
         /// <summary>
         /// Gets the instance.
         /// </summary>
         /// <returns></returns>
-        public static ShopFloorControl GetInstance()
+        public static ShopFloorControl Instance
         {
-            if (instanceSFC == null)
+            get
             {
-                instanceSFC = new ShopFloorControl();
-                shopControlList = new Dictionary<long, ShopFloorModel>();
+                lock (lockObject)
+                {
+                    if (instanceSFC == null)
+                    {
+                        instanceSFC = new ShopFloorControl();
+                        shopControlList = new Dictionary<long, ShopFloorModel>();
+                    }
+                }
+                return instanceSFC;
             }
-            return instanceSFC;
 
         }
 
@@ -108,7 +92,7 @@ namespace ProductionSchedulerLibrary
         {
             foreach (SFC_Customer cust in customerList)
             {
-                if (!shopControlList[companyId].Customers.ContainsKey(cust.Id))
+                if (!shopControlList[companyId].Customers.Lists.ContainsKey(cust.Id))
                     shopControlList[companyId].AddCustomer(cust);
             }
         }
@@ -143,8 +127,7 @@ namespace ProductionSchedulerLibrary
         {
             foreach (SFC_ItemLotBin bin in itemLotBinList)
             {
-                if (!shopControlList[companyId].LotBinList.ContainsKey(bin.Id))
-                    shopControlList[companyId].AddLotBin(bin);
+                shopControlList[companyId].LotBins.Add(bin.Id, bin);
             }
         }
         #endregion
@@ -159,8 +142,8 @@ namespace ProductionSchedulerLibrary
         {
             foreach (SFC_Employee emp in employeeList)
             {
-                if (!shopControlList[companyId].Employees.ContainsKey(emp.Id))
-                    shopControlList[companyId].AddEmployee(emp);
+                if (!shopControlList[companyId].Employees.Lists.ContainsKey(emp.Id))
+                    shopControlList[companyId].Employees.Add(emp.Id, emp);
             }
         }
 
@@ -171,7 +154,7 @@ namespace ProductionSchedulerLibrary
         /// <returns></returns>
         public SFC_Employee getRandomEmployee(long companyId)
         {
-            return shopControlList[companyId].getRandomEmployee();
+            return shopControlList[companyId].Employees.GetRandom();
         }
 
         /// <summary>
@@ -180,20 +163,11 @@ namespace ProductionSchedulerLibrary
         /// <param name="companyId">The company identifier.</param>
         public void ShowEmployees(long companyId)
         {
-            shopControlList[companyId].ShowEmployees();
+            shopControlList[companyId].Employees.Print();
         }
         #endregion
 
-        #region item
-        /// <summary>
-        /// Nexts the item count.
-        /// </summary>
-        /// <returns></returns>
-        public static long NextItemCount()
-        {
-            return itemCount++;
-        }
-
+        #region items
         /// <summary>
         /// Adds the item list.
         /// </summary>
@@ -203,8 +177,7 @@ namespace ProductionSchedulerLibrary
         {
             foreach (SFC_Item item in itemList)
             {
-                if (!shopControlList[companyId].Items.ContainsKey(item.Id))
-                    shopControlList[companyId].AddItem(item);
+                shopControlList[companyId].Items.Add(item.Id, item);
             }
         }
 
@@ -239,15 +212,6 @@ namespace ProductionSchedulerLibrary
 
         #region lot bin
         /// <summary>
-        /// Nexts the bin count.
-        /// </summary>
-        /// <returns></returns>
-        public static long NextBinCount()
-        {
-            return binCount++;
-        }
-
-        /// <summary>
         /// Shows the lot bin.
         /// </summary>
         /// <param name="companyId">The company identifier.</param>
@@ -278,8 +242,7 @@ namespace ProductionSchedulerLibrary
         {
             foreach (SFC_MachineType machineType in machineTypeList)
             {
-                if (!shopControlList[companyId].MachineTypes.ContainsKey(machineType.Id))
-                    shopControlList[companyId].AddMachineType(machineType);
+                shopControlList[companyId].MachineTypes.Add(machineType.Id, machineType);
             }
         }
         /// <summary>
@@ -304,24 +267,15 @@ namespace ProductionSchedulerLibrary
 
         #region machine
         /// <summary>
-        /// Nexts the machine count.
-        /// </summary>
-        /// <returns></returns>
-        public static long NextMachine()
-        {
-            return machineCount++;
-        }
-        /// <summary>
         /// Adds the machines.
         /// </summary>
         /// <param name="companyId">The company identifier.</param>
         /// <param name="machineList">The machine list.</param>
         public void AddMachines(long companyId, List<SFC_Machine> machineList)
         {
-            foreach (SFC_Machine machineType in machineList)
+            foreach (SFC_Machine machine in machineList)
             {
-                if (!shopControlList[companyId].Machines.ContainsKey(machineType.Id))
-                    shopControlList[companyId].AddMachine(machineType);
+                shopControlList[companyId].Machines.Add(machine.Id, machine);
             }
         }
 
@@ -355,8 +309,7 @@ namespace ProductionSchedulerLibrary
         {
             foreach (SFC_WorkCenterType t in list)
             {
-                if (!shopControlList[companyId].WorkCenterTypes.ContainsKey(t.Id))
-                    shopControlList[companyId].AddWorkCenterType(t);
+                shopControlList[companyId].WorkCenterTypes.Add(t.Id, t);
             }
         }
 
@@ -381,15 +334,6 @@ namespace ProductionSchedulerLibrary
         #endregion
 
         #region work center
-
-        /// <summary>
-        /// Nexts the item count.
-        /// </summary>
-        /// <returns></returns>
-        public static long NextWorkCenterCount()
-        {
-            return workCenterCount++;
-        }
         /// <summary>
         /// Adds the work centers.
         /// </summary>
@@ -399,8 +343,7 @@ namespace ProductionSchedulerLibrary
         {
             foreach (SFC_WorkCenter workCenter in workCenterList)
             {
-                if (!shopControlList[companyId].WorkCenters.ContainsKey(workCenter.Id))
-                    shopControlList[companyId].AddWorkCenter(workCenter);
+                shopControlList[companyId].WorkCenters.Add(workCenter.Id, workCenter);
             }
         }
 
@@ -424,7 +367,7 @@ namespace ProductionSchedulerLibrary
         }
         #endregion
 
-        
+
         #region bill of materials
         /// <summary>
         /// Nexts the bom count.
@@ -445,7 +388,7 @@ namespace ProductionSchedulerLibrary
             foreach (SFC_Bom bom in bomList)
             {
                 if (!shopControlList[companyId].Boms.Lists.ContainsKey(bom.Id))
-                    shopControlList[companyId].Boms.Add(bom);
+                    shopControlList[companyId].Boms.Add(bom.Id, bom);
             }
         }
 
@@ -455,7 +398,7 @@ namespace ProductionSchedulerLibrary
         /// <param name="companyId">The company identifier.</param>
         public void ShowBoms(long companyId)
         {
-            shopControlList[companyId].Boms.ShowList();
+            shopControlList[companyId].Boms.Print();
         }
 
         /// <summary>

@@ -56,18 +56,10 @@ namespace ModelLibrary
         public Nullable<long> ModifiedByEmployeeId { get; set; }
         public Nullable<long> MachineFixtureId { get; set; }
     
-        public virtual Currency Currency { get; set; }
-        public virtual Unit Unit { get; set; }
-        public virtual Unit Unit1 { get; set; }
-        public virtual Unit Unit2 { get; set; }
-        public virtual Unit Unit3 { get; set; }
         public virtual EngineeringChangeStatu EngineeringChangeStatu { get; set; }
         public virtual RouterProcess RouterProcess { get; set; }
-        public virtual CurrencyExchange CurrencyExchange { get; set; }
-        public virtual MachineFixture MachineFixture { get; set; }
+        public virtual Employee Employee { get; set; }
         public virtual WorkCenterGroup WorkCenterGroup { get; set; }
         public virtual WorkCenter WorkCenter { get; set; }
-        public virtual WorkInstruction WorkInstruction { get; set; }
-        public virtual Employee Employee { get; set; }
     }
 }

@@ -44,12 +44,9 @@ namespace ModelLibrary
         public Nullable<decimal> BuildQuantity { get; set; }
         public Nullable<long> ItemId { get; set; }
     
-        public virtual Currency Currency { get; set; }
-        public virtual Unit Unit { get; set; }
         public virtual ProductBuild ProductBuild { get; set; }
         public virtual Company Company { get; set; }
-        public virtual CurrencyExchange CurrencyExchange { get; set; }
-        public virtual Item Item { get; set; }
         public virtual Employee Employee { get; set; }
+        public virtual Item Item { get; set; }
     }
 }

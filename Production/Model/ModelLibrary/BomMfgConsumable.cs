@@ -26,7 +26,7 @@ namespace ModelLibrary
         public Nullable<long> ModifiedByEmployeeId { get; set; }
     
         public virtual Bom Bom { get; set; }
-        public virtual MfgConsumable MfgConsumable { get; set; }
         public virtual Employee Employee { get; set; }
+        public virtual MfgConsumable MfgConsumable { get; set; }
     }
 }

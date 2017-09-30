@@ -71,9 +71,8 @@ namespace ModelLibrary
         public Nullable<System.DateTime> ModifiedOn { get; set; }
         public Nullable<long> DiagramId { get; set; }
         public bool IsCompleted { get; set; }
+        public double OperationPlanYieldPercent { get; set; }
     
-        public virtual Currency Currency { get; set; }
-        public virtual Diagram Diagram { get; set; }
         public virtual EngineeringChangeStatu EngineeringChangeStatu { get; set; }
         public virtual EngineeringPhase EngineeringPhase { get; set; }
         public virtual FamilyRouter FamilyRouter { get; set; }
@@ -85,21 +84,18 @@ namespace ModelLibrary
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProductBuildRouterLink> ProductBuildRouterLinks { get; set; }
         public virtual Company Company { get; set; }
-        public virtual CurrencyExchange CurrencyExchange { get; set; }
         public virtual Item Item { get; set; }
+        public virtual Employee Employee { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Router> Router1 { get; set; }
         public virtual Router Router2 { get; set; }
         public virtual RouterAction RouterAction { get; set; }
         public virtual RouterType RouterType { get; set; }
-        public virtual WorkInstruction WorkInstruction { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RouterDetail> RouterDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RouterDetail> RouterDetails1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RouterOutsideDetail> RouterOutsideDetails { get; set; }
-        public virtual DocumentSet DocumentSet { get; set; }
-        public virtual Employee Employee { get; set; }
     }
 }

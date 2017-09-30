@@ -42,7 +42,7 @@ namespace ProductionSchedulerLibrary
         /// Gets the random.
         /// </summary>
         /// <returns></returns>
-        public static Random getRandom()
+        public static Random GetRandom()
         {
             return rnd;
         }

@@ -32,11 +32,8 @@ namespace ModelLibrary
         public Nullable<long> CurrencyExchangeId { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
     
-        public virtual Currency Currency { get; set; }
         public virtual Company Company { get; set; }
-        public virtual CurrencyExchange CurrencyExchange { get; set; }
         public virtual Item Item { get; set; }
-        public virtual Specification Specification { get; set; }
         public virtual Employee Employee { get; set; }
     }
 }

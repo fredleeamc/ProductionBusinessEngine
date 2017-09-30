@@ -42,12 +42,10 @@ namespace ModelLibrary
         public bool IsCompleted { get; set; }
         public bool IsClosed { get; set; }
     
-        public virtual Currency Currency { get; set; }
         public virtual Company Company { get; set; }
-        public virtual CurrencyExchange CurrencyExchange { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<StockMovementDetail> StockMovementDetails { get; set; }
         public virtual Employee Employee { get; set; }
         public virtual Employee Employee1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StockMovementDetail> StockMovementDetails { get; set; }
     }
 }

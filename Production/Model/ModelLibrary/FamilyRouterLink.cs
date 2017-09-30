@@ -25,9 +25,8 @@ namespace ModelLibrary
         public Nullable<System.DateTime> ModifiedOn { get; set; }
         public Nullable<long> ModifiedByEmployeeId { get; set; }
     
-        public virtual Unit Unit { get; set; }
         public virtual FamilyRouter FamilyRouter { get; set; }
-        public virtual Router Router { get; set; }
         public virtual Employee Employee { get; set; }
+        public virtual Router Router { get; set; }
     }
 }

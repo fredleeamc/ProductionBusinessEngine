@@ -31,7 +31,6 @@ namespace ModelLibrary
     
         public virtual ProductBuild ProductBuild { get; set; }
         public virtual ProductBuild ProductBuild1 { get; set; }
-        public virtual AssetInvestmentAction AssetInvestmentAction { get; set; }
         public virtual Employee Employee { get; set; }
     }
 }

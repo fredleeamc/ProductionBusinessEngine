@@ -52,19 +52,13 @@ namespace ModelLibrary
         public Nullable<System.DateTime> ModifiedOn { get; set; }
         public Nullable<long> ModifiedByEmployeeId { get; set; }
     
-        public virtual Currency Currency { get; set; }
-        public virtual ProcurementType ProcurementType { get; set; }
-        public virtual Unit Unit { get; set; }
         public virtual Bom Bom { get; set; }
         public virtual Bom Bom1 { get; set; }
-        public virtual Address Address { get; set; }
         public virtual BomItemType BomItemType { get; set; }
-        public virtual CurrencyExchange CurrencyExchange { get; set; }
-        public virtual ItemBuy ItemBuy { get; set; }
+        public virtual Employee Employee { get; set; }
         public virtual ManufacturedComponent ManufacturedComponent { get; set; }
         public virtual Vendor Vendor { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProductBuildMaterial> ProductBuildMaterials { get; set; }
-        public virtual Employee Employee { get; set; }
     }
 }

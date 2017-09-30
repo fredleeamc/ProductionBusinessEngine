@@ -29,202 +29,72 @@ namespace ProductionSchedulerLibrary
         /// </summary>
         private SFC_Company company;
 
-        /// <summary>
-        /// The employees
-        /// </summary>
-        private Dictionary<long, SFC_Employee> employees;
-
-        /// <summary>
-        /// The customers
-        /// </summary>
-        private Dictionary<long, SFC_Customer> customers;
-
-        /// <summary>
-        /// The lot bin
-        /// </summary>
-        private Dictionary<long, SFC_ItemLotBin> lotBin;
-
-        /// <summary>
-        /// The items
-        /// </summary>
-        private Dictionary<long, SFC_Item> items;
-
-        /// <summary>
-        /// The machine types
-        /// </summary>
-        private Dictionary<long, SFC_MachineType> machineTypes;
-
-        /// <summary>
-        /// The machines
-        /// </summary>
-        private Dictionary<long, SFC_Machine> machines;
-
-        /// <summary>
-        /// The work center types
-        /// </summary>
-        private Dictionary<long, SFC_WorkCenterType> workCenterTypes;
-
-        /// <summary>
-        /// The work centers
-        /// </summary>
-        private Dictionary<long, SFC_WorkCenter> workCenters;
 
         /// <summary>
         /// The boms
         /// </summary>
-        private SFC_Boms boms;
+        private readonly SFC_Boms boms;
+
+
+        /// <summary>
+        /// The employees
+        /// </summary>
+        private readonly SFC_Employees employees;
+
+        /// <summary>
+        /// The customers
+        /// </summary>
+        private readonly SFC_Customers customers;
+
+        /// <summary>
+        /// The lot bin
+        /// </summary>
+        private readonly SFC_ItemLotBins lotBins;
+
+        /// <summary>
+        /// The items
+        /// </summary>
+        private readonly SFC_Items items;
+
+        /// <summary>
+        /// The machine types
+        /// </summary>
+        private readonly SFC_MachineTypes machineTypes;
+
+        /// <summary>
+        /// The machines
+        /// </summary>
+        private readonly SFC_Machines machines;
+
+        /// <summary>
+        /// The work center types
+        /// </summary>
+        private readonly SFC_WorkCenterTypes workCenterTypes;
+
+        /// <summary>
+        /// The work centers
+        /// </summary>
+        private readonly SFC_WorkCenters workCenters;
         #endregion
 
-        #region property
-        /// <summary>
-        /// Gets or sets the employees.
-        /// </summary>
-        /// <value>
-        /// The employees.
-        /// </value>
-        public Dictionary<long, SFC_Employee> Employees
-        {
-            get
-            {
-                return employees;
-            }
 
-            protected set
-            {
-                employees = value;
-            }
-        }
+        public SFC_Boms Boms => boms;
 
-        /// <summary>
-        /// Gets or sets the lot bin list.
-        /// </summary>
-        /// <value>
-        /// The lot bin list.
-        /// </value>
-        public Dictionary<long, SFC_ItemLotBin> LotBinList
-        {
-            get
-            {
-                return lotBin;
-            }
+        public SFC_Employees Employees => employees;
 
-            protected set
-            {
-                lotBin = value;
-            }
-        }
+        public SFC_Customers Customers => customers;
 
-        /// <summary>
-        /// Gets or sets the items.
-        /// </summary>
-        /// <value>
-        /// The items.
-        /// </value>
-        public Dictionary<long, SFC_Item> Items
-        {
-            get
-            {
-                return items;
-            }
+        public SFC_ItemLotBins LotBins => lotBins;
 
-            protected set
-            {
-                items = value;
-            }
-        }
+        public SFC_Items Items => items;
 
-        /// <summary>
-        /// Gets or sets the machine types.
-        /// </summary>
-        /// <value>
-        /// The machine types.
-        /// </value>
-        public Dictionary<long, SFC_MachineType> MachineTypes
-        {
-            get
-            {
-                return machineTypes;
-            }
+        public SFC_MachineTypes  MachineTypes => machineTypes;
 
-            protected set
-            {
-                machineTypes = value;
-            }
-        }
+        public SFC_Machines Machines => machines;     
 
-        /// <summary>
-        /// Gets or sets the machines.
-        /// </summary>
-        /// <value>
-        /// The machines.
-        /// </value>
-        public Dictionary<long, SFC_Machine> Machines
-        {
-            get
-            {
-                return machines;
-            }
+        public SFC_WorkCenters WorkCenters => workCenters;
 
-            protected set
-            {
-                machines = value;
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets the work center types.
-        /// </summary>
-        /// <value>
-        /// The work center types.
-        /// </value>
-        public Dictionary<long, SFC_WorkCenterType> WorkCenterTypes
-        {
-            get
-            {
-                return workCenterTypes;
-            }
-
-            protected set
-            {
-                workCenterTypes = value;
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets the work centers.
-        /// </summary>
-        /// <value>
-        /// The work centers.
-        /// </value>
-        public Dictionary<long, SFC_WorkCenter> WorkCenters
-        {
-            get
-            {
-                return workCenters;
-            }
-
-            protected set
-            {
-                workCenters = value;
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets the customers.
-        /// </summary>
-        /// <value>
-        /// The customers.
-        /// </value>
-        public Dictionary<long, SFC_Customer> Customers
-        {
-            get => customers;
-            protected set => customers = value;
-        }
-        public SFC_Boms Boms { get => boms; set => boms = value; }
-
-
-
-        #endregion
+        public SFC_WorkCenterTypes WorkCenterTypes => workCenterTypes;
 
         #region constructor
         /// <summary>
@@ -236,15 +106,15 @@ namespace ProductionSchedulerLibrary
         {
             this.companyId = companyId;
             company = new SFC_Company(companyId, companyName);
-            this.employees = new Dictionary<long, SFC_Employee>();
-            this.customers = new Dictionary<long, SFC_Customer>();
-            this.lotBin = new Dictionary<long, SFC_ItemLotBin>();
-            this.items = new Dictionary<long, SFC_Item>();
-            this.machineTypes = new Dictionary<long, SFC_MachineType>();
-            this.machines = new Dictionary<long, SFC_Machine>();
-            this.workCenterTypes = new Dictionary<long, SFC_WorkCenterType>();
-            this.workCenters = new Dictionary<long, SFC_WorkCenter>();
-            this.Boms = new SFC_Boms();
+            this.employees = new SFC_Employees();
+            this.customers = new SFC_Customers();
+            this.lotBins = new SFC_ItemLotBins();
+            this.items = new SFC_Items();
+            this.machineTypes = new SFC_MachineTypes();
+            this.machines = new SFC_Machines();
+            this.workCenterTypes = new SFC_WorkCenterTypes();
+            this.workCenters = new SFC_WorkCenters();
+            this.boms = new SFC_Boms();
         }
         #endregion
 
@@ -283,10 +153,7 @@ namespace ProductionSchedulerLibrary
         /// </summary>
         public void ShowCustomers()
         {
-            foreach (long custId in customers.Keys)
-            {
-                Console.WriteLine(customers[custId]);
-            }
+            customers.Print();
         }
 
         /// <summary>
@@ -295,51 +162,11 @@ namespace ProductionSchedulerLibrary
         /// <returns></returns>
         public SFC_Customer getRandomCustomer()
         {
-            int rand = ShopFloorModel.rnd.Next(1, customers.Count + 1);
-            return customers[rand];
+            return customers.GetRandom();
         }
         #endregion
 
-        #region employee
-        /// <summary>
-        /// Adds the employee.
-        /// </summary>
-        /// <param name="scheduledEmployee">The scheduled employee.</param>
-        public void AddEmployee(SFC_Employee scheduledEmployee)
-        {
-            employees.Add(scheduledEmployee.Id, scheduledEmployee);
-        }
-
-        /// <summary>
-        /// Removes the employee.
-        /// </summary>
-        /// <param name="removeEmployee">The remove employee.</param>
-        public void RemoveEmployee(SFC_Employee removeEmployee)
-        {
-            employees.Remove(removeEmployee.Id);
-        }
-
-        /// <summary>
-        /// Shows the employees.
-        /// </summary>
-        public void ShowEmployees()
-        {
-            foreach (long empId in employees.Keys)
-            {
-                Console.WriteLine(employees[empId]);
-            }
-        }
-
-        /// <summary>
-        /// Gets the random employee.
-        /// </summary>
-        /// <returns></returns>
-        public SFC_Employee getRandomEmployee()
-        {
-            int rand = ShopFloorModel.rnd.Next(1, employees.Count + 1);
-            return employees[rand];
-        }
-        #endregion
+        
 
         #region lotbin
         /// <summary>
@@ -348,7 +175,7 @@ namespace ProductionSchedulerLibrary
         /// <param name="itemLotBin">The item lot bin.</param>
         public void AddLotBin(SFC_ItemLotBin itemLotBin)
         {
-            lotBin.Add(itemLotBin.Id, itemLotBin);
+            lotBins.Add(itemLotBin.Id, itemLotBin);
         }
 
         /// <summary>
@@ -357,7 +184,7 @@ namespace ProductionSchedulerLibrary
         /// <param name="itemLotBin">The item lot bin.</param>
         public void RemoveLotBin(SFC_ItemLotBin itemLotBin)
         {
-            lotBin.Remove(itemLotBin.Id);
+            lotBins.Remove(itemLotBin.Id);
         }
 
         /// <summary>
@@ -365,11 +192,7 @@ namespace ProductionSchedulerLibrary
         /// </summary>
         public void ShowLotbin()
         {
-            foreach (long lotId in lotBin.Keys)
-            {
-                Console.WriteLine(lotBin[lotId]);
-                Console.WriteLine(lotBin[lotId].ItemStatus);
-            }
+            lotBins.Print();
         }
         /// <summary>
         /// Gets the random lot bin.
@@ -377,8 +200,7 @@ namespace ProductionSchedulerLibrary
         /// <returns></returns>
         public SFC_ItemLotBin getRandomLotBin()
         {
-            int rand = ShopFloorModel.rnd.Next(1, lotBin.Count + 1);
-            return lotBin[rand];
+            return lotBins.GetRandom();
         }
         #endregion
 
@@ -406,10 +228,7 @@ namespace ProductionSchedulerLibrary
         /// </summary>
         public void ShowItems()
         {
-            foreach (long itemId in items.Keys)
-            {
-                Console.WriteLine(items[itemId]);
-            }
+            items.Print();
         }
 
         /// <summary>
@@ -417,10 +236,7 @@ namespace ProductionSchedulerLibrary
         /// </summary>
         public void ShowItemStatus()
         {
-            foreach (long itemId in items.Keys)
-            {
-                Console.WriteLine(items[itemId].PrintStatus());
-            }
+            items.PrintItemsStatus();
         }
 
         /// <summary>
@@ -429,8 +245,7 @@ namespace ProductionSchedulerLibrary
         /// <returns></returns>
         public SFC_Item getRandomItem()
         {
-            int rand = ShopFloorModel.rnd.Next(1, items.Count + 1);
-            return items[rand];
+            return items.GetRandom();
         }
         #endregion
 
@@ -458,10 +273,7 @@ namespace ProductionSchedulerLibrary
         /// </summary>
         public void ShowMachineTypes()
         {
-            foreach (long machineId in machineTypes.Keys)
-            {
-                Console.WriteLine(machineTypes[machineId]);
-            }
+            machineTypes.Print();
         }
 
         /// <summary>
@@ -469,18 +281,9 @@ namespace ProductionSchedulerLibrary
         /// </summary>
         /// <returns></returns>
         public SFC_MachineType getRandomMachineType()
-        {
-            if (machineTypes.Count != 0)
-            {
-                int rand = ShopFloorModel.rnd.Next(1, machineTypes.Count + 1);
-                return machineTypes[rand];
-            }
-            else
-                return SFC_MachineType.NONE;
+        {  
+            return machineTypes.GetRandom();
         }
-
-
-
         #endregion
 
         #region work center type
@@ -507,10 +310,7 @@ namespace ProductionSchedulerLibrary
         /// </summary>
         public void ShowWorkCenterTypes()
         {
-            foreach (long workCenterId in workCenterTypes.Keys)
-            {
-                Console.WriteLine(items[workCenterId]);
-            }
+            workCenterTypes.Print();
         }
 
         /// <summary>
@@ -519,13 +319,7 @@ namespace ProductionSchedulerLibrary
         /// <returns></returns>
         public SFC_WorkCenterType getRandomWorkCenterType()
         {
-            if (workCenterTypes.Count != 0)
-            {
-                int rand = ShopFloorModel.rnd.Next(1, workCenterTypes.Count + 1);
-                return workCenterTypes[rand];
-            }
-            else
-                return SFC_WorkCenterType.NONE;
+            return workCenterTypes.GetRandom();
         }
         #endregion
 
@@ -553,10 +347,7 @@ namespace ProductionSchedulerLibrary
         /// </summary>
         public void ShowMachines()
         {
-            foreach (long machineId in machines.Keys)
-            {
-                Console.WriteLine(machines[machineId]);
-            }
+            machines.Print();
         }
 
         /// <summary>
@@ -565,14 +356,7 @@ namespace ProductionSchedulerLibrary
         /// <returns></returns>
         public SFC_Machine getRandomMachine()
         {
-            if (machines.Count != 0)
-            {
-                int rand = ShopFloorModel.rnd.Next(1, machines.Count + 1);
-                return machines[rand];
-            }
-            else
-                return SFC_Machine.NONE;
-
+            return machines.GetRandom();
         }
         #endregion
 
@@ -600,10 +384,7 @@ namespace ProductionSchedulerLibrary
         /// </summary>
         public void ShowWorkCenters()
         {
-            foreach (long workCenterId in workCenters.Keys)
-            {
-                Console.WriteLine(workCenters[workCenterId]);
-            }
+            workCenters.Print();
         }
 
         /// <summary>
@@ -612,14 +393,7 @@ namespace ProductionSchedulerLibrary
         /// <returns></returns>
         public SFC_WorkCenter getRandomWorkCenter()
         {
-            if (workCenters.Count != 0)
-            {
-                int rand = ShopFloorModel.rnd.Next(1, workCenters.Count + 1);
-                return workCenters[rand];
-            }
-            else
-                return SFC_WorkCenter.NONE;
-
+            return workCenters.GetRandom();
         }
         #endregion
 

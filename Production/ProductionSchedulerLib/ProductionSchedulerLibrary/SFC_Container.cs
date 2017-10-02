@@ -9,7 +9,7 @@ namespace ProductionSchedulerLibrary
     public class SFC_Container<T>
     {
         /// <summary>
-        /// The boms
+        /// The objs
         /// </summary>
         private readonly Dictionary<long, T> lists;
 
@@ -35,32 +35,31 @@ namespace ProductionSchedulerLibrary
         public long Next { get => Count + 1; }
 
         /// <summary>
-        /// Adds the bom.
+        /// Adds the obj.
         /// </summary>
-        /// <param name="bom">The bom.</param>
-        public void Add(long id, T bom)
+        /// <param name="obj">The obj.</param>
+        public void Add(long id, T obj)
         {
 
-            Lists.Add(id, bom);
+            Lists.Add(id, obj);
         }
 
-
-        public void Add(T bom)
+        public void Add(T obj)
         {
-            Lists.Add(Next, bom);
+            Lists.Add(Next, obj);
         }
 
         /// <summary>
-        /// Removes the bom.
+        /// Removes the obj.
         /// </summary>
-        /// <param name="bom">The bom.</param>
+        /// <param name="obj">The obj.</param>
         public void Remove(long id)
         {
             Lists.Remove(id);
         }
 
         /// <summary>
-        /// Shows the boms.
+        /// Shows the objs.
         /// </summary>
         public void Print()
         {
@@ -71,7 +70,7 @@ namespace ProductionSchedulerLibrary
         }
 
         /// <summary>
-        /// Gets the random bom.
+        /// Gets the random obj.
         /// </summary>
         /// <returns></returns>
         public T GetRandom()

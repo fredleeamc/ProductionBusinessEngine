@@ -73,6 +73,7 @@ namespace ModelLibrary
             this.WorkCenterTypes = new HashSet<WorkCenterType>();
             this.WorkOrders = new HashSet<WorkOrder>();
             this.WorkOrderDetails = new HashSet<WorkOrderDetail>();
+            this.RouterDetailsLinks = new HashSet<RouterDetailsLink>();
         }
     
         public long Id { get; set; }
@@ -219,5 +220,7 @@ namespace ModelLibrary
         public virtual ICollection<WorkOrder> WorkOrders { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<WorkOrderDetail> WorkOrderDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RouterDetailsLink> RouterDetailsLinks { get; set; }
     }
 }

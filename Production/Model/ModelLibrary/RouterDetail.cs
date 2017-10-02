@@ -18,6 +18,8 @@ namespace ModelLibrary
         public RouterDetail()
         {
             this.WorkOrderDetails = new HashSet<WorkOrderDetail>();
+            this.RouterDetailsLinks = new HashSet<RouterDetailsLink>();
+            this.RouterDetailsLinks1 = new HashSet<RouterDetailsLink>();
         }
     
         public long Id { get; set; }
@@ -38,5 +40,9 @@ namespace ModelLibrary
         public virtual ICollection<WorkOrderDetail> WorkOrderDetails { get; set; }
         public virtual Employee Employee { get; set; }
         public virtual RouterProcess RouterProcess { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RouterDetailsLink> RouterDetailsLinks { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RouterDetailsLink> RouterDetailsLinks1 { get; set; }
     }
 }

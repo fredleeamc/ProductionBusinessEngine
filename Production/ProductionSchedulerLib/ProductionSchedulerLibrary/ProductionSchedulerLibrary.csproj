@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SFC_Companies.cs" />
     <Compile Include="SFC_Customers.cs" />
     <Compile Include="SFC_BomComposite.cs" />
     <Compile Include="SFC_BomItem.cs" />
@@ -75,9 +76,14 @@
     <Compile Include="SFC_Item.cs" />
     <Compile Include="SFC_Machine.cs" />
     <Compile Include="SFC_MachineQueue.cs" />
+    <Compile Include="SFC_ProductBuildDetail.cs" />
     <Compile Include="SFC_ProductBuilds.cs" />
+    <Compile Include="SFC_Router.cs" />
+    <Compile Include="SFC_RouterDetail.cs" />
     <Compile Include="SFC_RouterProcess.cs" />
     <Compile Include="SFC_RouterProcessDetail.cs" />
+    <Compile Include="SFC_RouterProcesses.cs" />
+    <Compile Include="SFC_Routers.cs" />
     <Compile Include="SFC_Vendor.cs" />
     <Compile Include="SFC_Vendors.cs" />
     <Compile Include="SFC_WorkCenters.cs" />

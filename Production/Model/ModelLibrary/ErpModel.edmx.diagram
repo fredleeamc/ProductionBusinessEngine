@@ -239,6 +239,11 @@
         <AssociationConnector Association="ERPModel.FK_WorkCenter_WorkCenterGroupId" ManuallyRouted="false" />
         <AssociationConnector Association="ERPModel.FK_WorkCenter_WorkCenterTypeId" ManuallyRouted="false" />
         <AssociationConnector Association="ERPModel.FK_WorkOrderDetails_WorkOrderId" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ERPModel.RouterDetailsLink" Width="1.5" PointX="44" PointY="121.5" />
+        <AssociationConnector Association="ERPModel.FK_RouterDetailsLink_RouterId" />
+        <AssociationConnector Association="ERPModel.FK_RouterDetailsLink_RouterDetailsId" />
+        <AssociationConnector Association="ERPModel.FK_RouterDetailsLink_RouterDetailsId_0" />
+        <AssociationConnector Association="ERPModel.FK_RouterDetailsLink_EmployeeId" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

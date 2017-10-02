@@ -15,7 +15,7 @@ namespace ProductionSchedulerLibrary
         /// <summary>
         /// The shop control list
         /// </summary>
-        protected static Dictionary<long, ShopFloorModel> shopControlList = null;
+        private static Dictionary<long, ShopFloorModel> shopControlList = null;
 
         /// <summary>
         /// The instance SFC
@@ -46,8 +46,7 @@ namespace ProductionSchedulerLibrary
 
         }
 
-
-
+        public Dictionary<long, ShopFloorModel> Company { get => shopControlList; }
 
         #region shop floor model
         /// <summary>
@@ -81,6 +80,9 @@ namespace ProductionSchedulerLibrary
             return model;
         }
         #endregion
+
+
+
 
         #region customer
         /// <summary>

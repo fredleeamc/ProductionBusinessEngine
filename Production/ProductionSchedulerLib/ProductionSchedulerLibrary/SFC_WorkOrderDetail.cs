@@ -8,11 +8,11 @@ namespace ProductionSchedulerLibrary
 {
     public class SFC_WorkOrderDetail : IEquatable<SFC_WorkOrderDetail>, IComparable<SFC_WorkOrderDetail>
     {      
-        public readonly static SFC_WorkOrderDetail NONE = new SFC_WorkOrderDetail(0, 0, 0);
+        public readonly static SFC_WorkOrderDetail NONE = new SFC_WorkOrderDetail(0, 0);
 
         private readonly long id;
         private readonly long operationSequence;
-        private readonly long workOrderId;
+
         private long routerDetailsId;
         private decimal orderedQuantity;
         private decimal producedQuantity;
@@ -29,8 +29,6 @@ namespace ProductionSchedulerLibrary
 
         public long OperationSequence => operationSequence;
 
-        public long WorkOrderId => workOrderId;
-
         public long RouterDetails { get => routerDetailsId; set => routerDetailsId = value; }
         public decimal OrderedQuantity { get => orderedQuantity; set => orderedQuantity = value; }
         public decimal ProducedQuantity { get => producedQuantity; set => producedQuantity = value; }
@@ -43,11 +41,11 @@ namespace ProductionSchedulerLibrary
         public decimal EstimatedPackagingCost { get => estimatedPackagingCost; set => estimatedPackagingCost = value; }
         public decimal MachineCost { get => machineCost; set => machineCost = value; }
 
-        public SFC_WorkOrderDetail(long id, long operationSequence, long workOrderId)
+        public SFC_WorkOrderDetail(long id, long operationSequence)
         {
             this.id = id;
             this.operationSequence = operationSequence;
-            this.workOrderId = workOrderId;
+
         }
 
         public override bool Equals(object obj)

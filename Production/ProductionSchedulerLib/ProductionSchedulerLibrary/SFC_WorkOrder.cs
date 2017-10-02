@@ -99,6 +99,8 @@ namespace ProductionSchedulerLibrary
         /// </summary>
         private DateTime? scheduledCompletionDate;
 
+        private String refNo;
+
         /// <summary>
         /// The details
         /// </summary>
@@ -113,15 +115,29 @@ namespace ProductionSchedulerLibrary
         /// <param name="dueDate">The due date.</param>
         /// <param name="item">The item.</param>
         /// <param name="isReadyStart">if set to <c>true</c> [is ready start].</param>
-        public SFC_WorkOrder(long id, SFC_Customer customer, DateTime? targetCompletionDate, DateTime dueDate, SFC_Item item, bool isReadyStart)
+        public SFC_WorkOrder(long id, String workOrderNo, SFC_Customer customer, DateTime? targetCompletionDate, DateTime dueDate, SFC_Item item, bool isReadyStart)
         {
             this.id = id;
+            this.refNo = workOrderNo;
             this.customer = customer;
             this.targetCompletionDate = targetCompletionDate;
             this.dueDate = dueDate;
             this.item = item;
             this.isReadyStart = isReadyStart;
             details = new SortedList<long, SFC_WorkOrderDetail>();
+
+            this.unitPrice = 0;
+            this.estimatedUnitCost = 0;
+            this.estimatedTotalLaborHours = new DateTime(0);
+            this.estimatedTotalLaborCost = 0;
+            this.estimatedTotalMaterialCost = 0;
+            this.actualUnitCost = 0;
+            this.actualTotalLaborHours = new DateTime(0);
+            this.actualTotalLaborCost = 0;
+            this.actualTotalMaterialCost = 0;
+            this.estimatedProfit = 0;
+            this.scheduledStartDate = null;
+            this.scheduledCompletionDate = dueDate;
         }
 
         /// <summary>
@@ -170,6 +186,15 @@ namespace ProductionSchedulerLibrary
                 return SFC_WorkOrderDetail.NONE;
             }
         }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("WorkOrder: " + Id + "," + refNo + ",Cust:" + customer + ",Item:" + item + ",Qty:" + actualBuildQuantity + ",Lab:" + actualTotalLaborCost + ",Mat:" + actualTotalMaterialCost);
+            return sb.ToString();
+        }
+
+
 
 
         /// <summary>
@@ -315,5 +340,7 @@ namespace ProductionSchedulerLibrary
         /// The scheduled completion date.
         /// </value>
         public DateTime? ScheduledCompletionDate { get => scheduledCompletionDate; set => scheduledCompletionDate = value; }
+        public string RefNo { get => refNo; }
+        public string WorkOrderNo { get => refNo; }
     }
 }

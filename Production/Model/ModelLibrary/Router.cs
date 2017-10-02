@@ -24,6 +24,7 @@ namespace ModelLibrary
             this.RouterDetails = new HashSet<RouterDetail>();
             this.RouterDetails1 = new HashSet<RouterDetail>();
             this.RouterOutsideDetails = new HashSet<RouterOutsideDetail>();
+            this.RouterDetailsLinks = new HashSet<RouterDetailsLink>();
         }
     
         public long Id { get; set; }
@@ -97,5 +98,7 @@ namespace ModelLibrary
         public virtual ICollection<RouterDetail> RouterDetails1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RouterOutsideDetail> RouterOutsideDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RouterDetailsLink> RouterDetailsLinks { get; set; }
     }
 }

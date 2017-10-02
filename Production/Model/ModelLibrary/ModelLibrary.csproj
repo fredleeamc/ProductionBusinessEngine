@@ -175,6 +175,9 @@
     <Compile Include="RouterDetail.cs">
       <DependentUpon>ErpModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="RouterDetailsLink.cs">
+      <DependentUpon>ErpModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="RouterOutsideDetail.cs">
       <DependentUpon>ErpModel.tt</DependentUpon>
     </Compile>

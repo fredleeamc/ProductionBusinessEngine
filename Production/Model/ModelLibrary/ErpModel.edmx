@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ERPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ERPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Bom">
           <Key>
             <PropertyRef Name="Id" />
@@ -490,6 +490,19 @@
           <Property Name="ModifiedOn" Type="datetime2" Precision="7" />
           <Property Name="ModifiedByEmployeeId" Type="bigint" />
           <Property Name="ProcessName" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="RouterDetailsLink">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RouterId" Type="bigint" Nullable="false" />
+          <Property Name="HeadRouterDetailsId" Type="bigint" Nullable="false" />
+          <Property Name="TailRouterDetailsId" Type="bigint" />
+          <Property Name="ModifiedbyEmployeeId" Type="bigint" />
+          <Property Name="ModifiedOn" Type="datetime2" Precision="7" />
+          <Property Name="CreatedOn" Type="datetime2" Precision="7" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="RouterOutsideDetails">
           <Key>
@@ -2712,6 +2725,54 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_RouterDetailsLink_EmployeeId">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="RouterDetailsLink" Type="Self.RouterDetailsLink" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RouterDetailsLink">
+              <PropertyRef Name="ModifiedbyEmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RouterDetailsLink_RouterDetailsId">
+          <End Role="RouterDetails" Type="Self.RouterDetails" Multiplicity="1" />
+          <End Role="RouterDetailsLink" Type="Self.RouterDetailsLink" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RouterDetails">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RouterDetailsLink">
+              <PropertyRef Name="HeadRouterDetailsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RouterDetailsLink_RouterDetailsId_0">
+          <End Role="RouterDetails" Type="Self.RouterDetails" Multiplicity="0..1" />
+          <End Role="RouterDetailsLink" Type="Self.RouterDetailsLink" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RouterDetails">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RouterDetailsLink">
+              <PropertyRef Name="TailRouterDetailsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RouterDetailsLink_RouterId">
+          <End Role="Router" Type="Self.Router" Multiplicity="1" />
+          <End Role="RouterDetailsLink" Type="Self.RouterDetailsLink" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Router">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RouterDetailsLink">
+              <PropertyRef Name="RouterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_RouterOutsideDetails_EmployeeId">
           <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
           <End Role="RouterOutsideDetails" Type="Self.RouterOutsideDetails" Multiplicity="*" />
@@ -3419,6 +3480,7 @@
           <EntitySet Name="Router" EntityType="Self.Router" Schema="Engineering" store:Type="Tables" />
           <EntitySet Name="RouterAction" EntityType="Self.RouterAction" Schema="Engineering" store:Type="Tables" />
           <EntitySet Name="RouterDetails" EntityType="Self.RouterDetails" Schema="Engineering" store:Type="Tables" />
+          <EntitySet Name="RouterDetailsLink" EntityType="Self.RouterDetailsLink" Schema="Engineering" store:Type="Tables" />
           <EntitySet Name="RouterOutsideDetails" EntityType="Self.RouterOutsideDetails" Schema="Engineering" store:Type="Tables" />
           <EntitySet Name="RouterProcess" EntityType="Self.RouterProcess" Schema="Engineering" store:Type="Tables" />
           <EntitySet Name="RouterProcessDetails" EntityType="Self.RouterProcessDetails" Schema="Engineering" store:Type="Tables" />
@@ -3943,6 +4005,22 @@
             <End Role="RouterProcess" EntitySet="RouterProcess" />
             <End Role="RouterDetails" EntitySet="RouterDetails" />
           </AssociationSet>
+          <AssociationSet Name="FK_RouterDetailsLink_EmployeeId" Association="Self.FK_RouterDetailsLink_EmployeeId">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="RouterDetailsLink" EntitySet="RouterDetailsLink" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RouterDetailsLink_RouterDetailsId" Association="Self.FK_RouterDetailsLink_RouterDetailsId">
+            <End Role="RouterDetails" EntitySet="RouterDetails" />
+            <End Role="RouterDetailsLink" EntitySet="RouterDetailsLink" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RouterDetailsLink_RouterDetailsId_0" Association="Self.FK_RouterDetailsLink_RouterDetailsId_0">
+            <End Role="RouterDetails" EntitySet="RouterDetails" />
+            <End Role="RouterDetailsLink" EntitySet="RouterDetailsLink" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RouterDetailsLink_RouterId" Association="Self.FK_RouterDetailsLink_RouterId">
+            <End Role="Router" EntitySet="Router" />
+            <End Role="RouterDetailsLink" EntitySet="RouterDetailsLink" />
+          </AssociationSet>
           <AssociationSet Name="FK_RouterOutsideDetails_EmployeeId" Association="Self.FK_RouterOutsideDetails_EmployeeId">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="RouterOutsideDetails" EntitySet="RouterOutsideDetails" />
@@ -4172,8 +4250,7 @@
             <End Role="WorkOrderDetails" EntitySet="WorkOrderDetails" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ERPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -4752,6 +4829,7 @@
           <NavigationProperty Name="RouterDetails" Relationship="Self.FK_RouterDetails_RouterId" FromRole="Router" ToRole="RouterDetails" />
           <NavigationProperty Name="RouterDetails1" Relationship="Self.FK_RouterDetails_RouterId_Child" FromRole="Router" ToRole="RouterDetails" />
           <NavigationProperty Name="RouterOutsideDetails" Relationship="Self.FK_RouterOutsideDetails_RouterId" FromRole="Router" ToRole="RouterOutsideDetails" />
+          <NavigationProperty Name="RouterDetailsLinks" Relationship="ERPModel.FK_RouterDetailsLink_RouterId" FromRole="Router" ToRole="RouterDetailsLink" />
         </EntityType>
         <EntityType Name="RouterAction">
           <Key>
@@ -4786,6 +4864,8 @@
           <NavigationProperty Name="WorkOrderDetails" Relationship="Self.FK__WorkOrder__Route__6F170DA5" FromRole="RouterDetails" ToRole="WorkOrderDetails" />
           <NavigationProperty Name="Employee" Relationship="Self.FK_RouterDetails_EmployeeId" FromRole="RouterDetails" ToRole="Employee" />
           <NavigationProperty Name="RouterProcess" Relationship="Self.FK_RouterDetails_RouterProcessId" FromRole="RouterDetails" ToRole="RouterProcess" />
+          <NavigationProperty Name="RouterDetailsLinks" Relationship="ERPModel.FK_RouterDetailsLink_RouterDetailsId" FromRole="RouterDetail" ToRole="RouterDetailsLink" />
+          <NavigationProperty Name="RouterDetailsLinks1" Relationship="ERPModel.FK_RouterDetailsLink_RouterDetailsId_0" FromRole="RouterDetail" ToRole="RouterDetailsLink" />
         </EntityType>
         <EntityType Name="RouterOutsideDetail">
           <Key>
@@ -5238,6 +5318,7 @@
           <NavigationProperty Name="WorkCenterTypes" Relationship="Self.FK_WorkCenterType_ModifiedByEmployeeId" FromRole="Employee" ToRole="WorkCenterType" />
           <NavigationProperty Name="WorkOrders" Relationship="Self.FK_WorkOrder_ModifiedByEmployeeId" FromRole="Employee" ToRole="WorkOrder" />
           <NavigationProperty Name="WorkOrderDetails" Relationship="Self.FK_WorkOrderDetails_EmployeeId" FromRole="Employee" ToRole="WorkOrderDetails" />
+          <NavigationProperty Name="RouterDetailsLinks" Relationship="ERPModel.FK_RouterDetailsLink_EmployeeId" FromRole="Employee" ToRole="RouterDetailsLink" />
         </EntityType>
         <EntityType Name="ItemLocation">
           <Key>
@@ -8703,7 +8784,89 @@
             <End Role="WorkOrder" EntitySet="WorkOrders" />
             <End Role="WorkOrderDetails" EntitySet="WorkOrderDetails" />
           </AssociationSet>
+          <EntitySet Name="RouterDetailsLinks" EntityType="ERPModel.RouterDetailsLink" />
+          <AssociationSet Name="FK_RouterDetailsLink_RouterId" Association="ERPModel.FK_RouterDetailsLink_RouterId">
+            <End Role="Router" EntitySet="Routers" />
+            <End Role="RouterDetailsLink" EntitySet="RouterDetailsLinks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RouterDetailsLink_RouterDetailsId" Association="ERPModel.FK_RouterDetailsLink_RouterDetailsId">
+            <End Role="RouterDetail" EntitySet="RouterDetails" />
+            <End Role="RouterDetailsLink" EntitySet="RouterDetailsLinks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RouterDetailsLink_RouterDetailsId_0" Association="ERPModel.FK_RouterDetailsLink_RouterDetailsId_0">
+            <End Role="RouterDetail" EntitySet="RouterDetails" />
+            <End Role="RouterDetailsLink" EntitySet="RouterDetailsLinks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RouterDetailsLink_EmployeeId" Association="ERPModel.FK_RouterDetailsLink_EmployeeId">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="RouterDetailsLink" EntitySet="RouterDetailsLinks" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="RouterDetailsLink">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RouterId" Type="Int64" Nullable="false" />
+          <Property Name="HeadRouterDetailsId" Type="Int64" Nullable="false" />
+          <Property Name="TailRouterDetailsId" Type="Int64" />
+          <Property Name="ModifiedbyEmployeeId" Type="Int64" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="7" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="7" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Router" Relationship="ERPModel.FK_RouterDetailsLink_RouterId" FromRole="RouterDetailsLink" ToRole="Router" />
+          <NavigationProperty Name="RouterDetail" Relationship="ERPModel.FK_RouterDetailsLink_RouterDetailsId" FromRole="RouterDetailsLink" ToRole="RouterDetail" />
+          <NavigationProperty Name="RouterDetail1" Relationship="ERPModel.FK_RouterDetailsLink_RouterDetailsId_0" FromRole="RouterDetailsLink" ToRole="RouterDetail" />
+          <NavigationProperty Name="Employee" Relationship="ERPModel.FK_RouterDetailsLink_EmployeeId" FromRole="RouterDetailsLink" ToRole="Employee" />
+        </EntityType>
+        <Association Name="FK_RouterDetailsLink_RouterId">
+          <End Type="ERPModel.Router" Role="Router" Multiplicity="1" />
+          <End Type="ERPModel.RouterDetailsLink" Role="RouterDetailsLink" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Router">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RouterDetailsLink">
+              <PropertyRef Name="RouterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RouterDetailsLink_RouterDetailsId">
+          <End Type="ERPModel.RouterDetail" Role="RouterDetail" Multiplicity="1" />
+          <End Type="ERPModel.RouterDetailsLink" Role="RouterDetailsLink" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RouterDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RouterDetailsLink">
+              <PropertyRef Name="HeadRouterDetailsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RouterDetailsLink_RouterDetailsId_0">
+          <End Type="ERPModel.RouterDetail" Role="RouterDetail" Multiplicity="0..1" />
+          <End Type="ERPModel.RouterDetailsLink" Role="RouterDetailsLink" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RouterDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RouterDetailsLink">
+              <PropertyRef Name="TailRouterDetailsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RouterDetailsLink_EmployeeId">
+          <End Type="ERPModel.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="ERPModel.RouterDetailsLink" Role="RouterDetailsLink" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RouterDetailsLink">
+              <PropertyRef Name="ModifiedbyEmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -9992,6 +10155,20 @@
                 <ScalarProperty Name="ModifiedByEmployeeId" ColumnName="ModifiedByEmployeeId" />
                 <ScalarProperty Name="RouterDetailsId" ColumnName="RouterDetailsId" />
                 <ScalarProperty Name="OperationSequence" ColumnName="OperationSequence" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RouterDetailsLinks">
+            <EntityTypeMapping TypeName="ERPModel.RouterDetailsLink">
+              <MappingFragment StoreEntitySet="RouterDetailsLink">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedbyEmployeeId" ColumnName="ModifiedbyEmployeeId" />
+                <ScalarProperty Name="TailRouterDetailsId" ColumnName="TailRouterDetailsId" />
+                <ScalarProperty Name="HeadRouterDetailsId" ColumnName="HeadRouterDetailsId" />
+                <ScalarProperty Name="RouterId" ColumnName="RouterId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -75,6 +75,15 @@ namespace ProductionSchedulerLibrary
         /// The work centers
         /// </summary>
         private readonly SFC_WorkCenters workCenters;
+
+
+        private readonly SFC_ProductBuilds builds;
+
+        private readonly SFC_Routers routers;
+
+        private readonly SFC_WorkOrders workOrders;
+
+        private readonly SFC_Companies companies;
         #endregion
 
 
@@ -96,6 +105,14 @@ namespace ProductionSchedulerLibrary
 
         public SFC_WorkCenterTypes WorkCenterTypes => workCenterTypes;
 
+        public SFC_ProductBuilds Build => builds;
+
+        public SFC_Routers Routers => routers;
+
+        public SFC_WorkOrders WorkOrders => workOrders;
+
+        public SFC_Companies Companies => companies;
+
         #region constructor
         /// <summary>
         /// Initializes a new instance of the <see cref="ShopFloorModel"/> class.
@@ -115,6 +132,9 @@ namespace ProductionSchedulerLibrary
             this.workCenterTypes = new SFC_WorkCenterTypes();
             this.workCenters = new SFC_WorkCenters();
             this.boms = new SFC_Boms();
+            this.builds = new SFC_ProductBuilds();
+            this.routers = new SFC_Routers();
+            this.workOrders = new SFC_WorkOrders();
         }
         #endregion
 

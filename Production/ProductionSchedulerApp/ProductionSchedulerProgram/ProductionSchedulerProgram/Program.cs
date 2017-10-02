@@ -29,6 +29,10 @@ namespace ProductionSchedulerProgram
             ShopFloorControl shopFloor = ShopFloorControl.Instance;
             ShopSequenceGenerator seqGen = ShopSequenceGenerator.Instance;
             shopFloor.CreateShopFloorModel(company);
+            shopFloor.Company[company.Id].Companies.Add(company);
+
+
+
             #endregion
 
             //Task t1 = new Task(() =>
@@ -38,14 +42,28 @@ namespace ProductionSchedulerProgram
             seqGen.CreateNewSequence("EMP", 0);
             seqGen.FormatSpecifier("EMP", "{0:D8}", true);
             int employeeCount = 1000;
-            List<SFC_Employee> empList = new List<SFC_Employee>();
             for (int emp = 1; emp <= employeeCount; emp++)
             {
-                empList.Add(new SFC_Employee(seqGen.GetNext("EMP"), seqGen.GetPattern("EMP"), TextGenerator.RandomNames(), TextGenerator.RandomNames(1, 1), TextGenerator.RandomNames()));
+                SFC_Employee thisEmp = new SFC_Employee(seqGen.GetNext("EMP"), seqGen.GetPattern("EMP"), 
+                    TextGenerator.RandomNames(), TextGenerator.RandomNames(1, 1), TextGenerator.RandomNames());
+                shopFloor.Company[company.Id].Employees.Add(thisEmp);
             }
-            shopFloor.AddEmployeeList(company.Id, empList);
             #endregion
-            shopFloor.ShowEmployees(company.Id);
+            shopFloor.Company[company.Id].Employees.Print();
+
+            #region Add Employee
+            seqGen.CreateNewSequence("CUST", 0);
+            seqGen.FormatSpecifier("C", "{0:D8}", true);
+            int custCount = 1000;
+            for (int cust = 1; cust <= custCount; cust++)
+            {
+                SFC_Customer thisEmp = new SFC_Customer(seqGen.GetNext("EMP"), seqGen.GetPattern("EMP"),
+                    TextGenerator.RandomNames(), TextGenerator.RandomNames(1, 1), TextGenerator.RandomNames());
+                shopFloor.Company[company.Id].Employees.Add(thisEmp);
+            }
+            #endregion
+            shopFloor.Company[company.Id].Employees.Print();
+
             //           });
             //t1.Start();
 
@@ -58,14 +76,12 @@ namespace ProductionSchedulerProgram
                 #region Add Items
 
                 int itemCount = 10000;
-                List<SFC_Item> itemList = new List<SFC_Item>();
                 for (int itemId = 1; itemId <= itemCount; itemId++)
                 {
                     SFC_Item thisItem = new SFC_Item(seqGen.GetNext("RM"), seqGen.GetPattern("RM")+":"+TextGenerator.RandomNames());
-                    itemList.Add(thisItem);
+                    shopFloor.Company[company.Id].Items.Add(thisItem);
                 }
-                shopFloor.AddItemList(company.Id, itemList);
-                shopFloor.ShowItems(company.Id);
+                shopFloor.Company[company.Id].Items.Print();
 
             });
 
@@ -79,18 +95,17 @@ namespace ProductionSchedulerProgram
             Task t3 = new Task(() =>
             {
                 int lotBinCount = 500;
-                List<SFC_ItemLotBin> binList = new List<SFC_ItemLotBin>();
                 for (int bin = 1; bin <= lotBinCount; bin++)
                 {
-                    SFC_Item thisItem = shopFloor.getRandomItem(company.Id);
+                    SFC_Item thisItem = shopFloor.Company[company.Id].Items.GetRandom();
                     if (thisItem != null)
                     {
                         SFC_ItemLotBin thisBin = new SFC_ItemLotBin(seqGen.GetNext("Bin"), thisItem, "BEGIN", "BEGIN");
                         thisBin.ItemStatus.beginQuantity(1000);
-                        binList.Add(thisBin);
+                        shopFloor.Company[company.Id].LotBins.Add(thisBin);
                     }
                 }
-                shopFloor.AddBomList(1, binList);
+                shopFloor.Company[company.Id].LotBins.Print();
             });
 
             #endregion
@@ -102,7 +117,7 @@ namespace ProductionSchedulerProgram
                 int randomCount = 5000;
                 for (int i = 1; i < randomCount; i++)
                 {
-                    SFC_Item thisItem = shopFloor.getRandomItem(company.Id);
+                    SFC_Item thisItem = shopFloor.Company[company.Id].Items.GetRandom();
                     if (thisItem != null)
                     {
                         SFC_ItemLotBin thisBin = new SFC_ItemLotBin(seqGen.GetNext("BIN"), thisItem, seqGen.GetYYYYMMPattern("BIN"), TextGenerator.RandomNumbers(4));
@@ -119,7 +134,7 @@ namespace ProductionSchedulerProgram
                         thisBin.ItemStatus.scrapFromWarehouseQuantity(2);
                     }
                 }
-                shopFloor.ShowItemStatus(company.Id);
+                shopFloor.Company[company.Id].Items.PrintItemsStatus();
             });
             #endregion
             t2.Start();
@@ -137,12 +152,12 @@ namespace ProductionSchedulerProgram
             //{
 
             #region work center type
-            List<SFC_WorkCenterType> workCenterTypeList = new List<SFC_WorkCenterType>();
+
             SFC_WorkCenterType finite = new SFC_WorkCenterType(1, "FINITE");
             SFC_WorkCenterType infinite = new SFC_WorkCenterType(2, "INFINITE");
-            workCenterTypeList.Add(finite);
-            workCenterTypeList.Add(infinite);
-            shopFloor.AddWorkCenterTypes(company.Id, workCenterTypeList);
+
+            shopFloor.Company[company.Id].WorkCenterTypes.Add(finite);
+            shopFloor.Company[company.Id].WorkCenterTypes.Add(infinite);
             #endregion
 
             #region Add Machine type
@@ -152,44 +167,44 @@ namespace ProductionSchedulerProgram
             SFC_MachineType vmill = new SFC_MachineType(3, "V. Mill");
             SFC_MachineType rdrill = new SFC_MachineType(4, "Robo Drill");
             SFC_MachineType cutter = new SFC_MachineType(5, "Cutter");
-            machineTypeList.Add(lathe);
-            machineTypeList.Add(hmill);
-            machineTypeList.Add(vmill);
-            machineTypeList.Add(rdrill);
-            machineTypeList.Add(cutter);
 
-            shopFloor.AddMachineType(company.Id, machineTypeList);
+            shopFloor.Company[company.Id].MachineTypes.Add(lathe);
+            shopFloor.Company[company.Id].MachineTypes.Add(hmill);
+            shopFloor.Company[company.Id].MachineTypes.Add(vmill);
+            shopFloor.Company[company.Id].MachineTypes.Add(rdrill);
+            shopFloor.Company[company.Id].MachineTypes.Add(cutter);
+
             #endregion
 
             #region Add Work Center
             int workCenterCount = 100;
-            List<SFC_WorkCenter> workCenterList = new List<SFC_WorkCenter>();
             for (int workCenter = 1; workCenter <= workCenterCount; workCenter++)
             {
-                SFC_WorkCenterType mtype = shopFloor.getRandomWorkCenterType(company.Id);
+                SFC_WorkCenterType mtype = shopFloor.Company[company.Id].WorkCenterTypes.GetRandom();
                 SFC_WorkCenter thisWorkCenter = new SFC_WorkCenter(workCenter, "WC" + TextGenerator.RandomNumbers(3), finite);
-                thisWorkCenter.MachineType = shopFloor.getRandomMachineType(company.Id);
-                workCenterList.Add(thisWorkCenter);
+                thisWorkCenter.MachineType = shopFloor.Company[company.Id].MachineTypes.GetRandom();
+                shopFloor.Company[company.Id].WorkCenters.Add(thisWorkCenter);
             }
-            shopFloor.AddWorkCenters(company.Id, workCenterList);
             #endregion
 
             #region Add Machine
             int machineCount = 1000;
-            List<SFC_Machine> machineList = new List<SFC_Machine>();
             for (int machine = 1; machine <= machineCount; machine++)
             {
-                SFC_MachineType mtype = shopFloor.getRandomMachineType(company.Id);
+                SFC_MachineType mtype = shopFloor.Company[company.Id].MachineTypes.GetRandom();
                 SFC_Machine thisMachine = new SFC_Machine(machine, TextGenerator.RandomNumbers(3), mtype);
                 thisMachine.setWorkCenter(SFC_MachineType.GetRandomWorkCenter(mtype));
-                machineList.Add(thisMachine);
+                shopFloor.Company[company.Id].Machines.Add(thisMachine);
             }
-            shopFloor.AddMachines(company.Id, machineList);
-            #endregion
 
-            shopFloor.ShowMachineTypes(company.Id);
-            shopFloor.ShowMachines(company.Id);
-            shopFloor.ShowWorkCenters(company.Id);
+
+
+
+            #endregion
+            shopFloor.Company[company.Id].Machines.Print();
+            shopFloor.Company[company.Id].MachineTypes.Print();
+            shopFloor.Company[company.Id].WorkCenters.Print();
+
             //Thread.Sleep(1000);
             //});
 
@@ -239,7 +254,7 @@ namespace ProductionSchedulerProgram
             resistor.Add(metal);
             carbon.Add(meter);
 
-
+            shopFloor.Company[company.Id].Boms.Add(meterbom);
 
             Console.WriteLine(meterbom);
             Console.WriteLine("Count:" + meterbom.CountItems());
@@ -252,6 +267,9 @@ namespace ProductionSchedulerProgram
 
 
             Console.WriteLine("Bill of materials");
+
+            shopFloor.Company[company.Id].Boms.Print();
+
             foreach (KeyValuePair<SFC_Item, double> pair in meterbom.BuildBillOfMaterials())
             {
                 Console.WriteLine("{0}:{1}", pair.Key, pair.Value);

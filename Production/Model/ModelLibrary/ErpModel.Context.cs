@@ -79,5 +79,6 @@ namespace ModelLibrary
         public virtual DbSet<WorkCenterType> WorkCenterTypes { get; set; }
         public virtual DbSet<WorkOrder> WorkOrders { get; set; }
         public virtual DbSet<WorkOrderDetail> WorkOrderDetails { get; set; }
+        public virtual DbSet<RouterDetailsLink> RouterDetailsLinks { get; set; }
     }
 }

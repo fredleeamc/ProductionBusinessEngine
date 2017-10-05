@@ -75,13 +75,13 @@ namespace ProductionSchedulerLibrary
         {
             if (modelSequence.ContainsKey(prefix))
             {
-                return modelSequence[prefix].GetFormattedNext();
+                return modelSequence[prefix].GetFormatted();
             }
             else
             {
                 ModelSequencer seq = new ModelSequencer(prefix, 1);
                 modelSequence.Add(prefix, seq);
-                return modelSequence[prefix].GetFormattedNext();
+                return modelSequence[prefix].GetFormatted();
             }
         }
 

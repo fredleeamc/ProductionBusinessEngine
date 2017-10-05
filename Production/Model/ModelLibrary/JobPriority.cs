@@ -12,25 +12,17 @@ namespace ModelLibrary
     using System;
     using System.Collections.Generic;
     
-    public partial class BomOtherCostDetail
+    public partial class JobPriority
     {
-        public long Id { get; set; }
-        public Nullable<long> BomId { get; set; }
-        public Nullable<long> ItemSequence { get; set; }
-        public Nullable<long> AccountId { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
         public string Description { get; set; }
-        public Nullable<decimal> Quantity { get; set; }
-        public Nullable<long> UnitId { get; set; }
-        public Nullable<decimal> UnitCost { get; set; }
-        public Nullable<decimal> TotalCost { get; set; }
-        public Nullable<long> DocumentSetId { get; set; }
+        public Nullable<long> ModifiedByEmployeeId { get; set; }
+        public Nullable<System.DateTime> CreatedDate { get; set; }
         public bool IsDeleted { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
-        public Nullable<long> ModifiedByEmployeeId { get; set; }
     
-        public virtual Bom Bom { get; set; }
         public virtual Employee Employee { get; set; }
-        public virtual Unit Unit { get; set; }
     }
 }

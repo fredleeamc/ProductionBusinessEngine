@@ -34,5 +34,7 @@ namespace ModelLibrary
         public virtual ProductBuild ProductBuild { get; set; }
         public virtual Employee Employee { get; set; }
         public virtual Router Router { get; set; }
+        public virtual Currency Currency { get; set; }
+        public virtual CurrencyExchange CurrencyExchange { get; set; }
     }
 }

@@ -60,5 +60,8 @@ namespace ModelLibrary
         public virtual Vendor Vendor { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProductBuildMaterial> ProductBuildMaterials { get; set; }
+        public virtual Currency Currency { get; set; }
+        public virtual Unit Unit { get; set; }
+        public virtual CurrencyExchange CurrencyExchange { get; set; }
     }
 }

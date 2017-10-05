@@ -73,5 +73,7 @@ namespace ModelLibrary
         public virtual ICollection<ScheduledWorkOrder> ScheduledWorkOrders { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<WorkOrderDetail> WorkOrderDetails { get; set; }
+        public virtual Currency Currency { get; set; }
+        public virtual CurrencyExchange CurrencyExchange { get; set; }
     }
 }

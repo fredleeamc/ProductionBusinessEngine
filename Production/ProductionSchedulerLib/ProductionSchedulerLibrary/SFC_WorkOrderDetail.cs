@@ -77,6 +77,14 @@ namespace ProductionSchedulerLibrary
                 throw new ArgumentException("Object is not a SFC_WorkOrderDetail");
         }
 
+        public override int GetHashCode()
+        {
+            var hashCode = -1585217529;
+            hashCode = hashCode * -1521134295 + id.GetHashCode();
+            hashCode = hashCode * -1521134295 + operationSequence.GetHashCode();
+            return hashCode;
+        }
+
         public static bool operator ==(SFC_WorkOrderDetail detail1, SFC_WorkOrderDetail detail2)
         {
             return EqualityComparer<SFC_WorkOrderDetail>.Default.Equals(detail1, detail2);

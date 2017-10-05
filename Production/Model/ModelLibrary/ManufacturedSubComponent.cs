@@ -35,5 +35,6 @@ namespace ModelLibrary
         public virtual ManufacturedComponent ManufacturedComponent { get; set; }
         public virtual ManufacturedComponent ManufacturedComponent1 { get; set; }
         public virtual Employee Employee { get; set; }
+        public virtual Unit Unit { get; set; }
     }
 }

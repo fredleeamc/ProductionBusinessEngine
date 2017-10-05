@@ -19,7 +19,7 @@ namespace ProductionSchedulerLibrary
         {
             foreach (long id in Lists.Keys)
             {
-                Console.WriteLine(Lists[id]);
+                Console.Write(Lists[id]);
                 Console.WriteLine(Lists[id].ItemStatus);
             }
         }

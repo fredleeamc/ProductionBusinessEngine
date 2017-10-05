@@ -69,6 +69,15 @@
     <Compile Include="Company.cs">
       <DependentUpon>ErpModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ConversionUnit.cs">
+      <DependentUpon>ErpModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Currency.cs">
+      <DependentUpon>ErpModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CurrencyExchange.cs">
+      <DependentUpon>ErpModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Customer.cs">
       <DependentUpon>ErpModel.tt</DependentUpon>
     </Compile>
@@ -117,6 +126,9 @@
     <Compile Include="ItemStatu.cs">
       <DependentUpon>ErpModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="JobPriority.cs">
+      <DependentUpon>ErpModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Location.cs">
       <DependentUpon>ErpModel.tt</DependentUpon>
     </Compile>
@@ -139,6 +151,9 @@
       <DependentUpon>ErpModel.tt</DependentUpon>
     </Compile>
     <Compile Include="MfgConsumableType.cs">
+      <DependentUpon>ErpModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PrimeLoad.cs">
       <DependentUpon>ErpModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ProductBuild.cs">
@@ -214,6 +229,9 @@
     <Compile Include="ToolSetDetail.cs">
       <DependentUpon>ErpModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Unit.cs">
+      <DependentUpon>ErpModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Vendor.cs">
       <DependentUpon>ErpModel.tt</DependentUpon>
     </Compile>
@@ -237,7 +255,6 @@
     <None Include="App.Config" />
     <EntityDeploy Include="ErpModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ErpModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <None Include="ErpModel.edmx.diagram">
       <DependentUpon>ErpModel.edmx</DependentUpon>

@@ -28,9 +28,10 @@ namespace ProductionSchedulerLibrary
         /// Adds the specified component.
         /// </summary>
         /// <param name="component">The component.</param>
-        public override void Add(SFC_BomComponent component)
+        public override bool Add(SFC_BomComponent component)
         {
             Console.WriteLine("Cannot Add");
+            return false;
         }
 
         /// <summary>
@@ -40,7 +41,15 @@ namespace ProductionSchedulerLibrary
         /// <returns></returns>
         public override string Display(int depth)
         {
-            return new String('-', depth) + id + ":" + item + ":" + quantity + "\n";
+            String desc = id + ":" + item;
+            String num1 = String.Format("{0:F2}", Quantity);
+            String num2 = String.Format("{0:F2}", BomCost);
+            String num3 = String.Format("{0:F2}", UnitCost);
+            //StringBuilder sb = new StringBuilder();
+            //sb.Append(String.Format("{0:-20}{1,-40}{2,-40}", new String('-', depth) + "I", desc, num));
+            String dash = new String('-', this.Depth*2) + "I";
+            Console.WriteLine(String.Format("{0}|{1}|Qty{2}|${3}|${4}", dash.PadRight(20), desc.PadRight(30), num1.PadLeft(12), num3.PadLeft(12), num2.PadLeft(12)));
+            return ""; // sb.ToString();
         }
 
         /// <summary>
@@ -72,6 +81,11 @@ namespace ProductionSchedulerLibrary
             return 1;
         }
 
+        public override double Cost()
+        {
+            return this.UnitCost * this.Quantity;
+        }
+
         /// <summary>
         /// Estimateds the cost.
         /// </summary>
@@ -90,10 +104,22 @@ namespace ProductionSchedulerLibrary
             if (materials.ContainsKey(this.Item))
             {
                 materials[this.Item] += this.Quantity;
-            } else
+            }
+            else
             {
                 materials.Add(this.Item, this.Quantity);
             }
         }
+
+        public override void metrics(int idepth, ref double dcost, ref double dbomCost, ref double dqty)
+        {
+            this.Depth = idepth++;
+            dcost = this.UnitCost * this.Quantity;
+            dbomCost += this.UnitCost * this.Quantity;
+            dqty += this.Quantity;
+            this.BomCost = dcost;
+        }
+
     }
 }
+

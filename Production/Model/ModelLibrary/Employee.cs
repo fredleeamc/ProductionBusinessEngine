@@ -74,6 +74,12 @@ namespace ModelLibrary
             this.WorkOrders = new HashSet<WorkOrder>();
             this.WorkOrderDetails = new HashSet<WorkOrderDetail>();
             this.RouterDetailsLinks = new HashSet<RouterDetailsLink>();
+            this.ConversionUnits = new HashSet<ConversionUnit>();
+            this.Currencies = new HashSet<Currency>();
+            this.Units = new HashSet<Unit>();
+            this.CurrencyExchanges = new HashSet<CurrencyExchange>();
+            this.JobPriorities = new HashSet<JobPriority>();
+            this.PrimeLoads = new HashSet<PrimeLoad>();
         }
     
         public long Id { get; set; }
@@ -222,5 +228,17 @@ namespace ModelLibrary
         public virtual ICollection<WorkOrderDetail> WorkOrderDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RouterDetailsLink> RouterDetailsLinks { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ConversionUnit> ConversionUnits { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Currency> Currencies { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Unit> Units { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CurrencyExchange> CurrencyExchanges { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<JobPriority> JobPriorities { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PrimeLoad> PrimeLoads { get; set; }
     }
 }

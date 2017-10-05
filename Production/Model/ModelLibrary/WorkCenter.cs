@@ -69,5 +69,7 @@ namespace ModelLibrary
         public virtual ToolSet ToolSet { get; set; }
         public virtual WorkCenterGroup WorkCenterGroup { get; set; }
         public virtual WorkCenterType WorkCenterType { get; set; }
+        public virtual Unit Unit { get; set; }
+        public virtual Unit Unit1 { get; set; }
     }
 }

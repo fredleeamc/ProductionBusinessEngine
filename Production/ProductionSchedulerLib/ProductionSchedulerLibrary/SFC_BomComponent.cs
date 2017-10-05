@@ -46,6 +46,8 @@ namespace ProductionSchedulerLibrary
         /// </summary>
         private string unit;
 
+        private int depth;
+
         /// <summary>
         /// The parent
         /// </summary>
@@ -93,6 +95,7 @@ namespace ProductionSchedulerLibrary
         /// The bom cost.
         /// </value>
         public double BomCost { get => bomCost; set => bomCost = value; }
+        public int Depth { get => depth; set => depth = value; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SFC_BomComponent"/> class.
@@ -109,11 +112,16 @@ namespace ProductionSchedulerLibrary
             parent = null;
         }
 
+        public abstract double Cost();
+
+        public abstract void metrics(int idepth, ref double dcost, ref double dbomCost, ref double dqty);
+
+
         /// <summary>
         /// Adds the specified component.
         /// </summary>
         /// <param name="component">The component.</param>
-        public abstract void Add(SFC_BomComponent component);
+        public abstract bool Add(SFC_BomComponent component);
         /// <summary>
         /// Removes the specified component.
         /// </summary>
@@ -167,7 +175,7 @@ namespace ProductionSchedulerLibrary
         public bool IsCircular(SFC_BomComponent child)
         {
             bool result = false;
-            if (!this.Equals(child))
+            if (!this.Equals(child) || this.item.Equals(child.Item))
             {
                 SFC_BomComposite thisObj = this as SFC_BomComposite;
                 if (thisObj != null)
@@ -175,7 +183,7 @@ namespace ProductionSchedulerLibrary
                     SFC_BomComposite parentHist = thisObj;
                     while (parentHist != null)
                     {
-                        if (child.Equals(parentHist))
+                        if (child.Equals(parentHist) || (child.Item.Equals(parentHist.Item)))
                         {
                             result = true;
                             break;

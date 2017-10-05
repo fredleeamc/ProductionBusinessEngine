@@ -43,5 +43,7 @@ namespace ModelLibrary
         public virtual Item Item { get; set; }
         public virtual Employee Employee { get; set; }
         public virtual MfgConsumableType MfgConsumableType { get; set; }
+        public virtual Currency Currency { get; set; }
+        public virtual CurrencyExchange CurrencyExchange { get; set; }
     }
 }

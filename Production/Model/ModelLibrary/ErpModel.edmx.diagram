@@ -244,6 +244,69 @@
         <AssociationConnector Association="ERPModel.FK_RouterDetailsLink_RouterDetailsId" />
         <AssociationConnector Association="ERPModel.FK_RouterDetailsLink_RouterDetailsId_0" />
         <AssociationConnector Association="ERPModel.FK_RouterDetailsLink_EmployeeId" />
+        <EntityTypeShape EntityType="ERPModel.ConversionUnit" Width="1.5" PointX="14.25" PointY="100.375" />
+        <EntityTypeShape EntityType="ERPModel.Currency" Width="1.5" PointX="14.25" PointY="130.5" />
+        <EntityTypeShape EntityType="ERPModel.Unit" Width="1.5" PointX="14.25" PointY="138.625" />
+        <EntityTypeShape EntityType="ERPModel.CurrencyExchange" Width="1.5" PointX="24.5" PointY="127.625" />
+        <AssociationConnector Association="ERPModel.FK_ConversionUnit_ModifiedByEmployeeId" />
+        <AssociationConnector Association="ERPModel.FK_Bom_CurrencyId" />
+        <AssociationConnector Association="ERPModel.FK_BomDetails_CurrencyId" />
+        <AssociationConnector Association="ERPModel.FK_Currency_ModifiedByEmployeeId" />
+        <AssociationConnector Association="ERPModel.FK_CurrencyExchange_SourceCurrencyId" />
+        <AssociationConnector Association="ERPModel.FK_CurrencyExchange_TargetCurrencyId" />
+        <AssociationConnector Association="ERPModel.FK_Customer_CurrencyId" />
+        <AssociationConnector Association="ERPModel.FK_ItemLotBin_CurrencyId" />
+        <AssociationConnector Association="ERPModel.FK_ItemSerial_CurrencyId" />
+        <AssociationConnector Association="ERPModel.FK_Machine_CurrencyId" />
+        <AssociationConnector Association="ERPModel.FK_ManufacturedComponent_CurrencyId" />
+        <AssociationConnector Association="ERPModel.FK_MfgConsumable_CurrencyId" />
+        <AssociationConnector Association="ERPModel.FK_ProductBuild_CurrencyId" />
+        <AssociationConnector Association="ERPModel.FK_ProductBuildDevelopmentLabor_CurrencyId" />
+        <AssociationConnector Association="ERPModel.FK_ProductBuildDraft_CurrencyId" />
+        <AssociationConnector Association="ERPModel.FK_Router_CurrencyId" />
+        <AssociationConnector Association="ERPModel.FK_RouterProcess_CurrencyId" />
+        <AssociationConnector Association="ERPModel.FK_RouterProcessDetails_CurrencyId" />
+        <AssociationConnector Association="ERPModel.FK_StockMovement_CurrencyId" />
+        <AssociationConnector Association="ERPModel.FK_Vendor_CurrencyId" />
+        <AssociationConnector Association="ERPModel.FK_WorkOrder_CurrencyId" />
+        <AssociationConnector Association="ERPModel.FK_Bom_UnitId" />
+        <AssociationConnector Association="ERPModel.FK_BomDetails_UnitId" />
+        <AssociationConnector Association="ERPModel.FK_BomOtherCostDetails_UnitId" />
+        <AssociationConnector Association="ERPModel.FK_FamilyRouterLink_UnitId" />
+        <AssociationConnector Association="ERPModel.FK_Item_UnitId" />
+        <AssociationConnector Association="ERPModel.FK_ItemLotBin_UnitId" />
+        <AssociationConnector Association="ERPModel.FK_ManufacturedComponent_UnitId" />
+        <AssociationConnector Association="ERPModel.FK_ManufacturedSubComponent_UnitId" />
+        <AssociationConnector Association="ERPModel.FK_ProductBuild_UnitId" />
+        <AssociationConnector Association="ERPModel.FK_ProductBuildDraft_UnitId" />
+        <AssociationConnector Association="ERPModel.FK_RouterProcessDetails_MachineUnitId" />
+        <AssociationConnector Association="ERPModel.FK_RouterProcessDetails_RunUnitId" />
+        <AssociationConnector Association="ERPModel.FK_RouterProcessDetails_SetupUnitId" />
+        <AssociationConnector Association="ERPModel.FK_RouterProcessDetails_UnitId" />
+        <AssociationConnector Association="ERPModel.FK_Unit_ModifiedByEmployeeId" />
+        <AssociationConnector Association="ERPModel.FK_WorkCenter_RunLaborUnitId" />
+        <AssociationConnector Association="ERPModel.FK_WorkCenter_SetupLaborUnitId" />
+        <AssociationConnector Association="ERPModel.FK_Bom_CurrencyExchangeId" />
+        <AssociationConnector Association="ERPModel.FK_BomDetails_CurrencyExchangeId" />
+        <AssociationConnector Association="ERPModel.FK_ManufacturedComponent_CurrencyExchangeId" />
+        <AssociationConnector Association="ERPModel.FK_ProductBuild_CurrencyExchangeId" />
+        <AssociationConnector Association="ERPModel.FK_ProductBuildDevelopmentLabor_CurrencyExchangeId" />
+        <AssociationConnector Association="ERPModel.FK_ProductBuildDraft_CurrencyExchangeId" />
+        <AssociationConnector Association="ERPModel.FK_Router_CurrencyExchangeId" />
+        <AssociationConnector Association="ERPModel.FK_RouterProcess_CurrencyExchangeId" />
+        <AssociationConnector Association="ERPModel.FK_RouterProcessDetails_CurrencyExchangeId" />
+        <AssociationConnector Association="ERPModel.FK_CurrencyExchange_CompanyId" />
+        <AssociationConnector Association="ERPModel.FK_CurrencyExchange_ModifiedByEmployeeId" />
+        <AssociationConnector Association="ERPModel.FK_ItemLotBin_CurrencyExchangeId" />
+        <AssociationConnector Association="ERPModel.FK_ItemSerial_CurrencyExchangeId" />
+        <AssociationConnector Association="ERPModel.FK_Machine_CurrencyExchangeId" />
+        <AssociationConnector Association="ERPModel.FK_MfgConsumable_CurrencyExchangeId" />
+        <AssociationConnector Association="ERPModel.FK_StockMovement_CurrencyExchangeId" />
+        <AssociationConnector Association="ERPModel.FK_WorkOrder_CurrencyExchangeId" />
+        <EntityTypeShape EntityType="ERPModel.JobPriority" Width="1.5" PointX="14.25" PointY="96.75" />
+        <EntityTypeShape EntityType="ERPModel.PrimeLoad" Width="1.5" PointX="14.25" PointY="93.25" />
+        <AssociationConnector Association="ERPModel.FK_JobPriority_ModifiedByEmployeeId" />
+        <AssociationConnector Association="ERPModel.FK__PrimeLoad__Modif__70FF5617" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

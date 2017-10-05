@@ -28,5 +28,6 @@ namespace ModelLibrary
         public virtual FamilyRouter FamilyRouter { get; set; }
         public virtual Employee Employee { get; set; }
         public virtual Router Router { get; set; }
+        public virtual Unit Unit { get; set; }
     }
 }

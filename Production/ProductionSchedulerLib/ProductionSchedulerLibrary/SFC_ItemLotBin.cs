@@ -106,7 +106,7 @@ namespace ProductionSchedulerLibrary
         /// </returns>
         public override string ToString()
         {
-            return "Lotbin:" + id + "," + itemId + "," + lotNo + "," + binNo;
+            return "Lotbin:" + id + "," + itemId + "," + lotNo + "," + batchNo;
         }
     }
 }

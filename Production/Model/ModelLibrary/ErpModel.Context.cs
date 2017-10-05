@@ -80,5 +80,11 @@ namespace ModelLibrary
         public virtual DbSet<WorkOrder> WorkOrders { get; set; }
         public virtual DbSet<WorkOrderDetail> WorkOrderDetails { get; set; }
         public virtual DbSet<RouterDetailsLink> RouterDetailsLinks { get; set; }
+        public virtual DbSet<ConversionUnit> ConversionUnits { get; set; }
+        public virtual DbSet<Currency> Currencies { get; set; }
+        public virtual DbSet<Unit> Units { get; set; }
+        public virtual DbSet<CurrencyExchange> CurrencyExchanges { get; set; }
+        public virtual DbSet<JobPriority> JobPriorities { get; set; }
+        public virtual DbSet<PrimeLoad> PrimeLoads { get; set; }
     }
 }

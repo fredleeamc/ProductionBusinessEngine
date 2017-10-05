@@ -48,5 +48,6 @@ namespace ModelLibrary
         public virtual Company Company { get; set; }
         public virtual Company Company1 { get; set; }
         public virtual Employee Employee { get; set; }
+        public virtual Currency Currency { get; set; }
     }
 }

@@ -46,5 +46,6 @@ namespace ModelLibrary
         public virtual Employee Employee { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<WorkOrder> WorkOrders { get; set; }
+        public virtual Currency Currency { get; set; }
     }
 }

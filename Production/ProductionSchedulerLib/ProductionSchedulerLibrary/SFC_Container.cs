@@ -18,9 +18,7 @@ namespace ProductionSchedulerLibrary
             lists = new Dictionary<long, T>();           
         }
 
-        private Dictionary<long, T>.KeyCollection keys;
-
-        public Dictionary<long, T>.KeyCollection Keys { get => keys; }
+        public Dictionary<long, T>.KeyCollection Keys { get => lists.Keys; }
 
         /// <summary>
         /// Gets the lists.
@@ -67,6 +65,14 @@ namespace ProductionSchedulerLibrary
             {
                 Console.WriteLine(Lists[id]);
             }
+        }
+
+        public T Get(long index) 
+        {
+            if (Lists.ContainsKey(index))
+                return Lists[index];
+            else
+                return default(T);
         }
 
         /// <summary>

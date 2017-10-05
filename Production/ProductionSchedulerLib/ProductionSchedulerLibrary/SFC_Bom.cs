@@ -38,6 +38,23 @@ namespace ProductionSchedulerLibrary
         /// </summary>
         private Dictionary<SFC_Item, double> materials;
 
+        private double totalQuantity;
+
+        private double totalBomCost;
+
+        public long? CurrencyExchangeId;
+        public long? CurrencyId;
+        public long? UnitId;
+        public string EngineeringChangeStatusId;
+        public string BomItemTypeId;
+        public decimal? EstimatedTotalCost;
+        public decimal? EstimatedMateriallCost;
+        public decimal? EstimatedMfgConsumableCost;
+        public double? PercentScrap;
+        public decimal? EstimatedOtherCost;
+        public decimal? CalculatedCostPerUnit;
+
+
         /// <summary>
         /// Gets the identifier.
         /// </summary>
@@ -53,6 +70,8 @@ namespace ProductionSchedulerLibrary
         /// The name of the part.
         /// </value>
         public string PartName => partName;
+
+ 
 
         /// <summary>
         /// Gets the part no.
@@ -70,7 +89,10 @@ namespace ProductionSchedulerLibrary
 
         public SFC_BomComposite ThisBom => thisBom;
 
-        
+        public double TotalQuantity { get => totalQuantity; set => totalQuantity = value; }
+        public double TotalBomCost { get => totalBomCost; set => totalBomCost = value; }
+
+
         /// <summary>
         /// Initializes a new instance of the <see cref="SFC_Bom"/> class.
         /// </summary>
@@ -84,6 +106,8 @@ namespace ProductionSchedulerLibrary
             this.partName = partName;
             this.partNo = partNo;
             this.thisBom = bom;
+            this.totalBomCost = 0;
+            this.totalQuantity = 0;
             materials = new Dictionary<SFC_Item, double>();
         }
 
@@ -98,9 +122,34 @@ namespace ProductionSchedulerLibrary
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("BOM(" + PartName + ":" + PartNo + "):\n");
-            sb.Append(this.thisBom.Display(1));
+            sb.Append("BOM(" + PartName + ":" + PartNo + "): Items:" + this.CountItems() + "\n");
+            //sb.Append(this.thisBom.Display(1));
             return sb.ToString();
+        }
+
+
+        public void DisplayBom()
+        {
+            Calculate();
+            //StringBuilder sb = new StringBuilder();
+            //sb.Append("BOM(" + PartName + ":" + PartNo + "): Items:" + this.CountItems() + "\n");
+            //sb.Append(this.thisBom.Display(1));
+            //Console.WriteLine(sb.ToString());
+
+            Console.WriteLine("BOM(" + PartName + ":" + PartNo + ") | Items:" + this.CountItems() + "| Total:"+this.TotalBomCost+ "| Qty:"+this.TotalQuantity);
+            this.thisBom.Display(1);
+            Console.WriteLine();
+        }
+
+
+        public void Calculate()
+        {
+            double totalBomCost = 0;
+            double levelBomCost = 0;
+            double totalQty = 0;
+            this.thisBom.metrics(1, ref levelBomCost, ref totalBomCost, ref totalQty);
+            this.totalBomCost = totalBomCost;
+            this.totalQuantity = totalQty;
         }
 
         /// <summary>
@@ -131,11 +180,18 @@ namespace ProductionSchedulerLibrary
             return items;
         }
 
+
+        public void PrintBillOfMaterials()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("BILL BOM(" + PartName + ":" + PartNo + "):\r\n");
+           
+            IEnumerable <KeyValuePair<SFC_Item, double>> pairs = this.BuildBillOfMaterials();
+            foreach (KeyValuePair<SFC_Item, double> pair in pairs)
+            {
+                sb.Append(String.Format("{0}:{1} \n", pair.Key, pair.Value));
+            }
+            Console.WriteLine(sb.ToString());
+        }
     }
-
-
-
-
-
-
 }

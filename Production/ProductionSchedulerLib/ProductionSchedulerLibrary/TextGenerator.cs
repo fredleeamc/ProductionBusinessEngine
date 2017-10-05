@@ -58,6 +58,16 @@ namespace ProductionSchedulerLibrary
         }
 
         /// <summary>
+        /// Randoms the int.
+        /// </summary>
+        /// <param name="size">The size.</param>
+        /// <returns></returns>
+        public static double RandomDouble(int size)
+        {
+            return rnd.NextDouble() * size + rnd.NextDouble();
+        }
+
+        /// <summary>
         /// Randoms the string.
         /// </summary>
         /// <param name="size">The size.</param>

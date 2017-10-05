@@ -48,6 +48,7 @@ namespace ModelLibrary
             this.WorkCenterGroups = new HashSet<WorkCenterGroup>();
             this.WorkCenterTypes = new HashSet<WorkCenterType>();
             this.WorkOrders = new HashSet<WorkOrder>();
+            this.CurrencyExchanges = new HashSet<CurrencyExchange>();
         }
     
         public long Id { get; set; }
@@ -128,5 +129,7 @@ namespace ModelLibrary
         public virtual ICollection<WorkCenterType> WorkCenterTypes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<WorkOrder> WorkOrders { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CurrencyExchange> CurrencyExchanges { get; set; }
     }
 }

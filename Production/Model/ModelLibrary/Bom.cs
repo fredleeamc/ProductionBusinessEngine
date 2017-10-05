@@ -57,6 +57,7 @@ namespace ModelLibrary
         public Nullable<System.DateTime> ModifiedOn { get; set; }
         public Nullable<long> DiagramId { get; set; }
         public bool IsCompleted { get; set; }
+        public Nullable<decimal> TargetQuantity { get; set; }
     
         public virtual BomItemType BomItemType { get; set; }
         public virtual Company Company { get; set; }
@@ -76,5 +77,8 @@ namespace ModelLibrary
         public virtual ICollection<BomOtherCostDetail> BomOtherCostDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProductBuildBomLink> ProductBuildBomLinks { get; set; }
+        public virtual Currency Currency { get; set; }
+        public virtual Unit Unit { get; set; }
+        public virtual CurrencyExchange CurrencyExchange { get; set; }
     }
 }

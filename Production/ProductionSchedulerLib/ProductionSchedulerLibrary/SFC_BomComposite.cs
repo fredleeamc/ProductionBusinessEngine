@@ -23,7 +23,7 @@ namespace ProductionSchedulerLibrary
         /// <param name="id">The identifier.</param>
         /// <param name="item">The item.</param>
         /// <param name="qty">The qty.</param>
-        public SFC_BomComposite(long id, SFC_Item item, long qty) : base(id, item, qty)
+        public SFC_BomComposite(long id, SFC_Item item, double qty) : base(id, item, qty)
         {
             children = new List<SFC_BomComponent>();
             this.isLeaf = false;
@@ -34,17 +34,31 @@ namespace ProductionSchedulerLibrary
         /// Adds the specified component.
         /// </summary>
         /// <param name="component">The component.</param>
-        public override void Add(SFC_BomComponent component)
+        public override bool Add(SFC_BomComponent component)
         {
             if (!this.IsCircular(component))
             {
                 component.SetParent(this);
                 children.Add(component);
+                //this.BomCost = this.Cost();
+                return true;
             }
             else
             {
-                Console.WriteLine(this.Item.ItemCode + "<-" + component.Item.ItemCode + " is circular.");
+                //Console.WriteLine(this.Item.ItemCode + "<-" + component.Item.ItemCode + " is circular.");
+                return false;
             }
+        }
+
+        public override double Cost()
+        {
+            double nCost = 0;
+            foreach (SFC_BomComponent component in children)
+            {
+                nCost += component.Cost();
+            }
+            this.BomCost = nCost;
+            return nCost;
         }
 
 
@@ -56,15 +70,21 @@ namespace ProductionSchedulerLibrary
         /// <returns></returns>
         public override string Display(int depth)
         {
-
-            StringBuilder sb = new StringBuilder();
-            sb.Append(new String('-', depth) + Id + ":" + Item + ":" + Quantity + "\n");
-            // Recursively display child nodes
+            String desc = id + ":" + item;
+            String num1 = String.Format("{0:F2}", Quantity);
+            String num2 = String.Format("{0:F2}", BomCost);
+            String num3 = String.Format("{0:F2}", UnitCost);
+            //StringBuilder sb = new StringBuilder();
+            //sb.Append(String.Format("{0:-20}{1,-40}{2,-40}", new String('-', depth) + "I", desc, num));
+            String dash = new String('*', this.Depth * 2) + "C";
+            Console.WriteLine(String.Format("{0}|{1}|Qty{2}|${3}|${4}", dash.PadRight(20), desc.PadRight(30), num1.PadLeft(12), num3.PadLeft(12), num2.PadLeft(12)));
+            
             foreach (SFC_BomComponent component in children)
             {
-                sb.Append(component.Display(depth + 2));
+                //sb.Append(component.Display(depth + 2));
+                component.Display(depth + 2);
             }
-            return sb.ToString();
+            return ""; //sb.ToString();
         }
 
         /// <summary>
@@ -147,6 +167,21 @@ namespace ProductionSchedulerLibrary
             {
                 component.BillOfMaterials(ref materials);
             }
+        }
+
+        public override void metrics(int idepth, ref double dcost, ref double dbomCost, ref double dqty)
+        {
+            this.Depth = idepth + 1;
+            double cost = 0;
+            double bqty = 0;
+            foreach (SFC_BomComponent component in children)
+            {
+                component.metrics(this.Depth, ref dcost, ref dbomCost, ref bqty);
+                cost += dcost;
+            }
+            this.UnitCost = cost;
+            this.BomCost = cost * this.Quantity;
+            dcost = this.BomCost;
         }
     }
 }

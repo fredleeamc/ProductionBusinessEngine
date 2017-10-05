@@ -43,6 +43,22 @@ namespace ProductionSchedulerLibrary
         /// </summary>
         private SFC_BomComposite bom;
 
+        private string revision;
+        private decimal? actualCost;
+        private decimal? lastCost;
+        private decimal? materialCost;
+        private decimal? laborCost;
+        private decimal? overheadCost;
+        private bool inactive;
+        private long stockingUnitId;
+        private bool isSold;
+        private bool isBought;
+        private bool isMfgComponent;
+        private bool isMfgConsumable;
+        private bool isObsolete;
+        private string shortDescription;
+        private bool isService;
+
 
         /// <summary>
         /// Gets a value indicating whether this instance is bom.
@@ -91,6 +107,23 @@ namespace ProductionSchedulerLibrary
         /// The bins.
         /// </value>
         public List<SFC_ItemLotBin> Bins => bins;
+
+
+        public string Revision { get => revision; set => revision = value; }
+        public decimal? ActualCost { get => actualCost; set => actualCost = value; }
+        public decimal? LastCost { get => lastCost; set => lastCost = value; }
+        public decimal? MaterialCost { get => materialCost; set => materialCost = value; }
+        public decimal? LaborCost { get => laborCost; set => laborCost = value; }
+        public decimal? OverheadCost { get => overheadCost; set => overheadCost = value; }
+        public bool Inactive { get => inactive; set => inactive = value; }
+        public long StockingUnitId { get => stockingUnitId; set => stockingUnitId = value; }
+        public bool IsSold { get => isSold; set => isSold = value; }
+        public bool IsBought { get => isBought; set => isBought = value; }
+        public bool IsMfgComponent { get => isMfgComponent; set => isMfgComponent = value; }
+        public bool IsMfgConsumable { get => isMfgConsumable; set => isMfgConsumable = value; }
+        public bool IsObsolete { get => isObsolete; set => isObsolete = value; }
+        public string ShortDescription { get => shortDescription; set => shortDescription = value; }
+        public bool IsService { get => isService; set => isService = value; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SFC_Item"/> class.
@@ -145,7 +178,7 @@ namespace ProductionSchedulerLibrary
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append(id + "," + itemCode + ":");
+            sb.Append(id + "," + itemCode);
             //sb.Append(String.Format("{0, 40}|{1,10}|<{2,10}|{3,10}|{4,10}>|<{5,10}|{6,10}|{7, 10}|{8,10}>|{9,10}|{10,10}|{11,10}|{12,10}|{13,10}\n",
             //    "Begin","Receive", "On Hand", "PO", "Used", "Production", "Allocated", "Reserved", "Available", "Required", "Scrap", "Returns", "Adjust In", "Adjust Out"));
             //sb.Append(String.Format("{0,29}:", "Total") + itemStatus +"\n");

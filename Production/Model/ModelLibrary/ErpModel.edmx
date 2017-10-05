@@ -5,6 +5,78 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="ERPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ConversionUnit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FromUnit" Type="bigint" Nullable="false" />
+          <Property Name="FromUnitText" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="ToUnit" Type="bigint" Nullable="false" />
+          <Property Name="ToUnitText" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="ConversionFactor" Type="decimal" Precision="26" Scale="6" Nullable="false" />
+          <Property Name="ModifiedByEmployeeId" Type="bigint" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime2" Precision="7" />
+          <Property Name="ModifiedOn" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="Currency">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Symbol" Type="nvarchar" MaxLength="10" />
+          <Property Name="DecimalSymbol" Type="nvarchar" MaxLength="1" />
+          <Property Name="SeparatorSymbol" Type="nvarchar" MaxLength="1" />
+          <Property Name="NegativeFormat" Type="nvarchar" MaxLength="10" />
+          <Property Name="PositiveFormat" Type="nvarchar" MaxLength="10" />
+          <Property Name="IsoCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="ModifiedByEmployeeId" Type="bigint" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime2" Precision="7" />
+          <Property Name="ModifiedOn" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="JobPriority">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="255" />
+          <Property Name="ModifiedByEmployeeId" Type="bigint" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime2" Precision="7" />
+          <Property Name="ModifiedOn" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="PrimeLoad">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="ModifiedbyEmployeeId" Type="bigint" />
+          <Property Name="ModifiedOn" Type="datetime2" Precision="7" />
+          <Property Name="CreatedOn" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="Unit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UnitCategory" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="UnitVal" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="20" />
+          <Property Name="ModifiedByEmployeeId" Type="bigint" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime2" Precision="7" />
+          <Property Name="ModifiedOn" Type="datetime2" Precision="7" />
+        </EntityType>
         <EntityType Name="Bom">
           <Key>
             <PropertyRef Name="Id" />
@@ -41,6 +113,7 @@
           <Property Name="ModifiedOn" Type="datetime2" Precision="7" />
           <Property Name="DiagramId" Type="bigint" />
           <Property Name="IsCompleted" Type="bit" Nullable="false" />
+          <Property Name="TargetQuantity" Type="decimal" Precision="26" Scale="6" />
         </EntityType>
         <EntityType Name="BomDetails">
           <Key>
@@ -633,6 +706,27 @@
           <Property Name="ModifiedOn" Type="datetime2" Precision="7" />
           <Property Name="LegalName" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="IsTemplate" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CurrencyExchange">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyId" Type="bigint" Nullable="false" />
+          <Property Name="SourceCurrencyId" Type="bigint" Nullable="false" />
+          <Property Name="TargetCurrencyId" Type="bigint" Nullable="false" />
+          <Property Name="ModifiedByEmployeeId" Type="bigint" />
+          <Property Name="TransactionTypeId" Type="bigint" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="SellingRate" Type="decimal" Precision="26" Scale="6" Nullable="false" />
+          <Property Name="BuyingRate" Type="decimal" Precision="26" Scale="6" Nullable="false" />
+          <Property Name="EffectiveDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="SourceOfRate" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AuthorizationCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime2" Precision="7" />
+          <Property Name="ModifiedOn" Type="datetime2" Precision="7" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
@@ -1249,6 +1343,18 @@
           <Property Name="RouterDetailsId" Type="bigint" />
           <Property Name="OperationSequence" Type="bigint" />
         </EntityType>
+        <Association Name="FK__PrimeLoad__Modif__70FF5617">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="PrimeLoad" Type="Self.PrimeLoad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PrimeLoad">
+              <PropertyRef Name="ModifiedbyEmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Scheduled__WorkO__700B31DE">
           <End Role="WorkOrder" Type="Self.WorkOrder" Multiplicity="1" />
           <End Role="ScheduledWorkOrder" Type="Self.ScheduledWorkOrder" Multiplicity="*" />
@@ -1321,6 +1427,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Bom_CurrencyExchangeId">
+          <End Role="CurrencyExchange" Type="Self.CurrencyExchange" Multiplicity="0..1" />
+          <End Role="Bom" Type="Self.Bom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CurrencyExchange">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Bom">
+              <PropertyRef Name="CurrencyExchangeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bom_CurrencyId">
+          <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
+          <End Role="Bom" Type="Self.Bom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Bom">
+              <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Bom_EngineeringChangeStatusId">
           <End Role="EngineeringChangeStatus" Type="Self.EngineeringChangeStatus" Multiplicity="0..1" />
           <End Role="Bom" Type="Self.Bom" Multiplicity="*" />
@@ -1369,6 +1499,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Bom_UnitId">
+          <End Role="Unit" Type="Self.Unit" Multiplicity="0..1" />
+          <End Role="Bom" Type="Self.Bom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Bom">
+              <PropertyRef Name="UnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_BomDetails_BomId">
           <End Role="Bom" Type="Self.Bom" Multiplicity="1" />
           <End Role="BomDetails" Type="Self.BomDetails" Multiplicity="*" />
@@ -1405,6 +1547,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_BomDetails_CurrencyExchangeId">
+          <End Role="CurrencyExchange" Type="Self.CurrencyExchange" Multiplicity="0..1" />
+          <End Role="BomDetails" Type="Self.BomDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CurrencyExchange">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BomDetails">
+              <PropertyRef Name="CurrencyExchangeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BomDetails_CurrencyId">
+          <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
+          <End Role="BomDetails" Type="Self.BomDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BomDetails">
+              <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_BomDetails_EmployeeId">
           <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
           <End Role="BomDetails" Type="Self.BomDetails" Multiplicity="*" />
@@ -1426,6 +1592,18 @@
             </Principal>
             <Dependent Role="BomDetails">
               <PropertyRef Name="ManufacturedComponentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BomDetails_UnitId">
+          <End Role="Unit" Type="Self.Unit" Multiplicity="0..1" />
+          <End Role="BomDetails" Type="Self.BomDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BomDetails">
+              <PropertyRef Name="UnitId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1513,6 +1691,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_BomOtherCostDetails_UnitId">
+          <End Role="Unit" Type="Self.Unit" Multiplicity="0..1" />
+          <End Role="BomOtherCostDetails" Type="Self.BomOtherCostDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BomOtherCostDetails">
+              <PropertyRef Name="UnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Company_ModifiedByEmployeeId">
           <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
           <End Role="Company" Type="Self.Company" Multiplicity="*" />
@@ -1525,6 +1715,78 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ConversionUnit_ModifiedByEmployeeId">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="ConversionUnit" Type="Self.ConversionUnit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ConversionUnit">
+              <PropertyRef Name="ModifiedByEmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Currency_ModifiedByEmployeeId">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Currency" Type="Self.Currency" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Currency">
+              <PropertyRef Name="ModifiedByEmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CurrencyExchange_CompanyId">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="CurrencyExchange" Type="Self.CurrencyExchange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CurrencyExchange">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CurrencyExchange_ModifiedByEmployeeId">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="CurrencyExchange" Type="Self.CurrencyExchange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CurrencyExchange">
+              <PropertyRef Name="ModifiedByEmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CurrencyExchange_SourceCurrencyId">
+          <End Role="Currency" Type="Self.Currency" Multiplicity="1" />
+          <End Role="CurrencyExchange" Type="Self.CurrencyExchange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CurrencyExchange">
+              <PropertyRef Name="SourceCurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CurrencyExchange_TargetCurrencyId">
+          <End Role="Currency" Type="Self.Currency" Multiplicity="1" />
+          <End Role="CurrencyExchange" Type="Self.CurrencyExchange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CurrencyExchange">
+              <PropertyRef Name="TargetCurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Customer_CompanyId">
           <End Role="Company" Type="Self.Company" Multiplicity="1" />
           <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
@@ -1534,6 +1796,18 @@
             </Principal>
             <Dependent Role="Customer">
               <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_CurrencyId">
+          <End Role="Currency" Type="Self.Currency" Multiplicity="1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="CurrencyId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1705,6 +1979,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_FamilyRouterLink_UnitId">
+          <End Role="Unit" Type="Self.Unit" Multiplicity="0..1" />
+          <End Role="FamilyRouterLink" Type="Self.FamilyRouterLink" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FamilyRouterLink">
+              <PropertyRef Name="UnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Item_CompanyId">
           <End Role="Company" Type="Self.Company" Multiplicity="1" />
           <End Role="Item" Type="Self.Item" Multiplicity="*" />
@@ -1726,6 +2012,18 @@
             </Principal>
             <Dependent Role="Item">
               <PropertyRef Name="ModifiedByEmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_UnitId">
+          <End Role="Unit" Type="Self.Unit" Multiplicity="1" />
+          <End Role="Item" Type="Self.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="StockingUnitId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1801,6 +2099,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ItemLotBin_CurrencyExchangeId">
+          <End Role="CurrencyExchange" Type="Self.CurrencyExchange" Multiplicity="0..1" />
+          <End Role="ItemLotBin" Type="Self.ItemLotBin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CurrencyExchange">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ItemLotBin">
+              <PropertyRef Name="CurrencyExchangeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemLotBin_CurrencyId">
+          <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
+          <End Role="ItemLotBin" Type="Self.ItemLotBin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ItemLotBin">
+              <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ItemLotBin_ItemId">
           <End Role="Item" Type="Self.Item" Multiplicity="1" />
           <End Role="ItemLotBin" Type="Self.ItemLotBin" Multiplicity="*" />
@@ -1825,6 +2147,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ItemLotBin_UnitId">
+          <End Role="Unit" Type="Self.Unit" Multiplicity="0..1" />
+          <End Role="ItemLotBin" Type="Self.ItemLotBin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ItemLotBin">
+              <PropertyRef Name="UnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ItemSerial_CompanyId">
           <End Role="Company" Type="Self.Company" Multiplicity="1" />
           <End Role="ItemSerial" Type="Self.ItemSerial" Multiplicity="*" />
@@ -1834,6 +2168,30 @@
             </Principal>
             <Dependent Role="ItemSerial">
               <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemSerial_CurrencyExchangeId">
+          <End Role="CurrencyExchange" Type="Self.CurrencyExchange" Multiplicity="0..1" />
+          <End Role="ItemSerial" Type="Self.ItemSerial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CurrencyExchange">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ItemSerial">
+              <PropertyRef Name="CurrencyExchangeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemSerial_CurrencyId">
+          <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
+          <End Role="ItemSerial" Type="Self.ItemSerial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ItemSerial">
+              <PropertyRef Name="CurrencyId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1881,6 +2239,18 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="ItemStatus">
+              <PropertyRef Name="ModifiedByEmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobPriority_ModifiedByEmployeeId">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="JobPriority" Type="Self.JobPriority" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="JobPriority">
               <PropertyRef Name="ModifiedByEmployeeId" />
             </Dependent>
           </ReferentialConstraint>
@@ -1942,6 +2312,30 @@
             </Principal>
             <Dependent Role="Machine">
               <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Machine_CurrencyExchangeId">
+          <End Role="CurrencyExchange" Type="Self.CurrencyExchange" Multiplicity="0..1" />
+          <End Role="Machine" Type="Self.Machine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CurrencyExchange">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Machine">
+              <PropertyRef Name="CurrencyExchangeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Machine_CurrencyId">
+          <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
+          <End Role="Machine" Type="Self.Machine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Machine">
+              <PropertyRef Name="CurrencyId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2053,6 +2447,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ManufacturedComponent_CurrencyExchangeId">
+          <End Role="CurrencyExchange" Type="Self.CurrencyExchange" Multiplicity="0..1" />
+          <End Role="ManufacturedComponent" Type="Self.ManufacturedComponent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CurrencyExchange">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ManufacturedComponent">
+              <PropertyRef Name="CurrencyExchangeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ManufacturedComponent_CurrencyId">
+          <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
+          <End Role="ManufacturedComponent" Type="Self.ManufacturedComponent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ManufacturedComponent">
+              <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ManufacturedComponent_EmployeeId_0">
           <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
           <End Role="ManufacturedComponent" Type="Self.ManufacturedComponent" Multiplicity="*" />
@@ -2101,6 +2519,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ManufacturedComponent_UnitId">
+          <End Role="Unit" Type="Self.Unit" Multiplicity="0..1" />
+          <End Role="ManufacturedComponent" Type="Self.ManufacturedComponent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ManufacturedComponent">
+              <PropertyRef Name="UnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ManufacturedSubComponent_ChildManufacturedComponentId">
           <End Role="ManufacturedComponent" Type="Self.ManufacturedComponent" Multiplicity="0..1" />
           <End Role="ManufacturedSubComponent" Type="Self.ManufacturedSubComponent" Multiplicity="*" />
@@ -2137,6 +2567,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ManufacturedSubComponent_UnitId">
+          <End Role="Unit" Type="Self.Unit" Multiplicity="0..1" />
+          <End Role="ManufacturedSubComponent" Type="Self.ManufacturedSubComponent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ManufacturedSubComponent">
+              <PropertyRef Name="UnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_MfgConsumable_CompanyId">
           <End Role="Company" Type="Self.Company" Multiplicity="1" />
           <End Role="MfgConsumable" Type="Self.MfgConsumable" Multiplicity="*" />
@@ -2146,6 +2588,30 @@
             </Principal>
             <Dependent Role="MfgConsumable">
               <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MfgConsumable_CurrencyExchangeId">
+          <End Role="CurrencyExchange" Type="Self.CurrencyExchange" Multiplicity="0..1" />
+          <End Role="MfgConsumable" Type="Self.MfgConsumable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CurrencyExchange">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MfgConsumable">
+              <PropertyRef Name="CurrencyExchangeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MfgConsumable_CurrencyId">
+          <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
+          <End Role="MfgConsumable" Type="Self.MfgConsumable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MfgConsumable">
+              <PropertyRef Name="CurrencyId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2221,6 +2687,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ProductBuild_CurrencyExchangeId">
+          <End Role="CurrencyExchange" Type="Self.CurrencyExchange" Multiplicity="0..1" />
+          <End Role="ProductBuild" Type="Self.ProductBuild" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CurrencyExchange">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductBuild">
+              <PropertyRef Name="CurrencyExchangeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductBuild_CurrencyId">
+          <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
+          <End Role="ProductBuild" Type="Self.ProductBuild" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductBuild">
+              <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ProductBuild_EmployeeId">
           <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
           <End Role="ProductBuild" Type="Self.ProductBuild" Multiplicity="*" />
@@ -2266,6 +2756,18 @@
             </Principal>
             <Dependent Role="ProductBuild1">
               <PropertyRef Name="ParentProductBuildId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductBuild_UnitId">
+          <End Role="Unit" Type="Self.Unit" Multiplicity="0..1" />
+          <End Role="ProductBuild" Type="Self.ProductBuild" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductBuild">
+              <PropertyRef Name="UnitId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2353,6 +2855,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ProductBuildDevelopmentLabor_CurrencyExchangeId">
+          <End Role="CurrencyExchange" Type="Self.CurrencyExchange" Multiplicity="0..1" />
+          <End Role="ProductBuildDevelopmentLabor" Type="Self.ProductBuildDevelopmentLabor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CurrencyExchange">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductBuildDevelopmentLabor">
+              <PropertyRef Name="CurrencyExchangeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductBuildDevelopmentLabor_CurrencyId">
+          <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
+          <End Role="ProductBuildDevelopmentLabor" Type="Self.ProductBuildDevelopmentLabor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductBuildDevelopmentLabor">
+              <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ProductBuildDevelopmentLabor_EmployeeId">
           <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
           <End Role="ProductBuildDevelopmentLabor" Type="Self.ProductBuildDevelopmentLabor" Multiplicity="*" />
@@ -2401,6 +2927,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ProductBuildDraft_CurrencyExchangeId">
+          <End Role="CurrencyExchange" Type="Self.CurrencyExchange" Multiplicity="0..1" />
+          <End Role="ProductBuildDraft" Type="Self.ProductBuildDraft" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CurrencyExchange">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductBuildDraft">
+              <PropertyRef Name="CurrencyExchangeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductBuildDraft_CurrencyId">
+          <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
+          <End Role="ProductBuildDraft" Type="Self.ProductBuildDraft" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductBuildDraft">
+              <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ProductBuildDraft_EmployeeId">
           <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
           <End Role="ProductBuildDraft" Type="Self.ProductBuildDraft" Multiplicity="*" />
@@ -2434,6 +2984,18 @@
             </Principal>
             <Dependent Role="ProductBuildDraft">
               <PropertyRef Name="ProductBuildId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductBuildDraft_UnitId">
+          <End Role="Unit" Type="Self.Unit" Multiplicity="0..1" />
+          <End Role="ProductBuildDraft" Type="Self.ProductBuildDraft" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductBuildDraft">
+              <PropertyRef Name="UnitId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2554,6 +3116,30 @@
             </Principal>
             <Dependent Role="Router">
               <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Router_CurrencyExchangeId">
+          <End Role="CurrencyExchange" Type="Self.CurrencyExchange" Multiplicity="0..1" />
+          <End Role="Router" Type="Self.Router" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CurrencyExchange">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Router">
+              <PropertyRef Name="CurrencyExchangeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Router_CurrencyId">
+          <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
+          <End Role="Router" Type="Self.Router" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Router">
+              <PropertyRef Name="CurrencyId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2821,6 +3407,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_RouterProcess_CurrencyExchangeId">
+          <End Role="CurrencyExchange" Type="Self.CurrencyExchange" Multiplicity="0..1" />
+          <End Role="RouterProcess" Type="Self.RouterProcess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CurrencyExchange">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RouterProcess">
+              <PropertyRef Name="CurrencyExchangeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RouterProcess_CurrencyId">
+          <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
+          <End Role="RouterProcess" Type="Self.RouterProcess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RouterProcess">
+              <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_RouterProcess_EmployeeId">
           <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
           <End Role="RouterProcess" Type="Self.RouterProcess" Multiplicity="*" />
@@ -2857,6 +3467,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_RouterProcessDetails_CurrencyExchangeId">
+          <End Role="CurrencyExchange" Type="Self.CurrencyExchange" Multiplicity="0..1" />
+          <End Role="RouterProcessDetails" Type="Self.RouterProcessDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CurrencyExchange">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RouterProcessDetails">
+              <PropertyRef Name="CurrencyExchangeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RouterProcessDetails_CurrencyId">
+          <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
+          <End Role="RouterProcessDetails" Type="Self.RouterProcessDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RouterProcessDetails">
+              <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_RouterProcessDetails_EmployeeId">
           <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
           <End Role="RouterProcessDetails" Type="Self.RouterProcessDetails" Multiplicity="*" />
@@ -2869,6 +3503,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_RouterProcessDetails_MachineUnitId">
+          <End Role="Unit" Type="Self.Unit" Multiplicity="0..1" />
+          <End Role="RouterProcessDetails" Type="Self.RouterProcessDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RouterProcessDetails">
+              <PropertyRef Name="MachineUnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_RouterProcessDetails_RouterProcessId">
           <End Role="RouterProcess" Type="Self.RouterProcess" Multiplicity="0..1" />
           <End Role="RouterProcessDetails" Type="Self.RouterProcessDetails" Multiplicity="*" />
@@ -2878,6 +3524,42 @@
             </Principal>
             <Dependent Role="RouterProcessDetails">
               <PropertyRef Name="RouterProcessId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RouterProcessDetails_RunUnitId">
+          <End Role="Unit" Type="Self.Unit" Multiplicity="0..1" />
+          <End Role="RouterProcessDetails" Type="Self.RouterProcessDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RouterProcessDetails">
+              <PropertyRef Name="RunUnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RouterProcessDetails_SetupUnitId">
+          <End Role="Unit" Type="Self.Unit" Multiplicity="0..1" />
+          <End Role="RouterProcessDetails" Type="Self.RouterProcessDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RouterProcessDetails">
+              <PropertyRef Name="SetupUnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RouterProcessDetails_UnitId">
+          <End Role="Unit" Type="Self.Unit" Multiplicity="0..1" />
+          <End Role="RouterProcessDetails" Type="Self.RouterProcessDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RouterProcessDetails">
+              <PropertyRef Name="TeardownUnitId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2974,6 +3656,30 @@
             </Principal>
             <Dependent Role="StockMovement">
               <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StockMovement_CurrencyExchangeId">
+          <End Role="CurrencyExchange" Type="Self.CurrencyExchange" Multiplicity="0..1" />
+          <End Role="StockMovement" Type="Self.StockMovement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CurrencyExchange">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StockMovement">
+              <PropertyRef Name="CurrencyExchangeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StockMovement_CurrencyId">
+          <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
+          <End Role="StockMovement" Type="Self.StockMovement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StockMovement">
+              <PropertyRef Name="CurrencyId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3121,18 +3827,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TeamGroupEmployeeDetails_TeamGroupId">
-          <End Role="TeamGroup" Type="Self.TeamGroup" Multiplicity="1" />
-          <End Role="TeamGroupEmployeeDetails" Type="Self.TeamGroupEmployeeDetails" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="TeamGroup">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="TeamGroupEmployeeDetails">
-              <PropertyRef Name="Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_TeamGroupMachineDetails_EmployeeId">
           <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
           <End Role="TeamGroupMachineDetails" Type="Self.TeamGroupMachineDetails" Multiplicity="*" />
@@ -3205,6 +3899,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Unit_ModifiedByEmployeeId">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Unit" Type="Self.Unit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Unit">
+              <PropertyRef Name="ModifiedByEmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Vendor_CompanyId">
           <End Role="Company" Type="Self.Company" Multiplicity="1" />
           <End Role="Vendor" Type="Self.Vendor" Multiplicity="*" />
@@ -3214,6 +3920,18 @@
             </Principal>
             <Dependent Role="Vendor">
               <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vendor_CurrencyId">
+          <End Role="Currency" Type="Self.Currency" Multiplicity="1" />
+          <End Role="Vendor" Type="Self.Vendor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Vendor">
+              <PropertyRef Name="CurrencyId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3274,6 +3992,30 @@
             </Principal>
             <Dependent Role="WorkCenter">
               <PropertyRef Name="ModifiedByEmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkCenter_RunLaborUnitId">
+          <End Role="Unit" Type="Self.Unit" Multiplicity="0..1" />
+          <End Role="WorkCenter" Type="Self.WorkCenter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WorkCenter">
+              <PropertyRef Name="RunLaborUnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkCenter_SetupLaborUnitId">
+          <End Role="Unit" Type="Self.Unit" Multiplicity="0..1" />
+          <End Role="WorkCenter" Type="Self.WorkCenter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WorkCenter">
+              <PropertyRef Name="SetupLaborUnitId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3385,6 +4127,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_WorkOrder_CurrencyExchangeId">
+          <End Role="CurrencyExchange" Type="Self.CurrencyExchange" Multiplicity="0..1" />
+          <End Role="WorkOrder" Type="Self.WorkOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CurrencyExchange">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WorkOrder">
+              <PropertyRef Name="CurrencyExchangeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkOrder_CurrencyId">
+          <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
+          <End Role="WorkOrder" Type="Self.WorkOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WorkOrder">
+              <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_WorkOrder_CustomerId">
           <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
           <End Role="WorkOrder" Type="Self.WorkOrder" Multiplicity="*" />
@@ -3458,6 +4224,11 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="ERPModelStoreContainer">
+          <EntitySet Name="ConversionUnit" EntityType="Self.ConversionUnit" Schema="Definition" store:Type="Tables" />
+          <EntitySet Name="Currency" EntityType="Self.Currency" Schema="Definition" store:Type="Tables" />
+          <EntitySet Name="JobPriority" EntityType="Self.JobPriority" Schema="Definition" store:Type="Tables" />
+          <EntitySet Name="PrimeLoad" EntityType="Self.PrimeLoad" Schema="Definition" store:Type="Tables" />
+          <EntitySet Name="Unit" EntityType="Self.Unit" Schema="Definition" store:Type="Tables" />
           <EntitySet Name="Bom" EntityType="Self.Bom" Schema="Engineering" store:Type="Tables" />
           <EntitySet Name="BomDetails" EntityType="Self.BomDetails" Schema="Engineering" store:Type="Tables" />
           <EntitySet Name="BomItemType" EntityType="Self.BomItemType" Schema="Engineering" store:Type="Tables" />
@@ -3486,6 +4257,7 @@
           <EntitySet Name="RouterProcessDetails" EntityType="Self.RouterProcessDetails" Schema="Engineering" store:Type="Tables" />
           <EntitySet Name="RouterType" EntityType="Self.RouterType" Schema="Engineering" store:Type="Tables" />
           <EntitySet Name="Company" EntityType="Self.Company" Schema="General" store:Type="Tables" />
+          <EntitySet Name="CurrencyExchange" EntityType="Self.CurrencyExchange" Schema="General" store:Type="Tables" />
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="General" store:Type="Tables" />
           <EntitySet Name="Item" EntityType="Self.Item" Schema="General" store:Type="Tables" />
           <EntitySet Name="ItemStatus" EntityType="Self.ItemStatus" Schema="General" store:Type="Tables" />
@@ -3513,6 +4285,10 @@
           <EntitySet Name="WorkCenterType" EntityType="Self.WorkCenterType" Schema="Production" store:Type="Tables" />
           <EntitySet Name="WorkOrder" EntityType="Self.WorkOrder" Schema="Production" store:Type="Tables" />
           <EntitySet Name="WorkOrderDetails" EntityType="Self.WorkOrderDetails" Schema="Production" store:Type="Tables" />
+          <AssociationSet Name="FK__PrimeLoad__Modif__70FF5617" Association="Self.FK__PrimeLoad__Modif__70FF5617">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="PrimeLoad" EntitySet="PrimeLoad" />
+          </AssociationSet>
           <AssociationSet Name="FK__Scheduled__WorkO__700B31DE" Association="Self.FK__Scheduled__WorkO__700B31DE">
             <End Role="WorkOrder" EntitySet="WorkOrder" />
             <End Role="ScheduledWorkOrder" EntitySet="ScheduledWorkOrder" />
@@ -3537,6 +4313,14 @@
             <End Role="Company" EntitySet="Company" />
             <End Role="Bom" EntitySet="Bom" />
           </AssociationSet>
+          <AssociationSet Name="FK_Bom_CurrencyExchangeId" Association="Self.FK_Bom_CurrencyExchangeId">
+            <End Role="CurrencyExchange" EntitySet="CurrencyExchange" />
+            <End Role="Bom" EntitySet="Bom" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bom_CurrencyId" Association="Self.FK_Bom_CurrencyId">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="Bom" EntitySet="Bom" />
+          </AssociationSet>
           <AssociationSet Name="FK_Bom_EngineeringChangeStatusId" Association="Self.FK_Bom_EngineeringChangeStatusId">
             <End Role="EngineeringChangeStatus" EntitySet="EngineeringChangeStatus" />
             <End Role="Bom" EntitySet="Bom" />
@@ -3553,6 +4337,10 @@
             <End Role="Bom" EntitySet="Bom" />
             <End Role="Bom1" EntitySet="Bom" />
           </AssociationSet>
+          <AssociationSet Name="FK_Bom_UnitId" Association="Self.FK_Bom_UnitId">
+            <End Role="Unit" EntitySet="Unit" />
+            <End Role="Bom" EntitySet="Bom" />
+          </AssociationSet>
           <AssociationSet Name="FK_BomDetails_BomId" Association="Self.FK_BomDetails_BomId">
             <End Role="Bom" EntitySet="Bom" />
             <End Role="BomDetails" EntitySet="BomDetails" />
@@ -3565,12 +4353,24 @@
             <End Role="Bom" EntitySet="Bom" />
             <End Role="BomDetails" EntitySet="BomDetails" />
           </AssociationSet>
+          <AssociationSet Name="FK_BomDetails_CurrencyExchangeId" Association="Self.FK_BomDetails_CurrencyExchangeId">
+            <End Role="CurrencyExchange" EntitySet="CurrencyExchange" />
+            <End Role="BomDetails" EntitySet="BomDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BomDetails_CurrencyId" Association="Self.FK_BomDetails_CurrencyId">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="BomDetails" EntitySet="BomDetails" />
+          </AssociationSet>
           <AssociationSet Name="FK_BomDetails_EmployeeId" Association="Self.FK_BomDetails_EmployeeId">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="BomDetails" EntitySet="BomDetails" />
           </AssociationSet>
           <AssociationSet Name="FK_BomDetails_ManufacturedComponentId" Association="Self.FK_BomDetails_ManufacturedComponentId">
             <End Role="ManufacturedComponent" EntitySet="ManufacturedComponent" />
+            <End Role="BomDetails" EntitySet="BomDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BomDetails_UnitId" Association="Self.FK_BomDetails_UnitId">
+            <End Role="Unit" EntitySet="Unit" />
             <End Role="BomDetails" EntitySet="BomDetails" />
           </AssociationSet>
           <AssociationSet Name="FK_BomDetails_VendorId" Association="Self.FK_BomDetails_VendorId">
@@ -3601,12 +4401,44 @@
             <End Role="Employee" EntitySet="Employee" />
             <End Role="BomOtherCostDetails" EntitySet="BomOtherCostDetails" />
           </AssociationSet>
+          <AssociationSet Name="FK_BomOtherCostDetails_UnitId" Association="Self.FK_BomOtherCostDetails_UnitId">
+            <End Role="Unit" EntitySet="Unit" />
+            <End Role="BomOtherCostDetails" EntitySet="BomOtherCostDetails" />
+          </AssociationSet>
           <AssociationSet Name="FK_Company_ModifiedByEmployeeId" Association="Self.FK_Company_ModifiedByEmployeeId">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="Company" EntitySet="Company" />
           </AssociationSet>
+          <AssociationSet Name="FK_ConversionUnit_ModifiedByEmployeeId" Association="Self.FK_ConversionUnit_ModifiedByEmployeeId">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="ConversionUnit" EntitySet="ConversionUnit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Currency_ModifiedByEmployeeId" Association="Self.FK_Currency_ModifiedByEmployeeId">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Currency" EntitySet="Currency" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CurrencyExchange_CompanyId" Association="Self.FK_CurrencyExchange_CompanyId">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="CurrencyExchange" EntitySet="CurrencyExchange" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CurrencyExchange_ModifiedByEmployeeId" Association="Self.FK_CurrencyExchange_ModifiedByEmployeeId">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="CurrencyExchange" EntitySet="CurrencyExchange" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CurrencyExchange_SourceCurrencyId" Association="Self.FK_CurrencyExchange_SourceCurrencyId">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="CurrencyExchange" EntitySet="CurrencyExchange" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CurrencyExchange_TargetCurrencyId" Association="Self.FK_CurrencyExchange_TargetCurrencyId">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="CurrencyExchange" EntitySet="CurrencyExchange" />
+          </AssociationSet>
           <AssociationSet Name="FK_Customer_CompanyId" Association="Self.FK_Customer_CompanyId">
             <End Role="Company" EntitySet="Company" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_CurrencyId" Association="Self.FK_Customer_CurrencyId">
+            <End Role="Currency" EntitySet="Currency" />
             <End Role="Customer" EntitySet="Customer" />
           </AssociationSet>
           <AssociationSet Name="FK_Customer_CustomerCompanyId" Association="Self.FK_Customer_CustomerCompanyId">
@@ -3665,12 +4497,20 @@
             <End Role="Router" EntitySet="Router" />
             <End Role="FamilyRouterLink" EntitySet="FamilyRouterLink" />
           </AssociationSet>
+          <AssociationSet Name="FK_FamilyRouterLink_UnitId" Association="Self.FK_FamilyRouterLink_UnitId">
+            <End Role="Unit" EntitySet="Unit" />
+            <End Role="FamilyRouterLink" EntitySet="FamilyRouterLink" />
+          </AssociationSet>
           <AssociationSet Name="FK_Item_CompanyId" Association="Self.FK_Item_CompanyId">
             <End Role="Company" EntitySet="Company" />
             <End Role="Item" EntitySet="Item" />
           </AssociationSet>
           <AssociationSet Name="FK_Item_ModifiedByEmployeeId" Association="Self.FK_Item_ModifiedByEmployeeId">
             <End Role="Employee" EntitySet="Employee" />
+            <End Role="Item" EntitySet="Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_UnitId" Association="Self.FK_Item_UnitId">
+            <End Role="Unit" EntitySet="Unit" />
             <End Role="Item" EntitySet="Item" />
           </AssociationSet>
           <AssociationSet Name="FK_ItemLocation_CompanyId" Association="Self.FK_ItemLocation_CompanyId">
@@ -3697,6 +4537,14 @@
             <End Role="Company" EntitySet="Company" />
             <End Role="ItemLotBin" EntitySet="ItemLotBin" />
           </AssociationSet>
+          <AssociationSet Name="FK_ItemLotBin_CurrencyExchangeId" Association="Self.FK_ItemLotBin_CurrencyExchangeId">
+            <End Role="CurrencyExchange" EntitySet="CurrencyExchange" />
+            <End Role="ItemLotBin" EntitySet="ItemLotBin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemLotBin_CurrencyId" Association="Self.FK_ItemLotBin_CurrencyId">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="ItemLotBin" EntitySet="ItemLotBin" />
+          </AssociationSet>
           <AssociationSet Name="FK_ItemLotBin_ItemId" Association="Self.FK_ItemLotBin_ItemId">
             <End Role="Item" EntitySet="Item" />
             <End Role="ItemLotBin" EntitySet="ItemLotBin" />
@@ -3705,8 +4553,20 @@
             <End Role="Employee" EntitySet="Employee" />
             <End Role="ItemLotBin" EntitySet="ItemLotBin" />
           </AssociationSet>
+          <AssociationSet Name="FK_ItemLotBin_UnitId" Association="Self.FK_ItemLotBin_UnitId">
+            <End Role="Unit" EntitySet="Unit" />
+            <End Role="ItemLotBin" EntitySet="ItemLotBin" />
+          </AssociationSet>
           <AssociationSet Name="FK_ItemSerial_CompanyId" Association="Self.FK_ItemSerial_CompanyId">
             <End Role="Company" EntitySet="Company" />
+            <End Role="ItemSerial" EntitySet="ItemSerial" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemSerial_CurrencyExchangeId" Association="Self.FK_ItemSerial_CurrencyExchangeId">
+            <End Role="CurrencyExchange" EntitySet="CurrencyExchange" />
+            <End Role="ItemSerial" EntitySet="ItemSerial" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemSerial_CurrencyId" Association="Self.FK_ItemSerial_CurrencyId">
+            <End Role="Currency" EntitySet="Currency" />
             <End Role="ItemSerial" EntitySet="ItemSerial" />
           </AssociationSet>
           <AssociationSet Name="FK_ItemSerial_ItemId" Association="Self.FK_ItemSerial_ItemId">
@@ -3724,6 +4584,10 @@
           <AssociationSet Name="FK_ItemStatus_ModifiedByEmployeeId" Association="Self.FK_ItemStatus_ModifiedByEmployeeId">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="ItemStatus" EntitySet="ItemStatus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobPriority_ModifiedByEmployeeId" Association="Self.FK_JobPriority_ModifiedByEmployeeId">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="JobPriority" EntitySet="JobPriority" />
           </AssociationSet>
           <AssociationSet Name="FK_Location_CompanyId" Association="Self.FK_Location_CompanyId">
             <End Role="Company" EntitySet="Company" />
@@ -3743,6 +4607,14 @@
           </AssociationSet>
           <AssociationSet Name="FK_Machine_CompanyId" Association="Self.FK_Machine_CompanyId">
             <End Role="Company" EntitySet="Company" />
+            <End Role="Machine" EntitySet="Machine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Machine_CurrencyExchangeId" Association="Self.FK_Machine_CurrencyExchangeId">
+            <End Role="CurrencyExchange" EntitySet="CurrencyExchange" />
+            <End Role="Machine" EntitySet="Machine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Machine_CurrencyId" Association="Self.FK_Machine_CurrencyId">
+            <End Role="Currency" EntitySet="Currency" />
             <End Role="Machine" EntitySet="Machine" />
           </AssociationSet>
           <AssociationSet Name="FK_Machine_ItemId" Association="Self.FK_Machine_ItemId">
@@ -3781,6 +4653,14 @@
             <End Role="Company" EntitySet="Company" />
             <End Role="ManufacturedComponent" EntitySet="ManufacturedComponent" />
           </AssociationSet>
+          <AssociationSet Name="FK_ManufacturedComponent_CurrencyExchangeId" Association="Self.FK_ManufacturedComponent_CurrencyExchangeId">
+            <End Role="CurrencyExchange" EntitySet="CurrencyExchange" />
+            <End Role="ManufacturedComponent" EntitySet="ManufacturedComponent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ManufacturedComponent_CurrencyId" Association="Self.FK_ManufacturedComponent_CurrencyId">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="ManufacturedComponent" EntitySet="ManufacturedComponent" />
+          </AssociationSet>
           <AssociationSet Name="FK_ManufacturedComponent_EmployeeId_0" Association="Self.FK_ManufacturedComponent_EmployeeId_0">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="ManufacturedComponent" EntitySet="ManufacturedComponent" />
@@ -3797,6 +4677,10 @@
             <End Role="Item" EntitySet="Item" />
             <End Role="ManufacturedComponent" EntitySet="ManufacturedComponent" />
           </AssociationSet>
+          <AssociationSet Name="FK_ManufacturedComponent_UnitId" Association="Self.FK_ManufacturedComponent_UnitId">
+            <End Role="Unit" EntitySet="Unit" />
+            <End Role="ManufacturedComponent" EntitySet="ManufacturedComponent" />
+          </AssociationSet>
           <AssociationSet Name="FK_ManufacturedSubComponent_ChildManufacturedComponentId" Association="Self.FK_ManufacturedSubComponent_ChildManufacturedComponentId">
             <End Role="ManufacturedComponent" EntitySet="ManufacturedComponent" />
             <End Role="ManufacturedSubComponent" EntitySet="ManufacturedSubComponent" />
@@ -3809,8 +4693,20 @@
             <End Role="ManufacturedComponent" EntitySet="ManufacturedComponent" />
             <End Role="ManufacturedSubComponent" EntitySet="ManufacturedSubComponent" />
           </AssociationSet>
+          <AssociationSet Name="FK_ManufacturedSubComponent_UnitId" Association="Self.FK_ManufacturedSubComponent_UnitId">
+            <End Role="Unit" EntitySet="Unit" />
+            <End Role="ManufacturedSubComponent" EntitySet="ManufacturedSubComponent" />
+          </AssociationSet>
           <AssociationSet Name="FK_MfgConsumable_CompanyId" Association="Self.FK_MfgConsumable_CompanyId">
             <End Role="Company" EntitySet="Company" />
+            <End Role="MfgConsumable" EntitySet="MfgConsumable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MfgConsumable_CurrencyExchangeId" Association="Self.FK_MfgConsumable_CurrencyExchangeId">
+            <End Role="CurrencyExchange" EntitySet="CurrencyExchange" />
+            <End Role="MfgConsumable" EntitySet="MfgConsumable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MfgConsumable_CurrencyId" Association="Self.FK_MfgConsumable_CurrencyId">
+            <End Role="Currency" EntitySet="Currency" />
             <End Role="MfgConsumable" EntitySet="MfgConsumable" />
           </AssociationSet>
           <AssociationSet Name="FK_MfgConsumable_EmployeeId" Association="Self.FK_MfgConsumable_EmployeeId">
@@ -3837,6 +4733,14 @@
             <End Role="Company" EntitySet="Company" />
             <End Role="ProductBuild" EntitySet="ProductBuild" />
           </AssociationSet>
+          <AssociationSet Name="FK_ProductBuild_CurrencyExchangeId" Association="Self.FK_ProductBuild_CurrencyExchangeId">
+            <End Role="CurrencyExchange" EntitySet="CurrencyExchange" />
+            <End Role="ProductBuild" EntitySet="ProductBuild" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductBuild_CurrencyId" Association="Self.FK_ProductBuild_CurrencyId">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="ProductBuild" EntitySet="ProductBuild" />
+          </AssociationSet>
           <AssociationSet Name="FK_ProductBuild_EmployeeId" Association="Self.FK_ProductBuild_EmployeeId">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="ProductBuild" EntitySet="ProductBuild" />
@@ -3852,6 +4756,10 @@
           <AssociationSet Name="FK_ProductBuild_ProductBuildId" Association="Self.FK_ProductBuild_ProductBuildId">
             <End Role="ProductBuild" EntitySet="ProductBuild" />
             <End Role="ProductBuild1" EntitySet="ProductBuild" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductBuild_UnitId" Association="Self.FK_ProductBuild_UnitId">
+            <End Role="Unit" EntitySet="Unit" />
+            <End Role="ProductBuild" EntitySet="ProductBuild" />
           </AssociationSet>
           <AssociationSet Name="FK_ProductBuildBom_BomId" Association="Self.FK_ProductBuildBom_BomId">
             <End Role="Bom" EntitySet="Bom" />
@@ -3881,6 +4789,14 @@
             <End Role="RouterProcess" EntitySet="RouterProcess" />
             <End Role="ProductBuildDetails" EntitySet="ProductBuildDetails" />
           </AssociationSet>
+          <AssociationSet Name="FK_ProductBuildDevelopmentLabor_CurrencyExchangeId" Association="Self.FK_ProductBuildDevelopmentLabor_CurrencyExchangeId">
+            <End Role="CurrencyExchange" EntitySet="CurrencyExchange" />
+            <End Role="ProductBuildDevelopmentLabor" EntitySet="ProductBuildDevelopmentLabor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductBuildDevelopmentLabor_CurrencyId" Association="Self.FK_ProductBuildDevelopmentLabor_CurrencyId">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="ProductBuildDevelopmentLabor" EntitySet="ProductBuildDevelopmentLabor" />
+          </AssociationSet>
           <AssociationSet Name="FK_ProductBuildDevelopmentLabor_EmployeeId" Association="Self.FK_ProductBuildDevelopmentLabor_EmployeeId">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="ProductBuildDevelopmentLabor" EntitySet="ProductBuildDevelopmentLabor" />
@@ -3897,6 +4813,14 @@
             <End Role="Company" EntitySet="Company" />
             <End Role="ProductBuildDraft" EntitySet="ProductBuildDraft" />
           </AssociationSet>
+          <AssociationSet Name="FK_ProductBuildDraft_CurrencyExchangeId" Association="Self.FK_ProductBuildDraft_CurrencyExchangeId">
+            <End Role="CurrencyExchange" EntitySet="CurrencyExchange" />
+            <End Role="ProductBuildDraft" EntitySet="ProductBuildDraft" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductBuildDraft_CurrencyId" Association="Self.FK_ProductBuildDraft_CurrencyId">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="ProductBuildDraft" EntitySet="ProductBuildDraft" />
+          </AssociationSet>
           <AssociationSet Name="FK_ProductBuildDraft_EmployeeId" Association="Self.FK_ProductBuildDraft_EmployeeId">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="ProductBuildDraft" EntitySet="ProductBuildDraft" />
@@ -3907,6 +4831,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_ProductBuildDraft_ProductBuildId" Association="Self.FK_ProductBuildDraft_ProductBuildId">
             <End Role="ProductBuild" EntitySet="ProductBuild" />
+            <End Role="ProductBuildDraft" EntitySet="ProductBuildDraft" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductBuildDraft_UnitId" Association="Self.FK_ProductBuildDraft_UnitId">
+            <End Role="Unit" EntitySet="Unit" />
             <End Role="ProductBuildDraft" EntitySet="ProductBuildDraft" />
           </AssociationSet>
           <AssociationSet Name="FK_ProductBuildInvestment_EmployeeId" Association="Self.FK_ProductBuildInvestment_EmployeeId">
@@ -3947,6 +4875,14 @@
           </AssociationSet>
           <AssociationSet Name="FK_Router_CompanyId" Association="Self.FK_Router_CompanyId">
             <End Role="Company" EntitySet="Company" />
+            <End Role="Router" EntitySet="Router" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Router_CurrencyExchangeId" Association="Self.FK_Router_CurrencyExchangeId">
+            <End Role="CurrencyExchange" EntitySet="CurrencyExchange" />
+            <End Role="Router" EntitySet="Router" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Router_CurrencyId" Association="Self.FK_Router_CurrencyId">
+            <End Role="Currency" EntitySet="Currency" />
             <End Role="Router" EntitySet="Router" />
           </AssociationSet>
           <AssociationSet Name="FK_Router_EngineeringChangeStatusId" Association="Self.FK_Router_EngineeringChangeStatusId">
@@ -4037,6 +4973,14 @@
             <End Role="EngineeringChangeStatus" EntitySet="EngineeringChangeStatus" />
             <End Role="RouterOutsideDetails" EntitySet="RouterOutsideDetails" />
           </AssociationSet>
+          <AssociationSet Name="FK_RouterProcess_CurrencyExchangeId" Association="Self.FK_RouterProcess_CurrencyExchangeId">
+            <End Role="CurrencyExchange" EntitySet="CurrencyExchange" />
+            <End Role="RouterProcess" EntitySet="RouterProcess" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RouterProcess_CurrencyId" Association="Self.FK_RouterProcess_CurrencyId">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="RouterProcess" EntitySet="RouterProcess" />
+          </AssociationSet>
           <AssociationSet Name="FK_RouterProcess_EmployeeId" Association="Self.FK_RouterProcess_EmployeeId">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="RouterProcess" EntitySet="RouterProcess" />
@@ -4049,12 +4993,36 @@
             <End Role="ManufacturedComponent" EntitySet="ManufacturedComponent" />
             <End Role="RouterProcess" EntitySet="RouterProcess" />
           </AssociationSet>
+          <AssociationSet Name="FK_RouterProcessDetails_CurrencyExchangeId" Association="Self.FK_RouterProcessDetails_CurrencyExchangeId">
+            <End Role="CurrencyExchange" EntitySet="CurrencyExchange" />
+            <End Role="RouterProcessDetails" EntitySet="RouterProcessDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RouterProcessDetails_CurrencyId" Association="Self.FK_RouterProcessDetails_CurrencyId">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="RouterProcessDetails" EntitySet="RouterProcessDetails" />
+          </AssociationSet>
           <AssociationSet Name="FK_RouterProcessDetails_EmployeeId" Association="Self.FK_RouterProcessDetails_EmployeeId">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="RouterProcessDetails" EntitySet="RouterProcessDetails" />
           </AssociationSet>
+          <AssociationSet Name="FK_RouterProcessDetails_MachineUnitId" Association="Self.FK_RouterProcessDetails_MachineUnitId">
+            <End Role="Unit" EntitySet="Unit" />
+            <End Role="RouterProcessDetails" EntitySet="RouterProcessDetails" />
+          </AssociationSet>
           <AssociationSet Name="FK_RouterProcessDetails_RouterProcessId" Association="Self.FK_RouterProcessDetails_RouterProcessId">
             <End Role="RouterProcess" EntitySet="RouterProcess" />
+            <End Role="RouterProcessDetails" EntitySet="RouterProcessDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RouterProcessDetails_RunUnitId" Association="Self.FK_RouterProcessDetails_RunUnitId">
+            <End Role="Unit" EntitySet="Unit" />
+            <End Role="RouterProcessDetails" EntitySet="RouterProcessDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RouterProcessDetails_SetupUnitId" Association="Self.FK_RouterProcessDetails_SetupUnitId">
+            <End Role="Unit" EntitySet="Unit" />
+            <End Role="RouterProcessDetails" EntitySet="RouterProcessDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RouterProcessDetails_UnitId" Association="Self.FK_RouterProcessDetails_UnitId">
+            <End Role="Unit" EntitySet="Unit" />
             <End Role="RouterProcessDetails" EntitySet="RouterProcessDetails" />
           </AssociationSet>
           <AssociationSet Name="FK_RouterProcessDetails_WorkCenterGroupId" Association="Self.FK_RouterProcessDetails_WorkCenterGroupId">
@@ -4087,6 +5055,14 @@
           </AssociationSet>
           <AssociationSet Name="FK_StockMovement_CompanyId" Association="Self.FK_StockMovement_CompanyId">
             <End Role="Company" EntitySet="Company" />
+            <End Role="StockMovement" EntitySet="StockMovement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StockMovement_CurrencyExchangeId" Association="Self.FK_StockMovement_CurrencyExchangeId">
+            <End Role="CurrencyExchange" EntitySet="CurrencyExchange" />
+            <End Role="StockMovement" EntitySet="StockMovement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StockMovement_CurrencyId" Association="Self.FK_StockMovement_CurrencyId">
+            <End Role="Currency" EntitySet="Currency" />
             <End Role="StockMovement" EntitySet="StockMovement" />
           </AssociationSet>
           <AssociationSet Name="FK_StockMovement_ModifiedByEmployeeId" Association="Self.FK_StockMovement_ModifiedByEmployeeId">
@@ -4137,10 +5113,6 @@
             <End Role="Employee" EntitySet="Employee" />
             <End Role="TeamGroupEmployeeDetails" EntitySet="TeamGroupEmployeeDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK_TeamGroupEmployeeDetails_TeamGroupId" Association="Self.FK_TeamGroupEmployeeDetails_TeamGroupId">
-            <End Role="TeamGroup" EntitySet="TeamGroup" />
-            <End Role="TeamGroupEmployeeDetails" EntitySet="TeamGroupEmployeeDetails" />
-          </AssociationSet>
           <AssociationSet Name="FK_TeamGroupMachineDetails_EmployeeId" Association="Self.FK_TeamGroupMachineDetails_EmployeeId">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="TeamGroupMachineDetails" EntitySet="TeamGroupMachineDetails" />
@@ -4165,8 +5137,16 @@
             <End Role="ToolSet" EntitySet="ToolSet" />
             <End Role="ToolSetDetails" EntitySet="ToolSetDetails" />
           </AssociationSet>
+          <AssociationSet Name="FK_Unit_ModifiedByEmployeeId" Association="Self.FK_Unit_ModifiedByEmployeeId">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Unit" EntitySet="Unit" />
+          </AssociationSet>
           <AssociationSet Name="FK_Vendor_CompanyId" Association="Self.FK_Vendor_CompanyId">
             <End Role="Company" EntitySet="Company" />
+            <End Role="Vendor" EntitySet="Vendor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vendor_CurrencyId" Association="Self.FK_Vendor_CurrencyId">
+            <End Role="Currency" EntitySet="Currency" />
             <End Role="Vendor" EntitySet="Vendor" />
           </AssociationSet>
           <AssociationSet Name="FK_Vendor_ModifiedByEmployeeId" Association="Self.FK_Vendor_ModifiedByEmployeeId">
@@ -4187,6 +5167,14 @@
           </AssociationSet>
           <AssociationSet Name="FK_WorkCenter_ModifiedByEmployeeId" Association="Self.FK_WorkCenter_ModifiedByEmployeeId">
             <End Role="Employee" EntitySet="Employee" />
+            <End Role="WorkCenter" EntitySet="WorkCenter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkCenter_RunLaborUnitId" Association="Self.FK_WorkCenter_RunLaborUnitId">
+            <End Role="Unit" EntitySet="Unit" />
+            <End Role="WorkCenter" EntitySet="WorkCenter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkCenter_SetupLaborUnitId" Association="Self.FK_WorkCenter_SetupLaborUnitId">
+            <End Role="Unit" EntitySet="Unit" />
             <End Role="WorkCenter" EntitySet="WorkCenter" />
           </AssociationSet>
           <AssociationSet Name="FK_WorkCenter_ToolSetId" Association="Self.FK_WorkCenter_ToolSetId">
@@ -4223,6 +5211,14 @@
           </AssociationSet>
           <AssociationSet Name="FK_WorkOrder_CompanyId" Association="Self.FK_WorkOrder_CompanyId">
             <End Role="Company" EntitySet="Company" />
+            <End Role="WorkOrder" EntitySet="WorkOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkOrder_CurrencyExchangeId" Association="Self.FK_WorkOrder_CurrencyExchangeId">
+            <End Role="CurrencyExchange" EntitySet="CurrencyExchange" />
+            <End Role="WorkOrder" EntitySet="WorkOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkOrder_CurrencyId" Association="Self.FK_WorkOrder_CurrencyId">
+            <End Role="Currency" EntitySet="Currency" />
             <End Role="WorkOrder" EntitySet="WorkOrder" />
           </AssociationSet>
           <AssociationSet Name="FK_WorkOrder_CustomerId" Association="Self.FK_WorkOrder_CustomerId">
@@ -4302,6 +5298,10 @@
           <NavigationProperty Name="BomMfgConsumables" Relationship="Self.FK_BomMfgConsumable_BomId" FromRole="Bom" ToRole="BomMfgConsumable" />
           <NavigationProperty Name="BomOtherCostDetails" Relationship="Self.FK_BomOtherCostDetails_BomId" FromRole="Bom" ToRole="BomOtherCostDetails" />
           <NavigationProperty Name="ProductBuildBomLinks" Relationship="Self.FK_ProductBuildBom_BomId" FromRole="Bom" ToRole="ProductBuildBomLink" />
+          <Property Name="TargetQuantity" Type="Decimal" Precision="26" Scale="6" />
+          <NavigationProperty Name="Currency" Relationship="ERPModel.FK_Bom_CurrencyId" FromRole="Bom" ToRole="Currency" />
+          <NavigationProperty Name="Unit" Relationship="ERPModel.FK_Bom_UnitId" FromRole="Bom" ToRole="Unit" />
+          <NavigationProperty Name="CurrencyExchange" Relationship="ERPModel.FK_Bom_CurrencyExchangeId" FromRole="Bom" ToRole="CurrencyExchange" />
         </EntityType>
         <EntityType Name="BomDetail">
           <Key>
@@ -4345,6 +5345,9 @@
           <NavigationProperty Name="ManufacturedComponent" Relationship="Self.FK_BomDetails_ManufacturedComponentId" FromRole="BomDetails" ToRole="ManufacturedComponent" />
           <NavigationProperty Name="Vendor" Relationship="Self.FK_BomDetails_VendorId" FromRole="BomDetails" ToRole="Vendor" />
           <NavigationProperty Name="ProductBuildMaterials" Relationship="Self.FK_ProductBuildMaterials_BomDetailsId" FromRole="BomDetails" ToRole="ProductBuildMaterials" />
+          <NavigationProperty Name="Currency" Relationship="ERPModel.FK_BomDetails_CurrencyId" FromRole="BomDetail" ToRole="Currency" />
+          <NavigationProperty Name="Unit" Relationship="ERPModel.FK_BomDetails_UnitId" FromRole="BomDetail" ToRole="Unit" />
+          <NavigationProperty Name="CurrencyExchange" Relationship="ERPModel.FK_BomDetails_CurrencyExchangeId" FromRole="BomDetail" ToRole="CurrencyExchange" />
         </EntityType>
         <EntityType Name="BomItemType">
           <Key>
@@ -4400,6 +5403,7 @@
           <Property Name="ModifiedByEmployeeId" Type="Int64" />
           <NavigationProperty Name="Bom" Relationship="Self.FK_BomOtherCostDetails_BomId" FromRole="BomOtherCostDetails" ToRole="Bom" />
           <NavigationProperty Name="Employee" Relationship="Self.FK_BomOtherCostDetails_EmployeeId" FromRole="BomOtherCostDetails" ToRole="Employee" />
+          <NavigationProperty Name="Unit" Relationship="ERPModel.FK_BomOtherCostDetails_UnitId" FromRole="BomOtherCostDetail" ToRole="Unit" />
         </EntityType>
         <EntityType Name="EngineeringChangeStatu">
           <Key>
@@ -4488,6 +5492,7 @@
           <NavigationProperty Name="FamilyRouter" Relationship="Self.FK_FamilyRouterLink_FamilyRouterId" FromRole="FamilyRouterLink" ToRole="FamilyRouter" />
           <NavigationProperty Name="Employee" Relationship="Self.FK_FamilyRouterLink_EmployeeId" FromRole="FamilyRouterLink" ToRole="Employee" />
           <NavigationProperty Name="Router" Relationship="Self.FK_FamilyRouterLink_RouterId" FromRole="FamilyRouterLink" ToRole="Router" />
+          <NavigationProperty Name="Unit" Relationship="ERPModel.FK_FamilyRouterLink_UnitId" FromRole="FamilyRouterLink" ToRole="Unit" />
         </EntityType>
         <EntityType Name="ManufacturedComponent">
           <Key>
@@ -4529,6 +5534,9 @@
           <NavigationProperty Name="ProductBuildDetails" Relationship="Self.FK_ProductBuildDetails_ManufacturedComponentId" FromRole="ManufacturedComponent" ToRole="ProductBuildDetails" />
           <NavigationProperty Name="Routers" Relationship="Self.FK_Router_ManufacturedComponentId" FromRole="ManufacturedComponent" ToRole="Router" />
           <NavigationProperty Name="RouterProcesses" Relationship="Self.FK_RouterProcess_ManufacturedComponentId" FromRole="ManufacturedComponent" ToRole="RouterProcess" />
+          <NavigationProperty Name="Currency" Relationship="ERPModel.FK_ManufacturedComponent_CurrencyId" FromRole="ManufacturedComponent" ToRole="Currency" />
+          <NavigationProperty Name="Unit" Relationship="ERPModel.FK_ManufacturedComponent_UnitId" FromRole="ManufacturedComponent" ToRole="Unit" />
+          <NavigationProperty Name="CurrencyExchange" Relationship="ERPModel.FK_ManufacturedComponent_CurrencyExchangeId" FromRole="ManufacturedComponent" ToRole="CurrencyExchange" />
         </EntityType>
         <EntityType Name="ManufacturedSubComponent">
           <Key>
@@ -4554,6 +5562,7 @@
           <NavigationProperty Name="ManufacturedComponent" Relationship="Self.FK_ManufacturedSubComponent_ChildManufacturedComponentId" FromRole="ManufacturedSubComponent" ToRole="ManufacturedComponent" />
           <NavigationProperty Name="ManufacturedComponent1" Relationship="Self.FK_ManufacturedSubComponent_ManufacturedComponentId" FromRole="ManufacturedSubComponent" ToRole="ManufacturedComponent" />
           <NavigationProperty Name="Employee" Relationship="Self.FK_ManufacturedSubComponent_EmployeeId" FromRole="ManufacturedSubComponent" ToRole="Employee" />
+          <NavigationProperty Name="Unit" Relationship="ERPModel.FK_ManufacturedSubComponent_UnitId" FromRole="ManufacturedSubComponent" ToRole="Unit" />
         </EntityType>
         <EntityType Name="ProductBuild">
           <Key>
@@ -4613,6 +5622,9 @@
           <NavigationProperty Name="ProductBuildInvestments1" Relationship="Self.FK_ProductBuildInvestment_ProductBuildId" FromRole="ProductBuild" ToRole="ProductBuildInvestment" />
           <NavigationProperty Name="ProductBuildRouterLinks" Relationship="Self.FK_ProductBuildRouterLink_ProductBuildId" FromRole="ProductBuild" ToRole="ProductBuildRouterLink" />
           <NavigationProperty Name="WorkOrders" Relationship="Self.FK_WorkOrder_ProductBuildId" FromRole="ProductBuild" ToRole="WorkOrder" />
+          <NavigationProperty Name="Currency" Relationship="ERPModel.FK_ProductBuild_CurrencyId" FromRole="ProductBuild" ToRole="Currency" />
+          <NavigationProperty Name="Unit" Relationship="ERPModel.FK_ProductBuild_UnitId" FromRole="ProductBuild" ToRole="Unit" />
+          <NavigationProperty Name="CurrencyExchange" Relationship="ERPModel.FK_ProductBuild_CurrencyExchangeId" FromRole="ProductBuild" ToRole="CurrencyExchange" />
         </EntityType>
         <EntityType Name="ProductBuildBomLink">
           <Key>
@@ -4671,6 +5683,8 @@
           <NavigationProperty Name="ProductBuild" Relationship="Self.FK_ProductBuildDevelopmentLabor_ProductBuildId" FromRole="ProductBuildDevelopmentLabor" ToRole="ProductBuild" />
           <NavigationProperty Name="Employee" Relationship="Self.FK_ProductBuildDevelopmentLabor_EmployeeId" FromRole="ProductBuildDevelopmentLabor" ToRole="Employee" />
           <NavigationProperty Name="Router" Relationship="Self.FK_ProductBuildDevelopmentLabor_RouterId" FromRole="ProductBuildDevelopmentLabor" ToRole="Router" />
+          <NavigationProperty Name="Currency" Relationship="ERPModel.FK_ProductBuildDevelopmentLabor_CurrencyId" FromRole="ProductBuildDevelopmentLabor" ToRole="Currency" />
+          <NavigationProperty Name="CurrencyExchange" Relationship="ERPModel.FK_ProductBuildDevelopmentLabor_CurrencyExchangeId" FromRole="ProductBuildDevelopmentLabor" ToRole="CurrencyExchange" />
         </EntityType>
         <EntityType Name="ProductBuildDraft">
           <Key>
@@ -4709,6 +5723,9 @@
           <NavigationProperty Name="Company" Relationship="Self.FK_ProductBuildDraft_CompanyId" FromRole="ProductBuildDraft" ToRole="Company" />
           <NavigationProperty Name="Employee" Relationship="Self.FK_ProductBuildDraft_EmployeeId" FromRole="ProductBuildDraft" ToRole="Employee" />
           <NavigationProperty Name="Item" Relationship="Self.FK_ProductBuildDraft_ItemId" FromRole="ProductBuildDraft" ToRole="Item" />
+          <NavigationProperty Name="Currency" Relationship="ERPModel.FK_ProductBuildDraft_CurrencyId" FromRole="ProductBuildDraft" ToRole="Currency" />
+          <NavigationProperty Name="Unit" Relationship="ERPModel.FK_ProductBuildDraft_UnitId" FromRole="ProductBuildDraft" ToRole="Unit" />
+          <NavigationProperty Name="CurrencyExchange" Relationship="ERPModel.FK_ProductBuildDraft_CurrencyExchangeId" FromRole="ProductBuildDraft" ToRole="CurrencyExchange" />
         </EntityType>
         <EntityType Name="ProductBuildInvestment">
           <Key>
@@ -4830,6 +5847,8 @@
           <NavigationProperty Name="RouterDetails1" Relationship="Self.FK_RouterDetails_RouterId_Child" FromRole="Router" ToRole="RouterDetails" />
           <NavigationProperty Name="RouterOutsideDetails" Relationship="Self.FK_RouterOutsideDetails_RouterId" FromRole="Router" ToRole="RouterOutsideDetails" />
           <NavigationProperty Name="RouterDetailsLinks" Relationship="ERPModel.FK_RouterDetailsLink_RouterId" FromRole="Router" ToRole="RouterDetailsLink" />
+          <NavigationProperty Name="Currency" Relationship="ERPModel.FK_Router_CurrencyId" FromRole="Router" ToRole="Currency" />
+          <NavigationProperty Name="CurrencyExchange" Relationship="ERPModel.FK_Router_CurrencyExchangeId" FromRole="Router" ToRole="CurrencyExchange" />
         </EntityType>
         <EntityType Name="RouterAction">
           <Key>
@@ -4928,6 +5947,8 @@
           <NavigationProperty Name="RouterDetails" Relationship="Self.FK_RouterDetails_RouterProcessId" FromRole="RouterProcess" ToRole="RouterDetails" />
           <NavigationProperty Name="Employee" Relationship="Self.FK_RouterProcess_EmployeeId" FromRole="RouterProcess" ToRole="Employee" />
           <NavigationProperty Name="RouterProcessDetails" Relationship="Self.FK_RouterProcessDetails_RouterProcessId" FromRole="RouterProcess" ToRole="RouterProcessDetails" />
+          <NavigationProperty Name="Currency" Relationship="ERPModel.FK_RouterProcess_CurrencyId" FromRole="RouterProcess" ToRole="Currency" />
+          <NavigationProperty Name="CurrencyExchange" Relationship="ERPModel.FK_RouterProcess_CurrencyExchangeId" FromRole="RouterProcess" ToRole="CurrencyExchange" />
         </EntityType>
         <EntityType Name="RouterProcessDetail">
           <Key>
@@ -4979,6 +6000,12 @@
           <NavigationProperty Name="Employee" Relationship="Self.FK_RouterProcessDetails_EmployeeId" FromRole="RouterProcessDetails" ToRole="Employee" />
           <NavigationProperty Name="WorkCenterGroup" Relationship="Self.FK_RouterProcessDetails_WorkCenterGroupId" FromRole="RouterProcessDetails" ToRole="WorkCenterGroup" />
           <NavigationProperty Name="WorkCenter" Relationship="Self.FK_RouterProcessDetails_WorkCenterId" FromRole="RouterProcessDetails" ToRole="WorkCenter" />
+          <NavigationProperty Name="Currency" Relationship="ERPModel.FK_RouterProcessDetails_CurrencyId" FromRole="RouterProcessDetail" ToRole="Currency" />
+          <NavigationProperty Name="Unit" Relationship="ERPModel.FK_RouterProcessDetails_MachineUnitId" FromRole="RouterProcessDetail" ToRole="Unit" />
+          <NavigationProperty Name="Unit1" Relationship="ERPModel.FK_RouterProcessDetails_RunUnitId" FromRole="RouterProcessDetail" ToRole="Unit" />
+          <NavigationProperty Name="Unit2" Relationship="ERPModel.FK_RouterProcessDetails_SetupUnitId" FromRole="RouterProcessDetail" ToRole="Unit" />
+          <NavigationProperty Name="Unit3" Relationship="ERPModel.FK_RouterProcessDetails_UnitId" FromRole="RouterProcessDetail" ToRole="Unit" />
+          <NavigationProperty Name="CurrencyExchange" Relationship="ERPModel.FK_RouterProcessDetails_CurrencyExchangeId" FromRole="RouterProcessDetail" ToRole="CurrencyExchange" />
         </EntityType>
         <EntityType Name="RouterType">
           <Key>
@@ -5046,6 +6073,7 @@
           <NavigationProperty Name="WorkCenterGroups" Relationship="Self.FK_WorkCenterGroup_CompanyId" FromRole="Company" ToRole="WorkCenterGroup" />
           <NavigationProperty Name="WorkCenterTypes" Relationship="Self.FK_WorkCenterType_CompanyId" FromRole="Company" ToRole="WorkCenterType" />
           <NavigationProperty Name="WorkOrders" Relationship="Self.FK_WorkOrder_CompanyId" FromRole="Company" ToRole="WorkOrder" />
+          <NavigationProperty Name="CurrencyExchanges" Relationship="ERPModel.FK_CurrencyExchange_CompanyId" FromRole="Company" ToRole="CurrencyExchange" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
@@ -5075,6 +6103,7 @@
           <NavigationProperty Name="Company1" Relationship="Self.FK_Customer_CustomerCompanyId" FromRole="Customer" ToRole="Company" />
           <NavigationProperty Name="Employee" Relationship="Self.FK_Customer_ModifiedByEmployeeId" FromRole="Customer" ToRole="Employee" />
           <NavigationProperty Name="WorkOrders" Relationship="Self.FK_WorkOrder_CustomerId" FromRole="Customer" ToRole="WorkOrder" />
+          <NavigationProperty Name="Currency" Relationship="ERPModel.FK_Customer_CurrencyId" FromRole="Customer" ToRole="Currency" />
         </EntityType>
         <EntityType Name="Item">
           <Key>
@@ -5133,6 +6162,7 @@
           <NavigationProperty Name="MfgConsumable" Relationship="Self.FK_MfgConsumable_ItemId" FromRole="Item" ToRole="MfgConsumable" />
           <NavigationProperty Name="StockMovementDetails" Relationship="Self.FK_StockMovementDetails_ItemId" FromRole="Item" ToRole="StockMovementDetails" />
           <NavigationProperty Name="WorkOrders" Relationship="Self.FK_WorkOrder_ItemId" FromRole="Item" ToRole="WorkOrder" />
+          <NavigationProperty Name="Unit" Relationship="ERPModel.FK_Item_UnitId" FromRole="Item" ToRole="Unit" />
         </EntityType>
         <EntityType Name="ItemStatu">
           <Key>
@@ -5226,6 +6256,7 @@
           <NavigationProperty Name="Company" Relationship="Self.FK_Vendor_CompanyId" FromRole="Vendor" ToRole="Company" />
           <NavigationProperty Name="Company1" Relationship="Self.FK_Vendor_VendorCompanyId" FromRole="Vendor" ToRole="Company" />
           <NavigationProperty Name="Employee" Relationship="Self.FK_Vendor_ModifiedByEmployeeId" FromRole="Vendor" ToRole="Employee" />
+          <NavigationProperty Name="Currency" Relationship="ERPModel.FK_Vendor_CurrencyId" FromRole="Vendor" ToRole="Currency" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -5319,6 +6350,12 @@
           <NavigationProperty Name="WorkOrders" Relationship="Self.FK_WorkOrder_ModifiedByEmployeeId" FromRole="Employee" ToRole="WorkOrder" />
           <NavigationProperty Name="WorkOrderDetails" Relationship="Self.FK_WorkOrderDetails_EmployeeId" FromRole="Employee" ToRole="WorkOrderDetails" />
           <NavigationProperty Name="RouterDetailsLinks" Relationship="ERPModel.FK_RouterDetailsLink_EmployeeId" FromRole="Employee" ToRole="RouterDetailsLink" />
+          <NavigationProperty Name="ConversionUnits" Relationship="ERPModel.FK_ConversionUnit_ModifiedByEmployeeId" FromRole="Employee" ToRole="ConversionUnit" />
+          <NavigationProperty Name="Currencies" Relationship="ERPModel.FK_Currency_ModifiedByEmployeeId" FromRole="Employee" ToRole="Currency" />
+          <NavigationProperty Name="Units" Relationship="ERPModel.FK_Unit_ModifiedByEmployeeId" FromRole="Employee" ToRole="Unit" />
+          <NavigationProperty Name="CurrencyExchanges" Relationship="ERPModel.FK_CurrencyExchange_ModifiedByEmployeeId" FromRole="Employee" ToRole="CurrencyExchange" />
+          <NavigationProperty Name="JobPriorities" Relationship="ERPModel.FK_JobPriority_ModifiedByEmployeeId" FromRole="Employee" ToRole="JobPriority" />
+          <NavigationProperty Name="PrimeLoads" Relationship="ERPModel.FK__PrimeLoad__Modif__70FF5617" FromRole="Employee" ToRole="PrimeLoad" />
         </EntityType>
         <EntityType Name="ItemLocation">
           <Key>
@@ -5394,6 +6431,9 @@
           <NavigationProperty Name="Employee" Relationship="Self.FK_ItemLotBin_ModifiedByEmployeeId" FromRole="ItemLotBin" ToRole="Employee" />
           <NavigationProperty Name="ItemLocations" Relationship="Self.FK_ItemLocation_ItemLotBinId" FromRole="ItemLotBin" ToRole="ItemLocation" />
           <NavigationProperty Name="StockMovementDetails" Relationship="Self.FK_StockMovementDetails_ItemLotBinId" FromRole="ItemLotBin" ToRole="StockMovementDetails" />
+          <NavigationProperty Name="Currency" Relationship="ERPModel.FK_ItemLotBin_CurrencyId" FromRole="ItemLotBin" ToRole="Currency" />
+          <NavigationProperty Name="Unit" Relationship="ERPModel.FK_ItemLotBin_UnitId" FromRole="ItemLotBin" ToRole="Unit" />
+          <NavigationProperty Name="CurrencyExchange" Relationship="ERPModel.FK_ItemLotBin_CurrencyExchangeId" FromRole="ItemLotBin" ToRole="CurrencyExchange" />
         </EntityType>
         <EntityType Name="ItemSerial">
           <Key>
@@ -5419,6 +6459,8 @@
           <NavigationProperty Name="Company" Relationship="Self.FK_ItemSerial_CompanyId" FromRole="ItemSerial" ToRole="Company" />
           <NavigationProperty Name="Item" Relationship="Self.FK_ItemSerial_ItemId" FromRole="ItemSerial" ToRole="Item" />
           <NavigationProperty Name="Employee" Relationship="Self.FK_ItemSerial_ModifiedByEmployeeId" FromRole="ItemSerial" ToRole="Employee" />
+          <NavigationProperty Name="Currency" Relationship="ERPModel.FK_ItemSerial_CurrencyId" FromRole="ItemSerial" ToRole="Currency" />
+          <NavigationProperty Name="CurrencyExchange" Relationship="ERPModel.FK_ItemSerial_CurrencyExchangeId" FromRole="ItemSerial" ToRole="CurrencyExchange" />
         </EntityType>
         <EntityType Name="Machine">
           <Key>
@@ -5468,6 +6510,8 @@
           <NavigationProperty Name="MachineType" Relationship="Self.FK_Machine_MachineTypeId" FromRole="Machine" ToRole="MachineType" />
           <NavigationProperty Name="ToolSet" Relationship="Self.FK_Machine_ToolSetId" FromRole="Machine" ToRole="ToolSet" />
           <NavigationProperty Name="WorkCenter" Relationship="Self.FK_Machine_WorkCenterId" FromRole="Machine" ToRole="WorkCenter" />
+          <NavigationProperty Name="Currency" Relationship="ERPModel.FK_Machine_CurrencyId" FromRole="Machine" ToRole="Currency" />
+          <NavigationProperty Name="CurrencyExchange" Relationship="ERPModel.FK_Machine_CurrencyExchangeId" FromRole="Machine" ToRole="CurrencyExchange" />
         </EntityType>
         <EntityType Name="MachineType">
           <Key>
@@ -5514,6 +6558,8 @@
           <NavigationProperty Name="Employee" Relationship="Self.FK_StockMovement_ModifiedByEmployeeId" FromRole="StockMovement" ToRole="Employee" />
           <NavigationProperty Name="Employee1" Relationship="Self.FK_StockMovement_MovedByEmployeeId" FromRole="StockMovement" ToRole="Employee" />
           <NavigationProperty Name="StockMovementDetails" Relationship="Self.FK_StockMovementDetails_StockMovementId" FromRole="StockMovement" ToRole="StockMovementDetails" />
+          <NavigationProperty Name="Currency" Relationship="ERPModel.FK_StockMovement_CurrencyId" FromRole="StockMovement" ToRole="Currency" />
+          <NavigationProperty Name="CurrencyExchange" Relationship="ERPModel.FK_StockMovement_CurrencyExchangeId" FromRole="StockMovement" ToRole="CurrencyExchange" />
         </EntityType>
         <EntityType Name="StockMovementDetail">
           <Key>
@@ -5562,6 +6608,8 @@
           <NavigationProperty Name="Item" Relationship="Self.FK_MfgConsumable_ItemId" FromRole="MfgConsumable" ToRole="Item" />
           <NavigationProperty Name="Employee" Relationship="Self.FK_MfgConsumable_EmployeeId" FromRole="MfgConsumable" ToRole="Employee" />
           <NavigationProperty Name="MfgConsumableType" Relationship="Self.FK_MfgConsumable_MfgConsumableTypeId" FromRole="MfgConsumable" ToRole="MfgConsumableType" />
+          <NavigationProperty Name="Currency" Relationship="ERPModel.FK_MfgConsumable_CurrencyId" FromRole="MfgConsumable" ToRole="Currency" />
+          <NavigationProperty Name="CurrencyExchange" Relationship="ERPModel.FK_MfgConsumable_CurrencyExchangeId" FromRole="MfgConsumable" ToRole="CurrencyExchange" />
         </EntityType>
         <EntityType Name="MfgConsumableType">
           <Key>
@@ -5726,6 +6774,8 @@
           <NavigationProperty Name="ToolSet" Relationship="Self.FK_WorkCenter_ToolSetId" FromRole="WorkCenter" ToRole="ToolSet" />
           <NavigationProperty Name="WorkCenterGroup" Relationship="Self.FK_WorkCenter_WorkCenterGroupId" FromRole="WorkCenter" ToRole="WorkCenterGroup" />
           <NavigationProperty Name="WorkCenterType" Relationship="Self.FK_WorkCenter_WorkCenterTypeId" FromRole="WorkCenter" ToRole="WorkCenterType" />
+          <NavigationProperty Name="Unit" Relationship="ERPModel.FK_WorkCenter_RunLaborUnitId" FromRole="WorkCenter" ToRole="Unit" />
+          <NavigationProperty Name="Unit1" Relationship="ERPModel.FK_WorkCenter_SetupLaborUnitId" FromRole="WorkCenter" ToRole="Unit" />
         </EntityType>
         <EntityType Name="WorkCenterGroup">
           <Key>
@@ -5822,6 +6872,8 @@
           <NavigationProperty Name="Employee" Relationship="Self.FK_WorkOrder_ModifiedByEmployeeId" FromRole="WorkOrder" ToRole="Employee" />
           <NavigationProperty Name="ScheduledWorkOrders" Relationship="Self.FK__Scheduled__WorkO__700B31DE" FromRole="WorkOrder" ToRole="ScheduledWorkOrder" />
           <NavigationProperty Name="WorkOrderDetails" Relationship="Self.FK_WorkOrderDetails_WorkOrderId" FromRole="WorkOrder" ToRole="WorkOrderDetails" />
+          <NavigationProperty Name="Currency" Relationship="ERPModel.FK_WorkOrder_CurrencyId" FromRole="WorkOrder" ToRole="Currency" />
+          <NavigationProperty Name="CurrencyExchange" Relationship="ERPModel.FK_WorkOrder_CurrencyExchangeId" FromRole="WorkOrder" ToRole="CurrencyExchange" />
         </EntityType>
         <EntityType Name="WorkOrderDetail">
           <Key>
@@ -8801,6 +9853,240 @@
             <End Role="Employee" EntitySet="Employees" />
             <End Role="RouterDetailsLink" EntitySet="RouterDetailsLinks" />
           </AssociationSet>
+          <EntitySet Name="ConversionUnits" EntityType="ERPModel.ConversionUnit" />
+          <EntitySet Name="Currencies" EntityType="ERPModel.Currency" />
+          <EntitySet Name="Units" EntityType="ERPModel.Unit" />
+          <EntitySet Name="CurrencyExchanges" EntityType="ERPModel.CurrencyExchange" />
+          <AssociationSet Name="FK_ConversionUnit_ModifiedByEmployeeId" Association="ERPModel.FK_ConversionUnit_ModifiedByEmployeeId">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="ConversionUnit" EntitySet="ConversionUnits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bom_CurrencyId" Association="ERPModel.FK_Bom_CurrencyId">
+            <End Role="Currency" EntitySet="Currencies" />
+            <End Role="Bom" EntitySet="Boms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BomDetails_CurrencyId" Association="ERPModel.FK_BomDetails_CurrencyId">
+            <End Role="Currency" EntitySet="Currencies" />
+            <End Role="BomDetail" EntitySet="BomDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Currency_ModifiedByEmployeeId" Association="ERPModel.FK_Currency_ModifiedByEmployeeId">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Currency" EntitySet="Currencies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CurrencyExchange_SourceCurrencyId" Association="ERPModel.FK_CurrencyExchange_SourceCurrencyId">
+            <End Role="Currency" EntitySet="Currencies" />
+            <End Role="CurrencyExchange" EntitySet="CurrencyExchanges" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CurrencyExchange_TargetCurrencyId" Association="ERPModel.FK_CurrencyExchange_TargetCurrencyId">
+            <End Role="Currency" EntitySet="Currencies" />
+            <End Role="CurrencyExchange" EntitySet="CurrencyExchanges" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_CurrencyId" Association="ERPModel.FK_Customer_CurrencyId">
+            <End Role="Currency" EntitySet="Currencies" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemLotBin_CurrencyId" Association="ERPModel.FK_ItemLotBin_CurrencyId">
+            <End Role="Currency" EntitySet="Currencies" />
+            <End Role="ItemLotBin" EntitySet="ItemLotBins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemSerial_CurrencyId" Association="ERPModel.FK_ItemSerial_CurrencyId">
+            <End Role="Currency" EntitySet="Currencies" />
+            <End Role="ItemSerial" EntitySet="ItemSerials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Machine_CurrencyId" Association="ERPModel.FK_Machine_CurrencyId">
+            <End Role="Currency" EntitySet="Currencies" />
+            <End Role="Machine" EntitySet="Machines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ManufacturedComponent_CurrencyId" Association="ERPModel.FK_ManufacturedComponent_CurrencyId">
+            <End Role="Currency" EntitySet="Currencies" />
+            <End Role="ManufacturedComponent" EntitySet="ManufacturedComponents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MfgConsumable_CurrencyId" Association="ERPModel.FK_MfgConsumable_CurrencyId">
+            <End Role="Currency" EntitySet="Currencies" />
+            <End Role="MfgConsumable" EntitySet="MfgConsumables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductBuild_CurrencyId" Association="ERPModel.FK_ProductBuild_CurrencyId">
+            <End Role="Currency" EntitySet="Currencies" />
+            <End Role="ProductBuild" EntitySet="ProductBuilds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductBuildDevelopmentLabor_CurrencyId" Association="ERPModel.FK_ProductBuildDevelopmentLabor_CurrencyId">
+            <End Role="Currency" EntitySet="Currencies" />
+            <End Role="ProductBuildDevelopmentLabor" EntitySet="ProductBuildDevelopmentLabors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductBuildDraft_CurrencyId" Association="ERPModel.FK_ProductBuildDraft_CurrencyId">
+            <End Role="Currency" EntitySet="Currencies" />
+            <End Role="ProductBuildDraft" EntitySet="ProductBuildDrafts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Router_CurrencyId" Association="ERPModel.FK_Router_CurrencyId">
+            <End Role="Currency" EntitySet="Currencies" />
+            <End Role="Router" EntitySet="Routers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RouterProcess_CurrencyId" Association="ERPModel.FK_RouterProcess_CurrencyId">
+            <End Role="Currency" EntitySet="Currencies" />
+            <End Role="RouterProcess" EntitySet="RouterProcesses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RouterProcessDetails_CurrencyId" Association="ERPModel.FK_RouterProcessDetails_CurrencyId">
+            <End Role="Currency" EntitySet="Currencies" />
+            <End Role="RouterProcessDetail" EntitySet="RouterProcessDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StockMovement_CurrencyId" Association="ERPModel.FK_StockMovement_CurrencyId">
+            <End Role="Currency" EntitySet="Currencies" />
+            <End Role="StockMovement" EntitySet="StockMovements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vendor_CurrencyId" Association="ERPModel.FK_Vendor_CurrencyId">
+            <End Role="Currency" EntitySet="Currencies" />
+            <End Role="Vendor" EntitySet="Vendors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkOrder_CurrencyId" Association="ERPModel.FK_WorkOrder_CurrencyId">
+            <End Role="Currency" EntitySet="Currencies" />
+            <End Role="WorkOrder" EntitySet="WorkOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bom_UnitId" Association="ERPModel.FK_Bom_UnitId">
+            <End Role="Unit" EntitySet="Units" />
+            <End Role="Bom" EntitySet="Boms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BomDetails_UnitId" Association="ERPModel.FK_BomDetails_UnitId">
+            <End Role="Unit" EntitySet="Units" />
+            <End Role="BomDetail" EntitySet="BomDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BomOtherCostDetails_UnitId" Association="ERPModel.FK_BomOtherCostDetails_UnitId">
+            <End Role="Unit" EntitySet="Units" />
+            <End Role="BomOtherCostDetail" EntitySet="BomOtherCostDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FamilyRouterLink_UnitId" Association="ERPModel.FK_FamilyRouterLink_UnitId">
+            <End Role="Unit" EntitySet="Units" />
+            <End Role="FamilyRouterLink" EntitySet="FamilyRouterLinks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_UnitId" Association="ERPModel.FK_Item_UnitId">
+            <End Role="Unit" EntitySet="Units" />
+            <End Role="Item" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemLotBin_UnitId" Association="ERPModel.FK_ItemLotBin_UnitId">
+            <End Role="Unit" EntitySet="Units" />
+            <End Role="ItemLotBin" EntitySet="ItemLotBins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ManufacturedComponent_UnitId" Association="ERPModel.FK_ManufacturedComponent_UnitId">
+            <End Role="Unit" EntitySet="Units" />
+            <End Role="ManufacturedComponent" EntitySet="ManufacturedComponents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ManufacturedSubComponent_UnitId" Association="ERPModel.FK_ManufacturedSubComponent_UnitId">
+            <End Role="Unit" EntitySet="Units" />
+            <End Role="ManufacturedSubComponent" EntitySet="ManufacturedSubComponents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductBuild_UnitId" Association="ERPModel.FK_ProductBuild_UnitId">
+            <End Role="Unit" EntitySet="Units" />
+            <End Role="ProductBuild" EntitySet="ProductBuilds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductBuildDraft_UnitId" Association="ERPModel.FK_ProductBuildDraft_UnitId">
+            <End Role="Unit" EntitySet="Units" />
+            <End Role="ProductBuildDraft" EntitySet="ProductBuildDrafts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RouterProcessDetails_MachineUnitId" Association="ERPModel.FK_RouterProcessDetails_MachineUnitId">
+            <End Role="Unit" EntitySet="Units" />
+            <End Role="RouterProcessDetail" EntitySet="RouterProcessDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RouterProcessDetails_RunUnitId" Association="ERPModel.FK_RouterProcessDetails_RunUnitId">
+            <End Role="Unit" EntitySet="Units" />
+            <End Role="RouterProcessDetail" EntitySet="RouterProcessDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RouterProcessDetails_SetupUnitId" Association="ERPModel.FK_RouterProcessDetails_SetupUnitId">
+            <End Role="Unit" EntitySet="Units" />
+            <End Role="RouterProcessDetail" EntitySet="RouterProcessDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RouterProcessDetails_UnitId" Association="ERPModel.FK_RouterProcessDetails_UnitId">
+            <End Role="Unit" EntitySet="Units" />
+            <End Role="RouterProcessDetail" EntitySet="RouterProcessDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Unit_ModifiedByEmployeeId" Association="ERPModel.FK_Unit_ModifiedByEmployeeId">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Unit" EntitySet="Units" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkCenter_RunLaborUnitId" Association="ERPModel.FK_WorkCenter_RunLaborUnitId">
+            <End Role="Unit" EntitySet="Units" />
+            <End Role="WorkCenter" EntitySet="WorkCenters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkCenter_SetupLaborUnitId" Association="ERPModel.FK_WorkCenter_SetupLaborUnitId">
+            <End Role="Unit" EntitySet="Units" />
+            <End Role="WorkCenter" EntitySet="WorkCenters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bom_CurrencyExchangeId" Association="ERPModel.FK_Bom_CurrencyExchangeId">
+            <End Role="CurrencyExchange" EntitySet="CurrencyExchanges" />
+            <End Role="Bom" EntitySet="Boms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BomDetails_CurrencyExchangeId" Association="ERPModel.FK_BomDetails_CurrencyExchangeId">
+            <End Role="CurrencyExchange" EntitySet="CurrencyExchanges" />
+            <End Role="BomDetail" EntitySet="BomDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ManufacturedComponent_CurrencyExchangeId" Association="ERPModel.FK_ManufacturedComponent_CurrencyExchangeId">
+            <End Role="CurrencyExchange" EntitySet="CurrencyExchanges" />
+            <End Role="ManufacturedComponent" EntitySet="ManufacturedComponents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductBuild_CurrencyExchangeId" Association="ERPModel.FK_ProductBuild_CurrencyExchangeId">
+            <End Role="CurrencyExchange" EntitySet="CurrencyExchanges" />
+            <End Role="ProductBuild" EntitySet="ProductBuilds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductBuildDevelopmentLabor_CurrencyExchangeId" Association="ERPModel.FK_ProductBuildDevelopmentLabor_CurrencyExchangeId">
+            <End Role="CurrencyExchange" EntitySet="CurrencyExchanges" />
+            <End Role="ProductBuildDevelopmentLabor" EntitySet="ProductBuildDevelopmentLabors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductBuildDraft_CurrencyExchangeId" Association="ERPModel.FK_ProductBuildDraft_CurrencyExchangeId">
+            <End Role="CurrencyExchange" EntitySet="CurrencyExchanges" />
+            <End Role="ProductBuildDraft" EntitySet="ProductBuildDrafts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Router_CurrencyExchangeId" Association="ERPModel.FK_Router_CurrencyExchangeId">
+            <End Role="CurrencyExchange" EntitySet="CurrencyExchanges" />
+            <End Role="Router" EntitySet="Routers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RouterProcess_CurrencyExchangeId" Association="ERPModel.FK_RouterProcess_CurrencyExchangeId">
+            <End Role="CurrencyExchange" EntitySet="CurrencyExchanges" />
+            <End Role="RouterProcess" EntitySet="RouterProcesses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RouterProcessDetails_CurrencyExchangeId" Association="ERPModel.FK_RouterProcessDetails_CurrencyExchangeId">
+            <End Role="CurrencyExchange" EntitySet="CurrencyExchanges" />
+            <End Role="RouterProcessDetail" EntitySet="RouterProcessDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CurrencyExchange_CompanyId" Association="ERPModel.FK_CurrencyExchange_CompanyId">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="CurrencyExchange" EntitySet="CurrencyExchanges" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CurrencyExchange_ModifiedByEmployeeId" Association="ERPModel.FK_CurrencyExchange_ModifiedByEmployeeId">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="CurrencyExchange" EntitySet="CurrencyExchanges" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemLotBin_CurrencyExchangeId" Association="ERPModel.FK_ItemLotBin_CurrencyExchangeId">
+            <End Role="CurrencyExchange" EntitySet="CurrencyExchanges" />
+            <End Role="ItemLotBin" EntitySet="ItemLotBins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemSerial_CurrencyExchangeId" Association="ERPModel.FK_ItemSerial_CurrencyExchangeId">
+            <End Role="CurrencyExchange" EntitySet="CurrencyExchanges" />
+            <End Role="ItemSerial" EntitySet="ItemSerials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Machine_CurrencyExchangeId" Association="ERPModel.FK_Machine_CurrencyExchangeId">
+            <End Role="CurrencyExchange" EntitySet="CurrencyExchanges" />
+            <End Role="Machine" EntitySet="Machines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MfgConsumable_CurrencyExchangeId" Association="ERPModel.FK_MfgConsumable_CurrencyExchangeId">
+            <End Role="CurrencyExchange" EntitySet="CurrencyExchanges" />
+            <End Role="MfgConsumable" EntitySet="MfgConsumables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StockMovement_CurrencyExchangeId" Association="ERPModel.FK_StockMovement_CurrencyExchangeId">
+            <End Role="CurrencyExchange" EntitySet="CurrencyExchanges" />
+            <End Role="StockMovement" EntitySet="StockMovements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkOrder_CurrencyExchangeId" Association="ERPModel.FK_WorkOrder_CurrencyExchangeId">
+            <End Role="CurrencyExchange" EntitySet="CurrencyExchanges" />
+            <End Role="WorkOrder" EntitySet="WorkOrders" />
+          </AssociationSet>
+          <EntitySet Name="JobPriorities" EntityType="ERPModel.JobPriority" />
+          <EntitySet Name="PrimeLoads" EntityType="ERPModel.PrimeLoad" />
+          <AssociationSet Name="FK_JobPriority_ModifiedByEmployeeId" Association="ERPModel.FK_JobPriority_ModifiedByEmployeeId">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="JobPriority" EntitySet="JobPriorities" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PrimeLoad__Modif__70FF5617" Association="ERPModel.FK__PrimeLoad__Modif__70FF5617">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="PrimeLoad" EntitySet="PrimeLoads" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="RouterDetailsLink">
           <Key>
@@ -8867,6 +10153,842 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="ConversionUnit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FromUnit" Type="Int64" Nullable="false" />
+          <Property Name="FromUnitText" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ToUnit" Type="Int64" Nullable="false" />
+          <Property Name="ToUnitText" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ConversionFactor" Type="Decimal" Nullable="false" Precision="26" Scale="6" />
+          <Property Name="ModifiedByEmployeeId" Type="Int64" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="7" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="7" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="Employee" Relationship="ERPModel.FK_ConversionUnit_ModifiedByEmployeeId" FromRole="ConversionUnit" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Currency">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Symbol" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="DecimalSymbol" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="SeparatorSymbol" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="NegativeFormat" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="PositiveFormat" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="IsoCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedByEmployeeId" Type="Int64" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="7" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="7" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="Boms" Relationship="ERPModel.FK_Bom_CurrencyId" FromRole="Currency" ToRole="Bom" />
+          <NavigationProperty Name="BomDetails" Relationship="ERPModel.FK_BomDetails_CurrencyId" FromRole="Currency" ToRole="BomDetail" />
+          <NavigationProperty Name="Employee" Relationship="ERPModel.FK_Currency_ModifiedByEmployeeId" FromRole="Currency" ToRole="Employee" />
+          <NavigationProperty Name="CurrencyExchanges" Relationship="ERPModel.FK_CurrencyExchange_SourceCurrencyId" FromRole="Currency" ToRole="CurrencyExchange" />
+          <NavigationProperty Name="CurrencyExchanges1" Relationship="ERPModel.FK_CurrencyExchange_TargetCurrencyId" FromRole="Currency" ToRole="CurrencyExchange" />
+          <NavigationProperty Name="Customers" Relationship="ERPModel.FK_Customer_CurrencyId" FromRole="Currency" ToRole="Customer" />
+          <NavigationProperty Name="ItemLotBins" Relationship="ERPModel.FK_ItemLotBin_CurrencyId" FromRole="Currency" ToRole="ItemLotBin" />
+          <NavigationProperty Name="ItemSerials" Relationship="ERPModel.FK_ItemSerial_CurrencyId" FromRole="Currency" ToRole="ItemSerial" />
+          <NavigationProperty Name="Machines" Relationship="ERPModel.FK_Machine_CurrencyId" FromRole="Currency" ToRole="Machine" />
+          <NavigationProperty Name="ManufacturedComponents" Relationship="ERPModel.FK_ManufacturedComponent_CurrencyId" FromRole="Currency" ToRole="ManufacturedComponent" />
+          <NavigationProperty Name="MfgConsumables" Relationship="ERPModel.FK_MfgConsumable_CurrencyId" FromRole="Currency" ToRole="MfgConsumable" />
+          <NavigationProperty Name="ProductBuilds" Relationship="ERPModel.FK_ProductBuild_CurrencyId" FromRole="Currency" ToRole="ProductBuild" />
+          <NavigationProperty Name="ProductBuildDevelopmentLabors" Relationship="ERPModel.FK_ProductBuildDevelopmentLabor_CurrencyId" FromRole="Currency" ToRole="ProductBuildDevelopmentLabor" />
+          <NavigationProperty Name="ProductBuildDrafts" Relationship="ERPModel.FK_ProductBuildDraft_CurrencyId" FromRole="Currency" ToRole="ProductBuildDraft" />
+          <NavigationProperty Name="Routers" Relationship="ERPModel.FK_Router_CurrencyId" FromRole="Currency" ToRole="Router" />
+          <NavigationProperty Name="RouterProcesses" Relationship="ERPModel.FK_RouterProcess_CurrencyId" FromRole="Currency" ToRole="RouterProcess" />
+          <NavigationProperty Name="RouterProcessDetails" Relationship="ERPModel.FK_RouterProcessDetails_CurrencyId" FromRole="Currency" ToRole="RouterProcessDetail" />
+          <NavigationProperty Name="StockMovements" Relationship="ERPModel.FK_StockMovement_CurrencyId" FromRole="Currency" ToRole="StockMovement" />
+          <NavigationProperty Name="Vendors" Relationship="ERPModel.FK_Vendor_CurrencyId" FromRole="Currency" ToRole="Vendor" />
+          <NavigationProperty Name="WorkOrders" Relationship="ERPModel.FK_WorkOrder_CurrencyId" FromRole="Currency" ToRole="WorkOrder" />
+        </EntityType>
+        <EntityType Name="Unit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UnitCategory" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="UnitVal" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedByEmployeeId" Type="Int64" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="7" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="7" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="Boms" Relationship="ERPModel.FK_Bom_UnitId" FromRole="Unit" ToRole="Bom" />
+          <NavigationProperty Name="BomDetails" Relationship="ERPModel.FK_BomDetails_UnitId" FromRole="Unit" ToRole="BomDetail" />
+          <NavigationProperty Name="BomOtherCostDetails" Relationship="ERPModel.FK_BomOtherCostDetails_UnitId" FromRole="Unit" ToRole="BomOtherCostDetail" />
+          <NavigationProperty Name="FamilyRouterLinks" Relationship="ERPModel.FK_FamilyRouterLink_UnitId" FromRole="Unit" ToRole="FamilyRouterLink" />
+          <NavigationProperty Name="Items" Relationship="ERPModel.FK_Item_UnitId" FromRole="Unit" ToRole="Item" />
+          <NavigationProperty Name="ItemLotBins" Relationship="ERPModel.FK_ItemLotBin_UnitId" FromRole="Unit" ToRole="ItemLotBin" />
+          <NavigationProperty Name="ManufacturedComponents" Relationship="ERPModel.FK_ManufacturedComponent_UnitId" FromRole="Unit" ToRole="ManufacturedComponent" />
+          <NavigationProperty Name="ManufacturedSubComponents" Relationship="ERPModel.FK_ManufacturedSubComponent_UnitId" FromRole="Unit" ToRole="ManufacturedSubComponent" />
+          <NavigationProperty Name="ProductBuilds" Relationship="ERPModel.FK_ProductBuild_UnitId" FromRole="Unit" ToRole="ProductBuild" />
+          <NavigationProperty Name="ProductBuildDrafts" Relationship="ERPModel.FK_ProductBuildDraft_UnitId" FromRole="Unit" ToRole="ProductBuildDraft" />
+          <NavigationProperty Name="RouterProcessDetails" Relationship="ERPModel.FK_RouterProcessDetails_MachineUnitId" FromRole="Unit" ToRole="RouterProcessDetail" />
+          <NavigationProperty Name="RouterProcessDetails1" Relationship="ERPModel.FK_RouterProcessDetails_RunUnitId" FromRole="Unit" ToRole="RouterProcessDetail" />
+          <NavigationProperty Name="RouterProcessDetails2" Relationship="ERPModel.FK_RouterProcessDetails_SetupUnitId" FromRole="Unit" ToRole="RouterProcessDetail" />
+          <NavigationProperty Name="RouterProcessDetails3" Relationship="ERPModel.FK_RouterProcessDetails_UnitId" FromRole="Unit" ToRole="RouterProcessDetail" />
+          <NavigationProperty Name="Employee" Relationship="ERPModel.FK_Unit_ModifiedByEmployeeId" FromRole="Unit" ToRole="Employee" />
+          <NavigationProperty Name="WorkCenters" Relationship="ERPModel.FK_WorkCenter_RunLaborUnitId" FromRole="Unit" ToRole="WorkCenter" />
+          <NavigationProperty Name="WorkCenters1" Relationship="ERPModel.FK_WorkCenter_SetupLaborUnitId" FromRole="Unit" ToRole="WorkCenter" />
+        </EntityType>
+        <EntityType Name="CurrencyExchange">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyId" Type="Int64" Nullable="false" />
+          <Property Name="SourceCurrencyId" Type="Int64" Nullable="false" />
+          <Property Name="TargetCurrencyId" Type="Int64" Nullable="false" />
+          <Property Name="ModifiedByEmployeeId" Type="Int64" />
+          <Property Name="TransactionTypeId" Type="Int64" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="SellingRate" Type="Decimal" Nullable="false" Precision="26" Scale="6" />
+          <Property Name="BuyingRate" Type="Decimal" Nullable="false" Precision="26" Scale="6" />
+          <Property Name="EffectiveDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="SourceOfRate" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AuthorizationCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="7" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="7" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="Currency" Relationship="ERPModel.FK_CurrencyExchange_SourceCurrencyId" FromRole="CurrencyExchange" ToRole="Currency" />
+          <NavigationProperty Name="Currency1" Relationship="ERPModel.FK_CurrencyExchange_TargetCurrencyId" FromRole="CurrencyExchange" ToRole="Currency" />
+          <NavigationProperty Name="Boms" Relationship="ERPModel.FK_Bom_CurrencyExchangeId" FromRole="CurrencyExchange" ToRole="Bom" />
+          <NavigationProperty Name="BomDetails" Relationship="ERPModel.FK_BomDetails_CurrencyExchangeId" FromRole="CurrencyExchange" ToRole="BomDetail" />
+          <NavigationProperty Name="ManufacturedComponents" Relationship="ERPModel.FK_ManufacturedComponent_CurrencyExchangeId" FromRole="CurrencyExchange" ToRole="ManufacturedComponent" />
+          <NavigationProperty Name="ProductBuilds" Relationship="ERPModel.FK_ProductBuild_CurrencyExchangeId" FromRole="CurrencyExchange" ToRole="ProductBuild" />
+          <NavigationProperty Name="ProductBuildDevelopmentLabors" Relationship="ERPModel.FK_ProductBuildDevelopmentLabor_CurrencyExchangeId" FromRole="CurrencyExchange" ToRole="ProductBuildDevelopmentLabor" />
+          <NavigationProperty Name="ProductBuildDrafts" Relationship="ERPModel.FK_ProductBuildDraft_CurrencyExchangeId" FromRole="CurrencyExchange" ToRole="ProductBuildDraft" />
+          <NavigationProperty Name="Routers" Relationship="ERPModel.FK_Router_CurrencyExchangeId" FromRole="CurrencyExchange" ToRole="Router" />
+          <NavigationProperty Name="RouterProcesses" Relationship="ERPModel.FK_RouterProcess_CurrencyExchangeId" FromRole="CurrencyExchange" ToRole="RouterProcess" />
+          <NavigationProperty Name="RouterProcessDetails" Relationship="ERPModel.FK_RouterProcessDetails_CurrencyExchangeId" FromRole="CurrencyExchange" ToRole="RouterProcessDetail" />
+          <NavigationProperty Name="Company" Relationship="ERPModel.FK_CurrencyExchange_CompanyId" FromRole="CurrencyExchange" ToRole="Company" />
+          <NavigationProperty Name="Employee" Relationship="ERPModel.FK_CurrencyExchange_ModifiedByEmployeeId" FromRole="CurrencyExchange" ToRole="Employee" />
+          <NavigationProperty Name="ItemLotBins" Relationship="ERPModel.FK_ItemLotBin_CurrencyExchangeId" FromRole="CurrencyExchange" ToRole="ItemLotBin" />
+          <NavigationProperty Name="ItemSerials" Relationship="ERPModel.FK_ItemSerial_CurrencyExchangeId" FromRole="CurrencyExchange" ToRole="ItemSerial" />
+          <NavigationProperty Name="Machines" Relationship="ERPModel.FK_Machine_CurrencyExchangeId" FromRole="CurrencyExchange" ToRole="Machine" />
+          <NavigationProperty Name="MfgConsumables" Relationship="ERPModel.FK_MfgConsumable_CurrencyExchangeId" FromRole="CurrencyExchange" ToRole="MfgConsumable" />
+          <NavigationProperty Name="StockMovements" Relationship="ERPModel.FK_StockMovement_CurrencyExchangeId" FromRole="CurrencyExchange" ToRole="StockMovement" />
+          <NavigationProperty Name="WorkOrders" Relationship="ERPModel.FK_WorkOrder_CurrencyExchangeId" FromRole="CurrencyExchange" ToRole="WorkOrder" />
+        </EntityType>
+        <Association Name="FK_ConversionUnit_ModifiedByEmployeeId">
+          <End Type="ERPModel.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="ERPModel.ConversionUnit" Role="ConversionUnit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ConversionUnit">
+              <PropertyRef Name="ModifiedByEmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bom_CurrencyId">
+          <End Type="ERPModel.Currency" Role="Currency" Multiplicity="0..1" />
+          <End Type="ERPModel.Bom" Role="Bom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Bom">
+              <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BomDetails_CurrencyId">
+          <End Type="ERPModel.Currency" Role="Currency" Multiplicity="0..1" />
+          <End Type="ERPModel.BomDetail" Role="BomDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BomDetail">
+              <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Currency_ModifiedByEmployeeId">
+          <End Type="ERPModel.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="ERPModel.Currency" Role="Currency" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Currency">
+              <PropertyRef Name="ModifiedByEmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CurrencyExchange_SourceCurrencyId">
+          <End Type="ERPModel.Currency" Role="Currency" Multiplicity="1" />
+          <End Type="ERPModel.CurrencyExchange" Role="CurrencyExchange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CurrencyExchange">
+              <PropertyRef Name="SourceCurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CurrencyExchange_TargetCurrencyId">
+          <End Type="ERPModel.Currency" Role="Currency" Multiplicity="1" />
+          <End Type="ERPModel.CurrencyExchange" Role="CurrencyExchange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CurrencyExchange">
+              <PropertyRef Name="TargetCurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_CurrencyId">
+          <End Type="ERPModel.Currency" Role="Currency" Multiplicity="1" />
+          <End Type="ERPModel.Customer" Role="Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemLotBin_CurrencyId">
+          <End Type="ERPModel.Currency" Role="Currency" Multiplicity="0..1" />
+          <End Type="ERPModel.ItemLotBin" Role="ItemLotBin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ItemLotBin">
+              <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemSerial_CurrencyId">
+          <End Type="ERPModel.Currency" Role="Currency" Multiplicity="0..1" />
+          <End Type="ERPModel.ItemSerial" Role="ItemSerial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ItemSerial">
+              <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Machine_CurrencyId">
+          <End Type="ERPModel.Currency" Role="Currency" Multiplicity="0..1" />
+          <End Type="ERPModel.Machine" Role="Machine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Machine">
+              <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ManufacturedComponent_CurrencyId">
+          <End Type="ERPModel.Currency" Role="Currency" Multiplicity="0..1" />
+          <End Type="ERPModel.ManufacturedComponent" Role="ManufacturedComponent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ManufacturedComponent">
+              <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MfgConsumable_CurrencyId">
+          <End Type="ERPModel.Currency" Role="Currency" Multiplicity="0..1" />
+          <End Type="ERPModel.MfgConsumable" Role="MfgConsumable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MfgConsumable">
+              <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductBuild_CurrencyId">
+          <End Type="ERPModel.Currency" Role="Currency" Multiplicity="0..1" />
+          <End Type="ERPModel.ProductBuild" Role="ProductBuild" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductBuild">
+              <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductBuildDevelopmentLabor_CurrencyId">
+          <End Type="ERPModel.Currency" Role="Currency" Multiplicity="0..1" />
+          <End Type="ERPModel.ProductBuildDevelopmentLabor" Role="ProductBuildDevelopmentLabor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductBuildDevelopmentLabor">
+              <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductBuildDraft_CurrencyId">
+          <End Type="ERPModel.Currency" Role="Currency" Multiplicity="0..1" />
+          <End Type="ERPModel.ProductBuildDraft" Role="ProductBuildDraft" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductBuildDraft">
+              <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Router_CurrencyId">
+          <End Type="ERPModel.Currency" Role="Currency" Multiplicity="0..1" />
+          <End Type="ERPModel.Router" Role="Router" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Router">
+              <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RouterProcess_CurrencyId">
+          <End Type="ERPModel.Currency" Role="Currency" Multiplicity="0..1" />
+          <End Type="ERPModel.RouterProcess" Role="RouterProcess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RouterProcess">
+              <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RouterProcessDetails_CurrencyId">
+          <End Type="ERPModel.Currency" Role="Currency" Multiplicity="0..1" />
+          <End Type="ERPModel.RouterProcessDetail" Role="RouterProcessDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RouterProcessDetail">
+              <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StockMovement_CurrencyId">
+          <End Type="ERPModel.Currency" Role="Currency" Multiplicity="0..1" />
+          <End Type="ERPModel.StockMovement" Role="StockMovement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StockMovement">
+              <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vendor_CurrencyId">
+          <End Type="ERPModel.Currency" Role="Currency" Multiplicity="1" />
+          <End Type="ERPModel.Vendor" Role="Vendor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Vendor">
+              <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkOrder_CurrencyId">
+          <End Type="ERPModel.Currency" Role="Currency" Multiplicity="0..1" />
+          <End Type="ERPModel.WorkOrder" Role="WorkOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WorkOrder">
+              <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bom_UnitId">
+          <End Type="ERPModel.Unit" Role="Unit" Multiplicity="0..1" />
+          <End Type="ERPModel.Bom" Role="Bom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Bom">
+              <PropertyRef Name="UnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BomDetails_UnitId">
+          <End Type="ERPModel.Unit" Role="Unit" Multiplicity="0..1" />
+          <End Type="ERPModel.BomDetail" Role="BomDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BomDetail">
+              <PropertyRef Name="UnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BomOtherCostDetails_UnitId">
+          <End Type="ERPModel.Unit" Role="Unit" Multiplicity="0..1" />
+          <End Type="ERPModel.BomOtherCostDetail" Role="BomOtherCostDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BomOtherCostDetail">
+              <PropertyRef Name="UnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FamilyRouterLink_UnitId">
+          <End Type="ERPModel.Unit" Role="Unit" Multiplicity="0..1" />
+          <End Type="ERPModel.FamilyRouterLink" Role="FamilyRouterLink" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FamilyRouterLink">
+              <PropertyRef Name="UnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_UnitId">
+          <End Type="ERPModel.Unit" Role="Unit" Multiplicity="1" />
+          <End Type="ERPModel.Item" Role="Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="StockingUnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemLotBin_UnitId">
+          <End Type="ERPModel.Unit" Role="Unit" Multiplicity="0..1" />
+          <End Type="ERPModel.ItemLotBin" Role="ItemLotBin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ItemLotBin">
+              <PropertyRef Name="UnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ManufacturedComponent_UnitId">
+          <End Type="ERPModel.Unit" Role="Unit" Multiplicity="0..1" />
+          <End Type="ERPModel.ManufacturedComponent" Role="ManufacturedComponent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ManufacturedComponent">
+              <PropertyRef Name="UnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ManufacturedSubComponent_UnitId">
+          <End Type="ERPModel.Unit" Role="Unit" Multiplicity="0..1" />
+          <End Type="ERPModel.ManufacturedSubComponent" Role="ManufacturedSubComponent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ManufacturedSubComponent">
+              <PropertyRef Name="UnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductBuild_UnitId">
+          <End Type="ERPModel.Unit" Role="Unit" Multiplicity="0..1" />
+          <End Type="ERPModel.ProductBuild" Role="ProductBuild" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductBuild">
+              <PropertyRef Name="UnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductBuildDraft_UnitId">
+          <End Type="ERPModel.Unit" Role="Unit" Multiplicity="0..1" />
+          <End Type="ERPModel.ProductBuildDraft" Role="ProductBuildDraft" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductBuildDraft">
+              <PropertyRef Name="UnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RouterProcessDetails_MachineUnitId">
+          <End Type="ERPModel.Unit" Role="Unit" Multiplicity="0..1" />
+          <End Type="ERPModel.RouterProcessDetail" Role="RouterProcessDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RouterProcessDetail">
+              <PropertyRef Name="MachineUnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RouterProcessDetails_RunUnitId">
+          <End Type="ERPModel.Unit" Role="Unit" Multiplicity="0..1" />
+          <End Type="ERPModel.RouterProcessDetail" Role="RouterProcessDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RouterProcessDetail">
+              <PropertyRef Name="RunUnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RouterProcessDetails_SetupUnitId">
+          <End Type="ERPModel.Unit" Role="Unit" Multiplicity="0..1" />
+          <End Type="ERPModel.RouterProcessDetail" Role="RouterProcessDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RouterProcessDetail">
+              <PropertyRef Name="SetupUnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RouterProcessDetails_UnitId">
+          <End Type="ERPModel.Unit" Role="Unit" Multiplicity="0..1" />
+          <End Type="ERPModel.RouterProcessDetail" Role="RouterProcessDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RouterProcessDetail">
+              <PropertyRef Name="TeardownUnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Unit_ModifiedByEmployeeId">
+          <End Type="ERPModel.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="ERPModel.Unit" Role="Unit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Unit">
+              <PropertyRef Name="ModifiedByEmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkCenter_RunLaborUnitId">
+          <End Type="ERPModel.Unit" Role="Unit" Multiplicity="0..1" />
+          <End Type="ERPModel.WorkCenter" Role="WorkCenter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WorkCenter">
+              <PropertyRef Name="RunLaborUnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkCenter_SetupLaborUnitId">
+          <End Type="ERPModel.Unit" Role="Unit" Multiplicity="0..1" />
+          <End Type="ERPModel.WorkCenter" Role="WorkCenter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WorkCenter">
+              <PropertyRef Name="SetupLaborUnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bom_CurrencyExchangeId">
+          <End Type="ERPModel.CurrencyExchange" Role="CurrencyExchange" Multiplicity="0..1" />
+          <End Type="ERPModel.Bom" Role="Bom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CurrencyExchange">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Bom">
+              <PropertyRef Name="CurrencyExchangeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BomDetails_CurrencyExchangeId">
+          <End Type="ERPModel.CurrencyExchange" Role="CurrencyExchange" Multiplicity="0..1" />
+          <End Type="ERPModel.BomDetail" Role="BomDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CurrencyExchange">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BomDetail">
+              <PropertyRef Name="CurrencyExchangeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ManufacturedComponent_CurrencyExchangeId">
+          <End Type="ERPModel.CurrencyExchange" Role="CurrencyExchange" Multiplicity="0..1" />
+          <End Type="ERPModel.ManufacturedComponent" Role="ManufacturedComponent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CurrencyExchange">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ManufacturedComponent">
+              <PropertyRef Name="CurrencyExchangeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductBuild_CurrencyExchangeId">
+          <End Type="ERPModel.CurrencyExchange" Role="CurrencyExchange" Multiplicity="0..1" />
+          <End Type="ERPModel.ProductBuild" Role="ProductBuild" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CurrencyExchange">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductBuild">
+              <PropertyRef Name="CurrencyExchangeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductBuildDevelopmentLabor_CurrencyExchangeId">
+          <End Type="ERPModel.CurrencyExchange" Role="CurrencyExchange" Multiplicity="0..1" />
+          <End Type="ERPModel.ProductBuildDevelopmentLabor" Role="ProductBuildDevelopmentLabor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CurrencyExchange">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductBuildDevelopmentLabor">
+              <PropertyRef Name="CurrencyExchangeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductBuildDraft_CurrencyExchangeId">
+          <End Type="ERPModel.CurrencyExchange" Role="CurrencyExchange" Multiplicity="0..1" />
+          <End Type="ERPModel.ProductBuildDraft" Role="ProductBuildDraft" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CurrencyExchange">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductBuildDraft">
+              <PropertyRef Name="CurrencyExchangeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Router_CurrencyExchangeId">
+          <End Type="ERPModel.CurrencyExchange" Role="CurrencyExchange" Multiplicity="0..1" />
+          <End Type="ERPModel.Router" Role="Router" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CurrencyExchange">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Router">
+              <PropertyRef Name="CurrencyExchangeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RouterProcess_CurrencyExchangeId">
+          <End Type="ERPModel.CurrencyExchange" Role="CurrencyExchange" Multiplicity="0..1" />
+          <End Type="ERPModel.RouterProcess" Role="RouterProcess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CurrencyExchange">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RouterProcess">
+              <PropertyRef Name="CurrencyExchangeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RouterProcessDetails_CurrencyExchangeId">
+          <End Type="ERPModel.CurrencyExchange" Role="CurrencyExchange" Multiplicity="0..1" />
+          <End Type="ERPModel.RouterProcessDetail" Role="RouterProcessDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CurrencyExchange">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RouterProcessDetail">
+              <PropertyRef Name="CurrencyExchangeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CurrencyExchange_CompanyId">
+          <End Type="ERPModel.Company" Role="Company" Multiplicity="1" />
+          <End Type="ERPModel.CurrencyExchange" Role="CurrencyExchange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CurrencyExchange">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CurrencyExchange_ModifiedByEmployeeId">
+          <End Type="ERPModel.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="ERPModel.CurrencyExchange" Role="CurrencyExchange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CurrencyExchange">
+              <PropertyRef Name="ModifiedByEmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemLotBin_CurrencyExchangeId">
+          <End Type="ERPModel.CurrencyExchange" Role="CurrencyExchange" Multiplicity="0..1" />
+          <End Type="ERPModel.ItemLotBin" Role="ItemLotBin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CurrencyExchange">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ItemLotBin">
+              <PropertyRef Name="CurrencyExchangeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemSerial_CurrencyExchangeId">
+          <End Type="ERPModel.CurrencyExchange" Role="CurrencyExchange" Multiplicity="0..1" />
+          <End Type="ERPModel.ItemSerial" Role="ItemSerial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CurrencyExchange">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ItemSerial">
+              <PropertyRef Name="CurrencyExchangeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Machine_CurrencyExchangeId">
+          <End Type="ERPModel.CurrencyExchange" Role="CurrencyExchange" Multiplicity="0..1" />
+          <End Type="ERPModel.Machine" Role="Machine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CurrencyExchange">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Machine">
+              <PropertyRef Name="CurrencyExchangeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MfgConsumable_CurrencyExchangeId">
+          <End Type="ERPModel.CurrencyExchange" Role="CurrencyExchange" Multiplicity="0..1" />
+          <End Type="ERPModel.MfgConsumable" Role="MfgConsumable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CurrencyExchange">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MfgConsumable">
+              <PropertyRef Name="CurrencyExchangeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StockMovement_CurrencyExchangeId">
+          <End Type="ERPModel.CurrencyExchange" Role="CurrencyExchange" Multiplicity="0..1" />
+          <End Type="ERPModel.StockMovement" Role="StockMovement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CurrencyExchange">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StockMovement">
+              <PropertyRef Name="CurrencyExchangeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkOrder_CurrencyExchangeId">
+          <End Type="ERPModel.CurrencyExchange" Role="CurrencyExchange" Multiplicity="0..1" />
+          <End Type="ERPModel.WorkOrder" Role="WorkOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CurrencyExchange">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WorkOrder">
+              <PropertyRef Name="CurrencyExchangeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="JobPriority">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedByEmployeeId" Type="Int64" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="7" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="7" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="Employee" Relationship="ERPModel.FK_JobPriority_ModifiedByEmployeeId" FromRole="JobPriority" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="PrimeLoad">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="ModifiedbyEmployeeId" Type="Int64" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="7" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="Employee" Relationship="ERPModel.FK__PrimeLoad__Modif__70FF5617" FromRole="PrimeLoad" ToRole="Employee" />
+        </EntityType>
+        <Association Name="FK_JobPriority_ModifiedByEmployeeId">
+          <End Type="ERPModel.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="ERPModel.JobPriority" Role="JobPriority" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="JobPriority">
+              <PropertyRef Name="ModifiedByEmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PrimeLoad__Modif__70FF5617">
+          <End Type="ERPModel.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="ERPModel.PrimeLoad" Role="PrimeLoad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PrimeLoad">
+              <PropertyRef Name="ModifiedbyEmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -8876,6 +10998,7 @@
           <EntitySetMapping Name="Boms">
             <EntityTypeMapping TypeName="ERPModel.Bom">
               <MappingFragment StoreEntitySet="Bom">
+                <ScalarProperty Name="TargetQuantity" ColumnName="TargetQuantity" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ModifiedByEmployeeId" ColumnName="ModifiedByEmployeeId" />
                 <ScalarProperty Name="PartName" ColumnName="PartName" />
@@ -10168,6 +12291,105 @@
                 <ScalarProperty Name="TailRouterDetailsId" ColumnName="TailRouterDetailsId" />
                 <ScalarProperty Name="HeadRouterDetailsId" ColumnName="HeadRouterDetailsId" />
                 <ScalarProperty Name="RouterId" ColumnName="RouterId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ConversionUnits">
+            <EntityTypeMapping TypeName="ERPModel.ConversionUnit">
+              <MappingFragment StoreEntitySet="ConversionUnit">
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedByEmployeeId" ColumnName="ModifiedByEmployeeId" />
+                <ScalarProperty Name="ConversionFactor" ColumnName="ConversionFactor" />
+                <ScalarProperty Name="ToUnitText" ColumnName="ToUnitText" />
+                <ScalarProperty Name="ToUnit" ColumnName="ToUnit" />
+                <ScalarProperty Name="FromUnitText" ColumnName="FromUnitText" />
+                <ScalarProperty Name="FromUnit" ColumnName="FromUnit" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Currencies">
+            <EntityTypeMapping TypeName="ERPModel.Currency">
+              <MappingFragment StoreEntitySet="Currency">
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedByEmployeeId" ColumnName="ModifiedByEmployeeId" />
+                <ScalarProperty Name="IsoCode" ColumnName="IsoCode" />
+                <ScalarProperty Name="PositiveFormat" ColumnName="PositiveFormat" />
+                <ScalarProperty Name="NegativeFormat" ColumnName="NegativeFormat" />
+                <ScalarProperty Name="SeparatorSymbol" ColumnName="SeparatorSymbol" />
+                <ScalarProperty Name="DecimalSymbol" ColumnName="DecimalSymbol" />
+                <ScalarProperty Name="Symbol" ColumnName="Symbol" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Units">
+            <EntityTypeMapping TypeName="ERPModel.Unit">
+              <MappingFragment StoreEntitySet="Unit">
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedByEmployeeId" ColumnName="ModifiedByEmployeeId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="UnitVal" ColumnName="UnitVal" />
+                <ScalarProperty Name="UnitCategory" ColumnName="UnitCategory" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CurrencyExchanges">
+            <EntityTypeMapping TypeName="ERPModel.CurrencyExchange">
+              <MappingFragment StoreEntitySet="CurrencyExchange">
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="AuthorizationCode" ColumnName="AuthorizationCode" />
+                <ScalarProperty Name="SourceOfRate" ColumnName="SourceOfRate" />
+                <ScalarProperty Name="EffectiveDate" ColumnName="EffectiveDate" />
+                <ScalarProperty Name="BuyingRate" ColumnName="BuyingRate" />
+                <ScalarProperty Name="SellingRate" ColumnName="SellingRate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="TransactionTypeId" ColumnName="TransactionTypeId" />
+                <ScalarProperty Name="ModifiedByEmployeeId" ColumnName="ModifiedByEmployeeId" />
+                <ScalarProperty Name="TargetCurrencyId" ColumnName="TargetCurrencyId" />
+                <ScalarProperty Name="SourceCurrencyId" ColumnName="SourceCurrencyId" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JobPriorities">
+            <EntityTypeMapping TypeName="ERPModel.JobPriority">
+              <MappingFragment StoreEntitySet="JobPriority">
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedByEmployeeId" ColumnName="ModifiedByEmployeeId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PrimeLoads">
+            <EntityTypeMapping TypeName="ERPModel.PrimeLoad">
+              <MappingFragment StoreEntitySet="PrimeLoad">
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedbyEmployeeId" ColumnName="ModifiedbyEmployeeId" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

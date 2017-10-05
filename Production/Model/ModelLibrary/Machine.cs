@@ -66,5 +66,7 @@ namespace ModelLibrary
         public virtual MachineType MachineType { get; set; }
         public virtual ToolSet ToolSet { get; set; }
         public virtual WorkCenter WorkCenter { get; set; }
+        public virtual Currency Currency { get; set; }
+        public virtual CurrencyExchange CurrencyExchange { get; set; }
     }
 }

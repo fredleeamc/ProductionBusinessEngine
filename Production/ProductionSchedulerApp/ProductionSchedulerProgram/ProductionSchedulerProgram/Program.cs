@@ -21,17 +21,35 @@ namespace ProductionSchedulerProgram
         /// <param name="args">The arguments.</param>
         static void Main(string[] args)
         {
-            ShopSequenceGenerator seqGen = ShopSequenceGenerator.Instance;
+            
             DateTime ts1 = DateTime.Now;
-            seqGen.CreateNewSequence("CO", 0);
+            
             #region Initialize Shop Floor Control
-            SFC_Company company = new SFC_Company(seqGen.GetNext("CO"), "Vision");
+            ShopSequenceGenerator seqGen = ShopSequenceGenerator.Instance;
             ShopFloorControl shopFloor = ShopFloorControl.Instance;
+            #endregion
 
-            shopFloor.CreateShopFloorModel(company);
-            shopFloor.Company[company.Id].Companies.Add(company);
+            #region Definition
+            SFC_Currency PH_Peso = new SFC_Currency(1, "PH_Peso", "P");
+            SFC_Currency US_DOLLAR = new SFC_Currency(2, "US_DOLLAR", "$");
 
+            SFC_CurrencyExchange pesoToDollar = new SFC_CurrencyExchange(1, PH_Peso, US_DOLLAR, DateTime.Now, 1.0M / 50.0M, 1.0M / 51.0M);
+            SFC_CurrencyExchange dollarToPeso = new SFC_CurrencyExchange(2, US_DOLLAR, PH_Peso, DateTime.Now, 54, 52);
 
+            decimal xchange1 = 1 * pesoToDollar.BuyingRate;
+            Console.WriteLine(String.Format("1 Peso = ${0:F2}", xchange1));
+            decimal xchange2 = 1 * dollarToPeso.SellingRate;
+            Console.WriteLine(String.Format("1 Dollar = ${0:F2}", xchange2));
+            #endregion
+
+            #region Model Company
+            seqGen.CreateNewSequence("CO", 0);
+            SFC_Company company = new SFC_Company(seqGen.GetNext("CO"), "Vision");
+            
+            shopFloor.CreateShopFloorModel(company, PH_Peso);
+
+            shopFloor.Company[company.Id].CurrencyExchanges.Add(pesoToDollar);
+            shopFloor.Company[company.Id].CurrencyExchanges.Add(dollarToPeso);
 
             #endregion
 
@@ -245,7 +263,7 @@ namespace ProductionSchedulerProgram
                 for (int i = 0; i < numItems; i++)
                 {
                     int r = TextGenerator.RandomInt(10);
-                    if (r % 7 != 0)
+                    if (r % 2 != 0)
                     {
                         bool success = false;
                         while (!success)
@@ -356,7 +374,7 @@ namespace ProductionSchedulerProgram
             shopFloor.Company[company.Id].Boms.DisplayBom();
             shopFloor.Company[company.Id].Boms.PrintBillOfMaterials();
 
-            //foreach (KeyValuePair<SFC_Item, double> pair in meterbom.BuildBillOfMaterials())
+            //foreach (KeyValuePair<SFC_Item, decimal> pair in meterbom.BuildBillOfMaterials())
             //{
             //    Console.WriteLine("{0}:{1}", pair.Key, pair.Value);
             //}

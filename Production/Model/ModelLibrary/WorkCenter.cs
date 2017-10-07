@@ -44,8 +44,8 @@ namespace ModelLibrary
         public Nullable<long> WorkCenterGroupId { get; set; }
         public Nullable<decimal> GeneralOverhead { get; set; }
         public string Note { get; set; }
-        public Nullable<double> ScheduledHours { get; set; }
-        public Nullable<double> QueuedHours { get; set; }
+        public Nullable<decimal> ScheduledHours { get; set; }
+        public Nullable<decimal> QueuedHours { get; set; }
         public Nullable<System.DateTime> NextAvailableOn { get; set; }
         public bool IsUnlimitedResource { get; set; }
         public bool IsProductionLine { get; set; }

@@ -53,6 +53,6 @@ namespace ProductionSchedulerLibrary
         public Nullable<System.DateTime> ModifiedOn { get; set; }
         public Nullable<long> DiagramId { get; set; }
         public bool IsCompleted { get; set; }
-        public double OperationPlanYieldPercent { get; set; }
+        public decimal OperationPlanYieldPercent { get; set; }
     }
 }

@@ -11,7 +11,7 @@ namespace ProductionSchedulerLibrary
         public long Id { get; set; }
         public Nullable<long> RouterId { get; set; }
         public Nullable<long> OperationSequence { get; set; }
-        public Nullable<double> PercentOverlap { get; set; }
+        public Nullable<float> PercentOverlap { get; set; }
         public Nullable<long> RouterProcessId { get; set; }
         public Nullable<long> ChildRouterId { get; set; }
         public bool IsDeleted { get; set; }

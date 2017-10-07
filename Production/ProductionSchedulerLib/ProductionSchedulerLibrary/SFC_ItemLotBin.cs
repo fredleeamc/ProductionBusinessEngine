@@ -46,7 +46,7 @@ namespace ProductionSchedulerLibrary
         /// <summary>
         /// The unit cost
         /// </summary>
-        private double unitCost;
+        private decimal unitCost;
 
         /// <summary>
         /// The unit
@@ -55,7 +55,7 @@ namespace ProductionSchedulerLibrary
 
   
 
-        public double UnitCost { get => unitCost; set => unitCost = value; }
+        public decimal UnitCost { get => unitCost; set => unitCost = value; }
 
         public string Unit { get => unit; set => unit = value; }
 
@@ -75,7 +75,7 @@ namespace ProductionSchedulerLibrary
 
         public SFC_Item Item => item;
 
-        public double UnitCost1 { get => unitCost; set => unitCost = value; }
+        public decimal UnitCost1 { get => unitCost; set => unitCost = value; }
         public string Unit1 { get => unit; set => unit = value; }
 
         /// <summary>

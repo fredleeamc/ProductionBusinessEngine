@@ -23,6 +23,9 @@ namespace ProductionSchedulerLibrary
         /// </summary>
         private String companyName;
 
+        private SFC_Currency currency;
+
+
         /// <summary>
         /// Initializes a new instance of the <see cref="SFC_Company"/> class.
         /// </summary>
@@ -67,6 +70,7 @@ namespace ProductionSchedulerLibrary
             }
         }
 
+        public SFC_Currency Currency { get => currency; set => currency = value; }
 
     }
 }

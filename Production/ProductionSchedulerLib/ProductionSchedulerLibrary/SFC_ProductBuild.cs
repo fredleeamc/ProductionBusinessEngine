@@ -28,7 +28,7 @@ namespace ProductionSchedulerLibrary
         public long? ParentProductBuildId { get; set; }
         public long? CurrencyId { get; set; }
         public long? CurrencyExchangeId { get; set; }
-        public double? PercentScrap { get; set; }
+        public decimal? PercentScrap { get; set; }
         public decimal? EstimatedTaxes { get; set; }
         public decimal? EstimatedDuties { get; set; }
         public decimal? EstimatedShippingCost { get; set; }
@@ -50,6 +50,6 @@ namespace ProductionSchedulerLibrary
         public long? DiagramId { get; set; }
         public bool IsCompleted { get; set; }
         public decimal? BuildQuantitiy { get; set; }
-        public double OperationPlanYieldPercent { get; set; }
+        public decimal OperationPlanYieldPercent { get; set; }
     }
 }

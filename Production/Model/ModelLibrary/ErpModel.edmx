@@ -104,8 +104,8 @@
           <Property Name="BomItemTypeId" Type="nvarchar" MaxLength="4" />
           <Property Name="EstimatedTotalCost" Type="decimal" Precision="26" Scale="6" />
           <Property Name="EstimatedMateriallCost" Type="decimal" Precision="26" Scale="6" />
-          <Property Name="EstimatedMfgConsumableCost" Type="decimal" Precision="26" Scale="6" />
-          <Property Name="PercentScrap" Type="float" />
+          <Property Name="EstimatedMfgConsumableCost" Type="decimal" Precision="26" Scale="6" Nullable="false" />
+          <Property Name="PercentScrap" Type="decimal" Precision="26" Scale="6" />
           <Property Name="EstimatedOtherCost" Type="decimal" Precision="26" Scale="6" />
           <Property Name="CalculatedCostPerUnit" Type="decimal" Precision="26" Scale="6" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
@@ -114,6 +114,7 @@
           <Property Name="DiagramId" Type="bigint" />
           <Property Name="IsCompleted" Type="bit" Nullable="false" />
           <Property Name="TargetQuantity" Type="decimal" Precision="26" Scale="6" />
+          <Property Name="AdjustedQuantity" Type="decimal" Precision="26" Scale="6" />
         </EntityType>
         <EntityType Name="BomDetails">
           <Key>
@@ -145,7 +146,7 @@
           <Property Name="EstimatedShippingCost" Type="decimal" Precision="26" Scale="6" />
           <Property Name="EstimatedAdditionalOverhead" Type="decimal" Precision="26" Scale="6" />
           <Property Name="EstimatedLandedCost" Type="decimal" Precision="26" Scale="6" />
-          <Property Name="PercentScrap" Type="float" />
+          <Property Name="PercentScrap" Type="decimal" Precision="26" Scale="6" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
           <Property Name="CreatedOn" Type="datetime2" Precision="7" />
           <Property Name="ModifiedOn" Type="datetime2" Precision="7" />
@@ -338,7 +339,7 @@
           <Property Name="ParentProductBuildId" Type="bigint" />
           <Property Name="CurrencyId" Type="bigint" />
           <Property Name="CurrencyExchangeId" Type="bigint" />
-          <Property Name="PercentScrap" Type="float" />
+          <Property Name="PercentScrap" Type="decimal" Precision="26" Scale="6" />
           <Property Name="EstimatedTaxes" Type="decimal" Precision="26" Scale="6" />
           <Property Name="EstimatedDuties" Type="decimal" Precision="26" Scale="6" />
           <Property Name="EstimatedShippingCost" Type="decimal" Precision="26" Scale="6" />
@@ -360,7 +361,7 @@
           <Property Name="DiagramId" Type="bigint" />
           <Property Name="IsCompleted" Type="bit" Nullable="false" />
           <Property Name="BuildQuantitiy" Type="decimal" Precision="26" Scale="6" />
-          <Property Name="OperationPlanYieldPercent" Type="float" Nullable="false" />
+          <Property Name="OperationPlanYieldPercent" Type="decimal" Precision="26" Scale="6" Nullable="false" />
         </EntityType>
         <EntityType Name="ProductBuildBomLink">
           <Key>
@@ -400,7 +401,7 @@
           <Property Name="CurrencyExchangeId" Type="bigint" />
           <Property Name="EstimatedLaborHours" Type="decimal" Precision="26" Scale="6" />
           <Property Name="EstimatedLaborHourlyRate" Type="decimal" Precision="26" Scale="6" />
-          <Property Name="EstimatedLaborOverheadFactor" Type="float" />
+          <Property Name="EstimatedLaborOverheadFactor" Type="decimal" Precision="26" Scale="6" />
           <Property Name="EstimatedLaborOverheadCost" Type="decimal" Precision="26" Scale="6" />
           <Property Name="EstimatedLaborCost" Type="decimal" Precision="26" Scale="6" />
           <Property Name="LaborRouterId" Type="bigint" />
@@ -423,7 +424,7 @@
           <Property Name="ApprovedOn" Type="datetime2" Precision="7" />
           <Property Name="CurrencyId" Type="bigint" />
           <Property Name="CurrencyExchangeId" Type="bigint" />
-          <Property Name="PercentScrap" Type="float" />
+          <Property Name="PercentScrap" Type="decimal" Precision="26" Scale="6" />
           <Property Name="EstimatedTaxes" Type="decimal" Precision="26" Scale="6" />
           <Property Name="EstimatedDuties" Type="decimal" Precision="26" Scale="6" />
           <Property Name="EstimatedShippingCost" Type="decimal" Precision="26" Scale="6" />
@@ -535,7 +536,7 @@
           <Property Name="ModifiedOn" Type="datetime2" Precision="7" />
           <Property Name="DiagramId" Type="bigint" />
           <Property Name="IsCompleted" Type="bit" Nullable="false" />
-          <Property Name="OperationPlanYieldPercent" Type="float" Nullable="false" />
+          <Property Name="OperationPlanYieldPercent" Type="decimal" Precision="26" Scale="6" Nullable="false" />
         </EntityType>
         <EntityType Name="RouterAction">
           <Key>
@@ -667,7 +668,7 @@
           <Property Name="EstimatedTeardownCost" Type="decimal" Precision="26" Scale="6" />
           <Property Name="CurrencyId" Type="bigint" />
           <Property Name="CurrencyExchangeId" Type="bigint" />
-          <Property Name="EstimatedLaborOverheadFactor" Type="float" />
+          <Property Name="EstimatedLaborOverheadFactor" Type="decimal" Precision="26" Scale="6" />
           <Property Name="EstimatedLaborOverheadCost" Type="decimal" Precision="26" Scale="6" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
           <Property Name="CreatedOn" Type="datetime2" Precision="7" />
@@ -1224,12 +1225,12 @@
           <Property Name="WorkCenterGroupId" Type="bigint" />
           <Property Name="GeneralOverhead" Type="decimal" Precision="26" Scale="6" />
           <Property Name="Note" Type="nvarchar" MaxLength="255" />
-          <Property Name="ScheduledHours" Type="float" />
-          <Property Name="QueuedHours" Type="float" />
+          <Property Name="ScheduledHours" Type="decimal" Precision="26" Scale="6" />
+          <Property Name="QueuedHours" Type="decimal" Precision="26" Scale="6" />
           <Property Name="NextAvailableOn" Type="datetime2" Precision="7" />
           <Property Name="IsUnlimitedResource" Type="bit" Nullable="false" />
           <Property Name="IsProductionLine" Type="bit" Nullable="false" />
-          <Property Name="WorkCenterEfficiency" Type="float" />
+          <Property Name="WorkCenterEfficiency" Type="decimal" Precision="26" Scale="6" />
           <Property Name="LocationId" Type="bigint" />
           <Property Name="ToolSetId" Type="bigint" />
           <Property Name="PictureUrl" Type="nvarchar(max)" />
@@ -5277,7 +5278,7 @@
           <Property Name="BomItemTypeId" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
           <Property Name="EstimatedTotalCost" Type="Decimal" Precision="26" Scale="6" />
           <Property Name="EstimatedMateriallCost" Type="Decimal" Precision="26" Scale="6" />
-          <Property Name="EstimatedMfgConsumableCost" Type="Decimal" Precision="26" Scale="6" />
+          <Property Name="EstimatedMfgConsumableCost" Type="Decimal" Precision="26" Scale="6" Nullable="false" />
           <Property Name="PercentScrap" Type="Double" />
           <Property Name="EstimatedOtherCost" Type="Decimal" Precision="26" Scale="6" />
           <Property Name="CalculatedCostPerUnit" Type="Decimal" Precision="26" Scale="6" />
@@ -5302,6 +5303,7 @@
           <NavigationProperty Name="Currency" Relationship="ERPModel.FK_Bom_CurrencyId" FromRole="Bom" ToRole="Currency" />
           <NavigationProperty Name="Unit" Relationship="ERPModel.FK_Bom_UnitId" FromRole="Bom" ToRole="Unit" />
           <NavigationProperty Name="CurrencyExchange" Relationship="ERPModel.FK_Bom_CurrencyExchangeId" FromRole="Bom" ToRole="CurrencyExchange" />
+          <Property Name="AdjustedQuantity" Type="Decimal" Precision="26" Scale="6" />
         </EntityType>
         <EntityType Name="BomDetail">
           <Key>
@@ -10998,6 +11000,7 @@
           <EntitySetMapping Name="Boms">
             <EntityTypeMapping TypeName="ERPModel.Bom">
               <MappingFragment StoreEntitySet="Bom">
+                <ScalarProperty Name="AdjustedQuantity" ColumnName="AdjustedQuantity" />
                 <ScalarProperty Name="TargetQuantity" ColumnName="TargetQuantity" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ModifiedByEmployeeId" ColumnName="ModifiedByEmployeeId" />

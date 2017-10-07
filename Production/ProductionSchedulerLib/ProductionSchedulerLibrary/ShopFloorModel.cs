@@ -84,6 +84,12 @@ namespace ProductionSchedulerLibrary
         private readonly SFC_WorkOrders workOrders;
 
         private readonly SFC_Companies companies;
+
+        private readonly SFC_Currency currency;
+
+        private readonly SFC_Currencies currencies;
+
+        private readonly SFC_CurrencyExchanges currencyExchanges;
         #endregion
 
 
@@ -113,15 +119,24 @@ namespace ProductionSchedulerLibrary
 
         public SFC_Companies Companies => companies;
 
+        public SFC_Currency Currency => currency;
+
+        public SFC_Currencies Currencies => currencies;
+
+        public SFC_CurrencyExchanges CurrencyExchanges => currencyExchanges;
+
+
+
         #region constructor
         /// <summary>
         /// Initializes a new instance of the <see cref="ShopFloorModel"/> class.
         /// </summary>
         /// <param name="companyId">The company identifier.</param>
         /// <param name="companyName">Name of the company.</param>
-        public ShopFloorModel(long companyId, String companyName)
+        public ShopFloorModel(long companyId, String companyName, SFC_Currency defaultCurrency)
         {
             this.companyId = companyId;
+            this.currency = defaultCurrency;
             company = new SFC_Company(companyId, companyName);
             this.companies = new SFC_Companies();
             this.employees = new SFC_Employees();
@@ -136,6 +151,8 @@ namespace ProductionSchedulerLibrary
             this.builds = new SFC_ProductBuilds();
             this.routers = new SFC_Routers();
             this.workOrders = new SFC_WorkOrders();
+            this.currencies = new SFC_Currencies();
+            this.currencyExchanges = new SFC_CurrencyExchanges();
         }
         #endregion
 

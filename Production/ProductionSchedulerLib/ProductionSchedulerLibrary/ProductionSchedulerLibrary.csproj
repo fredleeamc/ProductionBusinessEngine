@@ -49,12 +49,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="SFC_Companies.cs" />
+    <Compile Include="SFC_Currencies.cs" />
+    <Compile Include="SFC_Currency.cs" />
+    <Compile Include="SFC_CurrencyExchange.cs" />
+    <Compile Include="SFC_CurrencyExchanges.cs" />
     <Compile Include="SFC_Customers.cs" />
     <Compile Include="SFC_BomComposite.cs" />
     <Compile Include="SFC_BomItem.cs" />
     <Compile Include="SFC_BomComponent.cs" />
     <Compile Include="SFC_Boms.cs" />
     <Compile Include="SFC_Container.cs" />
+    <Compile Include="SFC_DefinitionContainer.cs" />
     <Compile Include="SFC_Departments.cs" />
     <Compile Include="SFC_Employees.cs" />
     <Compile Include="ISFC_Enumerable.cs" />
@@ -84,6 +89,7 @@
     <Compile Include="SFC_RouterProcessDetail.cs" />
     <Compile Include="SFC_RouterProcesses.cs" />
     <Compile Include="SFC_Routers.cs" />
+    <Compile Include="SFC_Unit.cs" />
     <Compile Include="SFC_Vendor.cs" />
     <Compile Include="SFC_Vendors.cs" />
     <Compile Include="SFC_WorkCenters.cs" />

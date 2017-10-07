@@ -105,6 +105,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ErpModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="ErpModel1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ErpModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="FamilyRouter.cs">
       <DependentUpon>ErpModel.tt</DependentUpon>
     </Compile>
@@ -255,6 +260,7 @@
     <None Include="App.Config" />
     <EntityDeploy Include="ErpModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ErpModel1.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <None Include="ErpModel.edmx.diagram">
       <DependentUpon>ErpModel.edmx</DependentUpon>

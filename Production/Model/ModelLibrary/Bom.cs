@@ -48,8 +48,8 @@ namespace ModelLibrary
         public string BomItemTypeId { get; set; }
         public Nullable<decimal> EstimatedTotalCost { get; set; }
         public Nullable<decimal> EstimatedMateriallCost { get; set; }
-        public Nullable<decimal> EstimatedMfgConsumableCost { get; set; }
-        public Nullable<double> PercentScrap { get; set; }
+        public decimal EstimatedMfgConsumableCost { get; set; }
+        public Nullable<decimal> PercentScrap { get; set; }
         public Nullable<decimal> EstimatedOtherCost { get; set; }
         public Nullable<decimal> CalculatedCostPerUnit { get; set; }
         public bool IsDeleted { get; set; }
@@ -58,6 +58,7 @@ namespace ModelLibrary
         public Nullable<long> DiagramId { get; set; }
         public bool IsCompleted { get; set; }
         public Nullable<decimal> TargetQuantity { get; set; }
+        public Nullable<decimal> AdjustedQuantity { get; set; }
     
         public virtual BomItemType BomItemType { get; set; }
         public virtual Company Company { get; set; }

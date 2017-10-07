@@ -23,7 +23,7 @@ namespace ProductionSchedulerLibrary
         public decimal? EstimatedMachineRuntimeHour;
         public bool IsSkipOperation;
         public string EngineeringChangeStatusId;
-        public double? PercentOverlap;
+        public float? PercentOverlap;
         public long? WorkInstructionId;
         public long? WorkCenterGroupId;
         public decimal? QuantitySetters;
@@ -42,7 +42,7 @@ namespace ProductionSchedulerLibrary
         public decimal? EstimatedTeardownCost;
         public long? CurrencyId;
         public long? CurrencyExchangeId;
-        public double? EstimatedLaborOverheadFactor;
+        public decimal? EstimatedLaborOverheadFactor;
         public decimal? EstimatedLaborOverheadCost;
         public bool IsDeleted;
         public DateTime? CreatedOn;

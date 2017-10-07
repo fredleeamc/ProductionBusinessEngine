@@ -13,84 +13,34 @@ namespace ProductionSchedulerLibrary
     /// </summary>
     public class SFC_Bom
     {
-        /// <summary>
-        /// The identifier
-        /// </summary>
+
         private readonly long id;
-
-        /// <summary>
-        /// The part name
-        /// </summary>
         private readonly string partName;
-
-        /// <summary>
-        /// The part no
-        /// </summary>
         private readonly string partNo;
-
-        /// <summary>
-        /// The this bom
-        /// </summary>
         private readonly SFC_BomComposite thisBom;
-
-        /// <summary>
-        /// The materials
-        /// </summary>
-        private Dictionary<SFC_Item, double> materials;
-
-        private double totalQuantity;
-
-        private double totalBomCost;
-
-        public long? CurrencyExchangeId;
-        public long? CurrencyId;
+        private Dictionary<SFC_Item, decimal> materials;
+        private decimal totalQuantity;
+        private decimal totalBomCost;
+        public SFC_CurrencyExchange CurrencyExchangeId;
+        public SFC_Currency CurrencyId;
         public long? UnitId;
         public string EngineeringChangeStatusId;
         public string BomItemTypeId;
         public decimal? EstimatedTotalCost;
         public decimal? EstimatedMateriallCost;
         public decimal? EstimatedMfgConsumableCost;
-        public double? PercentScrap;
+        public decimal? PercentScrap;
         public decimal? EstimatedOtherCost;
         public decimal? CalculatedCostPerUnit;
 
 
-        /// <summary>
-        /// Gets the identifier.
-        /// </summary>
-        /// <value>
-        /// The identifier.
-        /// </value>
+
         public long Id => id;
-
-        /// <summary>
-        /// Gets the name of the part.
-        /// </summary>
-        /// <value>
-        /// The name of the part.
-        /// </value>
         public string PartName => partName;
-
- 
-
-        /// <summary>
-        /// Gets the part no.
-        /// </summary>
-        /// <value>
-        /// The part no.
-        /// </value>
         public string PartNo => partNo;
-
-        public long Id1 => id;
-
-        public string PartName1 => partName;
-
-        public string PartNo1 => partNo;
-
         public SFC_BomComposite ThisBom => thisBom;
-
-        public double TotalQuantity { get => totalQuantity; set => totalQuantity = value; }
-        public double TotalBomCost { get => totalBomCost; set => totalBomCost = value; }
+        public decimal TotalQuantity { get => totalQuantity; set => totalQuantity = value; }
+        public decimal TotalBomCost { get => totalBomCost; set => totalBomCost = value; }
 
 
         /// <summary>
@@ -108,7 +58,7 @@ namespace ProductionSchedulerLibrary
             this.thisBom = bom;
             this.totalBomCost = 0;
             this.totalQuantity = 0;
-            materials = new Dictionary<SFC_Item, double>();
+            materials = new Dictionary<SFC_Item, decimal>();
         }
 
 
@@ -136,7 +86,7 @@ namespace ProductionSchedulerLibrary
             //sb.Append(this.thisBom.Display(1));
             //Console.WriteLine(sb.ToString());
 
-            Console.WriteLine("BOM(" + PartName + ":" + PartNo + ") | Items:" + this.CountItems() + "| Total:"+this.TotalBomCost+ "| Qty:"+this.TotalQuantity);
+            Console.WriteLine("BOM(" + PartName + ":" + PartNo + ") | Items:" + this.CountItems() + "| Total:" + this.TotalBomCost + "| Qty:" + this.TotalQuantity);
             this.thisBom.Display(1);
             Console.WriteLine();
         }
@@ -144,9 +94,9 @@ namespace ProductionSchedulerLibrary
 
         public void Calculate()
         {
-            double totalBomCost = 0;
-            double levelBomCost = 0;
-            double totalQty = 0;
+            decimal totalBomCost = 0;
+            decimal levelBomCost = 0;
+            decimal totalQty = 0;
             this.thisBom.metrics(1, ref levelBomCost, ref totalBomCost, ref totalQty);
             this.totalBomCost = totalBomCost;
             this.totalQuantity = totalQty;
@@ -165,15 +115,16 @@ namespace ProductionSchedulerLibrary
         /// Builds the bill of materials.
         /// </summary>
         /// <returns></returns>
-        public IOrderedEnumerable<KeyValuePair<SFC_Item, double>> BuildBillOfMaterials()
+        public IOrderedEnumerable<KeyValuePair<SFC_Item, decimal>> BuildBillOfMaterials()
         {
+            materials = new Dictionary<SFC_Item, decimal>();
             this.thisBom.BillOfMaterials(ref materials);
 
             var items = from pair in materials
                         orderby pair.Key.ItemCode
                         select pair;
 
-            //foreach (KeyValuePair<SFC_Item, double> pair in items)
+            //foreach (KeyValuePair<SFC_Item, decimal> pair in items)
             //{
             //    Console.WriteLine("{0}:{1}", pair.Key, pair.Value);
             //}
@@ -185,9 +136,9 @@ namespace ProductionSchedulerLibrary
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("BILL BOM(" + PartName + ":" + PartNo + "):\r\n");
-           
-            IEnumerable <KeyValuePair<SFC_Item, double>> pairs = this.BuildBillOfMaterials();
-            foreach (KeyValuePair<SFC_Item, double> pair in pairs)
+
+            IEnumerable<KeyValuePair<SFC_Item, decimal>> pairs = this.BuildBillOfMaterials();
+            foreach (KeyValuePair<SFC_Item, decimal> pair in pairs)
             {
                 sb.Append(String.Format("{0}:{1} \n", pair.Key, pair.Value));
             }

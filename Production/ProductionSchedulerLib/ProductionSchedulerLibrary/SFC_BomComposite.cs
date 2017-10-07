@@ -23,7 +23,7 @@ namespace ProductionSchedulerLibrary
         /// <param name="id">The identifier.</param>
         /// <param name="item">The item.</param>
         /// <param name="qty">The qty.</param>
-        public SFC_BomComposite(long id, SFC_Item item, double qty) : base(id, item, qty)
+        public SFC_BomComposite(long id, SFC_Item item, decimal qty) : base(id, item, qty)
         {
             children = new List<SFC_BomComponent>();
             this.isLeaf = false;
@@ -50,9 +50,9 @@ namespace ProductionSchedulerLibrary
             }
         }
 
-        public override double Cost()
+        public override decimal Cost()
         {
-            double nCost = 0;
+            decimal nCost = 0;
             foreach (SFC_BomComponent component in children)
             {
                 nCost += component.Cost();
@@ -76,7 +76,7 @@ namespace ProductionSchedulerLibrary
             String num3 = String.Format("{0:F2}", UnitCost);
             //StringBuilder sb = new StringBuilder();
             //sb.Append(String.Format("{0:-20}{1,-40}{2,-40}", new String('-', depth) + "I", desc, num));
-            String dash = new String('*', this.Depth * 2) + "C";
+            String dash = new String('*', depth) + "C";
             Console.WriteLine(String.Format("{0}|{1}|Qty{2}|${3}|${4}", dash.PadRight(20), desc.PadRight(30), num1.PadLeft(12), num3.PadLeft(12), num2.PadLeft(12)));
             
             foreach (SFC_BomComponent component in children)
@@ -127,14 +127,14 @@ namespace ProductionSchedulerLibrary
         /// </summary>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
-        public override double EstimatedCost()
+        public override decimal EstimatedCost()
         {
-            double thisCost = 0;
+            decimal thisCost = 0;
             if (children.Count > 0)
             {
                 foreach (SFC_BomComponent component in children)
                 {
-                    double t = component.EstimatedCost();
+                    decimal t = component.EstimatedCost();
                     thisCost += t;
                     Console.WriteLine(component.Item + "=" + t + " Total:" + thisCost);
                 }
@@ -152,7 +152,7 @@ namespace ProductionSchedulerLibrary
         /// Bills the of materials.
         /// </summary>
         /// <param name="materials">The materials.</param>
-        public override void BillOfMaterials(ref Dictionary<SFC_Item, double> materials)
+        public override void BillOfMaterials(ref Dictionary<SFC_Item, decimal> materials)
         {
             if (materials.ContainsKey(this.Item))
             {
@@ -169,11 +169,11 @@ namespace ProductionSchedulerLibrary
             }
         }
 
-        public override void metrics(int idepth, ref double dcost, ref double dbomCost, ref double dqty)
+        public override void metrics(int idepth, ref decimal dcost, ref decimal dbomCost, ref decimal dqty)
         {
             this.Depth = idepth + 1;
-            double cost = 0;
-            double bqty = 0;
+            decimal cost = 0;
+            decimal bqty = 0;
             foreach (SFC_BomComponent component in children)
             {
                 component.metrics(this.Depth, ref dcost, ref dbomCost, ref bqty);

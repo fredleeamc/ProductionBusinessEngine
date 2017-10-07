@@ -24,17 +24,17 @@ namespace ProductionSchedulerLibrary
         /// <summary>
         /// The quantity
         /// </summary>
-        protected double quantity;
+        protected decimal quantity;
 
         /// <summary>
         /// The unit cost
         /// </summary>
-        private double unitCost;
+        private decimal unitCost;
 
         /// <summary>
         /// The bom cost
         /// </summary>
-        private double bomCost;
+        private decimal bomCost;
 
         /// <summary>
         /// The is leaf
@@ -47,6 +47,10 @@ namespace ProductionSchedulerLibrary
         private string unit;
 
         private int depth;
+
+        private SFC_Currency currency;
+
+        private SFC_CurrencyExchange xchange;
 
         /// <summary>
         /// The parent
@@ -73,14 +77,14 @@ namespace ProductionSchedulerLibrary
         /// <value>
         /// The quantity.
         /// </value>
-        public double Quantity { get => quantity; set => quantity = value; }
+        public decimal Quantity { get => quantity; set => quantity = value; }
         /// <summary>
         /// Gets or sets the unit cost.
         /// </summary>
         /// <value>
         /// The unit cost.
         /// </value>
-        public double UnitCost { get => unitCost; set => unitCost = value; }
+        public decimal UnitCost { get => unitCost; set => unitCost = value; }
         /// <summary>
         /// Gets or sets the unit.
         /// </summary>
@@ -94,8 +98,10 @@ namespace ProductionSchedulerLibrary
         /// <value>
         /// The bom cost.
         /// </value>
-        public double BomCost { get => bomCost; set => bomCost = value; }
+        public decimal BomCost { get => bomCost; set => bomCost = value; }
         public int Depth { get => depth; set => depth = value; }
+        public SFC_Currency Currency { get => currency; set => currency = value; }
+        public SFC_CurrencyExchange Xchange { get => xchange; set => xchange = value; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SFC_BomComponent"/> class.
@@ -103,7 +109,7 @@ namespace ProductionSchedulerLibrary
         /// <param name="id">The identifier.</param>
         /// <param name="item">The item.</param>
         /// <param name="quantity">The quantity.</param>
-        public SFC_BomComponent(long id, SFC_Item item, double quantity)
+        public SFC_BomComponent(long id, SFC_Item item, decimal quantity)
         {
             this.id = id;
             this.item = item;
@@ -112,9 +118,9 @@ namespace ProductionSchedulerLibrary
             parent = null;
         }
 
-        public abstract double Cost();
+        public abstract decimal Cost();
 
-        public abstract void metrics(int idepth, ref double dcost, ref double dbomCost, ref double dqty);
+        public abstract void metrics(int idepth, ref decimal dcost, ref decimal dbomCost, ref decimal dqty);
 
 
         /// <summary>
@@ -149,12 +155,12 @@ namespace ProductionSchedulerLibrary
         /// Estimateds the cost.
         /// </summary>
         /// <returns></returns>
-        public abstract double EstimatedCost();
+        public abstract decimal EstimatedCost();
         /// <summary>
         /// Bills the of materials.
         /// </summary>
         /// <param name="materials">The materials.</param>
-        public abstract void BillOfMaterials(ref Dictionary<SFC_Item, double> materials);
+        public abstract void BillOfMaterials(ref Dictionary<SFC_Item, decimal> materials);
 
         /// <summary>
         /// Sets the parent.

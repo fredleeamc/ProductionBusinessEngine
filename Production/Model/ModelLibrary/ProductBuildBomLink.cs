@@ -15,12 +15,9 @@ namespace ModelLibrary
     public partial class ProductBuildBomLink
     {
         public long Id { get; set; }
-        public Nullable<long> ProductBuildId { get; set; }
-        public Nullable<long> BomId { get; set; }
         public bool IsDeleted { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
-        public Nullable<long> ModifiedByEmployeeId { get; set; }
     
         public virtual Bom Bom { get; set; }
         public virtual ProductBuild ProductBuild { get; set; }

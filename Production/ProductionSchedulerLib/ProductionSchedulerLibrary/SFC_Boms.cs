@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace ProductionSchedulerLibrary
 {
-    public class SFC_Boms : SFC_Container<SFC_Bom>
+    public  class SFC_Boms : Base_SFC_Container<SFC_Bom>
     {
-        public SFC_Boms() : base()
+        public  SFC_Boms() : base()
         {
         }
 
-        public void PrintBillOfMaterials()
+        public  void PrintBillOfMaterials()
         {
             foreach (long b in Lists.Keys)
             {
@@ -20,7 +20,7 @@ namespace ProductionSchedulerLibrary
             }
         }
 
-        public void DisplayBom()
+        public  void DisplayBom()
         {
             foreach (long b in Lists.Keys)
             {

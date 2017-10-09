@@ -15,16 +15,11 @@ namespace ModelLibrary
     public partial class ProductBuildDraft
     {
         public long Id { get; set; }
-        public long CompanyId { get; set; }
-        public Nullable<long> ProductBuildId { get; set; }
-        public Nullable<long> ModifiedByEmployeeId { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
         public bool IsVoid { get; set; }
         public Nullable<System.DateTime> ApprovedOn { get; set; }
-        public Nullable<long> CurrencyId { get; set; }
-        public Nullable<long> CurrencyExchangeId { get; set; }
-        public Nullable<double> PercentScrap { get; set; }
+        public Nullable<decimal> PercentScrap { get; set; }
         public Nullable<decimal> EstimatedTaxes { get; set; }
         public Nullable<decimal> EstimatedDuties { get; set; }
         public Nullable<decimal> EstimatedShippingCost { get; set; }
@@ -39,17 +34,15 @@ namespace ModelLibrary
         public Nullable<decimal> EstimatedOtherBomCost { get; set; }
         public Nullable<decimal> EstimatedTotalCost { get; set; }
         public Nullable<decimal> CalculatedCostPerUnit { get; set; }
-        public Nullable<long> UnitId { get; set; }
         public bool IsDeleted { get; set; }
         public Nullable<decimal> BuildQuantity { get; set; }
-        public Nullable<long> ItemId { get; set; }
     
-        public virtual ProductBuild ProductBuild { get; set; }
-        public virtual Company Company { get; set; }
-        public virtual Employee Employee { get; set; }
-        public virtual Item Item { get; set; }
         public virtual Currency Currency { get; set; }
         public virtual Unit Unit { get; set; }
+        public virtual ProductBuild ProductBuild { get; set; }
+        public virtual Company Company { get; set; }
         public virtual CurrencyExchange CurrencyExchange { get; set; }
+        public virtual Employee Employee { get; set; }
+        public virtual Item Item { get; set; }
     }
 }

@@ -17,12 +17,10 @@ namespace ProductionSchedulerLibrary
         private readonly long id;
         private readonly string partName;
         private readonly string partNo;
-        private readonly SFC_BomComposite thisBom;
+        private readonly SFC_BomComposite bom;
         private Dictionary<SFC_Item, decimal> materials;
-        private decimal totalQuantity;
-        private decimal totalBomCost;
-        public SFC_CurrencyExchange CurrencyExchangeId;
-        public SFC_Currency CurrencyId;
+        private SFC_CurrencyExchange currencyExchangeId;
+        private SFC_Currency currencyId;
         public long? UnitId;
         public string EngineeringChangeStatusId;
         public string BomItemTypeId;
@@ -32,15 +30,26 @@ namespace ProductionSchedulerLibrary
         public decimal? PercentScrap;
         public decimal? EstimatedOtherCost;
         public decimal? CalculatedCostPerUnit;
-
+        private decimal totalQuantity;
+        private readonly decimal totalBomCost;
 
 
         public long Id => id;
         public string PartName => partName;
         public string PartNo => partNo;
-        public SFC_BomComposite ThisBom => thisBom;
-        public decimal TotalQuantity { get => totalQuantity; set => totalQuantity = value; }
-        public decimal TotalBomCost { get => totalBomCost; set => totalBomCost = value; }
+        public SFC_BomComposite Bom => bom;
+        public decimal TotalQuantity
+        {
+            get => totalQuantity;
+            set
+            {
+                totalQuantity = value;                
+                this.Calculate();
+            }
+        }
+        public decimal TotalBomCost { get => totalBomCost; }
+        public SFC_CurrencyExchange CurrencyExchangeId { get => currencyExchangeId; set => currencyExchangeId = value; }
+        public SFC_Currency CurrencyId { get => currencyId; set => currencyId = value; }
 
 
         /// <summary>
@@ -55,11 +64,13 @@ namespace ProductionSchedulerLibrary
             this.id = id;
             this.partName = partName;
             this.partNo = partNo;
-            this.thisBom = bom;
+            this.bom = bom;
             this.totalBomCost = 0;
-            this.totalQuantity = 0;
+            this.totalQuantity = 1;
             materials = new Dictionary<SFC_Item, decimal>();
         }
+
+
 
 
 
@@ -86,20 +97,19 @@ namespace ProductionSchedulerLibrary
             //sb.Append(this.thisBom.Display(1));
             //Console.WriteLine(sb.ToString());
 
-            Console.WriteLine("BOM(" + PartName + ":" + PartNo + ") | Items:" + this.CountItems() + "| Total:" + this.TotalBomCost + "| Qty:" + this.TotalQuantity);
-            this.thisBom.Display(1);
+            Console.WriteLine("BOM(" + PartName + ":" + PartNo + ")\n Items:" + this.CountItems() + "\n Total:" + this.TotalBomCost + "\n Qty:" + this.TotalQuantity);
+            this.bom.Display(1);
             Console.WriteLine();
         }
 
 
         public void Calculate()
         {
-            decimal totalBomCost = 0;
-            decimal levelBomCost = 0;
-            decimal totalQty = 0;
-            this.thisBom.metrics(1, ref levelBomCost, ref totalBomCost, ref totalQty);
-            this.totalBomCost = totalBomCost;
-            this.totalQuantity = totalQty;
+            this.bom.metrics(1, this.totalQuantity);
+            this.EstimatedMateriallCost = this.bom.CalculatedTotalBomTotalCost;
+            this.EstimatedTotalCost = this.EstimatedMateriallCost + this.EstimatedMfgConsumableCost + this.EstimatedOtherCost;
+
+
         }
 
         /// <summary>
@@ -108,7 +118,7 @@ namespace ProductionSchedulerLibrary
         /// <returns></returns>
         public long CountItems()
         {
-            return thisBom.CountItems();
+            return bom.CountItems();
         }
 
         /// <summary>
@@ -118,7 +128,7 @@ namespace ProductionSchedulerLibrary
         public IOrderedEnumerable<KeyValuePair<SFC_Item, decimal>> BuildBillOfMaterials()
         {
             materials = new Dictionary<SFC_Item, decimal>();
-            this.thisBom.BillOfMaterials(ref materials);
+            this.bom.BillOfMaterials(ref materials);
 
             var items = from pair in materials
                         orderby pair.Key.ItemCode

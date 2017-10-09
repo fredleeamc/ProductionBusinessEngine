@@ -17,42 +17,32 @@ namespace ModelLibrary
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Router()
         {
-            this.FamilyRouterLinks = new HashSet<FamilyRouterLink>();
-            this.ProductBuildDevelopmentLabors = new HashSet<ProductBuildDevelopmentLabor>();
-            this.ProductBuildRouterLinks = new HashSet<ProductBuildRouterLink>();
+            this.FamilyRouterLink = new HashSet<FamilyRouterLink>();
+            this.ProductBuildDevelopmentLabor = new HashSet<ProductBuildDevelopmentLabor>();
+            this.ProductBuildRouterLink = new HashSet<ProductBuildRouterLink>();
             this.Router1 = new HashSet<Router>();
-            this.RouterDetails = new HashSet<RouterDetail>();
-            this.RouterDetails1 = new HashSet<RouterDetail>();
-            this.RouterOutsideDetails = new HashSet<RouterOutsideDetail>();
-            this.RouterDetailsLinks = new HashSet<RouterDetailsLink>();
+            this.RouterDetails = new HashSet<RouterDetails>();
+            this.RouterDetails1 = new HashSet<RouterDetails>();
+            this.RouterDetailsLink = new HashSet<RouterDetailsLink>();
+            this.RouterOutsideDetails = new HashSet<RouterOutsideDetails>();
         }
     
         public long Id { get; set; }
-        public long CompanyId { get; set; }
         public Nullable<long> RevisionNo { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public Nullable<long> DocumentSetId { get; set; }
         public bool IsObsolete { get; set; }
         public Nullable<System.DateTime> ObsoleteDate { get; set; }
-        public Nullable<long> ReplacedByRouterId { get; set; }
-        public string EngineeringChangeStatusId { get; set; }
         public bool IsVoid { get; set; }
         public string ApprovalCode { get; set; }
-        public Nullable<long> ModifiedByEmployeeId { get; set; }
         public Nullable<long> ApprovedByUserId { get; set; }
         public bool IsPrinted { get; set; }
         public bool IsSent { get; set; }
-        public Nullable<int> EngineeringPhaseId { get; set; }
         public string Description { get; set; }
-        public Nullable<long> FamilyRouterId { get; set; }
         public Nullable<decimal> TargetQuantity { get; set; }
         public Nullable<decimal> MinQuantity { get; set; }
         public string RouterCode { get; set; }
-        public Nullable<long> ManufacturingComponentId { get; set; }
-        public Nullable<int> RouterActionId { get; set; }
-        public string RouterTypeId { get; set; }
         public string Revision { get; set; }
-        public Nullable<long> FinishedItemId { get; set; }
         public Nullable<long> WorkInstructionId { get; set; }
         public string PictureUrl { get; set; }
         public Nullable<decimal> EstimatedProcessCost { get; set; }
@@ -65,26 +55,26 @@ namespace ModelLibrary
         public Nullable<decimal> EstimatedLandedCost { get; set; }
         public Nullable<decimal> PurchaseOrderQuantity { get; set; }
         public Nullable<decimal> EstimatedAdditionalOverhead { get; set; }
-        public Nullable<long> CurrencyId { get; set; }
-        public Nullable<long> CurrencyExchangeId { get; set; }
         public bool IsDeleted { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
         public Nullable<long> DiagramId { get; set; }
         public bool IsCompleted { get; set; }
-        public double OperationPlanYieldPercent { get; set; }
+        public decimal OperationPlanYieldPercent { get; set; }
     
-        public virtual EngineeringChangeStatu EngineeringChangeStatu { get; set; }
+        public virtual Currency Currency { get; set; }
+        public virtual EngineeringChangeStatus EngineeringChangeStatus { get; set; }
         public virtual EngineeringPhase EngineeringPhase { get; set; }
         public virtual FamilyRouter FamilyRouter { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<FamilyRouterLink> FamilyRouterLinks { get; set; }
+        public virtual ICollection<FamilyRouterLink> FamilyRouterLink { get; set; }
         public virtual ManufacturedComponent ManufacturedComponent { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductBuildDevelopmentLabor> ProductBuildDevelopmentLabors { get; set; }
+        public virtual ICollection<ProductBuildDevelopmentLabor> ProductBuildDevelopmentLabor { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductBuildRouterLink> ProductBuildRouterLinks { get; set; }
+        public virtual ICollection<ProductBuildRouterLink> ProductBuildRouterLink { get; set; }
         public virtual Company Company { get; set; }
+        public virtual CurrencyExchange CurrencyExchange { get; set; }
         public virtual Item Item { get; set; }
         public virtual Employee Employee { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -93,14 +83,12 @@ namespace ModelLibrary
         public virtual RouterAction RouterAction { get; set; }
         public virtual RouterType RouterType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RouterDetail> RouterDetails { get; set; }
+        public virtual ICollection<RouterDetails> RouterDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RouterDetail> RouterDetails1 { get; set; }
+        public virtual ICollection<RouterDetails> RouterDetails1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RouterOutsideDetail> RouterOutsideDetails { get; set; }
+        public virtual ICollection<RouterDetailsLink> RouterDetailsLink { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RouterDetailsLink> RouterDetailsLinks { get; set; }
-        public virtual Currency Currency { get; set; }
-        public virtual CurrencyExchange CurrencyExchange { get; set; }
+        public virtual ICollection<RouterOutsideDetails> RouterOutsideDetails { get; set; }
     }
 }

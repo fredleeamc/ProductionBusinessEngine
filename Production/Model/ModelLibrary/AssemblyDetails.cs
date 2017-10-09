@@ -12,20 +12,16 @@ namespace ModelLibrary
     using System;
     using System.Collections.Generic;
     
-    public partial class ToolSetDetail
+    public partial class AssemblyDetails
     {
         public long Id { get; set; }
-        public long CompanyId { get; set; }
-        public Nullable<long> MachineToolId { get; set; }
-        public string ToolNo { get; set; }
-        public long ToolSetId { get; set; }
+        public long ItemSequence { get; set; }
+        public decimal Quantity { get; set; }
         public bool IsDeleted { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
-        public Nullable<long> ModifiedByEmployeeId { get; set; }
     
-        public virtual Company Company { get; set; }
         public virtual Employee Employee { get; set; }
-        public virtual ToolSet ToolSet { get; set; }
+        public virtual Assembly Assembly { get; set; }
     }
 }

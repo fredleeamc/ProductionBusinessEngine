@@ -17,7 +17,7 @@ namespace ModelLibrary
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public MfgConsumableType()
         {
-            this.MfgConsumables = new HashSet<MfgConsumable>();
+            this.MfgConsumable = new HashSet<MfgConsumable>();
         }
     
         public string Id { get; set; }
@@ -25,12 +25,10 @@ namespace ModelLibrary
         public bool IsDeleted { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
-        public Nullable<long> ModifiedByEmployeeId { get; set; }
-        public long CompanyId { get; set; }
     
         public virtual Company Company { get; set; }
         public virtual Employee Employee { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MfgConsumable> MfgConsumables { get; set; }
+        public virtual ICollection<MfgConsumable> MfgConsumable { get; set; }
     }
 }

@@ -17,8 +17,8 @@ namespace ModelLibrary
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public BomItemType()
         {
-            this.Boms = new HashSet<Bom>();
-            this.BomDetails = new HashSet<BomDetail>();
+            this.Bom = new HashSet<Bom>();
+            this.BomDetails = new HashSet<BomDetails>();
         }
     
         public string Id { get; set; }
@@ -28,12 +28,11 @@ namespace ModelLibrary
         public bool IsDeleted { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
-        public Nullable<long> ModifiedByEmployeeId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Bom> Boms { get; set; }
+        public virtual ICollection<Bom> Bom { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BomDetail> BomDetails { get; set; }
+        public virtual ICollection<BomDetails> BomDetails { get; set; }
         public virtual Employee Employee { get; set; }
     }
 }

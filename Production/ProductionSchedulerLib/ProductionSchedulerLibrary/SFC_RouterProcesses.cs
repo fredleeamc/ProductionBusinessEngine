@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace ProductionSchedulerLibrary
 {
-    public class SFC_RouterProcesses : SFC_Container<SFC_RouterProcess>
+    public  class SFC_RouterProcesses : Base_SFC_Container<SFC_RouterProcess>
     {
-        public SFC_RouterProcesses() : base()
+        public  SFC_RouterProcesses() : base()
         {
 
         }

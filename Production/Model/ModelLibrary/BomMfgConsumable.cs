@@ -15,15 +15,12 @@ namespace ModelLibrary
     public partial class BomMfgConsumable
     {
         public long Id { get; set; }
-        public Nullable<long> BomId { get; set; }
         public Nullable<decimal> Quantity { get; set; }
-        public Nullable<long> MfgConsumableId { get; set; }
         public Nullable<decimal> UnitCost { get; set; }
         public Nullable<decimal> EstimatedTotalCost { get; set; }
         public bool IsDeleted { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
-        public Nullable<long> ModifiedByEmployeeId { get; set; }
     
         public virtual Bom Bom { get; set; }
         public virtual Employee Employee { get; set; }

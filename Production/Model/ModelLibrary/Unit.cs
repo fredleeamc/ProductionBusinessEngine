@@ -17,66 +17,65 @@ namespace ModelLibrary
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Unit()
         {
-            this.Boms = new HashSet<Bom>();
-            this.BomDetails = new HashSet<BomDetail>();
-            this.BomOtherCostDetails = new HashSet<BomOtherCostDetail>();
-            this.FamilyRouterLinks = new HashSet<FamilyRouterLink>();
-            this.Items = new HashSet<Item>();
-            this.ItemLotBins = new HashSet<ItemLotBin>();
-            this.ManufacturedComponents = new HashSet<ManufacturedComponent>();
-            this.ManufacturedSubComponents = new HashSet<ManufacturedSubComponent>();
-            this.ProductBuilds = new HashSet<ProductBuild>();
-            this.ProductBuildDrafts = new HashSet<ProductBuildDraft>();
-            this.RouterProcessDetails = new HashSet<RouterProcessDetail>();
-            this.RouterProcessDetails1 = new HashSet<RouterProcessDetail>();
-            this.RouterProcessDetails2 = new HashSet<RouterProcessDetail>();
-            this.RouterProcessDetails3 = new HashSet<RouterProcessDetail>();
-            this.WorkCenters = new HashSet<WorkCenter>();
-            this.WorkCenters1 = new HashSet<WorkCenter>();
+            this.Bom = new HashSet<Bom>();
+            this.BomDetails = new HashSet<BomDetails>();
+            this.BomOtherCostDetails = new HashSet<BomOtherCostDetails>();
+            this.FamilyRouterLink = new HashSet<FamilyRouterLink>();
+            this.Item = new HashSet<Item>();
+            this.ItemLotBin = new HashSet<ItemLotBin>();
+            this.ManufacturedComponent = new HashSet<ManufacturedComponent>();
+            this.ManufacturedSubComponent = new HashSet<ManufacturedSubComponent>();
+            this.ProductBuild = new HashSet<ProductBuild>();
+            this.ProductBuildDraft = new HashSet<ProductBuildDraft>();
+            this.RouterProcessDetails = new HashSet<RouterProcessDetails>();
+            this.RouterProcessDetails1 = new HashSet<RouterProcessDetails>();
+            this.RouterProcessDetails2 = new HashSet<RouterProcessDetails>();
+            this.RouterProcessDetails3 = new HashSet<RouterProcessDetails>();
+            this.WorkCenter = new HashSet<WorkCenter>();
+            this.WorkCenter1 = new HashSet<WorkCenter>();
         }
     
         public long Id { get; set; }
         public string UnitCategory { get; set; }
         public string UnitVal { get; set; }
         public string Description { get; set; }
-        public Nullable<long> ModifiedByEmployeeId { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public bool IsDeleted { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Bom> Boms { get; set; }
+        public virtual ICollection<Bom> Bom { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BomDetail> BomDetails { get; set; }
+        public virtual ICollection<BomDetails> BomDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BomOtherCostDetail> BomOtherCostDetails { get; set; }
+        public virtual ICollection<BomOtherCostDetails> BomOtherCostDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<FamilyRouterLink> FamilyRouterLinks { get; set; }
+        public virtual ICollection<FamilyRouterLink> FamilyRouterLink { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Item> Items { get; set; }
+        public virtual ICollection<Item> Item { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ItemLotBin> ItemLotBins { get; set; }
+        public virtual ICollection<ItemLotBin> ItemLotBin { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ManufacturedComponent> ManufacturedComponents { get; set; }
+        public virtual ICollection<ManufacturedComponent> ManufacturedComponent { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ManufacturedSubComponent> ManufacturedSubComponents { get; set; }
+        public virtual ICollection<ManufacturedSubComponent> ManufacturedSubComponent { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductBuild> ProductBuilds { get; set; }
+        public virtual ICollection<ProductBuild> ProductBuild { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductBuildDraft> ProductBuildDrafts { get; set; }
+        public virtual ICollection<ProductBuildDraft> ProductBuildDraft { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RouterProcessDetail> RouterProcessDetails { get; set; }
+        public virtual ICollection<RouterProcessDetails> RouterProcessDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RouterProcessDetail> RouterProcessDetails1 { get; set; }
+        public virtual ICollection<RouterProcessDetails> RouterProcessDetails1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RouterProcessDetail> RouterProcessDetails2 { get; set; }
+        public virtual ICollection<RouterProcessDetails> RouterProcessDetails2 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RouterProcessDetail> RouterProcessDetails3 { get; set; }
+        public virtual ICollection<RouterProcessDetails> RouterProcessDetails3 { get; set; }
         public virtual Employee Employee { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<WorkCenter> WorkCenters { get; set; }
+        public virtual ICollection<WorkCenter> WorkCenter { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<WorkCenter> WorkCenters1 { get; set; }
+        public virtual ICollection<WorkCenter> WorkCenter1 { get; set; }
     }
 }

@@ -17,59 +17,51 @@ namespace ModelLibrary
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ManufacturedComponent()
         {
-            this.BomDetails = new HashSet<BomDetail>();
-            this.ManufacturedSubComponents = new HashSet<ManufacturedSubComponent>();
-            this.ManufacturedSubComponents1 = new HashSet<ManufacturedSubComponent>();
-            this.ProductBuildDetails = new HashSet<ProductBuildDetail>();
-            this.Routers = new HashSet<Router>();
-            this.RouterProcesses = new HashSet<RouterProcess>();
+            this.BomDetails = new HashSet<BomDetails>();
+            this.ManufacturedSubComponent = new HashSet<ManufacturedSubComponent>();
+            this.ManufacturedSubComponent1 = new HashSet<ManufacturedSubComponent>();
+            this.ProductBuildDetails = new HashSet<ProductBuildDetails>();
+            this.Router = new HashSet<Router>();
+            this.RouterProcess = new HashSet<RouterProcess>();
         }
     
         public long Id { get; set; }
-        public long CompanyId { get; set; }
-        public Nullable<int> EngineeringPhaseId { get; set; }
         public Nullable<decimal> EstimatedCost { get; set; }
         public Nullable<decimal> ActualCost { get; set; }
-        public Nullable<long> UnitId { get; set; }
-        public Nullable<long> CurrencyId { get; set; }
-        public Nullable<long> CurrencyExchangeId { get; set; }
         public Nullable<long> DocumentSetId { get; set; }
         public Nullable<long> ApprovedByUserId { get; set; }
         public string ApprovalCode { get; set; }
-        public Nullable<long> ComponentItemId { get; set; }
         public Nullable<long> InventoryAccountId { get; set; }
         public Nullable<long> CogsAccountId { get; set; }
         public string BarCode { get; set; }
         public Nullable<long> DrawingAttachementId { get; set; }
         public string ComponentNo { get; set; }
         public Nullable<System.DateTime> ModifieddOn { get; set; }
-        public string EngineeringChangeStatusId { get; set; }
         public Nullable<long> DescriptionId { get; set; }
         public string PictureUrl { get; set; }
         public bool IsDeleted { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
-        public Nullable<long> ModifiedByEmployeeId { get; set; }
     
+        public virtual Currency Currency { get; set; }
+        public virtual Unit Unit { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BomDetail> BomDetails { get; set; }
-        public virtual EngineeringChangeStatu EngineeringChangeStatu { get; set; }
+        public virtual ICollection<BomDetails> BomDetails { get; set; }
+        public virtual EngineeringChangeStatus EngineeringChangeStatus { get; set; }
         public virtual EngineeringPhase EngineeringPhase { get; set; }
         public virtual Company Company { get; set; }
+        public virtual CurrencyExchange CurrencyExchange { get; set; }
         public virtual Employee Employee { get; set; }
         public virtual Item Item { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ManufacturedSubComponent> ManufacturedSubComponents { get; set; }
+        public virtual ICollection<ManufacturedSubComponent> ManufacturedSubComponent { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ManufacturedSubComponent> ManufacturedSubComponents1 { get; set; }
+        public virtual ICollection<ManufacturedSubComponent> ManufacturedSubComponent1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductBuildDetail> ProductBuildDetails { get; set; }
+        public virtual ICollection<ProductBuildDetails> ProductBuildDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Router> Routers { get; set; }
+        public virtual ICollection<Router> Router { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RouterProcess> RouterProcesses { get; set; }
-        public virtual Currency Currency { get; set; }
-        public virtual Unit Unit { get; set; }
-        public virtual CurrencyExchange CurrencyExchange { get; set; }
+        public virtual ICollection<RouterProcess> RouterProcess { get; set; }
     }
 }

@@ -12,29 +12,23 @@ namespace ModelLibrary
     using System;
     using System.Collections.Generic;
     
-    public partial class ProductBuildDetail
+    public partial class MachineToolType
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ProductBuildDetail()
+        public MachineToolType()
         {
-            this.ProductBuildMaterials = new HashSet<ProductBuildMaterial>();
+            this.MachineTool = new HashSet<MachineTool>();
         }
     
         public long Id { get; set; }
-        public Nullable<long> ProductBuildId { get; set; }
-        public Nullable<long> OperationSequence { get; set; }
-        public Nullable<long> RouterProcessId { get; set; }
-        public Nullable<long> ManufacturedComponentId { get; set; }
+        public string Description { get; set; }
+        public string ToolTypeName { get; set; }
         public bool IsDeleted { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
-        public Nullable<long> ModifiedByEmployeeId { get; set; }
     
-        public virtual ManufacturedComponent ManufacturedComponent { get; set; }
-        public virtual ProductBuild ProductBuild { get; set; }
         public virtual Employee Employee { get; set; }
-        public virtual RouterProcess RouterProcess { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductBuildMaterial> ProductBuildMaterials { get; set; }
+        public virtual ICollection<MachineTool> MachineTool { get; set; }
     }
 }

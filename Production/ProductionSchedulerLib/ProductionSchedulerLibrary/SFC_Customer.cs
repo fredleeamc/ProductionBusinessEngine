@@ -9,7 +9,7 @@ namespace ProductionSchedulerLibrary
     /// <summary>
     /// 
     /// </summary>
-    public class SFC_Customer
+    public  class SFC_Customer
     {
         /// <summary>
         /// The identifier
@@ -38,7 +38,7 @@ namespace ProductionSchedulerLibrary
         /// <param name="company">The company.</param>
         /// <param name="customerCode">The customer code.</param>
         /// <param name="accountNo">The account no.</param>
-        public SFC_Customer(long id, SFC_Company company, string customerCode, string accountNo)
+        public  SFC_Customer(long id, SFC_Company company, string customerCode, string accountNo)
         {
             this.id = id;
             this.company = company;
@@ -46,12 +46,12 @@ namespace ProductionSchedulerLibrary
             this.accountNo = accountNo;
         }
 
-        public long Id => id;
+        public  long Id => id;
 
-        public SFC_Company Company => company;
+        public  SFC_Company Company => company;
 
-        public string CustomerCode => customerCode;
+        public  string CustomerCode => customerCode;
 
-        public string AccountNo => accountNo;
+        public  string AccountNo => accountNo;
     }
 }

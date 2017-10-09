@@ -12,18 +12,22 @@ namespace ModelLibrary
     using System;
     using System.Collections.Generic;
     
-    public partial class TeamGroupMachineDetail
+    public partial class EmployeeSkillMatrixDetails
     {
         public long Id { get; set; }
-        public long TeamGroupId { get; set; }
-        public long MachineId { get; set; }
-        public bool IsDeleted { get; set; }
-        public Nullable<long> ModifiedByEmployeeId { get; set; }
-        public Nullable<System.DateTime> ModifiedOn { get; set; }
+        public Nullable<System.DateTime> QualifiedOn { get; set; }
+        public Nullable<System.DateTime> IsQualified { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
+        public Nullable<System.DateTime> ModifiedOn { get; set; }
+        public bool IsDeleted { get; set; }
+        public string ApprovalCode { get; set; }
+        public Nullable<long> ApprovedByUserId { get; set; }
+        public string Remarks { get; set; }
     
         public virtual Employee Employee { get; set; }
+        public virtual EmployeeSkillMatrix EmployeeSkillMatrix { get; set; }
+        public virtual EmployeeSkillsRatings EmployeeSkillsRatings { get; set; }
         public virtual Machine Machine { get; set; }
-        public virtual TeamGroup TeamGroup { get; set; }
+        public virtual MachineType MachineType { get; set; }
     }
 }

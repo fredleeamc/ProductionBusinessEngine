@@ -18,15 +18,14 @@ namespace ModelLibrary
         public Bom()
         {
             this.Bom1 = new HashSet<Bom>();
-            this.BomDetails = new HashSet<BomDetail>();
-            this.BomDetails1 = new HashSet<BomDetail>();
-            this.BomMfgConsumables = new HashSet<BomMfgConsumable>();
-            this.BomOtherCostDetails = new HashSet<BomOtherCostDetail>();
-            this.ProductBuildBomLinks = new HashSet<ProductBuildBomLink>();
+            this.BomDetails = new HashSet<BomDetails>();
+            this.BomDetails1 = new HashSet<BomDetails>();
+            this.BomMfgConsumable = new HashSet<BomMfgConsumable>();
+            this.BomOtherCostDetails = new HashSet<BomOtherCostDetails>();
+            this.ProductBuildBomLink = new HashSet<ProductBuildBomLink>();
         }
     
         public long Id { get; set; }
-        public Nullable<long> ModifiedByEmployeeId { get; set; }
         public string PartName { get; set; }
         public string Description { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
@@ -36,16 +35,8 @@ namespace ModelLibrary
         public Nullable<long> ApprovedByUserId { get; set; }
         public bool IsPrinted { get; set; }
         public bool IsSent { get; set; }
-        public long CompanyId { get; set; }
-        public Nullable<int> EngineeringPhaseId { get; set; }
         public Nullable<long> DocumentSetId { get; set; }
-        public Nullable<long> ParentBomId { get; set; }
         public string PartNo { get; set; }
-        public Nullable<long> CurrencyExchangeId { get; set; }
-        public Nullable<long> CurrencyId { get; set; }
-        public Nullable<long> UnitId { get; set; }
-        public string EngineeringChangeStatusId { get; set; }
-        public string BomItemTypeId { get; set; }
         public Nullable<decimal> EstimatedTotalCost { get; set; }
         public Nullable<decimal> EstimatedMateriallCost { get; set; }
         public decimal EstimatedMfgConsumableCost { get; set; }
@@ -60,26 +51,26 @@ namespace ModelLibrary
         public Nullable<decimal> TargetQuantity { get; set; }
         public Nullable<decimal> AdjustedQuantity { get; set; }
     
+        public virtual Currency Currency { get; set; }
+        public virtual Unit Unit { get; set; }
         public virtual BomItemType BomItemType { get; set; }
         public virtual Company Company { get; set; }
-        public virtual EngineeringChangeStatu EngineeringChangeStatu { get; set; }
+        public virtual CurrencyExchange CurrencyExchange { get; set; }
+        public virtual EngineeringChangeStatus EngineeringChangeStatus { get; set; }
         public virtual EngineeringPhase EngineeringPhase { get; set; }
         public virtual Employee Employee { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Bom> Bom1 { get; set; }
         public virtual Bom Bom2 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BomDetail> BomDetails { get; set; }
+        public virtual ICollection<BomDetails> BomDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BomDetail> BomDetails1 { get; set; }
+        public virtual ICollection<BomDetails> BomDetails1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BomMfgConsumable> BomMfgConsumables { get; set; }
+        public virtual ICollection<BomMfgConsumable> BomMfgConsumable { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BomOtherCostDetail> BomOtherCostDetails { get; set; }
+        public virtual ICollection<BomOtherCostDetails> BomOtherCostDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductBuildBomLink> ProductBuildBomLinks { get; set; }
-        public virtual Currency Currency { get; set; }
-        public virtual Unit Unit { get; set; }
-        public virtual CurrencyExchange CurrencyExchange { get; set; }
+        public virtual ICollection<ProductBuildBomLink> ProductBuildBomLink { get; set; }
     }
 }

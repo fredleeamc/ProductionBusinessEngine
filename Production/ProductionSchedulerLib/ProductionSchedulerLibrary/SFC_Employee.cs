@@ -11,7 +11,7 @@ namespace ProductionSchedulerLibrary
     /// <summary>
     /// 
     /// </summary>
-    public class SFC_Employee
+    public  class SFC_Employee
     {
         /// <summary>
         /// The identifier
@@ -46,7 +46,7 @@ namespace ProductionSchedulerLibrary
         /// <param name="lastName">The last name.</param>
         /// <param name="middleName">Name of the middle.</param>
         /// <param name="firstName">The first name.</param>
-        public SFC_Employee(long id, string employeeNo, string lastName, string middleName, string firstName)
+        public  SFC_Employee(long id, string employeeNo, string lastName, string middleName, string firstName)
         {
             this.id = id;
             this.EmployeeNo = employeeNo;
@@ -61,7 +61,7 @@ namespace ProductionSchedulerLibrary
         /// <value>
         /// The identifier.
         /// </value>
-        public long Id
+        public  long Id
         {
             get
             {
@@ -75,7 +75,7 @@ namespace ProductionSchedulerLibrary
         /// <value>
         /// The employee no.
         /// </value>
-        public string EmployeeNo
+        public  string EmployeeNo
         {
             get
             {
@@ -94,7 +94,7 @@ namespace ProductionSchedulerLibrary
         /// <value>
         /// The last name.
         /// </value>
-        public string LastName
+        public  string LastName
         {
             get
             {
@@ -113,7 +113,7 @@ namespace ProductionSchedulerLibrary
         /// <value>
         /// The name of the middle.
         /// </value>
-        public string MiddleName
+        public  string MiddleName
         {
             get
             {
@@ -132,7 +132,7 @@ namespace ProductionSchedulerLibrary
         /// <value>
         /// The first name.
         /// </value>
-        public string FirstName
+        public  string FirstName
         {
             get
             {
@@ -153,7 +153,7 @@ namespace ProductionSchedulerLibrary
         /// <returns>
         /// A <see cref="System.String" /> that represents this instance.
         /// </returns>
-        public override string ToString()
+        public  override string ToString()
         {
             return "Employee:" + id + "," + employeeNo + "," + lastName + "," + firstName + " " + middleName;
         }

@@ -71,13 +71,15 @@ namespace ProductionSchedulerLibrary
         public override string Display(int depth)
         {
             String desc = id + ":" + item;
-            String num1 = String.Format("{0:F2}", Quantity);
-            String num2 = String.Format("{0:F2}", BomCost);
-            String num3 = String.Format("{0:F2}", UnitCost);
+            String num1 = String.Format("{0:N}", Quantity);
+            String num2 = String.Format("{0:N}", BomCost);
+            String num3 = String.Format("{0:N}", UnitCost);
+            String num4 = String.Format("{0:N}", CalculatedTotalQuantityRequired);
+            String num5 = String.Format("{0:N}", CalculatedTotalBomTotalCost);
             //StringBuilder sb = new StringBuilder();
             //sb.Append(String.Format("{0:-20}{1,-40}{2,-40}", new String('-', depth) + "I", desc, num));
             String dash = new String('*', depth) + "C";
-            Console.WriteLine(String.Format("{0}|{1}|Qty{2}|${3}|${4}", dash.PadRight(20), desc.PadRight(30), num1.PadLeft(12), num3.PadLeft(12), num2.PadLeft(12)));
+            Console.WriteLine(String.Format("{0}|{1}|Qty{2}|U${3}|S${4}|TQty${5}|TT${6}", dash.PadRight(20), desc.PadRight(30), num1.PadLeft(12), num3.PadLeft(12), num2.PadLeft(12), num4.PadLeft(12), num5.PadLeft(12)));
             
             foreach (SFC_BomComponent component in children)
             {
@@ -127,25 +129,25 @@ namespace ProductionSchedulerLibrary
         /// </summary>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
-        public override decimal EstimatedCost()
-        {
-            decimal thisCost = 0;
-            if (children.Count > 0)
-            {
-                foreach (SFC_BomComponent component in children)
-                {
-                    decimal t = component.EstimatedCost();
-                    thisCost += t;
-                    Console.WriteLine(component.Item + "=" + t + " Total:" + thisCost);
-                }
-                this.BomCost = thisCost;
-            }
-            else
-            {
-                thisCost = this.UnitCost * this.Quantity;
-            }
-            return thisCost;
-        }
+        //public override decimal EstimatedCost()
+        //{
+        //    decimal thisCost = 0;
+        //    if (children.Count > 0)
+        //    {
+        //        foreach (SFC_BomComponent component in children)
+        //        {
+        //            decimal t = component.EstimatedCost();
+        //            thisCost += t;
+        //            Console.WriteLine(component.Item + "=" + t + " Total:" + thisCost);
+        //        }
+        //        this.BomCost = thisCost;
+        //    }
+        //    else
+        //    {
+        //        thisCost = this.UnitCost * this.Quantity;
+        //    }
+        //    return thisCost;
+        //}
 
 
         /// <summary>
@@ -169,19 +171,22 @@ namespace ProductionSchedulerLibrary
             }
         }
 
-        public override void metrics(int idepth, ref decimal dcost, ref decimal dbomCost, ref decimal dqty)
+        public override void metrics(int idepth, decimal multiplier)
         {
-            this.Depth = idepth + 1;
-            decimal cost = 0;
-            decimal bqty = 0;
+            idepth++;
+            decimal totalBomCost = 0;
+            decimal bomCost = 0;
             foreach (SFC_BomComponent component in children)
             {
-                component.metrics(this.Depth, ref dcost, ref dbomCost, ref bqty);
-                cost += dcost;
+                component.metrics(idepth, this.Quantity * multiplier);
+                totalBomCost += component.CalculatedTotalBomTotalCost;                
+                bomCost += component.BomCost;
             }
-            this.UnitCost = cost;
-            this.BomCost = cost * this.Quantity;
-            dcost = this.BomCost;
+            this.CalculatedTotalBomTotalCost = totalBomCost;
+            this.CalculatedTotalQuantityRequired = this.Quantity * multiplier;
+            this.CalculatedTotalComponentCost = bomCost;
+            this.UnitCost = bomCost;
+            this.BomCost = bomCost * this.Quantity;
         }
     }
 }

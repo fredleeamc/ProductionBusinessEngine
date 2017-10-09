@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProductionSchedulerLibrary
 {
-    public class SFC_Unit : IEquatable<SFC_Unit>
+    public  class SFC_Unit : IEquatable<SFC_Unit>
     {
         private readonly long id;
         private readonly string unitCategory;
@@ -14,7 +14,7 @@ namespace ProductionSchedulerLibrary
         private readonly string description;
 
 
-        public SFC_Unit(long id, string unitCategory, string unitVal, string description)
+        public  SFC_Unit(long id, string unitCategory, string unitVal, string description)
         {
             this.id = id;
             this.unitCategory = unitCategory;
@@ -23,25 +23,25 @@ namespace ProductionSchedulerLibrary
         }
 
 
-        public long Id => id;
+        public  long Id => id;
 
-        public String UnitCategory => unitCategory;
+        public  String UnitCategory => unitCategory;
 
-        public string UnitVal => unitVal;
+        public  string UnitVal => unitVal;
 
-        public string Description => description;
+        public  string Description => description;
 
         bool IEquatable<SFC_Unit>.Equals(SFC_Unit other)
         {
             return this.Equals(other);
         }
 
-        public bool Equals(SFC_Unit other)
+        public  bool Equals(SFC_Unit other)
         {
             return other != null && this.UnitCategory.Equals(other.UnitCategory) && this.UnitVal.Equals(other.UnitVal);
         }
 
-        public bool Convertible(SFC_Unit other)
+        public  bool Convertible(SFC_Unit other)
         {
             return other != null && this.UnitCategory.Equals(other.UnitCategory);
         }

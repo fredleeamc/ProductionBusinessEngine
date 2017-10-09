@@ -11,7 +11,7 @@ namespace ProductionSchedulerLibrary
     /// <summary>
     /// 
     /// </summary>
-    public class ShopFloorModel
+    public  class ShopFloorModel
     {
         #region fields
         /// <summary>
@@ -85,45 +85,46 @@ namespace ProductionSchedulerLibrary
 
         private readonly SFC_Companies companies;
 
-        private readonly SFC_Currency currency;
-
         private readonly SFC_Currencies currencies;
 
         private readonly SFC_CurrencyExchanges currencyExchanges;
+
+        private readonly SFC_CompanySettings settings;
         #endregion
 
 
-        public SFC_Boms Boms => boms;
+        public  SFC_Boms Boms => boms;
 
-        public SFC_Employees Employees => employees;
+        public  SFC_Employees Employees => employees;
 
-        public SFC_Customers Customers => customers;
+        public  SFC_Customers Customers => customers;
 
-        public SFC_ItemLotBins LotBins => lotBins;
+        public  SFC_ItemLotBins LotBins => lotBins;
 
-        public SFC_Items Items => items;
+        public  SFC_Items Items => items;
 
-        public SFC_MachineTypes  MachineTypes => machineTypes;
+        public  SFC_MachineTypes  MachineTypes => machineTypes;
 
-        public SFC_Machines Machines => machines;     
+        public  SFC_Machines Machines => machines;     
 
-        public SFC_WorkCenters WorkCenters => workCenters;
+        public  SFC_WorkCenters WorkCenters => workCenters;
 
-        public SFC_WorkCenterTypes WorkCenterTypes => workCenterTypes;
+        public  SFC_WorkCenterTypes WorkCenterTypes => workCenterTypes;
 
-        public SFC_ProductBuilds Build => builds;
+        public  SFC_ProductBuilds Build => builds;
 
-        public SFC_Routers Routers => routers;
+        public  SFC_Routers Routers => routers;
 
-        public SFC_WorkOrders WorkOrders => workOrders;
+        public  SFC_WorkOrders WorkOrders => workOrders;
 
-        public SFC_Companies Companies => companies;
+        public  SFC_Companies Companies => companies;
 
-        public SFC_Currency Currency => currency;
 
-        public SFC_Currencies Currencies => currencies;
+        public  SFC_Currencies Currencies => currencies;
 
-        public SFC_CurrencyExchanges CurrencyExchanges => currencyExchanges;
+        public  SFC_CurrencyExchanges CurrencyExchanges => currencyExchanges;
+
+        public SFC_CompanySettings Settings => settings;
 
 
 
@@ -133,10 +134,10 @@ namespace ProductionSchedulerLibrary
         /// </summary>
         /// <param name="companyId">The company identifier.</param>
         /// <param name="companyName">Name of the company.</param>
-        public ShopFloorModel(long companyId, String companyName, SFC_Currency defaultCurrency)
+        public  ShopFloorModel(long companyId, String companyName, SFC_CompanySettings settings)
         {
             this.companyId = companyId;
-            this.currency = defaultCurrency;
+            this.settings = settings;
             company = new SFC_Company(companyId, companyName);
             this.companies = new SFC_Companies();
             this.employees = new SFC_Employees();

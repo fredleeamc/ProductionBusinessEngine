@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProductionSchedulerLibrary
 {
-    public class SFC_MachineQueue
+    public  class SFC_MachineQueue
     {
     }
 }

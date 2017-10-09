@@ -17,16 +17,12 @@ namespace ModelLibrary
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Vendor()
         {
-            this.BomDetails = new HashSet<BomDetail>();
-            this.RouterOutsideDetails = new HashSet<RouterOutsideDetail>();
+            this.BomDetails = new HashSet<BomDetails>();
+            this.RouterOutsideDetails = new HashSet<RouterOutsideDetails>();
         }
     
         public long Id { get; set; }
-        public long CompanyId { get; set; }
-        public long VendorCompanyId { get; set; }
         public long TermsId { get; set; }
-        public Nullable<long> ModifiedByEmployeeId { get; set; }
-        public long CurrencyId { get; set; }
         public Nullable<long> VendorTypeId { get; set; }
         public Nullable<int> ApprovalTypeId { get; set; }
         public string AccountNo { get; set; }
@@ -41,13 +37,13 @@ namespace ModelLibrary
         public Nullable<System.DateTime> ModifiedOn { get; set; }
         public string VendorCode { get; set; }
     
+        public virtual Currency Currency { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BomDetail> BomDetails { get; set; }
+        public virtual ICollection<BomDetails> BomDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RouterOutsideDetail> RouterOutsideDetails { get; set; }
+        public virtual ICollection<RouterOutsideDetails> RouterOutsideDetails { get; set; }
         public virtual Company Company { get; set; }
         public virtual Company Company1 { get; set; }
         public virtual Employee Employee { get; set; }
-        public virtual Currency Currency { get; set; }
     }
 }

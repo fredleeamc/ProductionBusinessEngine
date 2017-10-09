@@ -15,17 +15,13 @@ namespace ModelLibrary
     public partial class RouterDetailsLink
     {
         public long Id { get; set; }
-        public long RouterId { get; set; }
-        public long HeadRouterDetailsId { get; set; }
-        public Nullable<long> TailRouterDetailsId { get; set; }
-        public Nullable<long> ModifiedbyEmployeeId { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public bool IsDeleted { get; set; }
     
         public virtual Router Router { get; set; }
-        public virtual RouterDetail RouterDetail { get; set; }
-        public virtual RouterDetail RouterDetail1 { get; set; }
+        public virtual RouterDetails RouterDetails { get; set; }
+        public virtual RouterDetails RouterDetails1 { get; set; }
         public virtual Employee Employee { get; set; }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProductionSchedulerLibrary
 {
-    public class SFC_RouterProcess
+    public  class SFC_RouterProcess
     {
         private readonly long id;
         private readonly string processName;
@@ -31,32 +31,32 @@ namespace ProductionSchedulerLibrary
         private long? modifiedByEmployeeId;
         private bool isCompleted;
 
-        public long Id => id;
+        public  long Id => id;
 
-        public string ProcessName => processName;
+        public  string ProcessName => processName;
 
-        public string ProcessDescription { get => processDescription; set => processDescription = value; }
-        public string EngineeringChangeStatusId { get => engineeringChangeStatusId; set => engineeringChangeStatusId = value; }
-        public long? ManufacturedComponentId { get => manufacturedComponentId; set => manufacturedComponentId = value; }
-        public long? WorkInstructionId { get => workInstructionId; set => workInstructionId = value; }
-        public decimal? EstimatedFixedProcessCost { get => estimatedFixedProcessCost; set => estimatedFixedProcessCost = value; }
-        public decimal? EstimatedVariableCostPiece { get => estimatedVariableCostPiece; set => estimatedVariableCostPiece = value; }
-        public bool IsExported { get => isExported; set => isExported = value; }
-        public int? LeadTimeDays { get => leadTimeDays; set => leadTimeDays = value; }
-        public decimal? EstimatedTaxes { get => estimatedTaxes; set => estimatedTaxes = value; }
-        public decimal? EstimatedDuties { get => estimatedDuties; set => estimatedDuties = value; }
-        public decimal? EstimatedShippingCost { get => estimatedShippingCost; set => estimatedShippingCost = value; }
-        public decimal? EstimatedLandedCost { get => estimatedLandedCost; set => estimatedLandedCost = value; }
-        public decimal? EstimatedAdditionalOverhead { get => estimatedAdditionalOverhead; set => estimatedAdditionalOverhead = value; }
-        public long? CurrencyId { get => currencyId; set => currencyId = value; }
-        public long? CurrencyExchangeId { get => currencyExchangeId; set => currencyExchangeId = value; }
-        public bool IsDeleted { get => isDeleted; set => isDeleted = value; }
-        public DateTime? CreatedOn { get => createdOn; set => createdOn = value; }
-        public DateTime? ModifiedOn { get => modifiedOn; set => modifiedOn = value; }
-        public long? ModifiedByEmployeeId { get => modifiedByEmployeeId; set => modifiedByEmployeeId = value; }
-        public bool IsCompleted { get => isCompleted; set => isCompleted = value; }
+        public  string ProcessDescription { get => processDescription; set => processDescription = value; }
+        public  string EngineeringChangeStatusId { get => engineeringChangeStatusId; set => engineeringChangeStatusId = value; }
+        public  long? ManufacturedComponentId { get => manufacturedComponentId; set => manufacturedComponentId = value; }
+        public  long? WorkInstructionId { get => workInstructionId; set => workInstructionId = value; }
+        public  decimal? EstimatedFixedProcessCost { get => estimatedFixedProcessCost; set => estimatedFixedProcessCost = value; }
+        public  decimal? EstimatedVariableCostPiece { get => estimatedVariableCostPiece; set => estimatedVariableCostPiece = value; }
+        public  bool IsExported { get => isExported; set => isExported = value; }
+        public  int? LeadTimeDays { get => leadTimeDays; set => leadTimeDays = value; }
+        public  decimal? EstimatedTaxes { get => estimatedTaxes; set => estimatedTaxes = value; }
+        public  decimal? EstimatedDuties { get => estimatedDuties; set => estimatedDuties = value; }
+        public  decimal? EstimatedShippingCost { get => estimatedShippingCost; set => estimatedShippingCost = value; }
+        public  decimal? EstimatedLandedCost { get => estimatedLandedCost; set => estimatedLandedCost = value; }
+        public  decimal? EstimatedAdditionalOverhead { get => estimatedAdditionalOverhead; set => estimatedAdditionalOverhead = value; }
+        public  long? CurrencyId { get => currencyId; set => currencyId = value; }
+        public  long? CurrencyExchangeId { get => currencyExchangeId; set => currencyExchangeId = value; }
+        public  bool IsDeleted { get => isDeleted; set => isDeleted = value; }
+        public  DateTime? CreatedOn { get => createdOn; set => createdOn = value; }
+        public  DateTime? ModifiedOn { get => modifiedOn; set => modifiedOn = value; }
+        public  long? ModifiedByEmployeeId { get => modifiedByEmployeeId; set => modifiedByEmployeeId = value; }
+        public  bool IsCompleted { get => isCompleted; set => isCompleted = value; }
 
-        public SFC_RouterProcess(long id, String processName)
+        public  SFC_RouterProcess(long id, String processName)
         {
             this.id = id;
             this.processName = processName;

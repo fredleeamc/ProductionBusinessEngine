@@ -17,16 +17,12 @@ namespace ModelLibrary
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ItemLocation()
         {
-            this.StockMovementDetails = new HashSet<StockMovementDetail>();
-            this.StockMovementDetails1 = new HashSet<StockMovementDetail>();
+            this.StockMovementDetails = new HashSet<StockMovementDetails>();
+            this.StockMovementDetails1 = new HashSet<StockMovementDetails>();
         }
     
         public long Id { get; set; }
-        public long CompanyId { get; set; }
-        public long ItemId { get; set; }
-        public Nullable<long> ItemLotBinId { get; set; }
         public Nullable<long> LocationId { get; set; }
-        public Nullable<long> ModifiedByEmployeeId { get; set; }
         public bool IsVoid { get; set; }
         public string ApprovalCode { get; set; }
         public Nullable<long> ApprovedByUserId { get; set; }
@@ -39,12 +35,11 @@ namespace ModelLibrary
     
         public virtual Company Company { get; set; }
         public virtual Item Item { get; set; }
-        public virtual Location Location { get; set; }
         public virtual Employee Employee { get; set; }
         public virtual ItemLotBin ItemLotBin { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<StockMovementDetail> StockMovementDetails { get; set; }
+        public virtual ICollection<StockMovementDetails> StockMovementDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<StockMovementDetail> StockMovementDetails1 { get; set; }
+        public virtual ICollection<StockMovementDetails> StockMovementDetails1 { get; set; }
     }
 }

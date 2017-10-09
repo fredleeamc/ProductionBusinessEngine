@@ -26,7 +26,7 @@ namespace ProductionSchedulerProgram
             
             #region Initialize Shop Floor Control
             ShopSequenceGenerator seqGen = ShopSequenceGenerator.Instance;
-            ShopFloorControl shopFloor = ShopFloorControl.Instance;
+            ShopFloor shopFloor = ShopFloor.Instance;
             #endregion
 
             #region Definition
@@ -45,9 +45,11 @@ namespace ProductionSchedulerProgram
             #region Model Company
             seqGen.CreateNewSequence("CO", 0);
             SFC_Company company = new SFC_Company(seqGen.GetNext("CO"), "Vision");
+
             
             shopFloor.CreateShopFloorModel(company, PH_Peso);
-
+            shopFloor.DefaultCurrency = PH_Peso;
+            shopFloor.DefaultCurrencyExchange = pesoToDollar;
             shopFloor.Company[company.Id].CurrencyExchanges.Add(pesoToDollar);
             shopFloor.Company[company.Id].CurrencyExchanges.Add(dollarToPeso);
 
@@ -255,7 +257,7 @@ namespace ProductionSchedulerProgram
             seqGen.CreateNewSequence("BOMI", 0);
             for (int bitem = 0; bitem < 10; bitem++)
             {
-                SFC_BomComposite c = new SFC_BomComposite(seqGen.GetNext("BOMC"), shopFloor.Company[company.Id].Items.GetRandom(), 1);
+                SFC_BomComposite c = new SFC_BomComposite(seqGen.GetNext("BOMC"), shopFloor.Company[company.Id].Items.GetRandom(), TextGenerator.RandomInt(5)+1);
                 int numItems = 1 + TextGenerator.RandomInt(10);
                 List<SFC_BomComposite> u = new List<SFC_BomComposite>();
                 u.Add(c);
@@ -309,6 +311,7 @@ namespace ProductionSchedulerProgram
                     }
                 }
                 SFC_Bom b = new SFC_Bom(seqGen.GetNext("BOM"), TextGenerator.RandomChars(8), TextGenerator.RandomChars(10), c);
+                b.TotalQuantity = TextGenerator.RandomInt(5) + 1;
                 shopFloor.Company[company.Id].Boms.Add(b);
             }
 

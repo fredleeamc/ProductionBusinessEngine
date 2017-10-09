@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace ProductionSchedulerLibrary
 {
-    public class SFC_WorkOrderDetail : IEquatable<SFC_WorkOrderDetail>, IComparable<SFC_WorkOrderDetail>
+    public  class SFC_WorkOrderDetail : IEquatable<SFC_WorkOrderDetail>, IComparable<SFC_WorkOrderDetail>
     {      
-        public readonly static SFC_WorkOrderDetail NONE = new SFC_WorkOrderDetail(0, 0);
+        public  readonly static SFC_WorkOrderDetail NONE = new SFC_WorkOrderDetail(0, 0);
 
         private readonly long id;
         private readonly long operationSequence;
@@ -25,42 +25,42 @@ namespace ProductionSchedulerLibrary
         private decimal estimatedPackagingCost;
         private decimal machineCost;
 
-        public long Id => id;
+        public  long Id => id;
 
-        public long OperationSequence => operationSequence;
+        public  long OperationSequence => operationSequence;
 
-        public long RouterDetails { get => routerDetailsId; set => routerDetailsId = value; }
-        public decimal OrderedQuantity { get => orderedQuantity; set => orderedQuantity = value; }
-        public decimal ProducedQuantity { get => producedQuantity; set => producedQuantity = value; }
-        public decimal ScrapQuantity { get => scrapQuantity; set => scrapQuantity = value; }
-        public decimal EstimatedMaterialCost { get => estimatedMaterialCost; set => estimatedMaterialCost = value; }
-        public decimal EstimatedLaborCost { get => estimatedLaborCost; set => estimatedLaborCost = value; }
-        public decimal EstimatedOverheadCost { get => estimatedOverheadCost; set => estimatedOverheadCost = value; }
-        public decimal EstimatedToolingCost { get => estimatedToolingCost; set => estimatedToolingCost = value; }
-        public decimal EstimatedProductionConsumablesCost { get => estimatedProductionConsumablesCost; set => estimatedProductionConsumablesCost = value; }
-        public decimal EstimatedPackagingCost { get => estimatedPackagingCost; set => estimatedPackagingCost = value; }
-        public decimal MachineCost { get => machineCost; set => machineCost = value; }
+        public  long RouterDetails { get => routerDetailsId; set => routerDetailsId = value; }
+        public  decimal OrderedQuantity { get => orderedQuantity; set => orderedQuantity = value; }
+        public  decimal ProducedQuantity { get => producedQuantity; set => producedQuantity = value; }
+        public  decimal ScrapQuantity { get => scrapQuantity; set => scrapQuantity = value; }
+        public  decimal EstimatedMaterialCost { get => estimatedMaterialCost; set => estimatedMaterialCost = value; }
+        public  decimal EstimatedLaborCost { get => estimatedLaborCost; set => estimatedLaborCost = value; }
+        public  decimal EstimatedOverheadCost { get => estimatedOverheadCost; set => estimatedOverheadCost = value; }
+        public  decimal EstimatedToolingCost { get => estimatedToolingCost; set => estimatedToolingCost = value; }
+        public  decimal EstimatedProductionConsumablesCost { get => estimatedProductionConsumablesCost; set => estimatedProductionConsumablesCost = value; }
+        public  decimal EstimatedPackagingCost { get => estimatedPackagingCost; set => estimatedPackagingCost = value; }
+        public  decimal MachineCost { get => machineCost; set => machineCost = value; }
 
-        public SFC_WorkOrderDetail(long id, long operationSequence)
+        public  SFC_WorkOrderDetail(long id, long operationSequence)
         {
             this.id = id;
             this.operationSequence = operationSequence;
 
         }
 
-        public override bool Equals(object obj)
+        public  override bool Equals(object obj)
         {
             return Equals(obj as SFC_WorkOrderDetail);
         }
 
-        public bool Equals(SFC_WorkOrderDetail other)
+        public  bool Equals(SFC_WorkOrderDetail other)
         {
             return other != null &&
                    id == other.id &&
                    operationSequence == other.operationSequence;
         }
 
-        public int CompareTo(SFC_WorkOrderDetail other)
+        public  int CompareTo(SFC_WorkOrderDetail other)
         {
             if (other == null)
                 return 1;
@@ -77,7 +77,7 @@ namespace ProductionSchedulerLibrary
                 throw new ArgumentException("Object is not a SFC_WorkOrderDetail");
         }
 
-        public override int GetHashCode()
+        public  override int GetHashCode()
         {
             var hashCode = -1585217529;
             hashCode = hashCode * -1521134295 + id.GetHashCode();
@@ -85,12 +85,12 @@ namespace ProductionSchedulerLibrary
             return hashCode;
         }
 
-        public static bool operator ==(SFC_WorkOrderDetail detail1, SFC_WorkOrderDetail detail2)
+        public  static bool operator ==(SFC_WorkOrderDetail detail1, SFC_WorkOrderDetail detail2)
         {
             return EqualityComparer<SFC_WorkOrderDetail>.Default.Equals(detail1, detail2);
         }
 
-        public static bool operator !=(SFC_WorkOrderDetail detail1, SFC_WorkOrderDetail detail2)
+        public  static bool operator !=(SFC_WorkOrderDetail detail1, SFC_WorkOrderDetail detail2)
         {
             return !(detail1 == detail2);
         }

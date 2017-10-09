@@ -17,24 +17,19 @@ namespace ModelLibrary
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public StockMovement()
         {
-            this.StockMovementDetails = new HashSet<StockMovementDetail>();
+            this.StockMovementDetails = new HashSet<StockMovementDetails>();
         }
     
         public long Id { get; set; }
-        public long CompanyId { get; set; }
         public System.DateTime TransactionDate { get; set; }
         public string MoveTicketNo { get; set; }
-        public Nullable<long> MovedByEmployeeId { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }
-        public Nullable<long> ModifiedByEmployeeId { get; set; }
         public string Note { get; set; }
         public string ApprovalCode { get; set; }
         public Nullable<long> ApprovedByUserId { get; set; }
         public bool IsPrinted { get; set; }
         public bool IsSent { get; set; }
         public bool IsForeignCurrency { get; set; }
-        public Nullable<long> CurrencyId { get; set; }
-        public Nullable<long> CurrencyExchangeId { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public bool IsDeleted { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
@@ -42,12 +37,12 @@ namespace ModelLibrary
         public bool IsCompleted { get; set; }
         public bool IsClosed { get; set; }
     
+        public virtual Currency Currency { get; set; }
         public virtual Company Company { get; set; }
+        public virtual CurrencyExchange CurrencyExchange { get; set; }
         public virtual Employee Employee { get; set; }
         public virtual Employee Employee1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<StockMovementDetail> StockMovementDetails { get; set; }
-        public virtual Currency Currency { get; set; }
-        public virtual CurrencyExchange CurrencyExchange { get; set; }
+        public virtual ICollection<StockMovementDetails> StockMovementDetails { get; set; }
     }
 }

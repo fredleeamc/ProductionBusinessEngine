@@ -10,7 +10,7 @@ namespace ProductionSchedulerLibrary
     /// <summary>
     /// 
     /// </summary>
-    public class SFC_ItemStatus
+    public  class SFC_ItemStatus
     {
         /// <summary>
         /// The item
@@ -96,7 +96,7 @@ namespace ProductionSchedulerLibrary
         /// <value>
         /// The item.
         /// </value>
-        public SFC_Item Item => item;
+        public  SFC_Item Item => item;
 
         /// <summary>
         /// Gets or sets the item lot bin.
@@ -104,7 +104,7 @@ namespace ProductionSchedulerLibrary
         /// <value>
         /// The item lot bin.
         /// </value>
-        public SFC_ItemLotBin ItemLotBin { get => itemLotBin; set => itemLotBin = value; }
+        public  SFC_ItemLotBin ItemLotBin { get => itemLotBin; set => itemLotBin = value; }
 
         /// <summary>
         /// Gets a value indicating whether this instance is item.
@@ -112,7 +112,7 @@ namespace ProductionSchedulerLibrary
         /// <value>
         ///   <c>true</c> if this instance is item; otherwise, <c>false</c>.
         /// </value>
-        public bool IsItem => isItem;
+        public  bool IsItem => isItem;
 
         /// <summary>
         /// Gets or sets the begin balance.
@@ -120,118 +120,118 @@ namespace ProductionSchedulerLibrary
         /// <value>
         /// The begin balance.
         /// </value>
-        public decimal BeginBalance { get => beginBalance; set => beginBalance = value; }
+        public  decimal BeginBalance { get => beginBalance; set => beginBalance = value; }
         /// <summary>
         /// Gets or sets the receive.
         /// </summary>
         /// <value>
         /// The receive.
         /// </value>
-        public decimal Receive { get => receive; set => receive = value; }
+        public  decimal Receive { get => receive; set => receive = value; }
         /// <summary>
         /// Gets or sets the on hand.
         /// </summary>
         /// <value>
         /// The on hand.
         /// </value>
-        public decimal OnHand { get => onHand; set => onHand = value; }
+        public  decimal OnHand { get => onHand; set => onHand = value; }
         /// <summary>
         /// Gets or sets the on purchase.
         /// </summary>
         /// <value>
         /// The on purchase.
         /// </value>
-        public decimal OnPurchase { get => onPurchase; set => onPurchase = value; }
+        public  decimal OnPurchase { get => onPurchase; set => onPurchase = value; }
         /// <summary>
         /// Gets or sets the in production.
         /// </summary>
         /// <value>
         /// The in production.
         /// </value>
-        public decimal InProduction { get => inProduction; set => inProduction = value; }
+        public  decimal InProduction { get => inProduction; set => inProduction = value; }
         /// <summary>
         /// Gets or sets the allocated.
         /// </summary>
         /// <value>
         /// The allocated.
         /// </value>
-        public decimal Allocated { get => allocated; set => allocated = value; }
+        public  decimal Allocated { get => allocated; set => allocated = value; }
         /// <summary>
         /// Gets or sets the reserved.
         /// </summary>
         /// <value>
         /// The reserved.
         /// </value>
-        public decimal Reserved { get => reserved; set => reserved = value; }
+        public  decimal Reserved { get => reserved; set => reserved = value; }
         /// <summary>
         /// Gets or sets the total available.
         /// </summary>
         /// <value>
         /// The total available.
         /// </value>
-        public decimal TotalAvailable { get => totalAvailable; set => totalAvailable = value; }
+        public  decimal TotalAvailable { get => totalAvailable; set => totalAvailable = value; }
         /// <summary>
         /// Gets or sets the total required.
         /// </summary>
         /// <value>
         /// The total required.
         /// </value>
-        public decimal TotalRequired { get => totalRequired; set => totalRequired = value; }
+        public  decimal TotalRequired { get => totalRequired; set => totalRequired = value; }
         /// <summary>
         /// Gets or sets the scrap.
         /// </summary>
         /// <value>
         /// The scrap.
         /// </value>
-        public decimal Scrap { get => scrap; set => scrap = value; }
+        public  decimal Scrap { get => scrap; set => scrap = value; }
         /// <summary>
         /// Gets or sets the net used.
         /// </summary>
         /// <value>
         /// The net used.
         /// </value>
-        public decimal NetUsed { get => netUsed; set => netUsed = value; }
+        public  decimal NetUsed { get => netUsed; set => netUsed = value; }
         /// <summary>
         /// Gets or sets the vendor return.
         /// </summary>
         /// <value>
         /// The vendor return.
         /// </value>
-        public decimal VendorReturn { get => vendorReturn; set => vendorReturn = value; }
+        public  decimal VendorReturn { get => vendorReturn; set => vendorReturn = value; }
         /// <summary>
         /// Gets or sets the adjustment in.
         /// </summary>
         /// <value>
         /// The adjustment in.
         /// </value>
-        public decimal AdjustmentIn { get => adjustmentIn; set => adjustmentIn = value; }
+        public  decimal AdjustmentIn { get => adjustmentIn; set => adjustmentIn = value; }
         /// <summary>
         /// Gets or sets the adjustment out.
         /// </summary>
         /// <value>
         /// The adjustment out.
         /// </value>
-        public decimal AdjustmentOut { get => adjustmentOut; set => adjustmentOut = value; }
+        public  decimal AdjustmentOut { get => adjustmentOut; set => adjustmentOut = value; }
         /// <summary>
         /// Gets or sets the minimum automatic order.
         /// </summary>
         /// <value>
         /// The minimum automatic order.
         /// </value>
-        public decimal MinAutoOrder { get => minAutoOrder; set => minAutoOrder = value; }
+        public  decimal MinAutoOrder { get => minAutoOrder; set => minAutoOrder = value; }
         /// <summary>
         /// Gets or sets the reorder point.
         /// </summary>
         /// <value>
         /// The reorder point.
         /// </value>
-        public decimal ReorderPoint { get => reorderPoint; set => reorderPoint = value; }
+        public  decimal ReorderPoint { get => reorderPoint; set => reorderPoint = value; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SFC_ItemStatus"/> class.
         /// </summary>
         /// <param name="thisItem">The this item.</param>
-        public SFC_ItemStatus(SFC_Item thisItem)
+        public  SFC_ItemStatus(SFC_Item thisItem)
         {
             this.item = thisItem;
             this.isItem = true;
@@ -241,7 +241,7 @@ namespace ProductionSchedulerLibrary
         /// Initializes a new instance of the <see cref="SFC_ItemStatus"/> class.
         /// </summary>
         /// <param name="itemLotBin">The item lot bin.</param>
-        public SFC_ItemStatus(SFC_ItemLotBin itemLotBin)
+        public  SFC_ItemStatus(SFC_ItemLotBin itemLotBin)
         {
             this.itemLotBin = itemLotBin;
             this.isItem = false;
@@ -256,7 +256,7 @@ namespace ProductionSchedulerLibrary
         /// <param name="newLotBin">The new lot bin.</param>
         /// <param name="qtyToTransfer">The qty to transfer.</param>
         /// <returns></returns>
-        public bool splitLotBin(SFC_ItemLotBin newLotBin, decimal qtyToTransfer)
+        public  bool splitLotBin(SFC_ItemLotBin newLotBin, decimal qtyToTransfer)
         {
             bool result = false;
             lock(this)
@@ -280,7 +280,7 @@ namespace ProductionSchedulerLibrary
         /// Begins the quantity.
         /// </summary>
         /// <param name="qty">The qty.</param>
-        public void beginQuantity(decimal qty)
+        public  void beginQuantity(decimal qty)
         {
             lock (this)
             {
@@ -301,7 +301,7 @@ namespace ProductionSchedulerLibrary
         /// Adds the begin quantity.
         /// </summary>
         /// <param name="qty">The qty.</param>
-        public void addBeginQuantity(decimal qty)
+        public  void addBeginQuantity(decimal qty)
         {
             lock (this)
             {
@@ -321,7 +321,7 @@ namespace ProductionSchedulerLibrary
         /// Receives the quantity.
         /// </summary>
         /// <param name="qty">The qty.</param>
-        public void receiveQuantity(decimal qty)
+        public  void receiveQuantity(decimal qty)
         {
             lock (this)
             {
@@ -342,7 +342,7 @@ namespace ProductionSchedulerLibrary
         /// </summary>
         /// <param name="qty">The qty.</param>
         /// <returns></returns>
-        public bool useQuantity(decimal qty)
+        public  bool useQuantity(decimal qty)
         {
             bool result = false;
             lock (this)
@@ -367,7 +367,7 @@ namespace ProductionSchedulerLibrary
         /// Purchases the order quantity.
         /// </summary>
         /// <param name="qty">The qty.</param>
-        public void purchaseOrderQuantity(decimal qty)
+        public  void purchaseOrderQuantity(decimal qty)
         {
             lock (this)
             {
@@ -387,7 +387,7 @@ namespace ProductionSchedulerLibrary
         /// </summary>
         /// <param name="qty">The qty.</param>
         /// <returns></returns>
-        public bool movePurchaseOrderToReceiveQuantity(decimal qty)
+        public  bool movePurchaseOrderToReceiveQuantity(decimal qty)
         {
             bool result = false;
             lock (this)
@@ -415,7 +415,7 @@ namespace ProductionSchedulerLibrary
         /// </summary>
         /// <param name="qty">The qty.</param>
         /// <returns></returns>
-        public bool allocateToWorkOrderQuantity(decimal qty)
+        public  bool allocateToWorkOrderQuantity(decimal qty)
         {
             bool result = false;
             lock (this)
@@ -443,7 +443,7 @@ namespace ProductionSchedulerLibrary
         /// </summary>
         /// <param name="qty">The qty.</param>
         /// <returns></returns>
-        public bool moveAllocatedToProductionQuantity(decimal qty)
+        public  bool moveAllocatedToProductionQuantity(decimal qty)
         {
             bool result = false;
             lock (this)
@@ -470,7 +470,7 @@ namespace ProductionSchedulerLibrary
         /// </summary>
         /// <param name="qty">The qty.</param>
         /// <returns></returns>
-        public bool reserveQuantity(decimal qty)
+        public  bool reserveQuantity(decimal qty)
         {
             bool result = false;
             lock (this)
@@ -496,7 +496,7 @@ namespace ProductionSchedulerLibrary
         /// Moves the reserved to allocated quantity.
         /// </summary>
         /// <param name="qty">The qty.</param>
-        public void moveReservedToAllocatedQuantity(decimal qty)
+        public  void moveReservedToAllocatedQuantity(decimal qty)
         {
             lock (this)
             {
@@ -514,7 +514,7 @@ namespace ProductionSchedulerLibrary
         /// Scraps from warehouse quantity.
         /// </summary>
         /// <param name="qty">The qty.</param>
-        public void scrapFromWarehouseQuantity(decimal qty)
+        public  void scrapFromWarehouseQuantity(decimal qty)
         {
             lock (this)
             {
@@ -533,7 +533,7 @@ namespace ProductionSchedulerLibrary
         /// Scraps from production quantity.
         /// </summary>
         /// <param name="qty">The qty.</param>
-        public void scrapFromProductionQuantity(decimal qty)
+        public  void scrapFromProductionQuantity(decimal qty)
         {
             lock (this)
             {
@@ -551,7 +551,7 @@ namespace ProductionSchedulerLibrary
         /// Returns to vendor quantity.
         /// </summary>
         /// <param name="qty">The qty.</param>
-        public void returnToVendorQuantity(decimal qty)
+        public  void returnToVendorQuantity(decimal qty)
         {
             lock (this)
             {
@@ -570,7 +570,7 @@ namespace ProductionSchedulerLibrary
         /// Returns the scrap to vendor quantity.
         /// </summary>
         /// <param name="qty">The qty.</param>
-        public void returnScrapToVendorQuantity(decimal qty)
+        public  void returnScrapToVendorQuantity(decimal qty)
         {
             lock (this)
             {
@@ -588,7 +588,7 @@ namespace ProductionSchedulerLibrary
         /// Adjusts the quantity in.
         /// </summary>
         /// <param name="qty">The qty.</param>
-        public void adjustQuantityIn(decimal qty)
+        public  void adjustQuantityIn(decimal qty)
         {
             lock (this)
             {
@@ -607,7 +607,7 @@ namespace ProductionSchedulerLibrary
         /// Adjusts the quantity out.
         /// </summary>
         /// <param name="qty">The qty.</param>
-        public void adjustQuantityOut(decimal qty)
+        public  void adjustQuantityOut(decimal qty)
         {
             lock (this)
             {
@@ -627,7 +627,7 @@ namespace ProductionSchedulerLibrary
         /// </summary>
         /// <param name="qty">The qty.</param>
         /// <returns></returns>
-        public bool moveToFinishGoods(decimal qty)
+        public  bool moveToFinishGoods(decimal qty)
         {
             bool result = false;
             lock (this)
@@ -657,7 +657,7 @@ namespace ProductionSchedulerLibrary
         /// <returns>
         /// A <see cref="System.String" /> that represents this instance.
         /// </returns>
-        public override string ToString()
+        public  override string ToString()
         {
 
             StringBuilder sb = new StringBuilder();

@@ -17,14 +17,12 @@ namespace ModelLibrary
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public WorkCenterType()
         {
-            this.WorkCenters = new HashSet<WorkCenter>();
+            this.WorkCenter = new HashSet<WorkCenter>();
         }
     
         public long Id { get; set; }
-        public long CompanyId { get; set; }
         public string WorkCenterTypeName { get; set; }
         public string Description { get; set; }
-        public Nullable<long> ModifiedByEmployeeId { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public string ApprovalCode { get; set; }
         public Nullable<long> ApprovedByUserId { get; set; }
@@ -35,6 +33,6 @@ namespace ModelLibrary
         public virtual Company Company { get; set; }
         public virtual Employee Employee { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<WorkCenter> WorkCenters { get; set; }
+        public virtual ICollection<WorkCenter> WorkCenter { get; set; }
     }
 }

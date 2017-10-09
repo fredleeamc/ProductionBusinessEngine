@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace ProductionSchedulerLibrary
 {
-    public class SFC_ItemLotBins : SFC_Container<SFC_ItemLotBin>
+    public  class SFC_ItemLotBins : Base_SFC_Container<SFC_ItemLotBin>
     {
-        public SFC_ItemLotBins() : base()
+        public  SFC_ItemLotBins() : base()
         {
         }
 
         /// <summary>
         /// Shows the boms.
         /// </summary>
-        new public void Print()
+        new public  void Print()
         {
             foreach (long id in Lists.Keys)
             {

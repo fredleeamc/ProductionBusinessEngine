@@ -12,24 +12,15 @@ namespace ModelLibrary
     using System;
     using System.Collections.Generic;
     
-    public partial class ProductBuildDevelopmentLabor
+    public partial class ProductBuildMaterials
     {
         public long Id { get; set; }
-        public Nullable<long> OperationSequence { get; set; }
-        public string OperationDescription { get; set; }
-        public Nullable<decimal> EstimatedLaborHours { get; set; }
-        public Nullable<decimal> EstimatedLaborHourlyRate { get; set; }
-        public Nullable<decimal> EstimatedLaborOverheadFactor { get; set; }
-        public Nullable<decimal> EstimatedLaborOverheadCost { get; set; }
-        public Nullable<decimal> EstimatedLaborCost { get; set; }
         public bool IsDeleted { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
     
-        public virtual Currency Currency { get; set; }
-        public virtual ProductBuild ProductBuild { get; set; }
-        public virtual CurrencyExchange CurrencyExchange { get; set; }
+        public virtual BomDetails BomDetails { get; set; }
+        public virtual ProductBuildDetails ProductBuildDetails { get; set; }
         public virtual Employee Employee { get; set; }
-        public virtual Router Router { get; set; }
     }
 }

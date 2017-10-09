@@ -17,33 +17,28 @@ namespace ModelLibrary
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public MfgConsumable()
         {
-            this.BomMfgConsumables = new HashSet<BomMfgConsumable>();
+            this.BomMfgConsumable = new HashSet<BomMfgConsumable>();
         }
     
         public long Id { get; set; }
-        public string MfgConsumableTypeId { get; set; }
-        public Nullable<long> CurrencyId { get; set; }
-        public Nullable<long> CurrencyExchangeId { get; set; }
         public string Brand { get; set; }
         public string ModelNo { get; set; }
         public string PartNo { get; set; }
         public Nullable<decimal> AverageCost { get; set; }
         public Nullable<decimal> LastCost { get; set; }
         public Nullable<long> ItemBuyId { get; set; }
-        public long CompanyId { get; set; }
         public bool IsDeleted { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
-        public Nullable<long> ModifiedByEmployeeId { get; set; }
         public Nullable<long> SpecificationId { get; set; }
     
+        public virtual Currency Currency { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BomMfgConsumable> BomMfgConsumables { get; set; }
+        public virtual ICollection<BomMfgConsumable> BomMfgConsumable { get; set; }
         public virtual Company Company { get; set; }
+        public virtual CurrencyExchange CurrencyExchange { get; set; }
         public virtual Item Item { get; set; }
         public virtual Employee Employee { get; set; }
         public virtual MfgConsumableType MfgConsumableType { get; set; }
-        public virtual Currency Currency { get; set; }
-        public virtual CurrencyExchange CurrencyExchange { get; set; }
     }
 }

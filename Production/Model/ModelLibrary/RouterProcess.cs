@@ -17,16 +17,14 @@ namespace ModelLibrary
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public RouterProcess()
         {
-            this.ProductBuildDetails = new HashSet<ProductBuildDetail>();
-            this.RouterDetails = new HashSet<RouterDetail>();
-            this.RouterProcessDetails = new HashSet<RouterProcessDetail>();
+            this.ProductBuildDetails = new HashSet<ProductBuildDetails>();
+            this.RouterDetails = new HashSet<RouterDetails>();
+            this.RouterProcessDetails = new HashSet<RouterProcessDetails>();
         }
     
         public long Id { get; set; }
         public string ProcessName { get; set; }
         public string ProcessDescription { get; set; }
-        public string EngineeringChangeStatusId { get; set; }
-        public Nullable<long> ManufacturedComponentId { get; set; }
         public Nullable<long> WorkInstructionId { get; set; }
         public Nullable<decimal> EstimatedFixedProcessCost { get; set; }
         public Nullable<decimal> EstimatedVariableCostPiece { get; set; }
@@ -37,24 +35,21 @@ namespace ModelLibrary
         public Nullable<decimal> EstimatedShippingCost { get; set; }
         public Nullable<decimal> EstimatedLandedCost { get; set; }
         public Nullable<decimal> EstimatedAdditionalOverhead { get; set; }
-        public Nullable<long> CurrencyId { get; set; }
-        public Nullable<long> CurrencyExchangeId { get; set; }
         public bool IsDeleted { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
-        public Nullable<long> ModifiedByEmployeeId { get; set; }
         public bool IsCompleted { get; set; }
     
-        public virtual EngineeringChangeStatu EngineeringChangeStatu { get; set; }
+        public virtual Currency Currency { get; set; }
+        public virtual EngineeringChangeStatus EngineeringChangeStatus { get; set; }
         public virtual ManufacturedComponent ManufacturedComponent { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductBuildDetail> ProductBuildDetails { get; set; }
+        public virtual ICollection<ProductBuildDetails> ProductBuildDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RouterDetail> RouterDetails { get; set; }
+        public virtual ICollection<RouterDetails> RouterDetails { get; set; }
+        public virtual CurrencyExchange CurrencyExchange { get; set; }
         public virtual Employee Employee { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RouterProcessDetail> RouterProcessDetails { get; set; }
-        public virtual Currency Currency { get; set; }
-        public virtual CurrencyExchange CurrencyExchange { get; set; }
+        public virtual ICollection<RouterProcessDetails> RouterProcessDetails { get; set; }
     }
 }

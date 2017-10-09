@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProductionSchedulerLibrary
 {
-    public class ShopSequenceGenerator
+    public  class ShopSequenceGenerator
     {
         private static ShopSequenceGenerator instance = null;
 
@@ -19,7 +19,7 @@ namespace ProductionSchedulerLibrary
 
         }
 
-        public static ShopSequenceGenerator Instance
+        public  static ShopSequenceGenerator Instance
         {
             get
             {
@@ -34,13 +34,13 @@ namespace ProductionSchedulerLibrary
             }
         }
 
-        public void CreateNewSequence(String prefix, long lastNumber)
+        public  void CreateNewSequence(String prefix, long lastNumber)
         {
             ModelSequencer seq = new ModelSequencer(prefix, lastNumber);
             modelSequence.Add(prefix, seq);
         }
 
-        public void FormatSpecifier(String prefix, String format, bool isPrefixed)
+        public  void FormatSpecifier(String prefix, String format, bool isPrefixed)
         {
             if (modelSequence.ContainsKey(prefix))
             {
@@ -49,7 +49,7 @@ namespace ProductionSchedulerLibrary
         }
 
 
-        public void SetLastValue(String prefix, long lastValue)
+        public  void SetLastValue(String prefix, long lastValue)
         {
             if (modelSequence.ContainsKey(prefix))
             {
@@ -57,7 +57,7 @@ namespace ProductionSchedulerLibrary
             }
         }
 
-        public long GetNext(String prefix)
+        public  long GetNext(String prefix)
         {
             if (modelSequence.ContainsKey(prefix))
             {
@@ -71,7 +71,7 @@ namespace ProductionSchedulerLibrary
             }
         }
 
-        public String GetPattern(String prefix)
+        public  String GetPattern(String prefix)
         {
             if (modelSequence.ContainsKey(prefix))
             {
@@ -85,7 +85,7 @@ namespace ProductionSchedulerLibrary
             }
         }
 
-        public String GetYYYYMMPattern(String prefix)
+        public  String GetYYYYMMPattern(String prefix)
         {
             if (modelSequence.ContainsKey(prefix))
             {
@@ -99,7 +99,7 @@ namespace ProductionSchedulerLibrary
             }
         }
 
-        public String GetNextPattern(String prefix)
+        public  String GetNextPattern(String prefix)
         {
             if (modelSequence.ContainsKey(prefix))
             {
@@ -121,14 +121,14 @@ namespace ProductionSchedulerLibrary
             private String formatSpecifier = "{0:D10}";
             private bool isPrefixed;
 
-            public ModelSequencer(String seqName, long n)
+            public  ModelSequencer(String seqName, long n)
             {
                 this.prefix = seqName;
                 this.isPrefixed = false;
                 lastSequence = n;
             }
 
-            public void SetLastValue(long n)
+            public  void SetLastValue(long n)
             {
                 lock (lockObject)
                 {
@@ -136,13 +136,13 @@ namespace ProductionSchedulerLibrary
                 }
             }
 
-            public void SetFormat(String format, bool isPrefixed)
+            public  void SetFormat(String format, bool isPrefixed)
             {
                 this.formatSpecifier = format;
                 this.isPrefixed = isPrefixed;
             }
 
-            public long GetNext()
+            public  long GetNext()
             {
                 lock (lockObject)
                 {
@@ -151,7 +151,7 @@ namespace ProductionSchedulerLibrary
                 }
             }
 
-            public String GetFormatted()
+            public  String GetFormatted()
             {
                 if (isPrefixed)
                     return String.Format(prefix + formatSpecifier, lastSequence);
@@ -159,7 +159,7 @@ namespace ProductionSchedulerLibrary
                     return String.Format(formatSpecifier, lastSequence);
             }
 
-            public String GetFormattedNext()
+            public  String GetFormattedNext()
             {
                 lock (lockObject)
                 {
@@ -171,7 +171,7 @@ namespace ProductionSchedulerLibrary
                 }
             }
 
-            public String GetYYMMFormatted()
+            public  String GetYYMMFormatted()
             {
                 if (isPrefixed)
                     return String.Format(prefix + "{1:yy}-{1:MM}-" + formatSpecifier, lastSequence, DateTime.Now);

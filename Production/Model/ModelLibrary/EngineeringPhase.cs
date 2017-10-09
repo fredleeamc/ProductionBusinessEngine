@@ -17,36 +17,34 @@ namespace ModelLibrary
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public EngineeringPhase()
         {
-            this.Boms = new HashSet<Bom>();
-            this.ManufacturedComponents = new HashSet<ManufacturedComponent>();
-            this.ProductBuilds = new HashSet<ProductBuild>();
-            this.Routers = new HashSet<Router>();
+            this.Bom = new HashSet<Bom>();
+            this.ManufacturedComponent = new HashSet<ManufacturedComponent>();
+            this.ProductBuild = new HashSet<ProductBuild>();
+            this.Router = new HashSet<Router>();
         }
     
         public int Id { get; set; }
         public string PhaseName { get; set; }
         public string Description { get; set; }
-        public Nullable<long> ModifiedByEmployeeId { get; set; }
         public bool IsVoid { get; set; }
         public string ApprovalCode { get; set; }
         public Nullable<long> ApprovedByUserId { get; set; }
         public bool IsPrinted { get; set; }
         public bool IsSent { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
-        public long CompanyId { get; set; }
         public bool IsDeleted { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Bom> Boms { get; set; }
+        public virtual ICollection<Bom> Bom { get; set; }
         public virtual Company Company { get; set; }
         public virtual Employee Employee { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ManufacturedComponent> ManufacturedComponents { get; set; }
+        public virtual ICollection<ManufacturedComponent> ManufacturedComponent { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductBuild> ProductBuilds { get; set; }
+        public virtual ICollection<ProductBuild> ProductBuild { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Router> Routers { get; set; }
+        public virtual ICollection<Router> Router { get; set; }
     }
 }

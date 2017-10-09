@@ -17,73 +17,73 @@ namespace ModelLibrary
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Employee()
         {
-            this.Boms = new HashSet<Bom>();
-            this.BomDetails = new HashSet<BomDetail>();
-            this.BomItemTypes = new HashSet<BomItemType>();
-            this.BomMfgConsumables = new HashSet<BomMfgConsumable>();
-            this.BomOtherCostDetails = new HashSet<BomOtherCostDetail>();
-            this.EngineeringChangeStatus = new HashSet<EngineeringChangeStatu>();
-            this.EngineeringPhases = new HashSet<EngineeringPhase>();
-            this.FamilyRouters = new HashSet<FamilyRouter>();
-            this.FamilyRouterLinks = new HashSet<FamilyRouterLink>();
-            this.ManufacturedComponents = new HashSet<ManufacturedComponent>();
-            this.ManufacturedSubComponents = new HashSet<ManufacturedSubComponent>();
-            this.ProductBuilds = new HashSet<ProductBuild>();
-            this.ProductBuildBomLinks = new HashSet<ProductBuildBomLink>();
-            this.ProductBuildDetails = new HashSet<ProductBuildDetail>();
-            this.ProductBuildDevelopmentLabors = new HashSet<ProductBuildDevelopmentLabor>();
-            this.ProductBuildDrafts = new HashSet<ProductBuildDraft>();
-            this.ProductBuildInvestments = new HashSet<ProductBuildInvestment>();
-            this.ProductBuildMaterials = new HashSet<ProductBuildMaterial>();
-            this.ProductBuildRouterLinks = new HashSet<ProductBuildRouterLink>();
-            this.Routers = new HashSet<Router>();
-            this.RouterActions = new HashSet<RouterAction>();
-            this.RouterDetails = new HashSet<RouterDetail>();
-            this.RouterOutsideDetails = new HashSet<RouterOutsideDetail>();
-            this.RouterProcesses = new HashSet<RouterProcess>();
-            this.RouterProcessDetails = new HashSet<RouterProcessDetail>();
-            this.RouterTypes = new HashSet<RouterType>();
-            this.Companies = new HashSet<Company>();
-            this.Customers = new HashSet<Customer>();
-            this.Items = new HashSet<Item>();
-            this.ItemStatus = new HashSet<ItemStatu>();
-            this.Locations = new HashSet<Location>();
-            this.LocationDetails = new HashSet<LocationDetail>();
-            this.Vendors = new HashSet<Vendor>();
+            this.ConversionUnit = new HashSet<ConversionUnit>();
+            this.Currency = new HashSet<Currency>();
+            this.JobPriority = new HashSet<JobPriority>();
+            this.PrimeLoad = new HashSet<PrimeLoad>();
+            this.Unit = new HashSet<Unit>();
+            this.Bom = new HashSet<Bom>();
+            this.BomDetails = new HashSet<BomDetails>();
+            this.BomItemType = new HashSet<BomItemType>();
+            this.BomMfgConsumable = new HashSet<BomMfgConsumable>();
+            this.BomOtherCostDetails = new HashSet<BomOtherCostDetails>();
+            this.EngineeringChangeStatus = new HashSet<EngineeringChangeStatus>();
+            this.EngineeringPhase = new HashSet<EngineeringPhase>();
+            this.FamilyRouter = new HashSet<FamilyRouter>();
+            this.FamilyRouterLink = new HashSet<FamilyRouterLink>();
+            this.ManufacturedComponent = new HashSet<ManufacturedComponent>();
+            this.ManufacturedSubComponent = new HashSet<ManufacturedSubComponent>();
+            this.ProductBuild = new HashSet<ProductBuild>();
+            this.ProductBuildBomLink = new HashSet<ProductBuildBomLink>();
+            this.ProductBuildDetails = new HashSet<ProductBuildDetails>();
+            this.ProductBuildDevelopmentLabor = new HashSet<ProductBuildDevelopmentLabor>();
+            this.ProductBuildDraft = new HashSet<ProductBuildDraft>();
+            this.ProductBuildInvestment = new HashSet<ProductBuildInvestment>();
+            this.ProductBuildMaterials = new HashSet<ProductBuildMaterials>();
+            this.ProductBuildRouterLink = new HashSet<ProductBuildRouterLink>();
+            this.Router = new HashSet<Router>();
+            this.RouterAction = new HashSet<RouterAction>();
+            this.RouterDetails = new HashSet<RouterDetails>();
+            this.RouterDetailsLink = new HashSet<RouterDetailsLink>();
+            this.RouterOutsideDetails = new HashSet<RouterOutsideDetails>();
+            this.RouterProcess = new HashSet<RouterProcess>();
+            this.RouterProcessDetails = new HashSet<RouterProcessDetails>();
+            this.RouterType = new HashSet<RouterType>();
+            this.Company = new HashSet<Company>();
+            this.CurrencyExchange = new HashSet<CurrencyExchange>();
+            this.Customer = new HashSet<Customer>();
+            this.Department = new HashSet<Department>();
+            this.Item = new HashSet<Item>();
+            this.ItemStatus = new HashSet<ItemStatus>();
+            this.Vendor = new HashSet<Vendor>();
+            this.Assembly = new HashSet<Assembly>();
+            this.AssemblyDetails = new HashSet<AssemblyDetails>();
             this.Employee1 = new HashSet<Employee>();
-            this.ItemLocations = new HashSet<ItemLocation>();
-            this.ItemLotBins = new HashSet<ItemLotBin>();
-            this.ItemSerials = new HashSet<ItemSerial>();
-            this.Machines = new HashSet<Machine>();
-            this.MachineTypes = new HashSet<MachineType>();
-            this.MfgConsumables = new HashSet<MfgConsumable>();
-            this.MfgConsumableTypes = new HashSet<MfgConsumableType>();
-            this.ScheduledWorkOrders = new HashSet<ScheduledWorkOrder>();
-            this.StockMovements = new HashSet<StockMovement>();
-            this.StockMovements1 = new HashSet<StockMovement>();
-            this.StockMovementDetails = new HashSet<StockMovementDetail>();
-            this.TeamGroups = new HashSet<TeamGroup>();
-            this.TeamGroupEmployeeDetails = new HashSet<TeamGroupEmployeeDetail>();
-            this.TeamGroupEmployeeDetails1 = new HashSet<TeamGroupEmployeeDetail>();
-            this.TeamGroupMachineDetails = new HashSet<TeamGroupMachineDetail>();
-            this.ToolSets = new HashSet<ToolSet>();
-            this.ToolSetDetails = new HashSet<ToolSetDetail>();
-            this.WorkCenters = new HashSet<WorkCenter>();
-            this.WorkCenterGroups = new HashSet<WorkCenterGroup>();
-            this.WorkCenterTypes = new HashSet<WorkCenterType>();
-            this.WorkOrders = new HashSet<WorkOrder>();
-            this.WorkOrderDetails = new HashSet<WorkOrderDetail>();
-            this.RouterDetailsLinks = new HashSet<RouterDetailsLink>();
-            this.ConversionUnits = new HashSet<ConversionUnit>();
-            this.Currencies = new HashSet<Currency>();
-            this.Units = new HashSet<Unit>();
-            this.CurrencyExchanges = new HashSet<CurrencyExchange>();
-            this.JobPriorities = new HashSet<JobPriority>();
-            this.PrimeLoads = new HashSet<PrimeLoad>();
+            this.EmployeeSkillMatrix = new HashSet<EmployeeSkillMatrix>();
+            this.EmployeeSkillMatrix1 = new HashSet<EmployeeSkillMatrix>();
+            this.EmployeeSkillMatrixDetails = new HashSet<EmployeeSkillMatrixDetails>();
+            this.ItemLocation = new HashSet<ItemLocation>();
+            this.ItemLotBin = new HashSet<ItemLotBin>();
+            this.Machine = new HashSet<Machine>();
+            this.MachineFixture = new HashSet<MachineFixture>();
+            this.MachineTool = new HashSet<MachineTool>();
+            this.MachineToolType = new HashSet<MachineToolType>();
+            this.MachineType = new HashSet<MachineType>();
+            this.MfgConsumable = new HashSet<MfgConsumable>();
+            this.MfgConsumableType = new HashSet<MfgConsumableType>();
+            this.StockMovement = new HashSet<StockMovement>();
+            this.StockMovement1 = new HashSet<StockMovement>();
+            this.StockMovementDetails = new HashSet<StockMovementDetails>();
+            this.WorkCenter = new HashSet<WorkCenter>();
+            this.WorkCenterGroup = new HashSet<WorkCenterGroup>();
+            this.WorkCenterType = new HashSet<WorkCenterType>();
+            this.WorkOrder = new HashSet<WorkOrder>();
+            this.WorkOrderDetails = new HashSet<WorkOrderDetails>();
+            this.WorkShift = new HashSet<WorkShift>();
+            this.WorkShiftSchedule = new HashSet<WorkShiftSchedule>();
         }
     
         public long Id { get; set; }
-        public long CompanyId { get; set; }
         public int EmployeeTypeId { get; set; }
         public string EmployeeNo { get; set; }
         public Nullable<System.DateTime> HiredDate { get; set; }
@@ -97,9 +97,7 @@ namespace ModelLibrary
         public string TaxIdentificationNo { get; set; }
         public string SssNo { get; set; }
         public Nullable<long> PositionId { get; set; }
-        public Nullable<long> ModifiedByEmployeeId { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
-        public Nullable<long> PrimaryDepartmentId { get; set; }
         public long PersonId { get; set; }
         public bool IsDeleted { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
@@ -112,133 +110,135 @@ namespace ModelLibrary
         public Nullable<long> AssignedLocatoinId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Bom> Boms { get; set; }
+        public virtual ICollection<ConversionUnit> ConversionUnit { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BomDetail> BomDetails { get; set; }
+        public virtual ICollection<Currency> Currency { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BomItemType> BomItemTypes { get; set; }
+        public virtual ICollection<JobPriority> JobPriority { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BomMfgConsumable> BomMfgConsumables { get; set; }
+        public virtual ICollection<PrimeLoad> PrimeLoad { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BomOtherCostDetail> BomOtherCostDetails { get; set; }
+        public virtual ICollection<Unit> Unit { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EngineeringChangeStatu> EngineeringChangeStatus { get; set; }
+        public virtual ICollection<Bom> Bom { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EngineeringPhase> EngineeringPhases { get; set; }
+        public virtual ICollection<BomDetails> BomDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<FamilyRouter> FamilyRouters { get; set; }
+        public virtual ICollection<BomItemType> BomItemType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<FamilyRouterLink> FamilyRouterLinks { get; set; }
+        public virtual ICollection<BomMfgConsumable> BomMfgConsumable { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ManufacturedComponent> ManufacturedComponents { get; set; }
+        public virtual ICollection<BomOtherCostDetails> BomOtherCostDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ManufacturedSubComponent> ManufacturedSubComponents { get; set; }
+        public virtual ICollection<EngineeringChangeStatus> EngineeringChangeStatus { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductBuild> ProductBuilds { get; set; }
+        public virtual ICollection<EngineeringPhase> EngineeringPhase { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductBuildBomLink> ProductBuildBomLinks { get; set; }
+        public virtual ICollection<FamilyRouter> FamilyRouter { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductBuildDetail> ProductBuildDetails { get; set; }
+        public virtual ICollection<FamilyRouterLink> FamilyRouterLink { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductBuildDevelopmentLabor> ProductBuildDevelopmentLabors { get; set; }
+        public virtual ICollection<ManufacturedComponent> ManufacturedComponent { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductBuildDraft> ProductBuildDrafts { get; set; }
+        public virtual ICollection<ManufacturedSubComponent> ManufacturedSubComponent { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductBuildInvestment> ProductBuildInvestments { get; set; }
+        public virtual ICollection<ProductBuild> ProductBuild { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductBuildMaterial> ProductBuildMaterials { get; set; }
+        public virtual ICollection<ProductBuildBomLink> ProductBuildBomLink { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductBuildRouterLink> ProductBuildRouterLinks { get; set; }
+        public virtual ICollection<ProductBuildDetails> ProductBuildDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Router> Routers { get; set; }
+        public virtual ICollection<ProductBuildDevelopmentLabor> ProductBuildDevelopmentLabor { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RouterAction> RouterActions { get; set; }
+        public virtual ICollection<ProductBuildDraft> ProductBuildDraft { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RouterDetail> RouterDetails { get; set; }
+        public virtual ICollection<ProductBuildInvestment> ProductBuildInvestment { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RouterOutsideDetail> RouterOutsideDetails { get; set; }
+        public virtual ICollection<ProductBuildMaterials> ProductBuildMaterials { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RouterProcess> RouterProcesses { get; set; }
+        public virtual ICollection<ProductBuildRouterLink> ProductBuildRouterLink { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RouterProcessDetail> RouterProcessDetails { get; set; }
+        public virtual ICollection<Router> Router { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RouterType> RouterTypes { get; set; }
+        public virtual ICollection<RouterAction> RouterAction { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Company> Companies { get; set; }
-        public virtual Company Company { get; set; }
+        public virtual ICollection<RouterDetails> RouterDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Customer> Customers { get; set; }
+        public virtual ICollection<RouterDetailsLink> RouterDetailsLink { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Item> Items { get; set; }
+        public virtual ICollection<RouterOutsideDetails> RouterOutsideDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ItemStatu> ItemStatus { get; set; }
-        public virtual Location Location { get; set; }
+        public virtual ICollection<RouterProcess> RouterProcess { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Location> Locations { get; set; }
+        public virtual ICollection<RouterProcessDetails> RouterProcessDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LocationDetail> LocationDetails { get; set; }
+        public virtual ICollection<RouterType> RouterType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Vendor> Vendors { get; set; }
+        public virtual ICollection<Company> Company { get; set; }
+        public virtual Company Company1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CurrencyExchange> CurrencyExchange { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Customer> Customer { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Department> Department { get; set; }
+        public virtual Department Department1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Item> Item { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ItemStatus> ItemStatus { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Vendor> Vendor { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Assembly> Assembly { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AssemblyDetails> AssemblyDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Employee> Employee1 { get; set; }
         public virtual Employee Employee2 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ItemLocation> ItemLocations { get; set; }
+        public virtual ICollection<EmployeeSkillMatrix> EmployeeSkillMatrix { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ItemLotBin> ItemLotBins { get; set; }
+        public virtual ICollection<EmployeeSkillMatrix> EmployeeSkillMatrix1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ItemSerial> ItemSerials { get; set; }
+        public virtual ICollection<EmployeeSkillMatrixDetails> EmployeeSkillMatrixDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Machine> Machines { get; set; }
+        public virtual ICollection<ItemLocation> ItemLocation { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MachineType> MachineTypes { get; set; }
+        public virtual ICollection<ItemLotBin> ItemLotBin { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MfgConsumable> MfgConsumables { get; set; }
+        public virtual ICollection<Machine> Machine { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MfgConsumableType> MfgConsumableTypes { get; set; }
+        public virtual ICollection<MachineFixture> MachineFixture { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ScheduledWorkOrder> ScheduledWorkOrders { get; set; }
+        public virtual ICollection<MachineTool> MachineTool { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<StockMovement> StockMovements { get; set; }
+        public virtual ICollection<MachineToolType> MachineToolType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<StockMovement> StockMovements1 { get; set; }
+        public virtual ICollection<MachineType> MachineType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<StockMovementDetail> StockMovementDetails { get; set; }
+        public virtual ICollection<MfgConsumable> MfgConsumable { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TeamGroup> TeamGroups { get; set; }
+        public virtual ICollection<MfgConsumableType> MfgConsumableType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TeamGroupEmployeeDetail> TeamGroupEmployeeDetails { get; set; }
+        public virtual ICollection<StockMovement> StockMovement { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TeamGroupEmployeeDetail> TeamGroupEmployeeDetails1 { get; set; }
+        public virtual ICollection<StockMovement> StockMovement1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TeamGroupMachineDetail> TeamGroupMachineDetails { get; set; }
+        public virtual ICollection<StockMovementDetails> StockMovementDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ToolSet> ToolSets { get; set; }
+        public virtual ICollection<WorkCenter> WorkCenter { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ToolSetDetail> ToolSetDetails { get; set; }
+        public virtual ICollection<WorkCenterGroup> WorkCenterGroup { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<WorkCenter> WorkCenters { get; set; }
+        public virtual ICollection<WorkCenterType> WorkCenterType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<WorkCenterGroup> WorkCenterGroups { get; set; }
+        public virtual ICollection<WorkOrder> WorkOrder { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<WorkCenterType> WorkCenterTypes { get; set; }
+        public virtual ICollection<WorkOrderDetails> WorkOrderDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<WorkOrder> WorkOrders { get; set; }
+        public virtual ICollection<WorkShift> WorkShift { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<WorkOrderDetail> WorkOrderDetails { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RouterDetailsLink> RouterDetailsLinks { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ConversionUnit> ConversionUnits { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Currency> Currencies { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Unit> Units { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CurrencyExchange> CurrencyExchanges { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<JobPriority> JobPriorities { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PrimeLoad> PrimeLoads { get; set; }
+        public virtual ICollection<WorkShiftSchedule> WorkShiftSchedule { get; set; }
     }
 }

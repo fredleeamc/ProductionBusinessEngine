@@ -12,25 +12,26 @@ namespace ModelLibrary
     using System;
     using System.Collections.Generic;
     
-    public partial class StockMovementDetail
+    public partial class MachineTool
     {
         public long Id { get; set; }
-        public long StockMovementId { get; set; }
-        public long ItemId { get; set; }
-        public Nullable<long> ItemLotBinId { get; set; }
-        public Nullable<long> FromItemLocationId { get; set; }
-        public Nullable<long> ToItemLocationId { get; set; }
-        public Nullable<decimal> Quantity { get; set; }
+        public string Description { get; set; }
+        public string Note { get; set; }
+        public string ToolName { get; set; }
+        public Nullable<decimal> UnitCost { get; set; }
+        public string PictureUrl { get; set; }
+        public Nullable<long> AssetId { get; set; }
         public bool IsDeleted { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
-        public Nullable<long> ModifiedByEmployeeId { get; set; }
+        public Nullable<long> SpecificationId { get; set; }
     
+        public virtual Currency Currency { get; set; }
+        public virtual Company Company { get; set; }
+        public virtual Company Company1 { get; set; }
+        public virtual CurrencyExchange CurrencyExchange { get; set; }
         public virtual Item Item { get; set; }
         public virtual Employee Employee { get; set; }
-        public virtual ItemLocation ItemLocation { get; set; }
-        public virtual ItemLocation ItemLocation1 { get; set; }
-        public virtual ItemLotBin ItemLotBin { get; set; }
-        public virtual StockMovement StockMovement { get; set; }
+        public virtual MachineToolType MachineToolType { get; set; }
     }
 }

@@ -42,13 +42,24 @@ namespace ProductionSchedulerLibrary
         public override string Display(int depth)
         {
             String desc = id + ":" + item;
-            String num1 = String.Format("{0:F2}", Quantity);
-            String num2 = String.Format("{0:F2}", BomCost);
-            String num3 = String.Format("{0:F2}", UnitCost);
+            String num1 = String.Format("{0:N}", Quantity);
+            String num2 = String.Format("{0:N}", BomCost);
+            String num3 = String.Format("{0:N}", UnitCost);
+            String num4 = String.Format("{0:N}", CalculatedTotalQuantityRequired);
+            String num5 = String.Format("{0:N}", CalculatedTotalBomTotalCost);
             //StringBuilder sb = new StringBuilder();
             //sb.Append(String.Format("{0:-20}{1,-40}{2,-40}", new String('-', depth) + "I", desc, num));
-            String dash = new String('-', depth) + "I";
-            Console.WriteLine(String.Format("{0}|{1}|Qty{2}|${3}|${4}", dash.PadRight(20), desc.PadRight(30), num1.PadLeft(12), num3.PadLeft(12), num2.PadLeft(12)));
+            String dash = new String('*', depth) + "I";
+            Console.WriteLine(String.Format("{0}|{1}|Qty{2}|U${3}|S${4}|TQty${5}|TT${6}", dash.PadRight(20), desc.PadRight(30), num1.PadLeft(12), num3.PadLeft(12), num2.PadLeft(12), num4.PadLeft(12), num5.PadLeft(12)));
+
+            //String desc = id + ":" + item;
+            //String num1 = String.Format("{0:F2}", Quantity);
+            //String num2 = String.Format("{0:F2}", BomCost);
+            //String num3 = String.Format("{0:F2}", UnitCost);
+            ////StringBuilder sb = new StringBuilder();
+            ////sb.Append(String.Format("{0:-20}{1,-40}{2,-40}", new String('-', depth) + "I", desc, num));
+            //String dash = new String('-', depth) + "I";
+            //Console.WriteLine(String.Format("{0}|{1}|Qty{2}|${3}|${4}", dash.PadRight(20), desc.PadRight(30), num1.PadLeft(12), num3.PadLeft(12), num2.PadLeft(12)));
             return ""; // sb.ToString();
         }
 
@@ -90,10 +101,10 @@ namespace ProductionSchedulerLibrary
         /// Estimateds the cost.
         /// </summary>
         /// <returns></returns>
-        public override decimal EstimatedCost()
-        {
-            return this.UnitCost * this.Quantity;
-        }
+        //public override decimal EstimatedCost()
+        //{
+        //    return this.UnitCost * this.Quantity;
+        //}
 
         /// <summary>
         /// Bills the of materials.
@@ -111,13 +122,13 @@ namespace ProductionSchedulerLibrary
             }
         }
 
-        public override void metrics(int idepth, ref decimal dcost, ref decimal dbomCost, ref decimal dqty)
+        public override void metrics(int idepth, decimal multiplier)
         {
             this.Depth = idepth++;
-            dcost = this.UnitCost * this.Quantity;
-            dbomCost += this.UnitCost * this.Quantity;
-            dqty += this.Quantity;
-            this.BomCost = dcost;
+            this.CalculatedTotalComponentCost = this.UnitCost * this.Quantity;
+            this.CalculatedTotalQuantityRequired = this.Quantity * multiplier;
+            this.CalculatedTotalBomTotalCost = this.CalculatedTotalQuantityRequired * this.UnitCost;
+            this.BomCost = this.UnitCost * this.Quantity;
         }
 
     }

@@ -12,36 +12,34 @@ namespace ModelLibrary
     using System;
     using System.Collections.Generic;
     
-    public partial class Customer
+    public partial class Assembly
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Customer()
+        public Assembly()
         {
-            this.WorkOrder = new HashSet<WorkOrder>();
+            this.AssemblyDetails = new HashSet<AssemblyDetails>();
         }
     
         public long Id { get; set; }
-        public long TermsId { get; set; }
-        public Nullable<long> CustomerTypeId { get; set; }
-        public string AccountNo { get; set; }
-        public Nullable<long> SalesAccountId { get; set; }
-        public Nullable<long> SalesDiscountAccountId { get; set; }
-        public Nullable<long> ArAccountId { get; set; }
-        public Nullable<long> PaymentDiscountAccountId { get; set; }
-        public decimal BeginningBalance { get; set; }
-        public decimal CurrentBalance { get; set; }
-        public Nullable<System.DateTime> CreatedDate { get; set; }
-        public string OurSupplierCode { get; set; }
+        public Nullable<long> DocumentSetId { get; set; }
+        public string AssemblyName { get; set; }
+        public string Revision { get; set; }
+        public System.DateTime CreatedDate { get; set; }
+        public bool IsVoid { get; set; }
+        public string ApprovalCode { get; set; }
+        public Nullable<long> ApprovedByUserId { get; set; }
+        public bool IsPrinted { get; set; }
+        public bool IsSent { get; set; }
         public bool IsDeleted { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
-        public string CustomerCode { get; set; }
+        public Nullable<long> SpecificationId { get; set; }
     
-        public virtual Currency Currency { get; set; }
         public virtual Company Company { get; set; }
-        public virtual Company Company1 { get; set; }
+        public virtual CurrencyExchange CurrencyExchange { get; set; }
+        public virtual Item Item { get; set; }
         public virtual Employee Employee { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<WorkOrder> WorkOrder { get; set; }
+        public virtual ICollection<AssemblyDetails> AssemblyDetails { get; set; }
     }
 }

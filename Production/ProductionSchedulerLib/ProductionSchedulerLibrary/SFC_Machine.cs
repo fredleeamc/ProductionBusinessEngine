@@ -9,7 +9,7 @@ namespace ProductionSchedulerLibrary
     /// <summary>
     /// 
     /// </summary>
-    public class SFC_Machine : IEquatable<SFC_Machine>, IComparable<SFC_Machine>
+    public  class SFC_Machine : IEquatable<SFC_Machine>, IComparable<SFC_Machine>
     {
         /// <summary>
         /// The identifier
@@ -34,15 +34,15 @@ namespace ProductionSchedulerLibrary
         /// <summary>
         /// The none
         /// </summary>
-        public readonly static SFC_Machine NONE = new SFC_Machine(0, "NONE", SFC_MachineType.NONE);
+        public  readonly static SFC_Machine NONE = new SFC_Machine(0, "NONE", SFC_MachineType.NONE);
 
-        public long Id => id;
+        public  long Id => id;
 
-        public SFC_MachineType MachineType => machineType;
+        public  SFC_MachineType MachineType => machineType;
 
-        public string MachineName => machineName;
+        public  string MachineName => machineName;
 
-        public SFC_WorkCenter WorkCenter { get => workCenter; set => workCenter = value; }
+        public  SFC_WorkCenter WorkCenter { get => workCenter; set => workCenter = value; }
 
 
 
@@ -52,7 +52,7 @@ namespace ProductionSchedulerLibrary
         /// <param name="id">The identifier.</param>
         /// <param name="machineName">Name of the machine.</param>
         /// <param name="machineTypeId">The machine type identifier.</param>
-        public SFC_Machine(long id, string machineName, SFC_MachineType machineTypeId)
+        public  SFC_Machine(long id, string machineName, SFC_MachineType machineTypeId)
         {
             this.id = id;
             this.machineType = machineTypeId;
@@ -65,7 +65,7 @@ namespace ProductionSchedulerLibrary
         /// </summary>
         /// <param name="wc">The wc.</param>
         /// <returns></returns>
-        public bool setWorkCenter(SFC_WorkCenter wc)
+        public  bool setWorkCenter(SFC_WorkCenter wc)
         {
             bool result = false;
             if (wc != null)
@@ -92,18 +92,18 @@ namespace ProductionSchedulerLibrary
         /// <returns>
         /// A <see cref="System.String" /> that represents this instance.
         /// </returns>
-        public override string ToString()
+        public  override string ToString()
         {
             return id + " " + machineType + "." + machineName + "  [" + workCenter + "]";
 
         }
 
-        public bool Equals(SFC_Machine other)
+        public  bool Equals(SFC_Machine other)
         {
             return other != null && this.machineName == other.machineName;
         }
 
-        public int CompareTo(SFC_Machine other)
+        public  int CompareTo(SFC_Machine other)
         {
             if (other == null)
                 return 1;

@@ -10,7 +10,7 @@ namespace ProductionSchedulerLibrary
     /// <summary>
     /// 
     /// </summary>
-    public class SFC_WorkOrder
+    public  class SFC_WorkOrder
     {
         /// <summary>
         /// The identifier
@@ -115,7 +115,7 @@ namespace ProductionSchedulerLibrary
         /// <param name="dueDate">The due date.</param>
         /// <param name="item">The item.</param>
         /// <param name="isReadyStart">if set to <c>true</c> [is ready start].</param>
-        public SFC_WorkOrder(long id, String workOrderNo, SFC_Customer customer, DateTime? targetCompletionDate, DateTime dueDate, SFC_Item item, bool isReadyStart)
+        public  SFC_WorkOrder(long id, String workOrderNo, SFC_Customer customer, DateTime? targetCompletionDate, DateTime dueDate, SFC_Item item, bool isReadyStart)
         {
             this.id = id;
             this.refNo = workOrderNo;
@@ -145,7 +145,7 @@ namespace ProductionSchedulerLibrary
         /// </summary>
         /// <param name="key">The key.</param>
         /// <param name="line">The line.</param>
-        public void AddWorkOrderDetails(SFC_WorkOrderDetail line)
+        public  void AddWorkOrderDetails(SFC_WorkOrderDetail line)
         {
             long key = line.OperationSequence;
             if (!details.ContainsKey(key))
@@ -162,7 +162,7 @@ namespace ProductionSchedulerLibrary
         /// Removes the work order details.
         /// </summary>
         /// <param name="operationSequence">The key.</param>
-        public void RemoveWorkOrderDetails(long operationSequence)
+        public  void RemoveWorkOrderDetails(long operationSequence)
         {
             if (details.ContainsKey(operationSequence))
             {
@@ -175,7 +175,7 @@ namespace ProductionSchedulerLibrary
         /// </summary>
         /// <param name="operationSequence">The key.</param>
         /// <returns></returns>
-        public SFC_WorkOrderDetail GetWorkOrderDetails(long operationSequence)
+        public  SFC_WorkOrderDetail GetWorkOrderDetails(long operationSequence)
         {
             if (details.ContainsKey(operationSequence))
             {
@@ -187,7 +187,7 @@ namespace ProductionSchedulerLibrary
             }
         }
 
-        public override string ToString()
+        public  override string ToString()
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("WorkOrder: " + Id + "," + refNo + ",Cust:" + customer + ",Item:" + item + ",Qty:" + actualBuildQuantity + ",Lab:" + actualTotalLaborCost + ",Mat:" + actualTotalMaterialCost);
@@ -203,7 +203,7 @@ namespace ProductionSchedulerLibrary
         /// <value>
         /// The identifier.
         /// </value>
-        public long Id => id;
+        public  long Id => id;
 
         /// <summary>
         /// Gets or sets the customer.
@@ -211,28 +211,28 @@ namespace ProductionSchedulerLibrary
         /// <value>
         /// The customer.
         /// </value>
-        public SFC_Customer Customer { get => customer; set => customer = value; }
+        public  SFC_Customer Customer { get => customer; set => customer = value; }
         /// <summary>
         /// Gets or sets the target completion date.
         /// </summary>
         /// <value>
         /// The target completion date.
         /// </value>
-        public DateTime? TargetCompletionDate { get => targetCompletionDate; set => targetCompletionDate = value; }
+        public  DateTime? TargetCompletionDate { get => targetCompletionDate; set => targetCompletionDate = value; }
         /// <summary>
         /// Gets or sets the due date.
         /// </summary>
         /// <value>
         /// The due date.
         /// </value>
-        public DateTime DueDate { get => dueDate; set => dueDate = value; }
+        public  DateTime DueDate { get => dueDate; set => dueDate = value; }
         /// <summary>
         /// Gets or sets the item.
         /// </summary>
         /// <value>
         /// The item.
         /// </value>
-        public SFC_Item Item { get => item; set => item = value; }
+        public  SFC_Item Item { get => item; set => item = value; }
 
         /// <summary>
         /// Gets the details.
@@ -240,7 +240,7 @@ namespace ProductionSchedulerLibrary
         /// <value>
         /// The details.
         /// </value>
-        public SortedList<long, SFC_WorkOrderDetail> Details => details;
+        public  SortedList<long, SFC_WorkOrderDetail> Details => details;
 
         /// <summary>
         /// Gets or sets the unit price.
@@ -248,99 +248,99 @@ namespace ProductionSchedulerLibrary
         /// <value>
         /// The unit price.
         /// </value>
-        public decimal? UnitPrice { get => unitPrice; set => unitPrice = value; }
+        public  decimal? UnitPrice { get => unitPrice; set => unitPrice = value; }
         /// <summary>
         /// Gets or sets the estimated unit cost.
         /// </summary>
         /// <value>
         /// The estimated unit cost.
         /// </value>
-        public decimal? EstimatedUnitCost { get => estimatedUnitCost; set => estimatedUnitCost = value; }
+        public  decimal? EstimatedUnitCost { get => estimatedUnitCost; set => estimatedUnitCost = value; }
         /// <summary>
         /// Gets or sets the estimated total labor hours.
         /// </summary>
         /// <value>
         /// The estimated total labor hours.
         /// </value>
-        public DateTime? EstimatedTotalLaborHours { get => estimatedTotalLaborHours; set => estimatedTotalLaborHours = value; }
+        public  DateTime? EstimatedTotalLaborHours { get => estimatedTotalLaborHours; set => estimatedTotalLaborHours = value; }
         /// <summary>
         /// Gets or sets the estimated total labor cost.
         /// </summary>
         /// <value>
         /// The estimated total labor cost.
         /// </value>
-        public decimal? EstimatedTotalLaborCost { get => estimatedTotalLaborCost; set => estimatedTotalLaborCost = value; }
+        public  decimal? EstimatedTotalLaborCost { get => estimatedTotalLaborCost; set => estimatedTotalLaborCost = value; }
         /// <summary>
         /// Gets or sets the estimated total material cost.
         /// </summary>
         /// <value>
         /// The estimated total material cost.
         /// </value>
-        public decimal? EstimatedTotalMaterialCost { get => estimatedTotalMaterialCost; set => estimatedTotalMaterialCost = value; }
+        public  decimal? EstimatedTotalMaterialCost { get => estimatedTotalMaterialCost; set => estimatedTotalMaterialCost = value; }
         /// <summary>
         /// Gets or sets the ordered build quantity.
         /// </summary>
         /// <value>
         /// The ordered build quantity.
         /// </value>
-        public decimal? OrderedBuildQuantity { get => orderedBuildQuantity; set => orderedBuildQuantity = value; }
+        public  decimal? OrderedBuildQuantity { get => orderedBuildQuantity; set => orderedBuildQuantity = value; }
         /// <summary>
         /// Gets or sets the actual build quantity.
         /// </summary>
         /// <value>
         /// The actual build quantity.
         /// </value>
-        public decimal? ActualBuildQuantity { get => actualBuildQuantity; set => actualBuildQuantity = value; }
+        public  decimal? ActualBuildQuantity { get => actualBuildQuantity; set => actualBuildQuantity = value; }
         /// <summary>
         /// Gets or sets the actual unit cost.
         /// </summary>
         /// <value>
         /// The actual unit cost.
         /// </value>
-        public decimal? ActualUnitCost { get => actualUnitCost; set => actualUnitCost = value; }
+        public  decimal? ActualUnitCost { get => actualUnitCost; set => actualUnitCost = value; }
         /// <summary>
         /// Gets or sets the actual total labor hours.
         /// </summary>
         /// <value>
         /// The actual total labor hours.
         /// </value>
-        public DateTime? ActualTotalLaborHours { get => actualTotalLaborHours; set => actualTotalLaborHours = value; }
+        public  DateTime? ActualTotalLaborHours { get => actualTotalLaborHours; set => actualTotalLaborHours = value; }
         /// <summary>
         /// Gets or sets the actual total labor cost.
         /// </summary>
         /// <value>
         /// The actual total labor cost.
         /// </value>
-        public decimal? ActualTotalLaborCost { get => actualTotalLaborCost; set => actualTotalLaborCost = value; }
+        public  decimal? ActualTotalLaborCost { get => actualTotalLaborCost; set => actualTotalLaborCost = value; }
         /// <summary>
         /// Gets or sets the actual total material cost.
         /// </summary>
         /// <value>
         /// The actual total material cost.
         /// </value>
-        public decimal? ActualTotalMaterialCost { get => actualTotalMaterialCost; set => actualTotalMaterialCost = value; }
+        public  decimal? ActualTotalMaterialCost { get => actualTotalMaterialCost; set => actualTotalMaterialCost = value; }
         /// <summary>
         /// Gets or sets the estimated profit.
         /// </summary>
         /// <value>
         /// The estimated profit.
         /// </value>
-        public decimal? EstimatedProfit { get => estimatedProfit; set => estimatedProfit = value; }
+        public  decimal? EstimatedProfit { get => estimatedProfit; set => estimatedProfit = value; }
         /// <summary>
         /// Gets or sets the scheduled start date.
         /// </summary>
         /// <value>
         /// The scheduled start date.
         /// </value>
-        public DateTime? ScheduledStartDate { get => scheduledStartDate; set => scheduledStartDate = value; }
+        public  DateTime? ScheduledStartDate { get => scheduledStartDate; set => scheduledStartDate = value; }
         /// <summary>
         /// Gets or sets the scheduled completion date.
         /// </summary>
         /// <value>
         /// The scheduled completion date.
         /// </value>
-        public DateTime? ScheduledCompletionDate { get => scheduledCompletionDate; set => scheduledCompletionDate = value; }
-        public string RefNo { get => refNo; }
-        public string WorkOrderNo { get => refNo; }
+        public  DateTime? ScheduledCompletionDate { get => scheduledCompletionDate; set => scheduledCompletionDate = value; }
+        public  string RefNo { get => refNo; }
+        public  string WorkOrderNo { get => refNo; }
     }
 }

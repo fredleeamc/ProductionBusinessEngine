@@ -12,7 +12,7 @@ namespace ModelLibrary
     using System;
     using System.Collections.Generic;
     
-    public partial class ItemStatu
+    public partial class ItemStatus
     {
         public long Id { get; set; }
         public Nullable<decimal> ReorderPoint { get; set; }
@@ -26,7 +26,6 @@ namespace ModelLibrary
         public Nullable<decimal> Reserved { get; set; }
         public Nullable<decimal> TotalRequired { get; set; }
         public Nullable<decimal> Scrap { get; set; }
-        public Nullable<long> ModifiedByEmployeeId { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public bool IsDeleted { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }

@@ -23,8 +23,7 @@ namespace ProductionSchedulerLibrary
         /// </summary>
         private String companyName;
 
-        private SFC_Currency currency;
-
+        private readonly SFC_CompanySettings settings;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SFC_Company"/> class.
@@ -35,7 +34,9 @@ namespace ProductionSchedulerLibrary
         {
             this.id = id;
             this.companyName = companyName;
+            settings = new SFC_CompanySettings();
         }
+
 
         /// <summary>
         /// Gets the identifier.
@@ -70,7 +71,6 @@ namespace ProductionSchedulerLibrary
             }
         }
 
-        public SFC_Currency Currency { get => currency; set => currency = value; }
-
+        public SFC_CompanySettings Settings { get => settings;}
     }
 }

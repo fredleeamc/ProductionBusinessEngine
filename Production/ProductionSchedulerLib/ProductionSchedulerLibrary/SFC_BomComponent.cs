@@ -31,6 +31,13 @@ namespace ProductionSchedulerLibrary
         /// </summary>
         private decimal unitCost;
 
+        private decimal calculatedTotalComponentCost;
+
+        private decimal calculatedTotalQuantityRequired;
+
+        private decimal calculatedTotalBomTotalCost;
+
+
         /// <summary>
         /// The bom cost
         /// </summary>
@@ -50,7 +57,7 @@ namespace ProductionSchedulerLibrary
 
         private SFC_Currency currency;
 
-        private SFC_CurrencyExchange xchange;
+        private SFC_CurrencyExchange currencyExchange;
 
         /// <summary>
         /// The parent
@@ -101,7 +108,10 @@ namespace ProductionSchedulerLibrary
         public decimal BomCost { get => bomCost; set => bomCost = value; }
         public int Depth { get => depth; set => depth = value; }
         public SFC_Currency Currency { get => currency; set => currency = value; }
-        public SFC_CurrencyExchange Xchange { get => xchange; set => xchange = value; }
+        public SFC_CurrencyExchange CurrencyExchange { get => currencyExchange; set => currencyExchange = value; }
+        public decimal CalculatedTotalComponentCost { get => calculatedTotalComponentCost; set => calculatedTotalComponentCost = value; }
+        public decimal CalculatedTotalQuantityRequired { get => calculatedTotalQuantityRequired; set => calculatedTotalQuantityRequired = value; }
+        public decimal CalculatedTotalBomTotalCost { get => calculatedTotalBomTotalCost; set => calculatedTotalBomTotalCost = value; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SFC_BomComponent"/> class.
@@ -120,7 +130,7 @@ namespace ProductionSchedulerLibrary
 
         public abstract decimal Cost();
 
-        public abstract void metrics(int idepth, ref decimal dcost, ref decimal dbomCost, ref decimal dqty);
+        public abstract void metrics(int depth, decimal qtyMultiplier);
 
 
         /// <summary>
@@ -155,7 +165,7 @@ namespace ProductionSchedulerLibrary
         /// Estimateds the cost.
         /// </summary>
         /// <returns></returns>
-        public abstract decimal EstimatedCost();
+        //public abstract decimal EstimatedCost();
         /// <summary>
         /// Bills the of materials.
         /// </summary>

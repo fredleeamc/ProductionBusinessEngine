@@ -6,19 +6,21 @@ using System.Threading.Tasks;
 
 namespace ProductionSchedulerLibrary
 {
-    public class SFC_Container<T>
+    public class Base_SFC_Definition<T>
     {
         /// <summary>
         /// The objs
         /// </summary>
-        private readonly Dictionary<long, T> lists;
+        private readonly Dictionary<string, T> lists;
 
-        public SFC_Container()
+
+
+        public Base_SFC_Definition()
         {
-            lists = new Dictionary<long, T>();           
+            lists = new Dictionary<string, T>();
         }
 
-        public Dictionary<long, T>.KeyCollection Keys { get => lists.Keys; }
+        public Dictionary<string, T>.KeyCollection Keys { get => lists.Keys; }
 
         /// <summary>
         /// Gets the lists.
@@ -26,32 +28,28 @@ namespace ProductionSchedulerLibrary
         /// <value>
         /// The lists.
         /// </value>
-        public Dictionary<long, T> Lists => lists;
+        public Dictionary<string, T> Lists => lists;
 
         public long Count { get => lists.Count; }
 
         public long Next { get => Count + 1; }
 
+
         /// <summary>
         /// Adds the obj.
         /// </summary>
         /// <param name="obj">The obj.</param>
-        public void Add(long id, T obj)
+        public void Add(string id, T obj)
         {
 
             Lists.Add(id, obj);
-        }
-
-        public void Add(T obj)
-        {
-            Lists.Add(Next, obj);
         }
 
         /// <summary>
         /// Removes the obj.
         /// </summary>
         /// <param name="obj">The obj.</param>
-        public void Remove(long id)
+        public void Remove(string id)
         {
             Lists.Remove(id);
         }
@@ -61,13 +59,13 @@ namespace ProductionSchedulerLibrary
         /// </summary>
         public void Print()
         {
-            foreach (long id in Lists.Keys)
+            foreach (string id in Lists.Keys)
             {
                 Console.WriteLine(Lists[id]);
             }
         }
 
-        public T Get(long index) 
+        public T Get(string index)
         {
             if (Lists.ContainsKey(index))
                 return Lists[index];
@@ -81,14 +79,18 @@ namespace ProductionSchedulerLibrary
         /// <returns></returns>
         public T GetRandom()
         {
-            int count = Lists.Count;
+            T[] values = new T[Lists.Count];
+            Lists.Values.CopyTo(values, 0);
+
+            int count = values.Length;
             if (count == 1)
-                return Lists[1];
+                return values[1];
             else if (count > 1)
             {
                 int rand = TextGenerator.GetRandom().Next(1, count + 1);
-                return Lists[rand];
-            } else
+                return values[rand];
+            }
+            else
             {
                 return default(T);
             }
@@ -97,3 +99,6 @@ namespace ProductionSchedulerLibrary
 
 
 }
+
+
+

@@ -12,18 +12,22 @@ namespace ModelLibrary
     using System;
     using System.Collections.Generic;
     
-    public partial class LocationDetail
+    public partial class EmployeeSkillsRatings
     {
-        public long Id { get; set; }
-        public long LocationId { get; set; }
-        public long LocationClassId { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public EmployeeSkillsRatings()
+        {
+            this.EmployeeSkillMatrixDetails = new HashSet<EmployeeSkillMatrixDetails>();
+        }
+    
+        public int Id { get; set; }
         public string Name { get; set; }
+        public string Description { get; set; }
         public bool IsDeleted { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
-        public Nullable<long> ModifiedByEmployeeId { get; set; }
     
-        public virtual Location Location { get; set; }
-        public virtual Employee Employee { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EmployeeSkillMatrixDetails> EmployeeSkillMatrixDetails { get; set; }
     }
 }

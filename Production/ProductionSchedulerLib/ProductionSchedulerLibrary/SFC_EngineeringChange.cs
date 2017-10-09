@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProductionSchedulerLibrary
 {
-    public class SFC_EngineeringChange
+    public  class SFC_EngineeringChange
     {
     }
 }

@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace ProductionSchedulerLibrary
 {
-    public interface ISFC_Enumerable<T>
+    public class SFC_Units : Base_SFC_Container<SFC_Unit>
     {
-        void Add(T item);
-        void Remove(T item);
-        void Show();
-        T GetRandom();
+        public SFC_Units() : base()
+        {
+        }
     }
 }

@@ -12,34 +12,28 @@ namespace ModelLibrary
     using System;
     using System.Collections.Generic;
     
-    public partial class ToolSet
+    public partial class WorkShift
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ToolSet()
+        public WorkShift()
         {
-            this.Machines = new HashSet<Machine>();
-            this.ToolSetDetails = new HashSet<ToolSetDetail>();
-            this.WorkCenters = new HashSet<WorkCenter>();
-            this.WorkCenterGroups = new HashSet<WorkCenterGroup>();
+            this.WorkShiftSchedule = new HashSet<WorkShiftSchedule>();
+            this.WorkShiftSchedule1 = new HashSet<WorkShiftSchedule>();
         }
     
         public long Id { get; set; }
-        public string Description { get; set; }
-        public string ToolSetName { get; set; }
+        public System.DateTime StartWorkingTime { get; set; }
+        public System.DateTime EndWorkingTime { get; set; }
+        public string Note { get; set; }
         public bool IsDeleted { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
-        public Nullable<long> ModifiedByEmployeeId { get; set; }
-        public Nullable<long> SpecificationId { get; set; }
     
+        public virtual Company Company { get; set; }
         public virtual Employee Employee { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Machine> Machines { get; set; }
+        public virtual ICollection<WorkShiftSchedule> WorkShiftSchedule { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ToolSetDetail> ToolSetDetails { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<WorkCenter> WorkCenters { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<WorkCenterGroup> WorkCenterGroups { get; set; }
+        public virtual ICollection<WorkShiftSchedule> WorkShiftSchedule1 { get; set; }
     }
 }

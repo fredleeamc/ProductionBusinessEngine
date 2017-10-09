@@ -17,24 +17,24 @@ namespace ModelLibrary
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Item()
         {
-            this.ManufacturedComponents = new HashSet<ManufacturedComponent>();
-            this.ProductBuilds = new HashSet<ProductBuild>();
-            this.ProductBuildDrafts = new HashSet<ProductBuildDraft>();
-            this.Routers = new HashSet<Router>();
-            this.ItemLocations = new HashSet<ItemLocation>();
-            this.ItemLotBins = new HashSet<ItemLotBin>();
-            this.ItemSerials = new HashSet<ItemSerial>();
-            this.Machines = new HashSet<Machine>();
-            this.StockMovementDetails = new HashSet<StockMovementDetail>();
-            this.WorkOrders = new HashSet<WorkOrder>();
+            this.ManufacturedComponent = new HashSet<ManufacturedComponent>();
+            this.ProductBuild = new HashSet<ProductBuild>();
+            this.ProductBuildDraft = new HashSet<ProductBuildDraft>();
+            this.Router = new HashSet<Router>();
+            this.Assembly = new HashSet<Assembly>();
+            this.ItemLocation = new HashSet<ItemLocation>();
+            this.ItemLotBin = new HashSet<ItemLotBin>();
+            this.Machine = new HashSet<Machine>();
+            this.MachineFixture = new HashSet<MachineFixture>();
+            this.MachineTool = new HashSet<MachineTool>();
+            this.StockMovementDetails = new HashSet<StockMovementDetails>();
+            this.WorkOrder = new HashSet<WorkOrder>();
         }
     
         public long Id { get; set; }
         public Nullable<long> ItemCategoryId { get; set; }
-        public long CompanyId { get; set; }
         public Nullable<long> ItemClassId { get; set; }
         public long DescriptionId { get; set; }
-        public Nullable<long> ModifiedByEmployeeId { get; set; }
         public Nullable<long> DocumentSetId { get; set; }
         public Nullable<long> SalesAccountId { get; set; }
         public Nullable<long> SalesDiscountAccountId { get; set; }
@@ -52,7 +52,6 @@ namespace ModelLibrary
         public Nullable<decimal> LaborCost { get; set; }
         public Nullable<decimal> OverheadCost { get; set; }
         public bool Inactive { get; set; }
-        public long StockingUnitId { get; set; }
         public string BarCode { get; set; }
         public bool IsSold { get; set; }
         public bool IsBought { get; set; }
@@ -69,30 +68,34 @@ namespace ModelLibrary
         public Nullable<long> ItemSubcategory { get; set; }
         public bool IsService { get; set; }
     
+        public virtual Unit Unit { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ManufacturedComponent> ManufacturedComponents { get; set; }
+        public virtual ICollection<ManufacturedComponent> ManufacturedComponent { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductBuild> ProductBuilds { get; set; }
+        public virtual ICollection<ProductBuild> ProductBuild { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductBuildDraft> ProductBuildDrafts { get; set; }
+        public virtual ICollection<ProductBuildDraft> ProductBuildDraft { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Router> Routers { get; set; }
+        public virtual ICollection<Router> Router { get; set; }
         public virtual Company Company { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Assembly> Assembly { get; set; }
         public virtual Employee Employee { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ItemLocation> ItemLocations { get; set; }
+        public virtual ICollection<ItemLocation> ItemLocation { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ItemLotBin> ItemLotBins { get; set; }
+        public virtual ICollection<ItemLotBin> ItemLotBin { get; set; }
+        public virtual ItemStatus ItemStatus { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ItemSerial> ItemSerials { get; set; }
-        public virtual ItemStatu ItemStatu { get; set; }
+        public virtual ICollection<Machine> Machine { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Machine> Machines { get; set; }
+        public virtual ICollection<MachineFixture> MachineFixture { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MachineTool> MachineTool { get; set; }
         public virtual MfgConsumable MfgConsumable { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<StockMovementDetail> StockMovementDetails { get; set; }
+        public virtual ICollection<StockMovementDetails> StockMovementDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<WorkOrder> WorkOrders { get; set; }
-        public virtual Unit Unit { get; set; }
+        public virtual ICollection<WorkOrder> WorkOrder { get; set; }
     }
 }

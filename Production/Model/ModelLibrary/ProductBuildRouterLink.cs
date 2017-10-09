@@ -15,12 +15,9 @@ namespace ModelLibrary
     public partial class ProductBuildRouterLink
     {
         public long Id { get; set; }
-        public Nullable<long> ProductBuildId { get; set; }
-        public Nullable<long> RouterId { get; set; }
         public bool IsDeleted { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
-        public Nullable<long> ModifiedByEmployeeId { get; set; }
     
         public virtual ProductBuild ProductBuild { get; set; }
         public virtual Employee Employee { get; set; }

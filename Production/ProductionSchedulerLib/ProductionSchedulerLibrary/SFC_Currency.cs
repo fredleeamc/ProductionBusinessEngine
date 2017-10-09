@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProductionSchedulerLibrary
 {
-    public class SFC_Currency
+    public  class SFC_Currency
     {
         /// <summary>
         /// The identifier
@@ -27,7 +27,7 @@ namespace ProductionSchedulerLibrary
         /// <param name="id">The identifier.</param>
         /// <param name="name">The name.</param>
         /// <param name="symbol">The symbol.</param>
-        public SFC_Currency(long id, string name, string symbol)
+        public  SFC_Currency(long id, string name, string symbol)
         {
             this.id = id;
             this.name = name;
@@ -40,7 +40,7 @@ namespace ProductionSchedulerLibrary
         /// <value>
         /// The identifier.
         /// </value>
-        public long Id => id;
+        public  long Id => id;
 
         /// <summary>
         /// Gets the name.
@@ -48,7 +48,7 @@ namespace ProductionSchedulerLibrary
         /// <value>
         /// The name.
         /// </value>
-        public string Name => name;
+        public  string Name => name;
 
         /// <summary>
         /// Gets the symbol.
@@ -56,6 +56,6 @@ namespace ProductionSchedulerLibrary
         /// <value>
         /// The symbol.
         /// </value>
-        public string Symbol => symbol;
+        public  string Symbol => symbol;
     }
 }

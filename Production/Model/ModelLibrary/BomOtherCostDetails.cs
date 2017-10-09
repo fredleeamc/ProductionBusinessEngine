@@ -12,18 +12,22 @@ namespace ModelLibrary
     using System;
     using System.Collections.Generic;
     
-    public partial class ProductBuildMaterial
+    public partial class BomOtherCostDetails
     {
         public long Id { get; set; }
-        public Nullable<long> ProductBuildDetailsId { get; set; }
-        public Nullable<long> BomDetailsId { get; set; }
+        public Nullable<long> ItemSequence { get; set; }
+        public Nullable<long> AccountId { get; set; }
+        public string Description { get; set; }
+        public Nullable<decimal> Quantity { get; set; }
+        public Nullable<decimal> UnitCost { get; set; }
+        public Nullable<decimal> TotalCost { get; set; }
+        public Nullable<long> DocumentSetId { get; set; }
         public bool IsDeleted { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
-        public Nullable<long> ModifiedByEmployeeId { get; set; }
     
-        public virtual BomDetail BomDetail { get; set; }
-        public virtual ProductBuildDetail ProductBuildDetail { get; set; }
+        public virtual Unit Unit { get; set; }
+        public virtual Bom Bom { get; set; }
         public virtual Employee Employee { get; set; }
     }
 }

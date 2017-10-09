@@ -12,30 +12,26 @@ namespace ModelLibrary
     using System;
     using System.Collections.Generic;
     
-    public partial class ItemSerial
+    public partial class MachineFixture
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public MachineFixture()
+        {
+            this.RouterProcessDetails = new HashSet<RouterProcessDetails>();
+        }
+    
         public long Id { get; set; }
-        public long CompanyId { get; set; }
-        public long ItemId { get; set; }
-        public string SerialNo { get; set; }
-        public Nullable<long> ModifiedByEmployeeId { get; set; }
         public bool IsDeleted { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
         public Nullable<long> SpecificationId { get; set; }
-        public string ApprovalCode { get; set; }
-        public Nullable<long> ApprovedByUserId { get; set; }
-        public bool IsPrinted { get; set; }
-        public bool IsSent { get; set; }
-        public bool IsForeignCurrency { get; set; }
-        public Nullable<long> CurrencyId { get; set; }
-        public Nullable<long> CurrencyExchangeId { get; set; }
-        public Nullable<System.DateTime> CreatedDate { get; set; }
+        public string Description { get; set; }
+        public string SerialNo { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RouterProcessDetails> RouterProcessDetails { get; set; }
         public virtual Company Company { get; set; }
         public virtual Item Item { get; set; }
         public virtual Employee Employee { get; set; }
-        public virtual Currency Currency { get; set; }
-        public virtual CurrencyExchange CurrencyExchange { get; set; }
     }
 }

@@ -10,7 +10,7 @@ namespace ProductionSchedulerLibrary
     /// <summary>
     /// 
     /// </summary>
-    public class TextGenerator
+    public   class TextGenerator
     {
         /// <summary>
         /// The random
@@ -42,7 +42,7 @@ namespace ProductionSchedulerLibrary
         /// Gets the random.
         /// </summary>
         /// <returns></returns>
-        public static Random GetRandom()
+        public    static Random GetRandom()
         {
             return rnd;
         }
@@ -52,7 +52,7 @@ namespace ProductionSchedulerLibrary
         /// </summary>
         /// <param name="size">The size.</param>
         /// <returns></returns>
-        public static int RandomInt(int size)
+        public   static int RandomInt(int size)
         {
             return rnd.Next(0, size);
         }
@@ -62,7 +62,7 @@ namespace ProductionSchedulerLibrary
         /// </summary>
         /// <param name="size">The size.</param>
         /// <returns></returns>
-        public static decimal RandomDouble(int size)
+        public   static decimal RandomDouble(int size)
         {
             return (decimal) ((rnd.NextDouble() * size) + rnd.NextDouble());
         }
@@ -72,7 +72,7 @@ namespace ProductionSchedulerLibrary
         /// </summary>
         /// <param name="size">The size.</param>
         /// <returns></returns>
-        public static string RandomString(int size)
+        public   static string RandomString(int size)
         {            
             var chars = Enumerable.Range(0, size)
                 .Select(x => input1[rnd.Next(0, input1.Length)]);
@@ -84,7 +84,7 @@ namespace ProductionSchedulerLibrary
         /// </summary>
         /// <param name="size">The size.</param>
         /// <returns></returns>
-        public static string RandomNumbers(int size)
+        public   static string RandomNumbers(int size)
         {
             var chars = Enumerable.Range(0, size)
                 .Select(x => input2[rnd.Next(0, input2.Length)]);
@@ -96,7 +96,7 @@ namespace ProductionSchedulerLibrary
         /// </summary>
         /// <param name="size">The size.</param>
         /// <returns></returns>
-        public static string RandomChars(int size)
+        public   static string RandomChars(int size)
         {
             var chars = Enumerable.Range(0, size)
                 .Select(x => input3[rnd.Next(0, input3.Length)]);
@@ -109,7 +109,7 @@ namespace ProductionSchedulerLibrary
         /// <param name="minLength">The minimum length.</param>
         /// <param name="size">The size.</param>
         /// <returns></returns>
-        public static string RandomChars(int minLength, int size)
+        public   static string RandomChars(int minLength, int size)
         {
             if (minLength == 0)
                 minLength = 1;
@@ -128,7 +128,7 @@ namespace ProductionSchedulerLibrary
         /// <param name="minLength">The minimum length.</param>
         /// <param name="size">The size.</param>
         /// <returns></returns>
-        public static string RandomNames(int minLength, int size)
+        public   static string RandomNames(int minLength, int size)
         {
             if (minLength == 0)
                 minLength = 1;
@@ -149,7 +149,7 @@ namespace ProductionSchedulerLibrary
         /// Randoms the names.
         /// </summary>
         /// <returns></returns>
-        public static string RandomNames()
+        public   static string RandomNames()
         {
             return RandomNames(8, 15);
         }

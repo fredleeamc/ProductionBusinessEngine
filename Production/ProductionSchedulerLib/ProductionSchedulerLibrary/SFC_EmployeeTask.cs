@@ -9,18 +9,18 @@ namespace ProductionSchedulerLibrary
     /// <summary>
     /// 
     /// </summary>
-    public class SFC_EmployeeTask
+    public  class SFC_EmployeeTask
     {
         /// <summary>
         /// The identifier
         /// </summary>
         private readonly long id;
 
-        public SFC_EmployeeTask(long id)
+        public  SFC_EmployeeTask(long id)
         {
             this.id = id;
         }
 
-        public long Id => id;
+        public  long Id => id;
     }
 }

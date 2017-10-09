@@ -12,10 +12,9 @@ namespace ModelLibrary
     using System;
     using System.Collections.Generic;
     
-    public partial class WorkOrderDetail
+    public partial class WorkOrderDetails
     {
         public long Id { get; set; }
-        public Nullable<long> WorkOrderId { get; set; }
         public Nullable<decimal> OrderedQuantity { get; set; }
         public Nullable<decimal> ProducedQuantity { get; set; }
         public Nullable<decimal> ScrapQuantity { get; set; }
@@ -29,11 +28,9 @@ namespace ModelLibrary
         public bool IsDeleted { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
-        public Nullable<long> ModifiedByEmployeeId { get; set; }
-        public Nullable<long> RouterDetailsId { get; set; }
         public Nullable<long> OperationSequence { get; set; }
     
-        public virtual RouterDetail RouterDetail { get; set; }
+        public virtual RouterDetails RouterDetails { get; set; }
         public virtual Employee Employee { get; set; }
         public virtual WorkOrder WorkOrder { get; set; }
     }

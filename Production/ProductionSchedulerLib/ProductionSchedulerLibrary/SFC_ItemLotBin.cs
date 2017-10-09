@@ -9,7 +9,7 @@ namespace ProductionSchedulerLibrary
     /// <summary>
     /// 
     /// </summary>
-    public class SFC_ItemLotBin
+    public  class SFC_ItemLotBin
     {
         /// <summary>
         /// The identifier
@@ -53,30 +53,36 @@ namespace ProductionSchedulerLibrary
         /// </summary>
         private string unit;
 
+        private SFC_Currency currency;
+
+        private SFC_CurrencyExchange currencyExchange;
+
   
 
-        public decimal UnitCost { get => unitCost; set => unitCost = value; }
+        public  decimal UnitCost { get => unitCost; set => unitCost = value; }
 
-        public string Unit { get => unit; set => unit = value; }
+        public  string Unit { get => unit; set => unit = value; }
 
-        public long Id => id;
+        public  long Id => id;
 
-        public long ItemId => itemId;
+        public  long ItemId => itemId;
 
-        public string LotNo => lotNo;
+        public  string LotNo => lotNo;
 
-        public string BinNo { get => binNo; set => binNo = value; }
+        public  string BinNo { get => binNo; set => binNo = value; }
 
-        public string BatchNo => batchNo;
+        public  string BatchNo => batchNo;
 
-        public string HeatNo { get => heatNo; set => heatNo = value; }
+        public  string HeatNo { get => heatNo; set => heatNo = value; }
 
-        public SFC_ItemStatus ItemStatus => itemStatus;
+        public  SFC_ItemStatus ItemStatus => itemStatus;
 
-        public SFC_Item Item => item;
+        public  SFC_Item Item => item;
 
-        public decimal UnitCost1 { get => unitCost; set => unitCost = value; }
-        public string Unit1 { get => unit; set => unit = value; }
+        public  decimal UnitCost1 { get => unitCost; set => unitCost = value; }
+        public  string Unit1 { get => unit; set => unit = value; }
+        public SFC_Currency Currency { get => currency; set => currency = value; }
+        public SFC_CurrencyExchange CurrencyExchange { get => currencyExchange; set => currencyExchange = value; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SFC_ItemLotBin"/> class.
@@ -85,7 +91,7 @@ namespace ProductionSchedulerLibrary
         /// <param name="item">The item.</param>
         /// <param name="lotNo">The lot no.</param>
         /// <param name="binNo">The bin no.</param>
-        public SFC_ItemLotBin(long id, SFC_Item item, string lotNo, string batchNo)
+        public  SFC_ItemLotBin(long id, SFC_Item item, string lotNo, string batchNo)
         {
             this.id = id;
             this.item = item;
@@ -104,7 +110,7 @@ namespace ProductionSchedulerLibrary
         /// <returns>
         /// A <see cref="System.String" /> that represents this instance.
         /// </returns>
-        public override string ToString()
+        public  override string ToString()
         {
             return "Lotbin:" + id + "," + itemId + "," + lotNo + "," + batchNo;
         }

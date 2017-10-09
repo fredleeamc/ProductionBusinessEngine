@@ -17,8 +17,8 @@ namespace ModelLibrary
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public FamilyRouter()
         {
-            this.FamilyRouterLinks = new HashSet<FamilyRouterLink>();
-            this.Routers = new HashSet<Router>();
+            this.FamilyRouterLink = new HashSet<FamilyRouterLink>();
+            this.Router = new HashSet<Router>();
         }
     
         public long Id { get; set; }
@@ -26,14 +26,12 @@ namespace ModelLibrary
         public bool IsDeleted { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
-        public Nullable<long> ModifiedByEmployeeId { get; set; }
-        public Nullable<long> CompanyId { get; set; }
     
         public virtual Company Company { get; set; }
         public virtual Employee Employee { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<FamilyRouterLink> FamilyRouterLinks { get; set; }
+        public virtual ICollection<FamilyRouterLink> FamilyRouterLink { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Router> Routers { get; set; }
+        public virtual ICollection<Router> Router { get; set; }
     }
 }

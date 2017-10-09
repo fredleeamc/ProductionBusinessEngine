@@ -17,13 +17,10 @@ namespace ModelLibrary
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Machine()
         {
-            this.TeamGroupMachineDetails = new HashSet<TeamGroupMachineDetail>();
+            this.EmployeeSkillMatrixDetails = new HashSet<EmployeeSkillMatrixDetails>();
         }
     
         public long Id { get; set; }
-        public long CompanyId { get; set; }
-        public Nullable<long> DepartmentId { get; set; }
-        public Nullable<int> MachineTypeId { get; set; }
         public string MachineName { get; set; }
         public string Description { get; set; }
         public Nullable<decimal> SetupBillingMin { get; set; }
@@ -38,16 +35,12 @@ namespace ModelLibrary
         public Nullable<int> QtySetters { get; set; }
         public Nullable<int> QtyOperators { get; set; }
         public Nullable<long> LocationId { get; set; }
-        public Nullable<long> ModifiedByEmployeeId { get; set; }
         public string ApprovalCode { get; set; }
         public Nullable<long> ApprovedByUserId { get; set; }
         public bool IsPrinted { get; set; }
         public bool IsSent { get; set; }
         public bool IsForeignCurrency { get; set; }
-        public Nullable<long> CurrencyId { get; set; }
-        public Nullable<long> CurrencyExchangeId { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
-        public Nullable<long> ItemId { get; set; }
         public string PictureUrl { get; set; }
         public Nullable<long> AssetId { get; set; }
         public bool IsDeleted { get; set; }
@@ -55,18 +48,16 @@ namespace ModelLibrary
         public Nullable<System.DateTime> ModifiedOn { get; set; }
         public Nullable<long> SpecificationId { get; set; }
         public Nullable<long> ToolSetId { get; set; }
-        public Nullable<long> WorkCenterId { get; set; }
     
+        public virtual Currency Currency { get; set; }
         public virtual Company Company { get; set; }
+        public virtual CurrencyExchange CurrencyExchange { get; set; }
+        public virtual Department Department { get; set; }
         public virtual Item Item { get; set; }
-        public virtual Location Location { get; set; }
         public virtual Employee Employee { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TeamGroupMachineDetail> TeamGroupMachineDetails { get; set; }
+        public virtual ICollection<EmployeeSkillMatrixDetails> EmployeeSkillMatrixDetails { get; set; }
         public virtual MachineType MachineType { get; set; }
-        public virtual ToolSet ToolSet { get; set; }
         public virtual WorkCenter WorkCenter { get; set; }
-        public virtual Currency Currency { get; set; }
-        public virtual CurrencyExchange CurrencyExchange { get; set; }
     }
 }

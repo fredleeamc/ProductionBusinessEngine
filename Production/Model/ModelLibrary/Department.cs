@@ -12,38 +12,31 @@ namespace ModelLibrary
     using System;
     using System.Collections.Generic;
     
-    public partial class Location
+    public partial class Department
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Location()
+        public Department()
         {
-            this.Employees = new HashSet<Employee>();
-            this.ItemLocations = new HashSet<ItemLocation>();
-            this.LocationDetails = new HashSet<LocationDetail>();
-            this.Machines = new HashSet<Machine>();
-            this.WorkCenters = new HashSet<WorkCenter>();
+            this.Employee1 = new HashSet<Employee>();
+            this.Machine = new HashSet<Machine>();
+            this.WorkCenter = new HashSet<WorkCenter>();
         }
     
         public long Id { get; set; }
-        public long CompanyId { get; set; }
-        public string Name { get; set; }
-        public Nullable<long> ModifiedByEmployeeId { get; set; }
+        public string DepartmentName { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public bool IsDeleted { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
+        public string Description { get; set; }
     
         public virtual Company Company { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Employee> Employees { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ItemLocation> ItemLocations { get; set; }
         public virtual Employee Employee { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LocationDetail> LocationDetails { get; set; }
+        public virtual ICollection<Employee> Employee1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Machine> Machines { get; set; }
+        public virtual ICollection<Machine> Machine { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<WorkCenter> WorkCenters { get; set; }
+        public virtual ICollection<WorkCenter> WorkCenter { get; set; }
     }
 }

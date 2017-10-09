@@ -12,19 +12,23 @@ namespace ModelLibrary
     using System;
     using System.Collections.Generic;
     
-    public partial class TeamGroupEmployeeDetail
+    public partial class EmployeeSkillMatrix
     {
-        public long Id { get; set; }
-        public long TeamGroupId { get; set; }
-        public long EmployeeId { get; set; }
-        public bool IsDeleted { get; set; }
-        public Nullable<long> ModifiedByEmployeeId { get; set; }
-        public Nullable<System.DateTime> ModifiedOn { get; set; }
-        public Nullable<System.DateTime> CreatedOn { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public EmployeeSkillMatrix()
+        {
+            this.EmployeeSkillMatrixDetails = new HashSet<EmployeeSkillMatrixDetails>();
+        }
     
+        public long Id { get; set; }
+        public Nullable<System.DateTime> CreatedOn { get; set; }
+        public Nullable<System.DateTime> ModifiedOn { get; set; }
+        public bool IsDeleted { get; set; }
+    
+        public virtual Company Company { get; set; }
         public virtual Employee Employee { get; set; }
         public virtual Employee Employee1 { get; set; }
-        public virtual TeamGroup TeamGroup { get; set; }
-        public virtual TeamGroup TeamGroup1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EmployeeSkillMatrixDetails> EmployeeSkillMatrixDetails { get; set; }
     }
 }

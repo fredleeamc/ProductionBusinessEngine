@@ -17,15 +17,13 @@ namespace ModelLibrary
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public WorkCenter()
         {
-            this.RouterProcessDetails = new HashSet<RouterProcessDetail>();
-            this.Machines = new HashSet<Machine>();
+            this.RouterProcessDetails = new HashSet<RouterProcessDetails>();
+            this.Machine = new HashSet<Machine>();
         }
     
         public long Id { get; set; }
-        public long CompanyId { get; set; }
         public string WorkCenterName { get; set; }
         public string Description { get; set; }
-        public Nullable<long> ModifiedByEmployeeId { get; set; }
         public bool IsVoid { get; set; }
         public string ApprovalCode { get; set; }
         public Nullable<long> ApprovedByUserId { get; set; }
@@ -33,15 +31,10 @@ namespace ModelLibrary
         public bool IsSent { get; set; }
         public bool IsForeignCurrency { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
-        public Nullable<long> DepartmentId { get; set; }
-        public Nullable<long> WorkCenterTypeId { get; set; }
         public Nullable<decimal> SetupLaborRate { get; set; }
-        public Nullable<long> SetupLaborUnitId { get; set; }
         public Nullable<decimal> RunLaborRate { get; set; }
-        public Nullable<long> RunLaborUnitId { get; set; }
         public Nullable<decimal> LaborOverhead { get; set; }
         public Nullable<decimal> MachineOverhead { get; set; }
-        public Nullable<long> WorkCenterGroupId { get; set; }
         public Nullable<decimal> GeneralOverhead { get; set; }
         public string Note { get; set; }
         public Nullable<decimal> ScheduledHours { get; set; }
@@ -49,7 +42,7 @@ namespace ModelLibrary
         public Nullable<System.DateTime> NextAvailableOn { get; set; }
         public bool IsUnlimitedResource { get; set; }
         public bool IsProductionLine { get; set; }
-        public Nullable<double> WorkCenterEfficiency { get; set; }
+        public Nullable<decimal> WorkCenterEfficiency { get; set; }
         public Nullable<long> LocationId { get; set; }
         public Nullable<long> ToolSetId { get; set; }
         public string PictureUrl { get; set; }
@@ -59,17 +52,16 @@ namespace ModelLibrary
         public Nullable<long> SpecificationId { get; set; }
         public Nullable<long> BranchId { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RouterProcessDetail> RouterProcessDetails { get; set; }
-        public virtual Company Company { get; set; }
-        public virtual Location Location { get; set; }
-        public virtual Employee Employee { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Machine> Machines { get; set; }
-        public virtual ToolSet ToolSet { get; set; }
-        public virtual WorkCenterGroup WorkCenterGroup { get; set; }
-        public virtual WorkCenterType WorkCenterType { get; set; }
         public virtual Unit Unit { get; set; }
         public virtual Unit Unit1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RouterProcessDetails> RouterProcessDetails { get; set; }
+        public virtual Company Company { get; set; }
+        public virtual Department Department { get; set; }
+        public virtual Employee Employee { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Machine> Machine { get; set; }
+        public virtual WorkCenterGroup WorkCenterGroup { get; set; }
+        public virtual WorkCenterType WorkCenterType { get; set; }
     }
 }

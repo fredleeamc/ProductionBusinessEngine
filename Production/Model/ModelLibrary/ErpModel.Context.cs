@@ -13,10 +13,10 @@ namespace ModelLibrary
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ModelEntities : DbContext
+    public partial class ERPTestEntities : DbContext
     {
-        public ModelEntities()
-            : base("name=ModelEntities")
+        public ERPTestEntities()
+            : base("name=ERPTestEntities")
         {
         }
     
@@ -25,66 +25,68 @@ namespace ModelLibrary
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Bom> Boms { get; set; }
-        public virtual DbSet<BomDetail> BomDetails { get; set; }
-        public virtual DbSet<BomItemType> BomItemTypes { get; set; }
-        public virtual DbSet<BomMfgConsumable> BomMfgConsumables { get; set; }
-        public virtual DbSet<BomOtherCostDetail> BomOtherCostDetails { get; set; }
-        public virtual DbSet<EngineeringChangeStatu> EngineeringChangeStatus { get; set; }
-        public virtual DbSet<EngineeringPhase> EngineeringPhases { get; set; }
-        public virtual DbSet<FamilyRouter> FamilyRouters { get; set; }
-        public virtual DbSet<FamilyRouterLink> FamilyRouterLinks { get; set; }
-        public virtual DbSet<ManufacturedComponent> ManufacturedComponents { get; set; }
-        public virtual DbSet<ManufacturedSubComponent> ManufacturedSubComponents { get; set; }
-        public virtual DbSet<ProductBuild> ProductBuilds { get; set; }
-        public virtual DbSet<ProductBuildBomLink> ProductBuildBomLinks { get; set; }
-        public virtual DbSet<ProductBuildDetail> ProductBuildDetails { get; set; }
-        public virtual DbSet<ProductBuildDevelopmentLabor> ProductBuildDevelopmentLabors { get; set; }
-        public virtual DbSet<ProductBuildDraft> ProductBuildDrafts { get; set; }
-        public virtual DbSet<ProductBuildInvestment> ProductBuildInvestments { get; set; }
-        public virtual DbSet<ProductBuildMaterial> ProductBuildMaterials { get; set; }
-        public virtual DbSet<ProductBuildRouterLink> ProductBuildRouterLinks { get; set; }
-        public virtual DbSet<Router> Routers { get; set; }
-        public virtual DbSet<RouterAction> RouterActions { get; set; }
-        public virtual DbSet<RouterDetail> RouterDetails { get; set; }
-        public virtual DbSet<RouterOutsideDetail> RouterOutsideDetails { get; set; }
-        public virtual DbSet<RouterProcess> RouterProcesses { get; set; }
-        public virtual DbSet<RouterProcessDetail> RouterProcessDetails { get; set; }
-        public virtual DbSet<RouterType> RouterTypes { get; set; }
-        public virtual DbSet<Company> Companies { get; set; }
-        public virtual DbSet<Customer> Customers { get; set; }
-        public virtual DbSet<Item> Items { get; set; }
-        public virtual DbSet<ItemStatu> ItemStatus { get; set; }
-        public virtual DbSet<Location> Locations { get; set; }
-        public virtual DbSet<LocationDetail> LocationDetails { get; set; }
-        public virtual DbSet<Vendor> Vendors { get; set; }
-        public virtual DbSet<Employee> Employees { get; set; }
-        public virtual DbSet<ItemLocation> ItemLocations { get; set; }
-        public virtual DbSet<ItemLotBin> ItemLotBins { get; set; }
-        public virtual DbSet<ItemSerial> ItemSerials { get; set; }
-        public virtual DbSet<Machine> Machines { get; set; }
-        public virtual DbSet<MachineType> MachineTypes { get; set; }
-        public virtual DbSet<StockMovement> StockMovements { get; set; }
-        public virtual DbSet<StockMovementDetail> StockMovementDetails { get; set; }
-        public virtual DbSet<MfgConsumable> MfgConsumables { get; set; }
-        public virtual DbSet<MfgConsumableType> MfgConsumableTypes { get; set; }
-        public virtual DbSet<ScheduledWorkOrder> ScheduledWorkOrders { get; set; }
-        public virtual DbSet<TeamGroup> TeamGroups { get; set; }
-        public virtual DbSet<TeamGroupEmployeeDetail> TeamGroupEmployeeDetails { get; set; }
-        public virtual DbSet<TeamGroupMachineDetail> TeamGroupMachineDetails { get; set; }
-        public virtual DbSet<ToolSet> ToolSets { get; set; }
-        public virtual DbSet<ToolSetDetail> ToolSetDetails { get; set; }
-        public virtual DbSet<WorkCenter> WorkCenters { get; set; }
-        public virtual DbSet<WorkCenterGroup> WorkCenterGroups { get; set; }
-        public virtual DbSet<WorkCenterType> WorkCenterTypes { get; set; }
-        public virtual DbSet<WorkOrder> WorkOrders { get; set; }
-        public virtual DbSet<WorkOrderDetail> WorkOrderDetails { get; set; }
-        public virtual DbSet<RouterDetailsLink> RouterDetailsLinks { get; set; }
-        public virtual DbSet<ConversionUnit> ConversionUnits { get; set; }
-        public virtual DbSet<Currency> Currencies { get; set; }
-        public virtual DbSet<Unit> Units { get; set; }
-        public virtual DbSet<CurrencyExchange> CurrencyExchanges { get; set; }
-        public virtual DbSet<JobPriority> JobPriorities { get; set; }
-        public virtual DbSet<PrimeLoad> PrimeLoads { get; set; }
+        public virtual DbSet<ConversionUnit> ConversionUnit { get; set; }
+        public virtual DbSet<Currency> Currency { get; set; }
+        public virtual DbSet<JobPriority> JobPriority { get; set; }
+        public virtual DbSet<PrimeLoad> PrimeLoad { get; set; }
+        public virtual DbSet<Unit> Unit { get; set; }
+        public virtual DbSet<Bom> Bom { get; set; }
+        public virtual DbSet<BomDetails> BomDetails { get; set; }
+        public virtual DbSet<BomItemType> BomItemType { get; set; }
+        public virtual DbSet<BomMfgConsumable> BomMfgConsumable { get; set; }
+        public virtual DbSet<BomOtherCostDetails> BomOtherCostDetails { get; set; }
+        public virtual DbSet<EngineeringChangeStatus> EngineeringChangeStatus { get; set; }
+        public virtual DbSet<EngineeringPhase> EngineeringPhase { get; set; }
+        public virtual DbSet<FamilyRouter> FamilyRouter { get; set; }
+        public virtual DbSet<FamilyRouterLink> FamilyRouterLink { get; set; }
+        public virtual DbSet<ManufacturedComponent> ManufacturedComponent { get; set; }
+        public virtual DbSet<ManufacturedSubComponent> ManufacturedSubComponent { get; set; }
+        public virtual DbSet<ProductBuild> ProductBuild { get; set; }
+        public virtual DbSet<ProductBuildBomLink> ProductBuildBomLink { get; set; }
+        public virtual DbSet<ProductBuildDetails> ProductBuildDetails { get; set; }
+        public virtual DbSet<ProductBuildDevelopmentLabor> ProductBuildDevelopmentLabor { get; set; }
+        public virtual DbSet<ProductBuildDraft> ProductBuildDraft { get; set; }
+        public virtual DbSet<ProductBuildInvestment> ProductBuildInvestment { get; set; }
+        public virtual DbSet<ProductBuildMaterials> ProductBuildMaterials { get; set; }
+        public virtual DbSet<ProductBuildRouterLink> ProductBuildRouterLink { get; set; }
+        public virtual DbSet<Router> Router { get; set; }
+        public virtual DbSet<RouterAction> RouterAction { get; set; }
+        public virtual DbSet<RouterDetails> RouterDetails { get; set; }
+        public virtual DbSet<RouterDetailsLink> RouterDetailsLink { get; set; }
+        public virtual DbSet<RouterOutsideDetails> RouterOutsideDetails { get; set; }
+        public virtual DbSet<RouterProcess> RouterProcess { get; set; }
+        public virtual DbSet<RouterProcessDetails> RouterProcessDetails { get; set; }
+        public virtual DbSet<RouterType> RouterType { get; set; }
+        public virtual DbSet<Company> Company { get; set; }
+        public virtual DbSet<CurrencyExchange> CurrencyExchange { get; set; }
+        public virtual DbSet<Customer> Customer { get; set; }
+        public virtual DbSet<Department> Department { get; set; }
+        public virtual DbSet<Item> Item { get; set; }
+        public virtual DbSet<ItemStatus> ItemStatus { get; set; }
+        public virtual DbSet<Vendor> Vendor { get; set; }
+        public virtual DbSet<Employee> Employee { get; set; }
+        public virtual DbSet<EmployeeSkillMatrix> EmployeeSkillMatrix { get; set; }
+        public virtual DbSet<EmployeeSkillMatrixDetails> EmployeeSkillMatrixDetails { get; set; }
+        public virtual DbSet<EmployeeSkillsRatings> EmployeeSkillsRatings { get; set; }
+        public virtual DbSet<WorkShift> WorkShift { get; set; }
+        public virtual DbSet<WorkShiftSchedule> WorkShiftSchedule { get; set; }
+        public virtual DbSet<ItemLocation> ItemLocation { get; set; }
+        public virtual DbSet<ItemLotBin> ItemLotBin { get; set; }
+        public virtual DbSet<Machine> Machine { get; set; }
+        public virtual DbSet<MachineType> MachineType { get; set; }
+        public virtual DbSet<StockMovement> StockMovement { get; set; }
+        public virtual DbSet<StockMovementDetails> StockMovementDetails { get; set; }
+        public virtual DbSet<Assembly> Assembly { get; set; }
+        public virtual DbSet<AssemblyDetails> AssemblyDetails { get; set; }
+        public virtual DbSet<MachineFixture> MachineFixture { get; set; }
+        public virtual DbSet<MachineTool> MachineTool { get; set; }
+        public virtual DbSet<MachineToolType> MachineToolType { get; set; }
+        public virtual DbSet<MfgConsumable> MfgConsumable { get; set; }
+        public virtual DbSet<MfgConsumableType> MfgConsumableType { get; set; }
+        public virtual DbSet<WorkCenter> WorkCenter { get; set; }
+        public virtual DbSet<WorkCenterGroup> WorkCenterGroup { get; set; }
+        public virtual DbSet<WorkCenterType> WorkCenterType { get; set; }
+        public virtual DbSet<WorkOrder> WorkOrder { get; set; }
+        public virtual DbSet<WorkOrderDetails> WorkOrderDetails { get; set; }
     }
 }

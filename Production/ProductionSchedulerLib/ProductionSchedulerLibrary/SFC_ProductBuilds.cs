@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace ProductionSchedulerLibrary
 {
-    public class SFC_ProductBuilds : SFC_Container<SFC_ProductBuild>
+    public  class SFC_ProductBuilds : Base_SFC_Container<SFC_ProductBuild>
     {
-        public SFC_ProductBuilds() : base()
+        public  SFC_ProductBuilds() : base()
         {
         }
     }

@@ -11,7 +11,7 @@ namespace ProductionSchedulerLibrary
     /// <summary>
     /// 
     /// </summary>
-    public class SFC_Department
+    public  class SFC_Department
     {
         /// <summary>
         /// The identifier
@@ -28,7 +28,7 @@ namespace ProductionSchedulerLibrary
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <param name="departmentName">Name of the department.</param>
-        public SFC_Department(long id, string departmentName)
+        public  SFC_Department(long id, string departmentName)
         {
             this.id = id;
             this.departmentName = departmentName;
@@ -40,7 +40,7 @@ namespace ProductionSchedulerLibrary
         /// <value>
         /// The identifier.
         /// </value>
-        public long Id => id;
+        public  long Id => id;
 
         /// <summary>
         /// Gets the name of the department.
@@ -48,6 +48,6 @@ namespace ProductionSchedulerLibrary
         /// <value>
         /// The name of the department.
         /// </value>
-        public string DepartmentName => departmentName;
+        public  string DepartmentName => departmentName;
     }
 }

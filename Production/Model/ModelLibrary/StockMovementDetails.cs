@@ -12,20 +12,19 @@ namespace ModelLibrary
     using System;
     using System.Collections.Generic;
     
-    public partial class ScheduledWorkOrder
+    public partial class StockMovementDetails
     {
         public long Id { get; set; }
-        public long CompanyId { get; set; }
-        public long WorkOrderId { get; set; }
-        public Nullable<long> ModifiedByEmployeeId { get; set; }
-        public Nullable<System.DateTime> ModifiedOn { get; set; }
-        public Nullable<System.DateTime> CreatedOn { get; set; }
-        public bool IsScheduled { get; set; }
-        public bool IsRunning { get; set; }
+        public Nullable<decimal> Quantity { get; set; }
         public bool IsDeleted { get; set; }
+        public Nullable<System.DateTime> CreatedOn { get; set; }
+        public Nullable<System.DateTime> ModifiedOn { get; set; }
     
-        public virtual Company Company { get; set; }
+        public virtual Item Item { get; set; }
         public virtual Employee Employee { get; set; }
-        public virtual WorkOrder WorkOrder { get; set; }
+        public virtual ItemLocation ItemLocation { get; set; }
+        public virtual ItemLocation ItemLocation1 { get; set; }
+        public virtual ItemLotBin ItemLotBin { get; set; }
+        public virtual StockMovement StockMovement { get; set; }
     }
 }

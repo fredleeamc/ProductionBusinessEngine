@@ -17,13 +17,12 @@ namespace ModelLibrary
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public MachineType()
         {
-            this.Machines = new HashSet<Machine>();
+            this.EmployeeSkillMatrixDetails = new HashSet<EmployeeSkillMatrixDetails>();
+            this.Machine = new HashSet<Machine>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
-        public Nullable<long> ModifiedByEmployeeId { get; set; }
-        public long CompanyId { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public bool IsDeleted { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
@@ -32,6 +31,8 @@ namespace ModelLibrary
         public virtual Company Company { get; set; }
         public virtual Employee Employee { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Machine> Machines { get; set; }
+        public virtual ICollection<EmployeeSkillMatrixDetails> EmployeeSkillMatrixDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Machine> Machine { get; set; }
     }
 }

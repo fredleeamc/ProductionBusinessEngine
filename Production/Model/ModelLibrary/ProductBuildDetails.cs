@@ -12,28 +12,25 @@ namespace ModelLibrary
     using System;
     using System.Collections.Generic;
     
-    public partial class TeamGroup
+    public partial class ProductBuildDetails
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TeamGroup()
+        public ProductBuildDetails()
         {
-            this.TeamGroupEmployeeDetails = new HashSet<TeamGroupEmployeeDetail>();
-            this.TeamGroupMachineDetails = new HashSet<TeamGroupMachineDetail>();
+            this.ProductBuildMaterials = new HashSet<ProductBuildMaterials>();
         }
     
         public long Id { get; set; }
-        public long CompanyId { get; set; }
-        public Nullable<long> ModifiedByEmployeeId { get; set; }
-        public Nullable<System.DateTime> ModifiedOn { get; set; }
-        public Nullable<System.DateTime> CreatedOn { get; set; }
+        public Nullable<long> OperationSequence { get; set; }
         public bool IsDeleted { get; set; }
+        public Nullable<System.DateTime> CreatedOn { get; set; }
+        public Nullable<System.DateTime> ModifiedOn { get; set; }
     
-        public virtual Company Company { get; set; }
+        public virtual ManufacturedComponent ManufacturedComponent { get; set; }
+        public virtual ProductBuild ProductBuild { get; set; }
         public virtual Employee Employee { get; set; }
+        public virtual RouterProcess RouterProcess { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TeamGroupEmployeeDetail> TeamGroupEmployeeDetails { get; set; }
-        public virtual TeamGroupEmployeeDetail TeamGroupEmployeeDetail { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TeamGroupMachineDetail> TeamGroupMachineDetails { get; set; }
+        public virtual ICollection<ProductBuildMaterials> ProductBuildMaterials { get; set; }
     }
 }

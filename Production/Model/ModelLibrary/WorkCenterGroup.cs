@@ -17,15 +17,13 @@ namespace ModelLibrary
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public WorkCenterGroup()
         {
-            this.RouterProcessDetails = new HashSet<RouterProcessDetail>();
-            this.WorkCenters = new HashSet<WorkCenter>();
+            this.RouterProcessDetails = new HashSet<RouterProcessDetails>();
+            this.WorkCenter = new HashSet<WorkCenter>();
         }
     
         public long Id { get; set; }
-        public long CompanyId { get; set; }
         public string WorkCenterGroupName { get; set; }
         public string Description { get; set; }
-        public Nullable<long> ModifiedByEmployeeId { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public string Note { get; set; }
         public string ApprovalCode { get; set; }
@@ -36,11 +34,10 @@ namespace ModelLibrary
         public Nullable<System.DateTime> ModifiedOn { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RouterProcessDetail> RouterProcessDetails { get; set; }
+        public virtual ICollection<RouterProcessDetails> RouterProcessDetails { get; set; }
         public virtual Company Company { get; set; }
         public virtual Employee Employee { get; set; }
-        public virtual ToolSet ToolSet { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<WorkCenter> WorkCenters { get; set; }
+        public virtual ICollection<WorkCenter> WorkCenter { get; set; }
     }
 }

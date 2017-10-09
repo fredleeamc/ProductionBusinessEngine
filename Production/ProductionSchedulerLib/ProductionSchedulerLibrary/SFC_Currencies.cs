@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace ProductionSchedulerLibrary
 {
-    public class SFC_Currencies : SFC_Container<SFC_Currency>
+    public  class SFC_Currencies : Base_SFC_Container<SFC_Currency>
     {
 
-        public SFC_Currencies() : base()
+        public  SFC_Currencies() : base()
         {
         }
 

@@ -9,7 +9,7 @@ namespace ProductionSchedulerLibrary
     /// <summary>
     /// 
     /// </summary>
-    public class SFC_WorkCenterType
+    public  class SFC_WorkCenterType
     {
         /// <summary>
         /// The identifier
@@ -25,14 +25,14 @@ namespace ProductionSchedulerLibrary
         /// <summary>
         /// The none
         /// </summary>
-        public readonly static SFC_WorkCenterType NONE = new SFC_WorkCenterType(0, "NONE");
+        public  readonly static SFC_WorkCenterType NONE = new SFC_WorkCenterType(0, "NONE");
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SFC_WorkCenterType"/> class.
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <param name="workCenterTypeName">Name of the work center type.</param>
-        public SFC_WorkCenterType(long id, string workCenterTypeName)
+        public  SFC_WorkCenterType(long id, string workCenterTypeName)
         {
             this.id = id;
             this.workCenterTypeName = workCenterTypeName;
@@ -44,7 +44,7 @@ namespace ProductionSchedulerLibrary
         /// <value>
         /// The identifier.
         /// </value>
-        public long Id
+        public  long Id
         {
             get
             {
@@ -58,7 +58,7 @@ namespace ProductionSchedulerLibrary
         /// <value>
         /// The name of the work center type.
         /// </value>
-        public string WorkCenterTypeName
+        public  string WorkCenterTypeName
         {
             get
             {
@@ -80,7 +80,7 @@ namespace ProductionSchedulerLibrary
         /// <returns>
         /// A <see cref="System.String" /> that represents this instance.
         /// </returns>
-        public override string ToString()
+        public  override string ToString()
         {
             return workCenterTypeName;
         }

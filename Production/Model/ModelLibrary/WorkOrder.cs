@@ -17,29 +17,21 @@ namespace ModelLibrary
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public WorkOrder()
         {
-            this.ScheduledWorkOrders = new HashSet<ScheduledWorkOrder>();
-            this.WorkOrderDetails = new HashSet<WorkOrderDetail>();
+            this.WorkOrderDetails = new HashSet<WorkOrderDetails>();
         }
     
         public long Id { get; set; }
         public Nullable<long> SalesOrderId { get; set; }
         public Nullable<System.DateTime> ScheduledProductionStartDate { get; set; }
-        public Nullable<long> ModifiedByEmployeeId { get; set; }
         public bool IsVoid { get; set; }
         public string ApprovalCode { get; set; }
         public Nullable<long> ApprovedByUserId { get; set; }
         public bool IsPrinted { get; set; }
         public bool IsSent { get; set; }
         public bool IsForeignCurrency { get; set; }
-        public Nullable<long> CurrencyId { get; set; }
-        public Nullable<long> CurrencyExchangeId { get; set; }
-        public long CompanyId { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public Nullable<long> DocumentSetId { get; set; }
-        public Nullable<long> ItemId { get; set; }
-        public long CustomerId { get; set; }
         public Nullable<System.DateTime> TargetCompletionDate { get; set; }
-        public Nullable<long> ProductBuildId { get; set; }
         public bool IsDeleted { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
@@ -64,16 +56,14 @@ namespace ModelLibrary
         public Nullable<System.DateTime> ScheduledCompletionDate { get; set; }
         public string RefNo { get; set; }
     
+        public virtual Currency Currency { get; set; }
         public virtual ProductBuild ProductBuild { get; set; }
         public virtual Company Company { get; set; }
+        public virtual CurrencyExchange CurrencyExchange { get; set; }
         public virtual Customer Customer { get; set; }
         public virtual Item Item { get; set; }
         public virtual Employee Employee { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ScheduledWorkOrder> ScheduledWorkOrders { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<WorkOrderDetail> WorkOrderDetails { get; set; }
-        public virtual Currency Currency { get; set; }
-        public virtual CurrencyExchange CurrencyExchange { get; set; }
+        public virtual ICollection<WorkOrderDetails> WorkOrderDetails { get; set; }
     }
 }

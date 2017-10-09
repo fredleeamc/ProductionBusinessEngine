@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProductionSchedulerLibrary
 {
-    public class ShopFloorScheduler
+    public  class ShopFloorScheduler
     {
     }
 }

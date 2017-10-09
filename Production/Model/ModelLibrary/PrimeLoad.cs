@@ -17,7 +17,6 @@ namespace ModelLibrary
         public string Id { get; set; }
         public string Description { get; set; }
         public bool IsDeleted { get; set; }
-        public Nullable<long> ModifiedbyEmployeeId { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
     

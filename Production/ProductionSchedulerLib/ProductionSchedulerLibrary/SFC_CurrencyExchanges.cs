@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace ProductionSchedulerLibrary
 {
-    public class SFC_CurrencyExchanges : SFC_Container<SFC_CurrencyExchange>
+    public  class SFC_CurrencyExchanges : Base_SFC_Container<SFC_CurrencyExchange>
     {
-        public SFC_CurrencyExchanges() : base()
+        public  SFC_CurrencyExchanges() : base()
         {
         }
 
-        public decimal GetSellingRate(DateTime referenceDate, SFC_Currency targetCurrency)
+        public  decimal GetSellingRate(DateTime referenceDate, SFC_Currency targetCurrency)
         {
             double timeDiff = Double.MaxValue;
             SFC_CurrencyExchange exchange = null;

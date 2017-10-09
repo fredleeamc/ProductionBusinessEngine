@@ -11,7 +11,7 @@ namespace ProductionSchedulerLibrary
     /// </summary>
     /// <seealso cref="System.IEquatable{ProductionSchedulerLibrary.SFC_WorkCenter}" />
     /// <seealso cref="System.IComparable{ProductionSchedulerLibrary.SFC_WorkCenter}" />
-    public class SFC_WorkCenter : IEquatable<SFC_WorkCenter>, IComparable<SFC_WorkCenter>
+    public  class SFC_WorkCenter : IEquatable<SFC_WorkCenter>, IComparable<SFC_WorkCenter>
     {
         /// <summary>
         /// The identifier
@@ -41,7 +41,7 @@ namespace ProductionSchedulerLibrary
         /// <summary>
         /// The none
         /// </summary>
-        public readonly static SFC_WorkCenter NONE = new SFC_WorkCenter(0, "NONE", SFC_WorkCenterType.NONE);
+        public  readonly static SFC_WorkCenter NONE = new SFC_WorkCenter(0, "NONE", SFC_WorkCenterType.NONE);
 
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace ProductionSchedulerLibrary
         /// <value>
         /// The type of the machine.
         /// </value>
-        public SFC_MachineType MachineType
+        public  SFC_MachineType MachineType
         {
             get
             {
@@ -73,7 +73,7 @@ namespace ProductionSchedulerLibrary
         /// <value>
         /// The identifier.
         /// </value>
-        public long Id => id;
+        public  long Id => id;
 
         /// <summary>
         /// Gets the name of the work center.
@@ -81,7 +81,7 @@ namespace ProductionSchedulerLibrary
         /// <value>
         /// The name of the work center.
         /// </value>
-        public string WorkCenterName => workCenterName;
+        public  string WorkCenterName => workCenterName;
 
         /// <summary>
         /// Gets or sets the type of the work center.
@@ -89,7 +89,7 @@ namespace ProductionSchedulerLibrary
         /// <value>
         /// The type of the work center.
         /// </value>
-        public SFC_WorkCenterType WorkCenterType { get => workCenterType; set => workCenterType = value; }
+        public  SFC_WorkCenterType WorkCenterType { get => workCenterType; set => workCenterType = value; }
 
         /// <summary>
         /// Returns a <see cref="System.String" /> that represents this instance.
@@ -97,7 +97,7 @@ namespace ProductionSchedulerLibrary
         /// <returns>
         /// A <see cref="System.String" /> that represents this instance.
         /// </returns>
-        public override string ToString()
+        public  override string ToString()
         {
             return workCenterName + "[" + workCenterType + "]";
         }
@@ -109,7 +109,7 @@ namespace ProductionSchedulerLibrary
         /// <param name="id">The identifier.</param>
         /// <param name="workCenterName">Name of the work center.</param>
         /// <param name="workCenterType">Type of the work center.</param>
-        public SFC_WorkCenter(long id, string workCenterName, SFC_WorkCenterType workCenterType)
+        public  SFC_WorkCenter(long id, string workCenterName, SFC_WorkCenterType workCenterType)
         {
             this.id = id;
             this.workCenterName = workCenterName;
@@ -126,7 +126,7 @@ namespace ProductionSchedulerLibrary
         /// <returns>
         ///   <c>true</c> if the specified machine is compatible; otherwise, <c>false</c>.
         /// </returns>
-        public bool isCompatible(SFC_Machine machine)
+        public  bool isCompatible(SFC_Machine machine)
         {
 
             bool result = false;
@@ -148,7 +148,7 @@ namespace ProductionSchedulerLibrary
         /// </summary>
         /// <param name="machine">The machine.</param>
         /// <returns></returns>
-        public bool AddMachine(SFC_Machine machine)
+        public  bool AddMachine(SFC_Machine machine)
         {
             bool result = false;
             if (isCompatible(machine))
@@ -164,7 +164,7 @@ namespace ProductionSchedulerLibrary
         /// </summary>
         /// <param name="machine">The machine.</param>
         /// <returns></returns>
-        public bool RemoveMachine(SFC_Machine machine)
+        public  bool RemoveMachine(SFC_Machine machine)
         {
             bool result = false;
             if (wcMachines.Contains(machine))
@@ -182,7 +182,7 @@ namespace ProductionSchedulerLibrary
         /// true if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.
         /// </returns>
         /// <exception cref="NotImplementedException"></exception>
-        public bool Equals(SFC_WorkCenter other)
+        public  bool Equals(SFC_WorkCenter other)
         {
             return other != null && this.workCenterName == other.workCenterName; 
         }
@@ -196,7 +196,7 @@ namespace ProductionSchedulerLibrary
         /// </returns>
         /// <exception cref="ArgumentException">Object is not a SFC_WorkCenter</exception>
         /// <exception cref="NotImplementedException"></exception>
-        public int CompareTo(SFC_WorkCenter other)
+        public  int CompareTo(SFC_WorkCenter other)
         {
             if (other == null)
                 return 1;

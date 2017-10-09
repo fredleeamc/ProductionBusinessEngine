@@ -15,17 +15,14 @@ namespace ModelLibrary
     public partial class ProductBuildInvestment
     {
         public long Id { get; set; }
-        public Nullable<long> ProductBuildId { get; set; }
         public Nullable<long> ItemSequence { get; set; }
         public Nullable<int> AssetInvestmentActionId { get; set; }
         public string Description { get; set; }
         public Nullable<decimal> RecoveredOverFirstNoParts { get; set; }
-        public Nullable<long> InvestmentProductBuildId { get; set; }
         public Nullable<decimal> EstimatedDevelopmentInvestmentCost { get; set; }
         public bool IsDeleted { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
-        public Nullable<long> ModifiedByEmployeeId { get; set; }
         public Nullable<decimal> EstimatedMaintenanceRecurringCost { get; set; }
         public Nullable<decimal> RecurMaintAfterPartsProduce { get; set; }
     

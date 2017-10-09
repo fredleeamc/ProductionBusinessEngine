@@ -20,7 +20,6 @@ namespace ModelLibrary
         public long ToUnit { get; set; }
         public string ToUnitText { get; set; }
         public decimal ConversionFactor { get; set; }
-        public Nullable<long> ModifiedByEmployeeId { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public bool IsDeleted { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }

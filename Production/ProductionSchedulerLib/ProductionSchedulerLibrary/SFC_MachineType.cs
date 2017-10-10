@@ -9,7 +9,7 @@ namespace ProductionSchedulerLibrary
     /// <summary>
     /// 
     /// </summary>
-    public  class SFC_MachineType
+    public class SFC_MachineType
     {
         /// <summary>
         /// The identifier
@@ -29,14 +29,14 @@ namespace ProductionSchedulerLibrary
         /// <summary>
         /// The none
         /// </summary>
-        public  readonly static SFC_MachineType NONE = new SFC_MachineType(0, "NONE");
+        public readonly static SFC_MachineType NONE = new SFC_MachineType(0, "NONE");
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SFC_MachineType"/> class.
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <param name="name">The name.</param>
-        public  SFC_MachineType(int id, string name)
+        public SFC_MachineType(int id, string name)
         {
             this.id = id;
             this.name = name;
@@ -48,7 +48,7 @@ namespace ProductionSchedulerLibrary
         /// <value>
         /// The identifier.
         /// </value>
-        public  int Id
+        public int Id
         {
             get
             {
@@ -62,7 +62,7 @@ namespace ProductionSchedulerLibrary
         /// <value>
         /// The name.
         /// </value>
-        public  string Name
+        public string Name
         {
             get
             {
@@ -80,18 +80,23 @@ namespace ProductionSchedulerLibrary
         /// </summary>
         /// <param name="mType">Type of the m.</param>
         /// <param name="wc">The wc.</param>
-        public  static void AddWorkCenter(SFC_MachineType mType, SFC_WorkCenter wc)
+        public static void AddWorkCenter(SFC_MachineType mType, SFC_WorkCenter wc)
         {
-            if(typeLib.ContainsKey(mType))
+            if (typeLib.TryGetValue(mType, out List<SFC_WorkCenter> wcs))
             {
-                if (typeLib[mType] != null)
-                    typeLib[mType].Add(wc);
-                else
-                {
-                    typeLib[mType] = new List<SFC_WorkCenter>();
-                    typeLib[mType].Add(wc);
-                }
-            } else
+                wcs.Add(wc);
+            }
+            //if(typeLib.ContainsKey(mType))
+            //{
+            //    if (typeLib[mType] != null)
+            //        typeLib[mType].Add(wc);
+            //    else
+            //    {
+            //        typeLib[mType] = new List<SFC_WorkCenter>();
+            //        typeLib[mType].Add(wc);
+            //    }
+            //}
+            else
             {
                 List<SFC_WorkCenter> nlist = new List<SFC_WorkCenter>();
                 nlist.Add(wc);
@@ -103,22 +108,26 @@ namespace ProductionSchedulerLibrary
         /// Removes the work center.
         /// </summary>
         /// <param name="wc">The wc.</param>
-        public  static void RemoveWorkCenter(SFC_WorkCenter wc)
+        public static void RemoveWorkCenter(SFC_WorkCenter wc)
         {
-            SFC_MachineType mType = wc.MachineType;
-            if (typeLib.ContainsKey(mType))
+            if (typeLib.TryGetValue(wc.MachineType, out List<SFC_WorkCenter> wcs))
             {
-                if (typeLib[mType] != null)
-                if (typeLib[mType].Contains(wc))
-                {
-                        typeLib[mType].Remove(wc);
-                }
+                wcs.Remove(wc);
             }
+            //SFC_MachineType mType = wc.MachineType;
+            //if (typeLib.ContainsKey(mType))
+            //{
+            //    if (typeLib[mType] != null)
+            //    if (typeLib[mType].Contains(wc))
+            //    {
+            //            typeLib[mType].Remove(wc);
+            //    }
+            //}
             else
             {
                 List<SFC_WorkCenter> nlist = new List<SFC_WorkCenter>();
                 nlist.Add(wc);
-                typeLib.Add(mType, nlist);
+                typeLib.Add(wc.MachineType, nlist);
             }
         }
 
@@ -127,15 +136,16 @@ namespace ProductionSchedulerLibrary
         /// </summary>
         /// <param name="mType">Type of the m.</param>
         /// <returns></returns>
-        public  static List<SFC_WorkCenter> GetWorkCenters(SFC_MachineType mType)
+        public static List<SFC_WorkCenter> GetWorkCenters(SFC_MachineType mType)
         {
-            if (typeLib.ContainsKey(mType))
-            {
-                return typeLib[mType];
-            } else
-            {
-                return new List<SFC_WorkCenter>();
-            }
+            //if (typeLib.ContainsKey(mType))
+            //{
+            //    return typeLib[mType];
+            //} else
+            //{
+            //    return new List<SFC_WorkCenter>();
+            //}
+            return typeLib.TryGetValue(mType, out List<SFC_WorkCenter> wcs) ? wcs : null;
         }
 
         /// <summary>
@@ -143,13 +153,17 @@ namespace ProductionSchedulerLibrary
         /// </summary>
         /// <param name="mType">Type of the m.</param>
         /// <returns></returns>
-        public  static SFC_WorkCenter GetRandomWorkCenter(SFC_MachineType mType)
+        public static SFC_WorkCenter GetRandomWorkCenter(SFC_MachineType mType)
         {
-            if (typeLib.ContainsKey(mType))
+            if (typeLib.TryGetValue(mType, out List<SFC_WorkCenter> wcs))
             {
-                TextGenerator.GetRandom().Next(0, typeLib[mType].Count);
-                return typeLib[mType][TextGenerator.GetRandom().Next(0, typeLib[mType].Count)];
+                return wcs[TextGenerator.GetRandom().Next(0, wcs.Count)];
             }
+            //if (typeLib.ContainsKey(mType))
+            //{
+            //    //TextGenerator.GetRandom().Next(0, typeLib[mType].Count);
+            //    return typeLib[mType][TextGenerator.GetRandom().Next(0, typeLib[mType].Count)];
+            //}
             else
             {
                 return SFC_WorkCenter.NONE;
@@ -162,7 +176,7 @@ namespace ProductionSchedulerLibrary
         /// <returns>
         /// A <see cref="System.String" /> that represents this instance.
         /// </returns>
-        public  override string ToString()
+        public override string ToString()
         {
             return name;
         }

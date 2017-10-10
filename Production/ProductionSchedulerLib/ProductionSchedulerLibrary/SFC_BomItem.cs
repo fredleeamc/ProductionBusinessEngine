@@ -22,6 +22,7 @@ namespace ProductionSchedulerLibrary
         public SFC_BomItem(long id, SFC_Item item, decimal quantity) : base(id, item, quantity)
         {
             this.isLeaf = true;
+            this.ItemCount = 1;
         }
 
         /// <summary>
@@ -83,19 +84,19 @@ namespace ProductionSchedulerLibrary
             Console.WriteLine("Cannot Remove");
         }
 
-        /// <summary>
-        /// Counts the items.
-        /// </summary>
-        /// <returns></returns>
-        public override int CountItems()
-        {
-            return 1;
-        }
+        ///// <summary>
+        ///// Counts the items.
+        ///// </summary>
+        ///// <returns></returns>
+        //public override int CountItems()
+        //{
+        //    return 1;
+        //}
 
-        public override decimal Cost()
-        {
-            return this.UnitCost * this.Quantity;
-        }
+        //public override decimal Cost()
+        //{
+        //    return this.UnitCost * this.Quantity;
+        //}
 
         /// <summary>
         /// Estimateds the cost.

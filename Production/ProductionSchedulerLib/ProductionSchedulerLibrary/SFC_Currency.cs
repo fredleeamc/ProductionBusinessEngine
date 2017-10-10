@@ -21,6 +21,9 @@ namespace ProductionSchedulerLibrary
         /// </summary>
         private readonly string symbol;
 
+        private List<SFC_CurrencyExchange> exchanges;
+
+
         /// <summary>
         /// Initializes a new instance of the <see cref="SFC_Currency"/> class.
         /// </summary>
@@ -32,6 +35,7 @@ namespace ProductionSchedulerLibrary
             this.id = id;
             this.name = name;
             this.symbol = symbol;
+            exchanges = new List<SFC_CurrencyExchange>();        
         }
 
         /// <summary>
@@ -57,5 +61,43 @@ namespace ProductionSchedulerLibrary
         /// The symbol.
         /// </value>
         public  string Symbol => symbol;
+
+        public List<SFC_CurrencyExchange> Exchanges { get => exchanges; }
+
+        public override string ToString()
+        {
+            return this.symbol + " " + this.name;
+        }
+
+        public SFC_CurrencyExchange GetLatestExchange(SFC_Currency targetCurrency)
+        {
+            var eList = from f in Exchanges
+                        where f.TargetCurrency == targetCurrency                 
+                        select f;
+            var s = from e in eList
+                    where e.EffectiveDate == eList.Max(x => x.EffectiveDate)
+                    select e;
+            return s.First();
+        }
+
+        public SFC_CurrencyExchange GetExchange(SFC_Currency targetCurrency, DateTime refDate)
+        {
+            var eList = from f in Exchanges
+                        where f.TargetCurrency == targetCurrency &&
+                        f.EffectiveDate == refDate
+                        select f;
+
+            return eList.First();
+        }
+
+        public void AddExchange(SFC_CurrencyExchange currencyExchange)
+        {
+            Exchanges.Add(currencyExchange);
+        }
+
+        public void RemoveExchange(SFC_CurrencyExchange currencyExchange)
+        {
+            Exchanges.Remove(currencyExchange);
+        }
     }
 }

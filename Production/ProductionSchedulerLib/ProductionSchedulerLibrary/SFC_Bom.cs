@@ -13,14 +13,14 @@ namespace ProductionSchedulerLibrary
     /// </summary>
     public class SFC_Bom
     {
-
+        ShopFloorModel model;
         private readonly long id;
         private readonly string partName;
         private readonly string partNo;
         private readonly SFC_BomComposite bom;
         private Dictionary<SFC_Item, decimal> materials;
-        private SFC_CurrencyExchange currencyExchangeId;
-        private SFC_Currency currencyId;
+        private SFC_CurrencyExchange currencyExchange;
+        private SFC_Currency currency;
         public long? UnitId;
         public string EngineeringChangeStatusId;
         public string BomItemTypeId;
@@ -31,7 +31,7 @@ namespace ProductionSchedulerLibrary
         public decimal? EstimatedOtherCost;
         public decimal? CalculatedCostPerUnit;
         private decimal totalQuantity;
-        private readonly decimal totalBomCost;
+        private decimal totalBomCost;
 
 
         public long Id => id;
@@ -43,13 +43,14 @@ namespace ProductionSchedulerLibrary
             get => totalQuantity;
             set
             {
-                totalQuantity = value;                
+                totalQuantity = value;
                 this.Calculate();
             }
         }
         public decimal TotalBomCost { get => totalBomCost; }
-        public SFC_CurrencyExchange CurrencyExchangeId { get => currencyExchangeId; set => currencyExchangeId = value; }
-        public SFC_Currency CurrencyId { get => currencyId; set => currencyId = value; }
+        public SFC_CurrencyExchange CurrencyExchange { get => currencyExchange; set => currencyExchange = value; }
+        public SFC_Currency Currency { get => currency; set => currency = value; }
+        public ShopFloorModel Model { get => model; set => model = value; }
 
 
         /// <summary>
@@ -70,10 +71,6 @@ namespace ProductionSchedulerLibrary
             materials = new Dictionary<SFC_Item, decimal>();
         }
 
-
-
-
-
         /// <summary>
         /// Returns a <see cref="System.String" /> that represents this instance.
         /// </summary>
@@ -83,7 +80,7 @@ namespace ProductionSchedulerLibrary
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("BOM(" + PartName + ":" + PartNo + "): Items:" + this.CountItems() + "\n");
+            sb.Append("BOM(" + PartName + ":" + PartNo + "): Items:" + this.totalQuantity + "\n");
             //sb.Append(this.thisBom.Display(1));
             return sb.ToString();
         }
@@ -97,7 +94,11 @@ namespace ProductionSchedulerLibrary
             //sb.Append(this.thisBom.Display(1));
             //Console.WriteLine(sb.ToString());
 
-            Console.WriteLine("BOM(" + PartName + ":" + PartNo + ")\n Items:" + this.CountItems() + "\n Total:" + this.TotalBomCost + "\n Qty:" + this.TotalQuantity);
+            Console.WriteLine("BOM(" + PartName + ":" + PartNo + ")\n" +
+                " Currency:" + this.Currency + "\n" +
+                " Items:" + (this.Bom.ItemCount + "").PadLeft(20) + "\n" +
+                " Total:" + String.Format("{0:N}", this.TotalBomCost).PadLeft(20) + "\n" +
+                " Qty:  " + String.Format("{0:N}", this.TotalQuantity).PadLeft(20));
             this.bom.Display(1);
             Console.WriteLine();
         }
@@ -108,18 +109,19 @@ namespace ProductionSchedulerLibrary
             this.bom.metrics(1, this.totalQuantity);
             this.EstimatedMateriallCost = this.bom.CalculatedTotalBomTotalCost;
             this.EstimatedTotalCost = this.EstimatedMateriallCost + this.EstimatedMfgConsumableCost + this.EstimatedOtherCost;
-
+            this.totalBomCost = this.Bom.CalculatedTotalBomTotalCost;
+            
 
         }
 
-        /// <summary>
-        /// Counts the items.
-        /// </summary>
-        /// <returns></returns>
-        public long CountItems()
-        {
-            return bom.CountItems();
-        }
+        ///// <summary>
+        ///// Counts the items.
+        ///// </summary>
+        ///// <returns></returns>
+        //public long CountItems()
+        //{
+        //    return bom.CountItems();
+        //}
 
         /// <summary>
         /// Builds the bill of materials.

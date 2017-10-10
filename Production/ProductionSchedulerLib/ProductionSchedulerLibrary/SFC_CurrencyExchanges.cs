@@ -6,32 +6,57 @@ using System.Threading.Tasks;
 
 namespace ProductionSchedulerLibrary
 {
-    public  class SFC_CurrencyExchanges : Base_SFC_Container<SFC_CurrencyExchange>
+    public class SFC_CurrencyExchanges
     {
-        public  SFC_CurrencyExchanges() : base()
+        ShopFloorModel model;
+
+        public SFC_CurrencyExchanges()
         {
+
         }
 
-        public  decimal GetSellingRate(DateTime referenceDate, SFC_Currency targetCurrency)
+        public ShopFloorModel Model { get => model; set => model = value; }
+
+        public void Add(long currencyId, SFC_CurrencyExchange exchange)
         {
-            double timeDiff = Double.MaxValue;
-            SFC_CurrencyExchange exchange = null;
-            foreach (long k in Lists.Keys)
+            SFC_Currency currency = Model.Currencies.Get(currencyId);
+            currency.AddExchange(exchange);
+        }
+
+        public void Remove(long currencyId, SFC_CurrencyExchange exchange)
+        {
+            SFC_Currency currency = Model.Currencies.Get(currencyId);
+            currency.RemoveExchange(exchange);
+        }
+
+        public List<SFC_CurrencyExchange> Get(long currencyId)
+        {
+            return Model.Currencies.Get(currencyId).Exchanges;
+        }
+
+        public SFC_CurrencyExchange GetRandom(SFC_Currency sourceCurrency, SFC_Currency targetCurrency)
+        {
+            SFC_Currency currency = Model.Currencies.Get(sourceCurrency.Id);
+            int count = currency.Exchanges.Count;
+            if (count == 1)
+                return currency.Exchanges[1];
+            else if (count > 1)
             {
-                SFC_CurrencyExchange x1 = this.Lists[k];
-                TimeSpan sp1 = x1.EffectiveDate.Subtract(referenceDate).Duration();
-                if (sp1.TotalSeconds <= timeDiff)
-                {
-                    timeDiff = sp1.TotalSeconds;
-                    exchange = x1;
-                }
+                var eList = from f in currency.Exchanges
+                            where f.TargetCurrency == targetCurrency
+                            select f;
+                int rand = TextGenerator.GetRandom().Next(1, eList.Count() + 1);
+
+                SFC_CurrencyExchange[] a = eList.ToArray<SFC_CurrencyExchange>();
+                return a[rand];
+            }
+            else
+            {
+                return default(SFC_CurrencyExchange);
             }
 
-            if (exchange != null)
-                return exchange.SellingRate;
-            else
-                throw new ArgumentNullException("Exchange rate not found.");
         }
+
 
     }
 }

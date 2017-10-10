@@ -140,20 +140,36 @@ namespace ProductionSchedulerLibrary
             this.settings = settings;
             company = new SFC_Company(companyId, companyName);
             this.companies = new SFC_Companies();
+            this.companies.Model = this;
             this.employees = new SFC_Employees();
+            this.employees.Model = this;
             this.customers = new SFC_Customers();
+            this.customers.Model = this;
             this.lotBins = new SFC_ItemLotBins();
+            this.lotBins.Model = this;
             this.items = new SFC_Items();
+            this.items.Model = this;
             this.machineTypes = new SFC_MachineTypes();
+            this.machineTypes.Model = this;
             this.machines = new SFC_Machines();
+            this.machines.Model = this;
             this.workCenterTypes = new SFC_WorkCenterTypes();
+            this.workCenterTypes.Model = this;
             this.workCenters = new SFC_WorkCenters();
+            this.workCenters.Model = this;
             this.boms = new SFC_Boms();
+            this.boms.Model = this;
             this.builds = new SFC_ProductBuilds();
+            this.builds.Model = this;
             this.routers = new SFC_Routers();
+            this.routers.Model = this;
             this.workOrders = new SFC_WorkOrders();
+            this.workOrders.Model = this;
             this.currencies = new SFC_Currencies();
+            this.currencies.Model = this;
             this.currencyExchanges = new SFC_CurrencyExchanges();
+            this.currencyExchanges.Model = this;
+
         }
         #endregion
 

@@ -50,16 +50,16 @@ namespace ProductionSchedulerLibrary
             }
         }
 
-        public override decimal Cost()
-        {
-            decimal nCost = 0;
-            foreach (SFC_BomComponent component in children)
-            {
-                nCost += component.Cost();
-            }
-            this.BomCost = nCost;
-            return nCost;
-        }
+        //public override decimal Cost()
+        //{
+        //    decimal nCost = 0;
+        //    foreach (SFC_BomComponent component in children)
+        //    {
+        //        nCost += component.Cost();
+        //    }
+        //    this.BomCost = nCost;
+        //    return nCost;
+        //}
 
 
 
@@ -109,19 +109,19 @@ namespace ProductionSchedulerLibrary
             children.Remove(component);
         }
 
-        /// <summary>
-        /// Counts the items.
-        /// </summary>
-        /// <returns></returns>
-        public override int CountItems()
-        {
-            int count = 1;
-            foreach (SFC_BomComponent component in children)
-            {
-                count += component.CountItems();
-            }
-            return count;
-        }
+        ///// <summary>
+        ///// Counts the items.
+        ///// </summary>
+        ///// <returns></returns>
+        //public override int CountItems()
+        //{
+        //    int count = 1;
+        //    foreach (SFC_BomComponent component in children)
+        //    {
+        //        count += component.CountItems();
+        //    }
+        //    return count;
+        //}
 
 
         /// <summary>
@@ -176,17 +176,20 @@ namespace ProductionSchedulerLibrary
             idepth++;
             decimal totalBomCost = 0;
             decimal bomCost = 0;
+            long itemsCount = 0;
             foreach (SFC_BomComponent component in children)
             {
                 component.metrics(idepth, this.Quantity * multiplier);
                 totalBomCost += component.CalculatedTotalBomTotalCost;                
                 bomCost += component.BomCost;
+                itemsCount += component.ItemCount;
             }
             this.CalculatedTotalBomTotalCost = totalBomCost;
             this.CalculatedTotalQuantityRequired = this.Quantity * multiplier;
             this.CalculatedTotalComponentCost = bomCost;
             this.UnitCost = bomCost;
             this.BomCost = bomCost * this.Quantity;
+            this.ItemCount = itemsCount + 1;
         }
     }
 }

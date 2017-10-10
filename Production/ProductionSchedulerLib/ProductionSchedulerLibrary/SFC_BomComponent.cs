@@ -26,6 +26,8 @@ namespace ProductionSchedulerLibrary
         /// </summary>
         protected decimal quantity;
 
+        private long itemCount;
+
         /// <summary>
         /// The unit cost
         /// </summary>
@@ -112,6 +114,7 @@ namespace ProductionSchedulerLibrary
         public decimal CalculatedTotalComponentCost { get => calculatedTotalComponentCost; set => calculatedTotalComponentCost = value; }
         public decimal CalculatedTotalQuantityRequired { get => calculatedTotalQuantityRequired; set => calculatedTotalQuantityRequired = value; }
         public decimal CalculatedTotalBomTotalCost { get => calculatedTotalBomTotalCost; set => calculatedTotalBomTotalCost = value; }
+        public long ItemCount { get => itemCount; set => itemCount = value; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SFC_BomComponent"/> class.
@@ -128,7 +131,7 @@ namespace ProductionSchedulerLibrary
             parent = null;
         }
 
-        public abstract decimal Cost();
+        //public abstract decimal Cost();
 
         public abstract void metrics(int depth, decimal qtyMultiplier);
 
@@ -156,11 +159,11 @@ namespace ProductionSchedulerLibrary
         ///   <c>true</c> if this instance is item; otherwise, <c>false</c>.
         /// </returns>
         public abstract bool IsItem();
-        /// <summary>
-        /// Counts the items.
-        /// </summary>
-        /// <returns></returns>
-        public abstract int CountItems();
+        ///// <summary>
+        ///// Counts the items.
+        ///// </summary>
+        ///// <returns></returns>
+        //public abstract int CountItems();
         /// <summary>
         /// Estimateds the cost.
         /// </summary>

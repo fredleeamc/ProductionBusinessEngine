@@ -12,6 +12,7 @@ namespace ProductionSchedulerLibrary
         /// The objs
         /// </summary>
         private readonly Dictionary<long, T> lists;
+        ShopFloorModel model;
         
         public Base_SFC_Container()
         {
@@ -31,6 +32,8 @@ namespace ProductionSchedulerLibrary
         public long Count { get => lists.Count; }
 
         public long Next { get => Count + 1; }
+        public ShopFloorModel Model { get => model; set => model = value; }
+
 
         /// <summary>
         /// Adds the obj.
@@ -68,10 +71,16 @@ namespace ProductionSchedulerLibrary
 
         public T Get(long index)
         {
-            if (Lists.ContainsKey(index))
-                return Lists[index];
-            else
-                return default(T);
+            //if (Lists.TryGetValue(index, out T o))
+            //{
+            //    return o;
+            //}
+            ////if (Lists.ContainsKey(index))
+            ////    return Lists[index];
+            //else
+            //    return default(T);
+
+            return Lists.TryGetValue(index, out T o) ? o: default(T);
         }
 
         /// <summary>

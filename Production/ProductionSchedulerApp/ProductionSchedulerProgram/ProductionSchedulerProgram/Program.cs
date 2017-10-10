@@ -31,10 +31,10 @@ namespace ProductionSchedulerProgram
 
             #region Definition
             SFC_Currency PH_Peso = new SFC_Currency(1, "PH_Peso", "P");
-            SFC_Currency US_DOLLAR = new SFC_Currency(2, "US_DOLLAR", "$");
+            SFC_Currency US_Dollar = new SFC_Currency(2, "US_Dollar", "$");
 
-            SFC_CurrencyExchange pesoToDollar = new SFC_CurrencyExchange(1, PH_Peso, US_DOLLAR, DateTime.Now, 1.0M / 50.0M, 1.0M / 51.0M);
-            SFC_CurrencyExchange dollarToPeso = new SFC_CurrencyExchange(2, US_DOLLAR, PH_Peso, DateTime.Now, 54, 52);
+            SFC_CurrencyExchange pesoToDollar = new SFC_CurrencyExchange(1, PH_Peso, US_Dollar, DateTime.Now, 1.0M / 50.0M, 1.0M / 51.0M);
+            SFC_CurrencyExchange dollarToPeso = new SFC_CurrencyExchange(2, US_Dollar, PH_Peso, DateTime.Now, 54, 52);
 
             decimal xchange1 = 1 * pesoToDollar.BuyingRate;
             Console.WriteLine(String.Format("1 Peso = ${0:F2}", xchange1));
@@ -50,8 +50,10 @@ namespace ProductionSchedulerProgram
             shopFloor.CreateShopFloorModel(company, PH_Peso);
             shopFloor.DefaultCurrency = PH_Peso;
             shopFloor.DefaultCurrencyExchange = pesoToDollar;
-            shopFloor.Company[company.Id].CurrencyExchanges.Add(pesoToDollar);
-            shopFloor.Company[company.Id].CurrencyExchanges.Add(dollarToPeso);
+            shopFloor.Company[company.Id].Currencies.Add(PH_Peso);
+            shopFloor.Company[company.Id].Currencies.Add(US_Dollar);
+            shopFloor.Company[company.Id].CurrencyExchanges.Add(1, pesoToDollar);
+            shopFloor.Company[company.Id].CurrencyExchanges.Add(2, dollarToPeso);
 
             #endregion
 
@@ -312,6 +314,7 @@ namespace ProductionSchedulerProgram
                 }
                 SFC_Bom b = new SFC_Bom(seqGen.GetNext("BOM"), TextGenerator.RandomChars(8), TextGenerator.RandomChars(10), c);
                 b.TotalQuantity = TextGenerator.RandomInt(5) + 1;
+                b.Currency = shopFloor.Company[company.Id].Currencies.GetRandom();
                 shopFloor.Company[company.Id].Boms.Add(b);
             }
 
@@ -402,6 +405,16 @@ namespace ProductionSchedulerProgram
 
             DateTime ts2 = DateTime.Now;
             Console.WriteLine("Total millisecs:" + ts2.Subtract(ts1).TotalMilliseconds);
+
+
+
+                
+           
+
+
+
+
+
 
             Thread.Sleep(2000);
         }

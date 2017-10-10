@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProductionSchedulerLibrary
 {
-    public  class SFC_CurrencyExchange
+    public class SFC_CurrencyExchange
     {
         private readonly long id;
         private readonly SFC_Currency sourceCurrency;
@@ -15,7 +15,7 @@ namespace ProductionSchedulerLibrary
         private decimal buyingRate;
         private System.DateTime effectiveDate;
 
-        public  SFC_CurrencyExchange(long id, SFC_Currency sourceCurrency, SFC_Currency targetCurrency, DateTime effectiveDate, decimal buyingRate, decimal sellingRate)
+        public SFC_CurrencyExchange(long id, SFC_Currency sourceCurrency, SFC_Currency targetCurrency, DateTime effectiveDate, decimal buyingRate, decimal sellingRate)
         {
             this.id = id;
             this.sourceCurrency = sourceCurrency;
@@ -31,7 +31,7 @@ namespace ProductionSchedulerLibrary
         /// <value>
         /// The identifier.
         /// </value>
-        public  long Id => id;
+        public long Id => id;
 
         /// <summary>
         /// Gets the source currency.
@@ -39,7 +39,7 @@ namespace ProductionSchedulerLibrary
         /// <value>
         /// The source currency.
         /// </value>
-        public  SFC_Currency SourceCurrency => sourceCurrency;
+        public SFC_Currency SourceCurrency => sourceCurrency;
 
         /// <summary>
         /// Gets the target currency.
@@ -47,7 +47,7 @@ namespace ProductionSchedulerLibrary
         /// <value>
         /// The target currency.
         /// </value>
-        public  SFC_Currency TargetCurrency => targetCurrency;
+        public SFC_Currency TargetCurrency => targetCurrency;
 
         /// <summary>
         /// Gets or sets the selling rate.
@@ -55,20 +55,25 @@ namespace ProductionSchedulerLibrary
         /// <value>
         /// The bank selling rate.
         /// </value>
-        public  decimal SellingRate { get => sellingRate; set => sellingRate = value; }
+        public decimal SellingRate { get => sellingRate; set => sellingRate = value; }
         /// <summary>
         /// Gets or sets the buying rate.
         /// </summary>
         /// <value>
         /// The bank buying rate.
         /// </value>
-        public  decimal BuyingRate { get => buyingRate; set => buyingRate = value; }
+        public decimal BuyingRate { get => buyingRate; set => buyingRate = value; }
         /// <summary>
         /// Gets or sets the effective date.
         /// </summary>
         /// <value>
         /// The effective date.
         /// </value>
-        public  DateTime EffectiveDate { get => effectiveDate; set => effectiveDate = value; }
+        public DateTime EffectiveDate { get => effectiveDate; set => effectiveDate = value; }
+
+        public override string ToString()
+        {
+            return sourceCurrency + "->" + "(" + sellingRate + ":" + buyingRate + ")" + "->" + targetCurrency;
+        }
     }
 }

@@ -1,0 +1,515 @@
+﻿'ProductionSchedulerProgram.exe' (CLR v4.0.30319: DefaultDomain): Loaded 'C:\WINDOWS\Microsoft.Net\assembly\GAC_32\mscorlib\v4.0_4.0.0.0__b77a5c561934e089\mscorlib.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'ProductionSchedulerProgram.exe' (CLR v4.0.30319: DefaultDomain): Loaded 'C:\Developer\ProductionScheduler\Engine\Production\ProductionSchedulerApp\ProductionSchedulerProgram\ProductionSchedulerProgram\bin\Debug\ProductionSchedulerProgram.exe'. Symbols loaded.
+'ProductionSchedulerProgram.exe' (CLR v4.0.30319: ProductionSchedulerProgram.exe): Loaded 'C:\Developer\ProductionScheduler\Engine\Production\ProductionSchedulerApp\ProductionSchedulerProgram\ProductionSchedulerProgram\bin\Debug\ProductionSchedulerLibrary.dll'. Symbols loaded.
+1 Peso = $0.02
+1 Dollar = $52.00
+'ProductionSchedulerProgram.exe' (CLR v4.0.30319: ProductionSchedulerProgram.exe): Loaded 'C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Core\v4.0_4.0.0.0__b77a5c561934e089\System.Core.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'ProductionSchedulerProgram.exe' (CLR v4.0.30319: ProductionSchedulerProgram.exe): Loaded 'C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System\v4.0_4.0.0.0__b77a5c561934e089\System.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+Employee:1,EMP00001,Inpkvnrce,Blazznrfrxqkf O
+Employee:2,EMP00002,Pllsrricipad,Urpddvadneamn X
+Employee:3,EMP00003,Qwfefxgqlw,Rlywpsky J
+Employee:4,EMP00004,Ggcuphxn,Vztvyrbocfs R
+Employee:5,EMP00005,Udxspikucrb,Ciztyedwfcs V
+Employee:6,EMP00006,Cyqwvbilrqsohe,Txxwwgtpjgoqo G
+Employee:7,EMP00007,Yamlmdfwamnlu,Lxsdleugarwhm P
+Employee:8,EMP00008,Uucsxoutuhnxx,Ldfxmqykmpg L
+Employee:9,EMP00009,Guhyjgrsib,Rdlqnhiw S
+Employee:10,EMP00010,Pscpiewsg,Ozzoorurck I
+Employee:1,EMP00001,Inpkvnrce,Blazznrfrxqkf O
+Employee:2,EMP00002,Pllsrricipad,Urpddvadneamn X
+Employee:3,EMP00003,Qwfefxgqlw,Rlywpsky J
+Employee:4,EMP00004,Ggcuphxn,Vztvyrbocfs R
+Employee:5,EMP00005,Udxspikucrb,Ciztyedwfcs V
+Employee:6,EMP00006,Cyqwvbilrqsohe,Txxwwgtpjgoqo G
+Employee:7,EMP00007,Yamlmdfwamnlu,Lxsdleugarwhm P
+Employee:8,EMP00008,Uucsxoutuhnxx,Ldfxmqykmpg L
+Employee:9,EMP00009,Guhyjgrsib,Rdlqnhiw S
+Employee:10,EMP00010,Pscpiewsg,Ozzoorurck I
+1,RM00001:Wmwsubsgv
+2,RM00002:Pqwgupugsmbsah
+3,RM00003:Lvhkqutioiskws
+4,RM00004:Tpyjsqyiitrtw
+5,RM00005:Xmmohvglwfvch
+6,RM00006:Hbeyoyqltqpubm
+7,RM00007:Yybxluwfwown
+8,RM00008:Ksopjrkgosexg
+9,RM00009:Jwynuumfgtfw
+10,RM00010:Nwikrlfr
+11,RM00011:Bzljcrbg
+12,RM00012:Wekdjxactyoluk
+13,RM00013:Mikginmbr
+14,RM00014:Rzcksudaxfrcy
+15,RM00015:Mjoshdphoy
+16,RM00016:Fhvximdtmpyxs
+17,RM00017:Bklwfvbk
+18,RM00018:Xyzutobmkeeyn
+19,RM00019:Ipsojmwl
+20,RM00020:Lqesdljdejjzy
+21,RM00021:Jjekdotocqci
+22,RM00022:Hgrxakmddpv
+23,RM00023:Xabzodje
+24,RM00024:Geebtxsh
+25,RM00025:Oqvdwwmliol
+Lotbin:1,6,BEGIN,BEGIN        55|        55|<        55|         0|         0>|<         0|         0|         0|        55>|         0|         0|         0|         0|         0
+Lotbin:2,20,BEGIN,BEGIN        34|        34|<        34|         0|         0>|<         0|         0|         0|        34>|         0|         0|         0|         0|         0
+Lotbin:3,13,BEGIN,BEGIN        10|        10|<        10|         0|         0>|<         0|         0|         0|        10>|         0|         0|         0|         0|         0
+Lotbin:4,13,BEGIN,BEGIN        67|        67|<        67|         0|         0>|<         0|         0|         0|        67>|         0|         0|         0|         0|         0
+Lotbin:5,14,BEGIN,BEGIN        53|        53|<        53|         0|         0>|<         0|         0|         0|        53>|         0|         0|         0|         0|         0
+1,RM00001:Wmwsubsgv:
+                                   Begin|   Receive|<   On Hand|        PO|      Used>|<Production| Allocated|  Reserved| Available>|  Required|     Scrap|   Returns| Adjust In|Adjust Out
+                        Total:         0|         0|<         0|         0|         0>|<         0|         0|         0|         0>|         0|         0|         0|         0|         0
+
+2,RM00002:Pqwgupugsmbsah:
+                                   Begin|   Receive|<   On Hand|        PO|      Used>|<Production| Allocated|  Reserved| Available>|  Required|     Scrap|   Returns| Adjust In|Adjust Out
+                        Total:         0|         0|<         0|         0|         0>|<         0|         0|         0|         0>|         0|         0|         0|         0|         0
+
+3,RM00003:Lvhkqutioiskws:
+                                   Begin|   Receive|<   On Hand|        PO|      Used>|<Production| Allocated|  Reserved| Available>|  Required|     Scrap|   Returns| Adjust In|Adjust Out
+                        Total:         0|       156|<       108|         2|        46>|<        46|        39|         8|        63>|        93|         2|         0|         0|         0
+     Lotbin:10,3,BIN0010,8160:         0|       156|<       108|         2|        46>|<        46|        39|         8|        63>|        93|         2|         0|         0|         0
+
+4,RM00004:Tpyjsqyiitrtw:
+                                   Begin|   Receive|<   On Hand|        PO|      Used>|<Production| Allocated|  Reserved| Available>|  Required|     Scrap|   Returns| Adjust In|Adjust Out
+                        Total:         0|       133|<        92|         2|        39>|<        39|        33|         7|        54>|        79|         2|         0|         0|         0
+      Lotbin:9,4,BIN0009,5345:         0|       133|<        92|         2|        39>|<        39|        33|         7|        54>|        79|         2|         0|         0|         0
+
+5,RM00005:Xmmohvglwfvch:
+                                   Begin|   Receive|<   On Hand|        PO|      Used>|<Production| Allocated|  Reserved| Available>|  Required|     Scrap|   Returns| Adjust In|Adjust Out
+                        Total:         0|         0|<         0|         0|         0>|<         0|         0|         0|         0>|         0|         0|         0|         0|         0
+
+6,RM00006:Hbeyoyqltqpubm:
+                                   Begin|   Receive|<   On Hand|        PO|      Used>|<Production| Allocated|  Reserved| Available>|  Required|     Scrap|   Returns| Adjust In|Adjust Out
+                        Total:        55|       237|<       180|         4|        53>|<        25|        45|         9|       130>|       107|         4|         0|         0|         0
+       Lotbin:1,6,BEGIN,BEGIN:        55|       237|<       180|         4|        53>|<        25|        45|         9|       130>|       107|         4|         0|         0|         0
+
+7,RM00007:Yybxluwfwown:
+                                   Begin|   Receive|<   On Hand|        PO|      Used>|<Production| Allocated|  Reserved| Available>|  Required|     Scrap|   Returns| Adjust In|Adjust Out
+                        Total:         0|         0|<         0|         0|         0>|<         0|         0|         0|         0>|         0|         0|         0|         0|         0
+
+8,RM00008:Ksopjrkgosexg:
+                                   Begin|   Receive|<   On Hand|        PO|      Used>|<Production| Allocated|  Reserved| Available>|  Required|     Scrap|   Returns| Adjust In|Adjust Out
+                        Total:         0|       100|<        68|         2|        30>|<        30|        25|         5|        40>|        60|         2|         0|         0|         0
+     Lotbin:12,8,BIN0012,4004:         0|       100|<        68|         2|        30>|<        30|        25|         5|        40>|        60|         2|         0|         0|         0
+
+9,RM00009:Jwynuumfgtfw:
+                                   Begin|   Receive|<   On Hand|        PO|      Used>|<Production| Allocated|  Reserved| Available>|  Required|     Scrap|   Returns| Adjust In|Adjust Out
+                        Total:         0|         0|<         0|         0|         0>|<         0|         0|         0|         0>|         0|         0|         0|         0|         0
+
+10,RM00010:Nwikrlfr:
+                                   Begin|   Receive|<   On Hand|        PO|      Used>|<Production| Allocated|  Reserved| Available>|  Required|     Scrap|   Returns| Adjust In|Adjust Out
+                        Total:         0|         0|<         0|         0|         0>|<         0|         0|         0|         0>|         0|         0|         0|         0|         0
+
+11,RM00011:Bzljcrbg:
+                                   Begin|   Receive|<   On Hand|        PO|      Used>|<Production| Allocated|  Reserved| Available>|  Required|     Scrap|   Returns| Adjust In|Adjust Out
+                        Total:         0|        65|<        44|         2|        19>|<        19|        16|         3|        27>|        38|         2|         0|         0|         0
+    Lotbin:13,11,BIN0013,4610:         0|        65|<        44|         2|        19>|<        19|        16|         3|        27>|        38|         2|         0|         0|         0
+
+12,RM00012:Wekdjxactyoluk:
+                                   Begin|   Receive|<   On Hand|        PO|      Used>|<Production| Allocated|  Reserved| Available>|  Required|     Scrap|   Returns| Adjust In|Adjust Out
+                        Total:         0|       134|<        91|         4|        39>|<        39|        34|         7|        54>|        80|         4|         0|         0|         0
+     Lotbin:6,12,BIN0006,8215:         0|       116|<        80|         2|        34>|<        34|        29|         6|        47>|        69|         2|         0|         0|         0
+    Lotbin:11,12,BIN0011,7825:         0|        18|<        11|         2|         5>|<         5|         5|         1|         7>|        11|         2|         0|         0|         0
+
+13,RM00013:Mikginmbr:
+                                   Begin|   Receive|<   On Hand|        PO|      Used>|<Production| Allocated|  Reserved| Available>|  Required|     Scrap|   Returns| Adjust In|Adjust Out
+                        Total:        77|        77|<        77|         0|         0>|<         0|         0|         0|        77>|         0|         0|         0|         0|         0
+      Lotbin:3,13,BEGIN,BEGIN:        10|        10|<        10|         0|         0>|<         0|         0|         0|        10>|         0|         0|         0|         0|         0
+      Lotbin:4,13,BEGIN,BEGIN:        67|        67|<        67|         0|         0>|<         0|         0|         0|        67>|         0|         0|         0|         0|         0
+
+14,RM00014:Rzcksudaxfrcy:
+                                   Begin|   Receive|<   On Hand|        PO|      Used>|<Production| Allocated|  Reserved| Available>|  Required|     Scrap|   Returns| Adjust In|Adjust Out
+                        Total:        53|       230|<       174|         4|        52>|<        36|        44|         9|       125>|       105|         4|         0|         0|         0
+      Lotbin:5,14,BEGIN,BEGIN:        53|       230|<       174|         4|        52>|<        36|        44|         9|       125>|       105|         4|         0|         0|         0
+
+15,RM00015:Mjoshdphoy:
+                                   Begin|   Receive|<   On Hand|        PO|      Used>|<Production| Allocated|  Reserved| Available>|  Required|     Scrap|   Returns| Adjust In|Adjust Out
+                        Total:         0|         0|<         0|         0|         0>|<         0|         0|         0|         0>|         0|         0|         0|         0|         0
+
+16,RM00016:Fhvximdtmpyxs:
+                                   Begin|   Receive|<   On Hand|        PO|      Used>|<Production| Allocated|  Reserved| Available>|  Required|     Scrap|   Returns| Adjust In|Adjust Out
+                        Total:         0|         0|<         0|         0|         0>|<         0|         0|         0|         0>|         0|         0|         0|         0|         0
+
+17,RM00017:Bklwfvbk:
+                                   Begin|   Receive|<   On Hand|        PO|      Used>|<Production| Allocated|  Reserved| Available>|  Required|     Scrap|   Returns| Adjust In|Adjust Out
+                        Total:         0|         0|<         0|         0|         0>|<         0|         0|         0|         0>|         0|         0|         0|         0|         0
+
+18,RM00018:Xyzutobmkeeyn:
+                                   Begin|   Receive|<   On Hand|        PO|      Used>|<Production| Allocated|  Reserved| Available>|  Required|     Scrap|   Returns| Adjust In|Adjust Out
+                        Total:         0|         0|<         0|         0|         0>|<         0|         0|         0|         0>|         0|         0|         0|         0|         0
+
+19,RM00019:Ipsojmwl:
+                                   Begin|   Receive|<   On Hand|        PO|      Used>|<Production| Allocated|  Reserved| Available>|  Required|     Scrap|   Returns| Adjust In|Adjust Out
+                        Total:         0|       135|<        94|         2|        39>|<        39|        34|         7|        55>|        80|         2|         0|         0|         0
+     Lotbin:8,19,BIN0008,1197:         0|       135|<        94|         2|        39>|<        39|        34|         7|        55>|        80|         2|         0|         0|         0
+
+20,RM00020:Lqesdljdejjzy:
+                                   Begin|   Receive|<   On Hand|        PO|      Used>|<Production| Allocated|  Reserved| Available>|  Required|     Scrap|   Returns| Adjust In|Adjust Out
+                        Total:        34|       182|<       134|         6|        42>|<        39|        38|         8|        94>|        88|         6|         0|         0|         0
+      Lotbin:2,20,BEGIN,BEGIN:        34|       182|<       134|         6|        42>|<        39|        38|         8|        94>|        88|         6|         0|         0|         0
+
+21,RM00021:Jjekdotocqci:
+                                   Begin|   Receive|<   On Hand|        PO|      Used>|<Production| Allocated|  Reserved| Available>|  Required|     Scrap|   Returns| Adjust In|Adjust Out
+                        Total:         0|         0|<         0|         0|         0>|<         0|         0|         0|         0>|         0|         0|         0|         0|         0
+
+22,RM00022:Hgrxakmddpv:
+                                   Begin|   Receive|<   On Hand|        PO|      Used>|<Production| Allocated|  Reserved| Available>|  Required|     Scrap|   Returns| Adjust In|Adjust Out
+                        Total:         0|       112|<        77|         2|        33>|<        33|        28|         6|        45>|        67|         2|         0|         0|         0
+     Lotbin:7,22,BIN0007,2362:         0|       112|<        77|         2|        33>|<        33|        28|         6|        45>|        67|         2|         0|         0|         0
+
+23,RM00023:Xabzodje:
+                                   Begin|   Receive|<   On Hand|        PO|      Used>|<Production| Allocated|  Reserved| Available>|  Required|     Scrap|   Returns| Adjust In|Adjust Out
+                        Total:         0|         0|<         0|         0|         0>|<         0|         0|         0|         0>|         0|         0|         0|         0|         0
+
+24,RM00024:Geebtxsh:
+                                   Begin|   Receive|<   On Hand|        PO|      Used>|<Production| Allocated|  Reserved| Available>|  Required|     Scrap|   Returns| Adjust In|Adjust Out
+                        Total:         0|         0|<         0|         0|         0>|<         0|         0|         0|         0>|         0|         0|         0|         0|         0
+
+25,RM00025:Oqvdwwmliol:
+                                   Begin|   Receive|<   On Hand|        PO|      Used>|<Production| Allocated|  Reserved| Available>|  Required|     Scrap|   Returns| Adjust In|Adjust Out
+                        Total:         0|         0|<         0|         0|         0>|<         0|         0|         0|         0>|         0|         0|         0|         0|         0
+
+1 H. Mill.220  [WC581[FINITE]]
+2 Cutter.525  [WC002[FINITE]]
+3 Cutter.183  [WC002[FINITE]]
+4 V. Mill.441  [WC628[FINITE]]
+5 Lathe.104  [WC988[FINITE]]
+6 Robo Drill.230  [NONE[NONE]]
+7 V. Mill.408  [WC628[FINITE]]
+8 Cutter.139  [WC002[FINITE]]
+9 V. Mill.785  [WC628[FINITE]]
+10 Lathe.580  [WC988[FINITE]]
+1 H. Mill.220  [WC581[FINITE]]
+2 Cutter.525  [WC002[FINITE]]
+3 Cutter.183  [WC002[FINITE]]
+4 V. Mill.441  [WC628[FINITE]]
+5 Lathe.104  [WC988[FINITE]]
+6 Robo Drill.230  [NONE[NONE]]
+7 V. Mill.408  [WC628[FINITE]]
+8 Cutter.139  [WC002[FINITE]]
+9 V. Mill.785  [WC628[FINITE]]
+10 Lathe.580  [WC988[FINITE]]
+Lathe
+H. Mill
+V. Mill
+Robo Drill
+Cutter
+WC754[FINITE]
+WC581[FINITE]
+WC002[FINITE]
+WC628[FINITE]
+WC988[FINITE]
+Bill of materials
+BOM(jSgWnwlG:PxyhIABBUn): Items:1
+
+BOM(NtIMnyDW:vYMPIUWeNO): Items:4
+
+BOM(VkVcDwXc:jAUOvBhGCh): Items:2
+
+BOM(kCDBLwbS:paIwbDTiLH): Items:5
+
+BOM(DmgXfgHO:TesRuoLmMl): Items:4
+
+BOM(NknjTkUb:TFaStMnAhM): Items:3
+
+BOM(qkZzxGex:dTbQMzNjYd): Items:3
+
+BOM(NmepBOzE:sBVgVmEiKI): Items:1
+
+BOM(smqPuvxt:flYmSYlZpA): Items:1
+
+BOM(psSSLiJE:dEAtHCJpLl): Items:2
+
+BOM(jSgWnwlG:PxyhIABBUn)
+ Currency:P PH_Peso
+ Items:                   9
+ Total:            1,014.00
+ Qty:                  1.00
+*C                  |1:4,RM00004:Tpyjsqyiitrtw     |Qty        3.00|U$      338.00|S$    1,014.00|TQty$        3.00|TT$    1,014.00
+***I                |2:8,RM00008:Ksopjrkgosexg     |Qty        1.00|U$       10.00|S$       10.00|TQty$        3.00|TT$       30.00
+***I                |3:7,RM00007:Yybxluwfwown      |Qty        9.00|U$       10.00|S$       90.00|TQty$       27.00|TT$      270.00
+***C                |5:5,RM00005:Xmmohvglwfvch     |Qty       10.00|U$       13.00|S$      130.00|TQty$       30.00|TT$      390.00
+*****I              |6:9,RM00009:Jwynuumfgtfw      |Qty        6.00|U$        1.00|S$        6.00|TQty$      180.00|TT$      180.00
+*****I              |7:10,RM00010:Nwikrlfr         |Qty        7.00|U$        1.00|S$        7.00|TQty$      210.00|TT$      210.00
+***I                |9:16,RM00016:Fhvximdtmpyxs    |Qty        9.00|U$       10.00|S$       90.00|TQty$       27.00|TT$      270.00
+***C                |10:16,RM00016:Fhvximdtmpyxs   |Qty        6.00|U$        3.00|S$       18.00|TQty$       18.00|TT$       54.00
+*****I              |11:22,RM00022:Hgrxakmddpv     |Qty        3.00|U$        1.00|S$        3.00|TQty$       54.00|TT$       54.00
+
+BOM(NtIMnyDW:vYMPIUWeNO)
+ Currency:P PH_Peso
+ Items:                  21
+ Total:           12,132.00
+ Qty:                  4.00
+*C                  |13:14,RM00014:Rzcksudaxfrcy   |Qty        3.00|U$    1,011.00|S$    3,033.00|TQty$       12.00|TT$   12,132.00
+***I                |14:9,RM00009:Jwynuumfgtfw     |Qty        1.00|U$       10.00|S$       10.00|TQty$       12.00|TT$      120.00
+***I                |15:17,RM00017:Bklwfvbk        |Qty        7.00|U$       10.00|S$       70.00|TQty$       84.00|TT$      840.00
+***I                |16:17,RM00017:Bklwfvbk        |Qty        4.00|U$       10.00|S$       40.00|TQty$       48.00|TT$      480.00
+***I                |17:12,RM00012:Wekdjxactyoluk  |Qty       10.00|U$       10.00|S$      100.00|TQty$      120.00|TT$    1,200.00
+***C                |18:21,RM00021:Jjekdotocqci    |Qty        6.00|U$       18.00|S$      108.00|TQty$       72.00|TT$    1,296.00
+*****I              |19:8,RM00008:Ksopjrkgosexg    |Qty        8.00|U$        1.00|S$        8.00|TQty$      576.00|TT$      576.00
+*****I              |21:2,RM00002:Pqwgupugsmbsah   |Qty       10.00|U$        1.00|S$       10.00|TQty$      720.00|TT$      720.00
+***C                |22:8,RM00008:Ksopjrkgosexg    |Qty        9.00|U$       27.00|S$      243.00|TQty$      108.00|TT$    2,916.00
+*****I              |23:23,RM00023:Xabzodje        |Qty       10.00|U$        1.00|S$       10.00|TQty$    1,080.00|TT$    1,080.00
+*****I              |24:16,RM00016:Fhvximdtmpyxs   |Qty        8.00|U$        1.00|S$        8.00|TQty$      864.00|TT$      864.00
+*****I              |25:18,RM00018:Xyzutobmkeeyn   |Qty        9.00|U$        1.00|S$        9.00|TQty$      972.00|TT$      972.00
+***I                |26:15,RM00015:Mjoshdphoy      |Qty        3.00|U$       10.00|S$       30.00|TQty$       36.00|TT$      360.00
+***C                |27:15,RM00015:Mjoshdphoy      |Qty       10.00|U$       41.00|S$      410.00|TQty$      120.00|TT$    4,920.00
+*****I              |28:4,RM00004:Tpyjsqyiitrtw    |Qty        9.00|U$        1.00|S$        9.00|TQty$    1,080.00|TT$    1,080.00
+*****I              |29:6,RM00006:Hbeyoyqltqpubm   |Qty        6.00|U$        1.00|S$        6.00|TQty$      720.00|TT$      720.00
+*****I              |30:5,RM00005:Xmmohvglwfvch    |Qty        8.00|U$        1.00|S$        8.00|TQty$      960.00|TT$      960.00
+*****C              |31:16,RM00016:Fhvximdtmpyxs   |Qty        2.00|U$        9.00|S$       18.00|TQty$      240.00|TT$    2,160.00
+*******I            |32:17,RM00017:Bklwfvbk        |Qty        3.00|U$        1.00|S$        3.00|TQty$      720.00|TT$      720.00
+*******I            |33:21,RM00021:Jjekdotocqci    |Qty        4.00|U$        1.00|S$        4.00|TQty$      960.00|TT$      960.00
+*******I            |34:3,RM00003:Lvhkqutioiskws   |Qty        2.00|U$        1.00|S$        2.00|TQty$      480.00|TT$      480.00
+
+BOM(VkVcDwXc:jAUOvBhGCh)
+ Currency:$ US_Dollar
+ Items:                  17
+ Total:            1,244.00
+ Qty:                  2.00
+*C                  |37:9,RM00009:Jwynuumfgtfw     |Qty        2.00|U$      311.00|S$      622.00|TQty$        4.00|TT$    1,244.00
+***I                |38:24,RM00024:Geebtxsh        |Qty        1.00|U$       10.00|S$       10.00|TQty$        4.00|TT$       40.00
+***C                |39:11,RM00011:Bzljcrbg        |Qty        2.00|U$        8.00|S$       16.00|TQty$        8.00|TT$       64.00
+*****I              |40:19,RM00019:Ipsojmwl        |Qty        4.00|U$        1.00|S$        4.00|TQty$       32.00|TT$       32.00
+*****I              |41:6,RM00006:Hbeyoyqltqpubm   |Qty        1.00|U$        1.00|S$        1.00|TQty$        8.00|TT$        8.00
+*****I              |42:19,RM00019:Ipsojmwl        |Qty        3.00|U$        1.00|S$        3.00|TQty$       24.00|TT$       24.00
+***I                |43:7,RM00007:Yybxluwfwown     |Qty        8.00|U$       10.00|S$       80.00|TQty$       32.00|TT$      320.00
+***C                |44:11,RM00011:Bzljcrbg        |Qty        3.00|U$        1.00|S$        3.00|TQty$       12.00|TT$       12.00
+*****I              |45:25,RM00025:Oqvdwwmliol     |Qty        1.00|U$        1.00|S$        1.00|TQty$       12.00|TT$       12.00
+***C                |46:23,RM00023:Xabzodje        |Qty        4.00|U$        8.00|S$       32.00|TQty$       16.00|TT$      128.00
+*****I              |47:6,RM00006:Hbeyoyqltqpubm   |Qty        3.00|U$        1.00|S$        3.00|TQty$       48.00|TT$       48.00
+*****I              |48:15,RM00015:Mjoshdphoy      |Qty        5.00|U$        1.00|S$        5.00|TQty$       80.00|TT$       80.00
+***C                |49:1,RM00001:Wmwsubsgv        |Qty        9.00|U$       10.00|S$       90.00|TQty$       36.00|TT$      360.00
+*****I              |50:4,RM00004:Tpyjsqyiitrtw    |Qty        8.00|U$        1.00|S$        8.00|TQty$      288.00|TT$      288.00
+*****I              |51:8,RM00008:Ksopjrkgosexg    |Qty        2.00|U$        1.00|S$        2.00|TQty$       72.00|TT$       72.00
+***I                |53:22,RM00022:Hgrxakmddpv     |Qty        2.00|U$       10.00|S$       20.00|TQty$        8.00|TT$       80.00
+***I                |54:8,RM00008:Ksopjrkgosexg    |Qty        6.00|U$       10.00|S$       60.00|TQty$       24.00|TT$      240.00
+
+BOM(kCDBLwbS:paIwbDTiLH)
+ Currency:$ US_Dollar
+ Items:                   2
+ Total:              250.00
+ Qty:                  5.00
+*C                  |56:2,RM00002:Pqwgupugsmbsah   |Qty        5.00|U$       10.00|S$       50.00|TQty$       25.00|TT$      250.00
+***I                |57:23,RM00023:Xabzodje        |Qty        1.00|U$       10.00|S$       10.00|TQty$       25.00|TT$      250.00
+
+BOM(DmgXfgHO:TesRuoLmMl)
+ Currency:$ US_Dollar
+ Items:                   7
+ Total:            1,656.00
+ Qty:                  4.00
+*C                  |59:20,RM00020:Lqesdljdejjzy   |Qty        3.00|U$      138.00|S$      414.00|TQty$       12.00|TT$    1,656.00
+***I                |60:8,RM00008:Ksopjrkgosexg    |Qty        1.00|U$       10.00|S$       10.00|TQty$       12.00|TT$      120.00
+***I                |61:17,RM00017:Bklwfvbk        |Qty        5.00|U$       10.00|S$       50.00|TQty$       60.00|TT$      600.00
+***I                |62:6,RM00006:Hbeyoyqltqpubm   |Qty        3.00|U$       10.00|S$       30.00|TQty$       36.00|TT$      360.00
+***C                |63:14,RM00014:Rzcksudaxfrcy   |Qty        3.00|U$       16.00|S$       48.00|TQty$       36.00|TT$      576.00
+*****I              |64:16,RM00016:Fhvximdtmpyxs   |Qty        8.00|U$        1.00|S$        8.00|TQty$      288.00|TT$      288.00
+*****I              |65:12,RM00012:Wekdjxactyoluk  |Qty        8.00|U$        1.00|S$        8.00|TQty$      288.00|TT$      288.00
+
+BOM(NknjTkUb:TFaStMnAhM)
+ Currency:P PH_Peso
+ Items:                   4
+ Total:              360.00
+ Qty:                  3.00
+*C                  |67:10,RM00010:Nwikrlfr        |Qty        2.00|U$       60.00|S$      120.00|TQty$        6.00|TT$      360.00
+***I                |68:12,RM00012:Wekdjxactyoluk  |Qty        4.00|U$       10.00|S$       40.00|TQty$       24.00|TT$      240.00
+***C                |69:9,RM00009:Jwynuumfgtfw     |Qty        5.00|U$        4.00|S$       20.00|TQty$       30.00|TT$      120.00
+*****I              |70:22,RM00022:Hgrxakmddpv     |Qty        4.00|U$        1.00|S$        4.00|TQty$      120.00|TT$      120.00
+
+BOM(qkZzxGex:dTbQMzNjYd)
+ Currency:P PH_Peso
+ Items:                   3
+ Total:              600.00
+ Qty:                  3.00
+*C                  |72:18,RM00018:Xyzutobmkeeyn   |Qty        2.00|U$      100.00|S$      200.00|TQty$        6.00|TT$      600.00
+***I                |73:8,RM00008:Ksopjrkgosexg    |Qty        6.00|U$       10.00|S$       60.00|TQty$       36.00|TT$      360.00
+***I                |74:16,RM00016:Fhvximdtmpyxs   |Qty        4.00|U$       10.00|S$       40.00|TQty$       24.00|TT$      240.00
+
+BOM(NmepBOzE:sBVgVmEiKI)
+ Currency:$ US_Dollar
+ Items:                  18
+ Total:              802.00
+ Qty:                  1.00
+*C                  |76:21,RM00021:Jjekdotocqci    |Qty        2.00|U$      401.00|S$      802.00|TQty$        2.00|TT$      802.00
+***I                |77:20,RM00020:Lqesdljdejjzy   |Qty        8.00|U$       10.00|S$       80.00|TQty$       16.00|TT$      160.00
+***C                |78:1,RM00001:Wmwsubsgv        |Qty        3.00|U$        9.00|S$       27.00|TQty$        6.00|TT$       54.00
+*****I              |79:10,RM00010:Nwikrlfr        |Qty        3.00|U$        1.00|S$        3.00|TQty$       18.00|TT$       18.00
+*****I              |80:19,RM00019:Ipsojmwl        |Qty        6.00|U$        1.00|S$        6.00|TQty$       36.00|TT$       36.00
+***I                |81:1,RM00001:Wmwsubsgv        |Qty        4.00|U$       10.00|S$       40.00|TQty$        8.00|TT$       80.00
+***C                |82:3,RM00003:Lvhkqutioiskws   |Qty        2.00|U$        4.00|S$        8.00|TQty$        4.00|TT$       16.00
+*****I              |83:22,RM00022:Hgrxakmddpv     |Qty        4.00|U$        1.00|S$        4.00|TQty$       16.00|TT$       16.00
+***I                |84:24,RM00024:Geebtxsh        |Qty        9.00|U$       10.00|S$       90.00|TQty$       18.00|TT$      180.00
+***I                |85:22,RM00022:Hgrxakmddpv     |Qty        4.00|U$       10.00|S$       40.00|TQty$        8.00|TT$       80.00
+***I                |86:7,RM00007:Yybxluwfwown     |Qty        4.00|U$       10.00|S$       40.00|TQty$        8.00|TT$       80.00
+***I                |87:25,RM00025:Oqvdwwmliol     |Qty        3.00|U$       10.00|S$       30.00|TQty$        6.00|TT$       60.00
+***C                |88:18,RM00018:Xyzutobmkeeyn   |Qty        8.00|U$        2.00|S$       16.00|TQty$       16.00|TT$       32.00
+*****I              |89:6,RM00006:Hbeyoyqltqpubm   |Qty        2.00|U$        1.00|S$        2.00|TQty$       32.00|TT$       32.00
+***C                |90:17,RM00017:Bklwfvbk        |Qty        6.00|U$        5.00|S$       30.00|TQty$       12.00|TT$       60.00
+*****I              |91:9,RM00009:Jwynuumfgtfw     |Qty        2.00|U$        1.00|S$        2.00|TQty$       24.00|TT$       24.00
+*****I              |92:16,RM00016:Fhvximdtmpyxs   |Qty        2.00|U$        1.00|S$        2.00|TQty$       24.00|TT$       24.00
+*****I              |93:12,RM00012:Wekdjxactyoluk  |Qty        1.00|U$        1.00|S$        1.00|TQty$       12.00|TT$       12.00
+
+BOM(smqPuvxt:flYmSYlZpA)
+ Currency:$ US_Dollar
+ Items:                  20
+ Total:           17,440.00
+ Qty:                  1.00
+*C                  |95:3,RM00003:Lvhkqutioiskws   |Qty        5.00|U$    3,488.00|S$   17,440.00|TQty$        5.00|TT$   17,440.00
+***C                |96:19,RM00019:Ipsojmwl        |Qty        8.00|U$      357.00|S$    2,856.00|TQty$       40.00|TT$   14,280.00
+*****I              |97:2,RM00002:Pqwgupugsmbsah   |Qty        8.00|U$        1.00|S$        8.00|TQty$      320.00|TT$      320.00
+*****I              |99:21,RM00021:Jjekdotocqci    |Qty        3.00|U$        1.00|S$        3.00|TQty$      120.00|TT$      120.00
+*****C              |106:25,RM00025:Oqvdwwmliol    |Qty       10.00|U$       21.00|S$      210.00|TQty$      400.00|TT$    8,400.00
+*******I            |107:15,RM00015:Mjoshdphoy     |Qty        8.00|U$        1.00|S$        8.00|TQty$    3,200.00|TT$    3,200.00
+*******I            |108:22,RM00022:Hgrxakmddpv    |Qty        6.00|U$        1.00|S$        6.00|TQty$    2,400.00|TT$    2,400.00
+*******I            |109:13,RM00013:Mikginmbr      |Qty        7.00|U$        1.00|S$        7.00|TQty$    2,800.00|TT$    2,800.00
+*****C              |114:7,RM00007:Yybxluwfwown    |Qty        8.00|U$        7.00|S$       56.00|TQty$      320.00|TT$    2,240.00
+*******I            |115:4,RM00004:Tpyjsqyiitrtw   |Qty        7.00|U$        1.00|S$        7.00|TQty$    2,240.00|TT$    2,240.00
+*****I              |116:7,RM00007:Yybxluwfwown    |Qty        8.00|U$       10.00|S$       80.00|TQty$      320.00|TT$    3,200.00
+***C                |100:19,RM00019:Ipsojmwl       |Qty        2.00|U$      281.00|S$      562.00|TQty$       10.00|TT$    2,810.00
+*****I              |101:25,RM00025:Oqvdwwmliol    |Qty        8.00|U$        1.00|S$        8.00|TQty$       80.00|TT$       80.00
+*****C              |103:14,RM00014:Rzcksudaxfrcy  |Qty        7.00|U$       39.00|S$      273.00|TQty$       70.00|TT$    2,730.00
+*******I            |104:5,RM00005:Xmmohvglwfvch   |Qty        5.00|U$        1.00|S$        5.00|TQty$      350.00|TT$      350.00
+*******I            |105:24,RM00024:Geebtxsh       |Qty       10.00|U$        1.00|S$       10.00|TQty$      700.00|TT$      700.00
+*******C            |110:16,RM00016:Fhvximdtmpyxs  |Qty        4.00|U$        6.00|S$       24.00|TQty$      280.00|TT$    1,680.00
+*********I          |111:22,RM00022:Hgrxakmddpv    |Qty        1.00|U$        1.00|S$        1.00|TQty$      280.00|TT$      280.00
+*********I          |112:18,RM00018:Xyzutobmkeeyn  |Qty        5.00|U$        1.00|S$        5.00|TQty$    1,400.00|TT$    1,400.00
+***I                |102:23,RM00023:Xabzodje       |Qty        7.00|U$       10.00|S$       70.00|TQty$       35.00|TT$      350.00
+
+BOM(psSSLiJE:dEAtHCJpLl)
+ Currency:$ US_Dollar
+ Items:                  15
+ Total:            2,064.00
+ Qty:                  2.00
+*C                  |118:12,RM00012:Wekdjxactyoluk |Qty        4.00|U$      258.00|S$    1,032.00|TQty$        8.00|TT$    2,064.00
+***C                |119:25,RM00025:Oqvdwwmliol    |Qty        1.00|U$       15.00|S$       15.00|TQty$        8.00|TT$      120.00
+*****I              |120:17,RM00017:Bklwfvbk       |Qty        8.00|U$        1.00|S$        8.00|TQty$       64.00|TT$       64.00
+*****I              |121:24,RM00024:Geebtxsh       |Qty        7.00|U$        1.00|S$        7.00|TQty$       56.00|TT$       56.00
+***C                |122:1,RM00001:Wmwsubsgv       |Qty        3.00|U$        5.00|S$       15.00|TQty$       24.00|TT$      120.00
+*****I              |123:18,RM00018:Xyzutobmkeeyn  |Qty        5.00|U$        1.00|S$        5.00|TQty$      120.00|TT$      120.00
+***C                |124:7,RM00007:Yybxluwfwown    |Qty        2.00|U$       74.00|S$      148.00|TQty$       16.00|TT$    1,184.00
+*****I              |125:17,RM00017:Bklwfvbk       |Qty        8.00|U$        1.00|S$        8.00|TQty$      128.00|TT$      128.00
+*****I              |126:10,RM00010:Nwikrlfr       |Qty        8.00|U$        1.00|S$        8.00|TQty$      128.00|TT$      128.00
+*****I              |127:25,RM00025:Oqvdwwmliol    |Qty        2.00|U$        1.00|S$        2.00|TQty$       32.00|TT$       32.00
+*****C              |129:8,RM00008:Ksopjrkgosexg   |Qty        7.00|U$        8.00|S$       56.00|TQty$      112.00|TT$      896.00
+*******I            |130:21,RM00021:Jjekdotocqci   |Qty        3.00|U$        1.00|S$        3.00|TQty$      336.00|TT$      336.00
+*******I            |131:11,RM00011:Bzljcrbg       |Qty        1.00|U$        1.00|S$        1.00|TQty$      112.00|TT$      112.00
+*******I            |132:18,RM00018:Xyzutobmkeeyn  |Qty        4.00|U$        1.00|S$        4.00|TQty$      448.00|TT$      448.00
+***I                |128:3,RM00003:Lvhkqutioiskws  |Qty        8.00|U$       10.00|S$       80.00|TQty$       64.00|TT$      640.00
+
+BILL BOM(jSgWnwlG:PxyhIABBUn):
+4,RM00004:Tpyjsqyiitrtw:3 
+5,RM00005:Xmmohvglwfvch:10 
+7,RM00007:Yybxluwfwown:9 
+8,RM00008:Ksopjrkgosexg:1 
+9,RM00009:Jwynuumfgtfw:6 
+10,RM00010:Nwikrlfr:7 
+16,RM00016:Fhvximdtmpyxs:15 
+22,RM00022:Hgrxakmddpv:3 
+
+BILL BOM(NtIMnyDW:vYMPIUWeNO):
+2,RM00002:Pqwgupugsmbsah:10 
+3,RM00003:Lvhkqutioiskws:2 
+4,RM00004:Tpyjsqyiitrtw:9 
+5,RM00005:Xmmohvglwfvch:8 
+6,RM00006:Hbeyoyqltqpubm:6 
+8,RM00008:Ksopjrkgosexg:17 
+9,RM00009:Jwynuumfgtfw:1 
+12,RM00012:Wekdjxactyoluk:10 
+14,RM00014:Rzcksudaxfrcy:3 
+15,RM00015:Mjoshdphoy:13 
+16,RM00016:Fhvximdtmpyxs:10 
+17,RM00017:Bklwfvbk:14 
+18,RM00018:Xyzutobmkeeyn:9 
+21,RM00021:Jjekdotocqci:10 
+23,RM00023:Xabzodje:10 
+
+BILL BOM(VkVcDwXc:jAUOvBhGCh):
+1,RM00001:Wmwsubsgv:9 
+4,RM00004:Tpyjsqyiitrtw:8 
+6,RM00006:Hbeyoyqltqpubm:4 
+7,RM00007:Yybxluwfwown:8 
+8,RM00008:Ksopjrkgosexg:8 
+9,RM00009:Jwynuumfgtfw:2 
+11,RM00011:Bzljcrbg:5 
+15,RM00015:Mjoshdphoy:5 
+19,RM00019:Ipsojmwl:7 
+22,RM00022:Hgrxakmddpv:2 
+23,RM00023:Xabzodje:4 
+24,RM00024:Geebtxsh:1 
+25,RM00025:Oqvdwwmliol:1 
+
+BILL BOM(kCDBLwbS:paIwbDTiLH):
+2,RM00002:Pqwgupugsmbsah:5 
+23,RM00023:Xabzodje:1 
+
+BILL BOM(DmgXfgHO:TesRuoLmMl):
+6,RM00006:Hbeyoyqltqpubm:3 
+8,RM00008:Ksopjrkgosexg:1 
+12,RM00012:Wekdjxactyoluk:8 
+14,RM00014:Rzcksudaxfrcy:3 
+16,RM00016:Fhvximdtmpyxs:8 
+17,RM00017:Bklwfvbk:5 
+20,RM00020:Lqesdljdejjzy:3 
+
+BILL BOM(NknjTkUb:TFaStMnAhM):
+9,RM00009:Jwynuumfgtfw:5 
+10,RM00010:Nwikrlfr:2 
+12,RM00012:Wekdjxactyoluk:4 
+22,RM00022:Hgrxakmddpv:4 
+
+BILL BOM(qkZzxGex:dTbQMzNjYd):
+8,RM00008:Ksopjrkgosexg:6 
+16,RM00016:Fhvximdtmpyxs:4 
+18,RM00018:Xyzutobmkeeyn:2 
+
+BILL BOM(NmepBOzE:sBVgVmEiKI):
+1,RM00001:Wmwsubsgv:7 
+3,RM00003:Lvhkqutioiskws:2 
+6,RM00006:Hbeyoyqltqpubm:2 
+7,RM00007:Yybxluwfwown:4 
+9,RM00009:Jwynuumfgtfw:2 
+10,RM00010:Nwikrlfr:3 
+12,RM00012:Wekdjxactyoluk:1 
+16,RM00016:Fhvximdtmpyxs:2 
+17,RM00017:Bklwfvbk:6 
+18,RM00018:Xyzutobmkeeyn:8 
+19,RM00019:Ipsojmwl:6 
+20,RM00020:Lqesdljdejjzy:8 
+21,RM00021:Jjekdotocqci:2 
+22,RM00022:Hgrxakmddpv:8 
+24,RM00024:Geebtxsh:9 
+25,RM00025:Oqvdwwmliol:3 
+
+BILL BOM(smqPuvxt:flYmSYlZpA):
+2,RM00002:Pqwgupugsmbsah:8 
+3,RM00003:Lvhkqutioiskws:5 
+4,RM00004:Tpyjsqyiitrtw:7 
+5,RM00005:Xmmohvglwfvch:5 
+7,RM00007:Yybxluwfwown:16 
+13,RM00013:Mikginmbr:7 
+14,RM00014:Rzcksudaxfrcy:7 
+15,RM00015:Mjoshdphoy:8 
+16,RM00016:Fhvximdtmpyxs:4 
+18,RM00018:Xyzutobmkeeyn:5 
+19,RM00019:Ipsojmwl:10 
+21,RM00021:Jjekdotocqci:3 
+22,RM00022:Hgrxakmddpv:7 
+23,RM00023:Xabzodje:7 
+24,RM00024:Geebtxsh:10 
+25,RM00025:Oqvdwwmliol:18 
+
+BILL BOM(psSSLiJE:dEAtHCJpLl):
+1,RM00001:Wmwsubsgv:3 
+3,RM00003:Lvhkqutioiskws:8 
+7,RM00007:Yybxluwfwown:2 
+8,RM00008:Ksopjrkgosexg:7 
+10,RM00010:Nwikrlfr:8 
+11,RM00011:Bzljcrbg:1 
+12,RM00012:Wekdjxactyoluk:4 
+17,RM00017:Bklwfvbk:16 
+18,RM00018:Xyzutobmkeeyn:9 
+21,RM00021:Jjekdotocqci:3 
+24,RM00024:Geebtxsh:7 
+25,RM00025:Oqvdwwmliol:3 
+
+Total millisecs:99.0038
+The program '[5412] ProductionSchedulerProgram.exe' has exited with code 0 (0x0).

@@ -145,16 +145,15 @@ namespace ProductionSchedulerLibrary
         /// </summary>
         /// <param name="key">The key.</param>
         /// <param name="line">The line.</param>
-        public  void AddWorkOrderDetails(SFC_WorkOrderDetail line)
+        public  void AddWorkOrderDetails(long operationSequence, SFC_WorkOrderDetail line)
         {
-            long key = line.OperationSequence;
-            if (!details.ContainsKey(key))
+            if (!details.ContainsKey(operationSequence))
             {
-                details.Add(key, line);
+                details.Add(operationSequence, line);
             }
             else
             {
-                details[key] = line;
+                details[operationSequence] = line;
             }
         }
 
@@ -164,10 +163,7 @@ namespace ProductionSchedulerLibrary
         /// <param name="operationSequence">The key.</param>
         public  void RemoveWorkOrderDetails(long operationSequence)
         {
-            if (details.ContainsKey(operationSequence))
-            {
                 details.Remove(operationSequence);
-            }
         }
 
         /// <summary>
@@ -177,14 +173,16 @@ namespace ProductionSchedulerLibrary
         /// <returns></returns>
         public  SFC_WorkOrderDetail GetWorkOrderDetails(long operationSequence)
         {
-            if (details.ContainsKey(operationSequence))
-            {
-                return details[operationSequence];
-            }
-            else
-            {
-                return SFC_WorkOrderDetail.NONE;
-            }
+            
+            //if (details.ContainsKey(operationSequence))
+            //{
+            //    return details[operationSequence];
+            //}
+            //else
+            //{
+            //    return SFC_WorkOrderDetail.NONE;
+            //}
+            return details.TryGetValue(operationSequence, out SFC_WorkOrderDetail wod) ? wod : SFC_WorkOrderDetail.NONE;
         }
 
         public  override string ToString()

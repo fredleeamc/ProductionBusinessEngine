@@ -9,16 +9,14 @@ namespace ProductionSchedulerLibrary
 {
 
     /// <summary>
-    /// 
+    /// Wrapper for Bom
     /// </summary>
     public class SFC_Bom
     {
         ShopFloorModel model;
         private readonly long id;
-        private readonly string partName;
-        private readonly string partNo;
         private readonly SFC_BomComposite bom;
-        private Dictionary<SFC_Item, decimal> materials;
+        private Dictionary<String, decimal> materials;
         private SFC_CurrencyExchange currencyExchange;
         private SFC_Currency currency;
         public long? UnitId;
@@ -35,8 +33,6 @@ namespace ProductionSchedulerLibrary
 
 
         public long Id => id;
-        public string PartName => partName;
-        public string PartNo => partNo;
         public SFC_BomComposite Bom => bom;
         public decimal TotalQuantity
         {
@@ -44,7 +40,7 @@ namespace ProductionSchedulerLibrary
             set
             {
                 totalQuantity = value;
-                this.Calculate();
+                //this.Calculate();
             }
         }
         public decimal TotalBomCost { get => totalBomCost; }
@@ -60,15 +56,13 @@ namespace ProductionSchedulerLibrary
         /// <param name="partName">Name of the part.</param>
         /// <param name="partNo">The part no.</param>
         /// <param name="bom">The bom.</param>
-        public SFC_Bom(long id, string partName, string partNo, SFC_BomComposite bom)
+        public SFC_Bom(long id, SFC_BomComposite bom)
         {
             this.id = id;
-            this.partName = partName;
-            this.partNo = partNo;
             this.bom = bom;
             this.totalBomCost = 0;
             this.totalQuantity = 1;
-            materials = new Dictionary<SFC_Item, decimal>();
+            materials = new Dictionary<String, decimal>();
         }
 
         /// <summary>
@@ -79,8 +73,11 @@ namespace ProductionSchedulerLibrary
         /// </returns>
         public override string ToString()
         {
+            String sym = "";
+            if (this.Currency != null)
+                sym = this.Currency.Symbol;
             StringBuilder sb = new StringBuilder();
-            sb.Append("BOM(" + PartName + ":" + PartNo + "): Items:" + this.totalQuantity + "\n");
+            sb.Append("BOM(): Items:" + sym + " " + this.totalQuantity + " " + this.Currency + "\n");
             //sb.Append(this.thisBom.Display(1));
             return sb.ToString();
         }
@@ -88,17 +85,27 @@ namespace ProductionSchedulerLibrary
 
         public void DisplayBom()
         {
+            String sym = "";
+            if (this.Bom.Currency != null)
+                sym = this.Bom.Currency.Symbol;
+            String sym2 = "";
+            if (this.Currency != null)
+                sym2 = this.Currency.Symbol;
             Calculate();
             //StringBuilder sb = new StringBuilder();
             //sb.Append("BOM(" + PartName + ":" + PartNo + "): Items:" + this.CountItems() + "\n");
             //sb.Append(this.thisBom.Display(1));
             //Console.WriteLine(sb.ToString());
 
-            Console.WriteLine("BOM(" + PartName + ":" + PartNo + ")\n" +
+            Console.WriteLine("BOM(" + " " + ")\n" +
                 " Currency:" + this.Currency + "\n" +
                 " Items:" + (this.Bom.ItemCount + "").PadLeft(20) + "\n" +
-                " Total:" + String.Format("{0:N}", this.TotalBomCost).PadLeft(20) + "\n" +
-                " Qty:  " + String.Format("{0:N}", this.TotalQuantity).PadLeft(20));
+                " Total:" + sym + String.Format("{0:N}", this.TotalBomCost).PadLeft(20) + "\n" +                 
+                " Total:" + sym2 + String.Format("{0:N}", this.EstimatedMateriallCost).PadLeft(20) + "\n" +
+                " Qty:  " + String.Format("{0:N}", this.TotalQuantity).PadLeft(20) + "\n" 
+               
+                );
+                
             this.bom.Display(1);
             Console.WriteLine();
         }
@@ -106,11 +113,11 @@ namespace ProductionSchedulerLibrary
 
         public void Calculate()
         {
-            this.bom.metrics(1, this.totalQuantity);
-            this.EstimatedMateriallCost = this.bom.CalculatedTotalBomTotalCost;
+            this.bom.metrics(1, this.totalQuantity, this.Currency);
+            this.EstimatedMateriallCost = this.bom.CalcSourceBuildCost * (this.Bom.CurrencyExchange == null ? 1 : this.Bom.CurrencyExchange.BuyingRate);
             this.EstimatedTotalCost = this.EstimatedMateriallCost + this.EstimatedMfgConsumableCost + this.EstimatedOtherCost;
-            this.totalBomCost = this.Bom.CalculatedTotalBomTotalCost;
-            
+            this.totalBomCost = this.Bom.CalcSourceBuildCost ;
+
 
         }
 
@@ -127,13 +134,13 @@ namespace ProductionSchedulerLibrary
         /// Builds the bill of materials.
         /// </summary>
         /// <returns></returns>
-        public IOrderedEnumerable<KeyValuePair<SFC_Item, decimal>> BuildBillOfMaterials()
+        public IOrderedEnumerable<KeyValuePair<String, decimal>> BuildBillOfMaterials()
         {
-            materials = new Dictionary<SFC_Item, decimal>();
-            this.bom.BillOfMaterials(ref materials);
+            materials = new Dictionary<String, decimal>();
+            this.bom.BillOfMaterials(ref materials, this.TotalQuantity);
 
             var items = from pair in materials
-                        orderby pair.Key.ItemCode
+                        orderby pair.Key
                         select pair;
 
             //foreach (KeyValuePair<SFC_Item, decimal> pair in items)
@@ -147,10 +154,10 @@ namespace ProductionSchedulerLibrary
         public void PrintBillOfMaterials()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("BILL BOM(" + PartName + ":" + PartNo + "):\r\n");
+            sb.Append("BILL BOM():\r\n");
 
-            IEnumerable<KeyValuePair<SFC_Item, decimal>> pairs = this.BuildBillOfMaterials();
-            foreach (KeyValuePair<SFC_Item, decimal> pair in pairs)
+            IEnumerable<KeyValuePair<String, decimal>> pairs = this.BuildBillOfMaterials();
+            foreach (KeyValuePair<String, decimal> pair in pairs)
             {
                 sb.Append(String.Format("{0}:{1} \n", pair.Key, pair.Value));
             }

@@ -11,110 +11,73 @@ namespace ProductionSchedulerLibrary
     /// </summary>
     abstract public class SFC_BomComponent
     {
-        /// <summary>
-        /// The identifier
-        /// </summary>
-        protected readonly long id;
 
-        /// <summary>
-        /// The item
-        /// </summary>
-        protected readonly SFC_Item item;
-
-        /// <summary>
-        /// The quantity
-        /// </summary>
-        protected decimal quantity;
+        private readonly long id;
+        private SFC_Item item;
+        private String partName;
+        private String partNo;
 
         private long itemCount;
+        private decimal unitCost;            //Input by user
+        private decimal calcSourceUnitCost;  //From child bom currency
+        private decimal calcTargetUnitCost;  //From parent bom currency 
 
-        /// <summary>
-        /// The unit cost
-        /// </summary>
-        private decimal unitCost;
+        private decimal quantity;                   //Qty of this component needed to make qty of parent bom: Input by user
+        private decimal calcTotalQuantityRequired;  //From bom build requirements
 
-        private decimal calculatedTotalComponentCost;
+        private decimal calcSourceBomCost;     //
 
-        private decimal calculatedTotalQuantityRequired;
-
-        private decimal calculatedTotalBomTotalCost;
+        private decimal calcSourceBuildCost;  //calcTotalQuantityRequired * calcsourceUnitCost
+        private decimal calcTargetBuildCost;  //calcTotalQuantityRequired * calcTargetUnitCost
 
 
-        /// <summary>
-        /// The bom cost
-        /// </summary>
-        private decimal bomCost;
-
-        /// <summary>
-        /// The is leaf
-        /// </summary>
-        protected bool isLeaf;
-
-        /// <summary>
-        /// The unit
-        /// </summary>
+        private bool isLeaf;
         private string unit;
-
         private int depth;
-
         private SFC_Currency currency;
-
+        private SFC_Currency parentCurrency;
         private SFC_CurrencyExchange currencyExchange;
+        private SFC_BomComposite parent;
 
-        /// <summary>
-        /// The parent
-        /// </summary>
-        protected SFC_BomComposite parent;
+        protected long Id => id;
 
-        /// <summary>
-        /// Gets the identifier.
-        /// </summary>
-        /// <value>
-        /// The identifier.
-        /// </value>
-        public long Id { get => id; }
-        /// <summary>
-        /// Gets the item.
-        /// </summary>
-        /// <value>
-        /// The item.
-        /// </value>
-        public SFC_Item Item { get => item; }
-        /// <summary>
-        /// Gets or sets the quantity.
-        /// </summary>
-        /// <value>
-        /// The quantity.
-        /// </value>
+
+        public string PartName { get => partName; set => partName = value; }
+        public string PartNo { get => partNo; set => partNo = value; }
         public decimal Quantity { get => quantity; set => quantity = value; }
-        /// <summary>
-        /// Gets or sets the unit cost.
-        /// </summary>
-        /// <value>
-        /// The unit cost.
-        /// </value>
-        public decimal UnitCost { get => unitCost; set => unitCost = value; }
-        /// <summary>
-        /// Gets or sets the unit.
-        /// </summary>
-        /// <value>
-        /// The unit.
-        /// </value>
+        public long ItemCount { get => itemCount; set => itemCount = value; }
+        protected bool IsLeaf { get => isLeaf; set => isLeaf = value; }
         public string Unit { get => unit; set => unit = value; }
-        /// <summary>
-        /// Gets or sets the bom cost.
-        /// </summary>
-        /// <value>
-        /// The bom cost.
-        /// </value>
-        public decimal BomCost { get => bomCost; set => bomCost = value; }
         public int Depth { get => depth; set => depth = value; }
         public SFC_Currency Currency { get => currency; set => currency = value; }
         public SFC_CurrencyExchange CurrencyExchange { get => currencyExchange; set => currencyExchange = value; }
-        public decimal CalculatedTotalComponentCost { get => calculatedTotalComponentCost; set => calculatedTotalComponentCost = value; }
-        public decimal CalculatedTotalQuantityRequired { get => calculatedTotalQuantityRequired; set => calculatedTotalQuantityRequired = value; }
-        public decimal CalculatedTotalBomTotalCost { get => calculatedTotalBomTotalCost; set => calculatedTotalBomTotalCost = value; }
-        public long ItemCount { get => itemCount; set => itemCount = value; }
+        protected SFC_BomComposite Parent { get => parent; set => parent = value; }
+        protected SFC_Item Item { get => item; set => item = value; }
+
+
+
+        public decimal CalcSourceUnitCost { get => calcSourceUnitCost; set => calcSourceUnitCost = value; }
+
+        public decimal CalcTargetUnitCost { get => calcTargetUnitCost; set => calcTargetUnitCost = value; }
+
+        public decimal CalcSourceBomCost { get => calcSourceBomCost; set => calcSourceBomCost = value; }
+
+
+        public decimal CalcTotalQuantityRequired { get => calcTotalQuantityRequired; set => calcTotalQuantityRequired = value; }
+
+
+        public decimal CalcSourceBuildCost { get => calcSourceBuildCost; set => calcSourceBuildCost = value; }
+
+
+        public decimal CalcTargetBuildCost { get => calcTargetBuildCost; set => calcTargetBuildCost = value; }
+
+
+
+
+        public decimal UnitCost { get => unitCost; set => unitCost = value; }
+        public SFC_Currency ParentCurrency { get => parentCurrency; set => parentCurrency = value; }
+
+
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SFC_BomComponent"/> class.
@@ -122,18 +85,20 @@ namespace ProductionSchedulerLibrary
         /// <param name="id">The identifier.</param>
         /// <param name="item">The item.</param>
         /// <param name="quantity">The quantity.</param>
-        public SFC_BomComponent(long id, SFC_Item item, decimal quantity)
+        //public SFC_BomComponent(long id, SFC_Item item, decimal quantity)
+        public SFC_BomComponent(long id, String partNo)
         {
             this.id = id;
-            this.item = item;
-            this.quantity = quantity;
+            //this.item = item;
+            this.quantity = 0M;
+            this.partNo = partNo;
             this.isLeaf = false;
             parent = null;
         }
 
         //public abstract decimal Cost();
 
-        public abstract void metrics(int depth, decimal qtyMultiplier);
+        public abstract void metrics(int depth, decimal qtyMultiplier, SFC_Currency baseCurrency);
 
 
         /// <summary>
@@ -173,7 +138,7 @@ namespace ProductionSchedulerLibrary
         /// Bills the of materials.
         /// </summary>
         /// <param name="materials">The materials.</param>
-        public abstract void BillOfMaterials(ref Dictionary<SFC_Item, decimal> materials);
+        public abstract void BillOfMaterials(ref Dictionary<String, decimal> materials, decimal multiplier);
 
         /// <summary>
         /// Sets the parent.
@@ -183,6 +148,9 @@ namespace ProductionSchedulerLibrary
         {
             this.parent = parent;
         }
+
+
+        public abstract void SetItem(SFC_Item thisItem);
 
         /// <summary>
         /// Determines whether the specified child is circular.
@@ -194,7 +162,7 @@ namespace ProductionSchedulerLibrary
         public bool IsCircular(SFC_BomComponent child)
         {
             bool result = false;
-            if (!this.Equals(child) || this.item.Equals(child.Item))
+            if (!this.Equals(child) || this.PartNo.Equals(child.PartNo))
             {
                 SFC_BomComposite thisObj = this as SFC_BomComposite;
                 if (thisObj != null)
@@ -202,7 +170,7 @@ namespace ProductionSchedulerLibrary
                     SFC_BomComposite parentHist = thisObj;
                     while (parentHist != null)
                     {
-                        if (child.Equals(parentHist) || (child.Item.Equals(parentHist.Item)))
+                        if (child.Equals(parentHist) || child.PartNo.Equals(parentHist.PartNo))
                         {
                             result = true;
                             break;

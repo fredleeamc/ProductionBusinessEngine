@@ -21,9 +21,9 @@ namespace ProductionSchedulerProgram
         /// <param name="args">The arguments.</param>
         static void Main(string[] args)
         {
-            
+
             DateTime ts1 = DateTime.Now;
-            
+
             #region Initialize Shop Floor Control
             ShopSequenceGenerator seqGen = ShopSequenceGenerator.Instance;
             ShopFloor shopFloor = ShopFloor.Instance;
@@ -33,8 +33,10 @@ namespace ProductionSchedulerProgram
             SFC_Currency PH_Peso = new SFC_Currency(1, "PH_Peso", "P");
             SFC_Currency US_Dollar = new SFC_Currency(2, "US_Dollar", "$");
 
-            SFC_CurrencyExchange pesoToDollar = new SFC_CurrencyExchange(1, PH_Peso, US_Dollar, DateTime.Now, 1.0M / 50.0M, 1.0M / 51.0M);
-            SFC_CurrencyExchange dollarToPeso = new SFC_CurrencyExchange(2, US_Dollar, PH_Peso, DateTime.Now, 54, 52);
+            SFC_CurrencyExchange pesoToDollar = new SFC_CurrencyExchange(1, PH_Peso, US_Dollar, DateTime.Now, 50M, 50M);
+            SFC_CurrencyExchange dollarToPeso = new SFC_CurrencyExchange(2, US_Dollar, PH_Peso, DateTime.Now, 1M / 50M, 1M / 50M);
+            SFC_CurrencyExchange pesoTopeso = new SFC_CurrencyExchange(1, PH_Peso, PH_Peso, DateTime.Now, 1M, 1M);
+            SFC_CurrencyExchange dollarTodollar = new SFC_CurrencyExchange(2, US_Dollar, US_Dollar, DateTime.Now, 1M, 1M);
 
             decimal xchange1 = 1 * pesoToDollar.BuyingRate;
             Console.WriteLine(String.Format("1 Peso = ${0:F2}", xchange1));
@@ -46,14 +48,16 @@ namespace ProductionSchedulerProgram
             seqGen.CreateNewSequence("CO", 0);
             SFC_Company company = new SFC_Company(seqGen.GetNext("CO"), "Vision");
 
-            
+
             shopFloor.CreateShopFloorModel(company, PH_Peso);
             shopFloor.DefaultCurrency = PH_Peso;
             shopFloor.DefaultCurrencyExchange = pesoToDollar;
             shopFloor.Company[company.Id].Currencies.Add(PH_Peso);
             shopFloor.Company[company.Id].Currencies.Add(US_Dollar);
-            shopFloor.Company[company.Id].CurrencyExchanges.Add(1, pesoToDollar);
-            shopFloor.Company[company.Id].CurrencyExchanges.Add(2, dollarToPeso);
+            shopFloor.Company[company.Id].CurrencyExchanges.Add(PH_Peso.Id, pesoToDollar);
+            shopFloor.Company[company.Id].CurrencyExchanges.Add(US_Dollar.Id, dollarToPeso);
+            shopFloor.Company[company.Id].CurrencyExchanges.Add(PH_Peso.Id, pesoTopeso);
+            shopFloor.Company[company.Id].CurrencyExchanges.Add(US_Dollar.Id, dollarTodollar);
 
             #endregion
 
@@ -123,7 +127,7 @@ namespace ProductionSchedulerProgram
                 SFC_Item thisItem = shopFloor.Company[company.Id].Items.GetRandom();
                 if (thisItem != null)
                 {
-                    SFC_ItemLotBin thisBin = new SFC_ItemLotBin(seqGen.GetNext("Bin"), thisItem, "BEGIN", "BEGIN");
+                    SFC_ItemLotBin thisBin = new SFC_ItemLotBin(seqGen.GetNext("BIN"), thisItem, "BEGIN", "BEGIN");
                     thisBin.ItemStatus.beginQuantity(TextGenerator.RandomInt(100));
                     shopFloor.Company[company.Id].LotBins.Add(thisBin);
                 }
@@ -257,11 +261,17 @@ namespace ProductionSchedulerProgram
             seqGen.CreateNewSequence("BOM", 0);
             seqGen.CreateNewSequence("BOMC", 0);
             seqGen.CreateNewSequence("BOMI", 0);
-            for (int bitem = 0; bitem < 10; bitem++)
+            seqGen.CreateNewSequence("FG", 0);
+            for (int bitem = 1; bitem <= 10; bitem++)
             {
-                SFC_BomComposite c = new SFC_BomComposite(seqGen.GetNext("BOMC"), shopFloor.Company[company.Id].Items.GetRandom(), TextGenerator.RandomInt(5)+1);
+                SFC_Currency baseCurrency = shopFloor.Company[company.Id].Currencies.GetRandom();
+                SFC_BomComposite c = new SFC_BomComposite(seqGen.GetNext("BOMC"), TextGenerator.RandomNames());
                 int numItems = 1 + TextGenerator.RandomInt(10);
                 List<SFC_BomComposite> u = new List<SFC_BomComposite>();
+                c.Currency = shopFloor.Company[company.Id].Currencies.GetRandom();
+                c.CurrencyExchange = c.Currency.GetLatestExchange(baseCurrency);
+                c.PartName = TextGenerator.RandomString(10);
+                c.Quantity = 1;
                 u.Add(c);
                 SFC_BomComposite w = c;
                 for (int i = 0; i < numItems; i++)
@@ -272,11 +282,14 @@ namespace ProductionSchedulerProgram
                         bool success = false;
                         while (!success)
                         {
-                            SFC_BomComposite d = new SFC_BomComposite(seqGen.GetNext("BOMC"), shopFloor.Company[company.Id].Items.GetRandom(), 1 + TextGenerator.RandomInt(10));
+                            SFC_BomComposite d = new SFC_BomComposite(seqGen.GetNext("BOMC"), "COMP" + i);
                             w = u[TextGenerator.RandomInt(u.Count)];
-                            d.UnitCost = 0; // TextGenerator.RandomDouble(10);
+                            d.PartName = TextGenerator.RandomNames();
+                            d.Quantity = 4;
+                            d.UnitCost = 4; // TextGenerator.RandomDouble(10);
                             d.Unit = "EACH";
-
+                            d.Currency = shopFloor.Company[company.Id].Currencies.GetRandom();
+                            d.CurrencyExchange = d.Currency.GetLatestExchange(c.Currency);
                             if (w.Add(d))
                             {
                                 u.Add(d);
@@ -287,9 +300,13 @@ namespace ProductionSchedulerProgram
                                     int numItems2 = TextGenerator.RandomInt(3) + 1;
                                     for (int y = 0; y < numItems2; y++)
                                     {
-                                        SFC_BomItem t = new SFC_BomItem(seqGen.GetNext("BOMI"), shopFloor.Company[company.Id].Items.GetRandom(), 1 + TextGenerator.RandomInt(10));
+                                        SFC_BomItem t = new SFC_BomItem(seqGen.GetNext("BOMI"), d.PartNo + "I" + y);
+                                        t.PartName = TextGenerator.RandomNames();
+                                        t.Quantity = 2;
                                         t.UnitCost = 1; // TextGenerator.RandomDouble(10);
                                         t.Unit = "EACH";
+                                        t.Currency = d.Currency;
+                                        t.CurrencyExchange = t.Currency.GetLatestExchange(d.Currency);
                                         if (d.Add(t))
                                         {
                                             success2 = true;
@@ -306,79 +323,110 @@ namespace ProductionSchedulerProgram
                     }
                     else
                     {
-                        SFC_BomItem t = new SFC_BomItem(seqGen.GetNext("BOMC"), shopFloor.Company[company.Id].Items.GetRandom(), 1 + TextGenerator.RandomInt(10));
+                        SFC_BomItem t = new SFC_BomItem(seqGen.GetNext("BOMC"), "COMP" + i);
+                        t.PartName = TextGenerator.RandomNames();
+                        t.Quantity = 5;
                         t.UnitCost = 10; // TextGenerator.RandomDouble(100);
                         t.Unit = "EACH";
+                        t.Currency = shopFloor.Company[company.Id].Currencies.GetRandom();
+                        t.CurrencyExchange = t.Currency.GetLatestExchange(c.Currency);
                         w.Add(t);
                     }
                 }
-                SFC_Bom b = new SFC_Bom(seqGen.GetNext("BOM"), TextGenerator.RandomChars(8), TextGenerator.RandomChars(10), c);
+                SFC_Bom b = new SFC_Bom(seqGen.GetNext("BOM"), c);
                 b.TotalQuantity = TextGenerator.RandomInt(5) + 1;
-                b.Currency = shopFloor.Company[company.Id].Currencies.GetRandom();
+                b.Currency = baseCurrency;
+                //b.CurrencyExchange = b.Currency.GetLatestExchange(c.Currency);
                 shopFloor.Company[company.Id].Boms.Add(b);
             }
 
 
+            //Build meter composite
 
 
 
-            //SFC_BomComposite meter = new SFC_BomComposite(1, new SFC_Item(seqGen.GetNext("RM"), "Meter"), 1);
-            //meter.UnitCost = 12.00;
-            //meter.Unit = "EACH";
-            //SFC_Bom meterbom = new SFC_Bom(1, "FM1S", "XAA111", meter);
+            //seqGen.CreateNewSequence("FG", 0);
+            seqGen.FormatSpecifier("RM", "{0:D5}", true);
+            SFC_BomComposite meterC = new SFC_BomComposite(seqGen.GetNext("BOMC"), "1ERQ1T0");
+            meterC.PartName = "Meter FM 1S";
+            meterC.Quantity = 1;
+            meterC.UnitCost = 00.00M;
+            meterC.Unit = "EACH";
+            meterC.Currency = US_Dollar;
+            //meterC.CurrencyExchange = meterC.Currency.GetLatestExchange(US_Dollar);
 
-            //SFC_Item pcbItem = new SFC_Item(seqGen.GetNext("RM"), "16-5");
 
-            //SFC_BomComponent pcb = new SFC_BomComposite(1, pcbItem, 1);
-            //pcb.UnitCost = 5;
-            //pcb.Unit = "PC";
+            //SFC_Item pcbItem = new SFC_Item(seqGen.GetNext("RM"), "000016-5");
 
-            //SFC_Item resistorItem = new SFC_Item(seqGen.GetNext("RM"), "Resistor 5K");
+            SFC_BomComponent pcb = new SFC_BomComposite(seqGen.GetNext("BOMC"), "000016-5");
+            pcb.PartName = "PCB16-5";
+            pcb.Quantity = 1;
+            pcb.UnitCost = 0.00M;
+            pcb.Unit = "PC";
+            pcb.Currency = US_Dollar;
+            //pcb.CurrencyExchange = pcb.Currency.GetLatestExchange(US_Dollar);
 
-            //SFC_BomComponent resistor = new SFC_BomComposite(2, resistorItem, 20);
-            //resistor.UnitCost = 4;
-            //resistor.Unit = "PC";
+            meterC.Add(pcb);
 
-            //SFC_BomComponent resistor2 = new SFC_BomComposite(2, resistorItem, 10);
-            //resistor2.UnitCost = 3;
-            //resistor2.Unit = "PC";
+            for (int i = 2; i <= 10; i += 2)
+            {
+                //SFC_Item resistorItem = new SFC_Item(seqGen.GetNext("RM"), "R"+i);
+                SFC_BomComponent resistor = new SFC_BomItem(seqGen.GetNext("BOMI"), "000000R" + i);
+                resistor.PartName = "Resistor" + i;
+                resistor.Quantity = i;
+                resistor.UnitCost = i * 0.02M;
+                resistor.Unit = "PC";
+                resistor.Currency = US_Dollar;
+                //resistor.CurrencyExchange = resistor.Currency.GetLatestExchange(US_Dollar);
+                pcb.Add(resistor);
+            }
 
-            //SFC_BomComponent carbon = new SFC_BomComposite(3, new SFC_Item(seqGen.GetNext("RM"), "Carbon"), 10);
-            //carbon.UnitCost = 2;
-            //carbon.Unit = "PC";
+            SFC_BomComponent meterBase = new SFC_BomComposite(seqGen.GetNext("BOMC"), "DMDBase12");
+            meterBase.PartName = "Base";
+            meterBase.Quantity = 1;
+            meterBase.Unit = "PC";
+            meterBase.UnitCost = 2.50M;
+            meterBase.Currency = US_Dollar;
 
-            //SFC_BomComponent metal = new SFC_BomItem(4, new SFC_Item(seqGen.GetNext("RM"), "Metal"), 0.5);
-            //metal.UnitCost = 1;
-            //metal.Unit = "PC";
+            SFC_BomComponent stabs = new SFC_BomItem(seqGen.GetNext("BOMI"), "STAB123");
+            stabs.PartName = "Stabs";
+            stabs.Quantity = 4;
+            stabs.Unit = "PC";
+            stabs.UnitCost = 50.0M;
+            stabs.Currency = PH_Peso;
 
-            //pcb.Add(resistor);
-            //pcb.Add(resistor2);
-            //resistor.Add(carbon);
-            //resistor.Add(metal);
-            //meter.Add(pcb);
-            //meter.Add(metal);
-            //pcb.Add(carbon);
-            //resistor.Add(metal);
-            //resistor.Add(metal);
-            //carbon.Add(meter);
+            SFC_BomComponent pin = new SFC_BomItem(seqGen.GetNext("BOMI"), "PIN123");
+            pin.PartName = "Pins";
+            pin.Quantity = 8;
+            pin.Unit = "PC";
+            pin.UnitCost = 0.250M;
+            pin.Currency = US_Dollar;
 
-            //shopFloor.Company[company.Id].Boms.Add(meterbom);
+            meterBase.Add(stabs);
+            meterBase.Add(pin);
 
-            //Console.WriteLine(meterbom);
-            //Console.WriteLine("Count:" + meterbom.CountItems());
+            meterC.Add(meterBase);
 
-            //Console.WriteLine("Meter:$" + meter.EstimatedCost());
-            //Console.WriteLine("Pcb:$" + pcb.EstimatedCost());
-            //Console.WriteLine("Resistor:$" + resistor.EstimatedCost());
-            //Console.WriteLine("Carbon:$" + carbon.EstimatedCost());
-            //Console.WriteLine("Metal:$" + metal.EstimatedCost());
 
+            SFC_Bom meterbom = new SFC_Bom(seqGen.GetNext("BOM"), meterC);
+            meterbom.TotalQuantity = 10;
+            meterbom.Currency = US_Dollar;
+            meterC.CurrencyExchange = meterC.Currency.GetLatestExchange(meterbom.Currency);
+            //meterbom.CurrencyExchange = meterbom.Currency.GetLatestExchange(US_Dollar);
+            shopFloor.Company[company.Id].Boms.Add(meterbom);
 
             Console.WriteLine("Bill of materials");
 
             shopFloor.Company[company.Id].Boms.Print();
             shopFloor.Company[company.Id].Boms.DisplayBom();
             shopFloor.Company[company.Id].Boms.PrintBillOfMaterials();
+
+
+            //Console.WriteLine("Change Bom Qty");
+            //meterbom.TotalQuantity = 5;
+            //shopFloor.Company[company.Id].Boms.DisplayBom();
+            //shopFloor.Company[company.Id].Boms.PrintBillOfMaterials();
+
 
             //foreach (KeyValuePair<SFC_Item, decimal> pair in meterbom.BuildBillOfMaterials())
             //{
@@ -408,8 +456,8 @@ namespace ProductionSchedulerProgram
 
 
 
-                
-           
+
+
 
 
 

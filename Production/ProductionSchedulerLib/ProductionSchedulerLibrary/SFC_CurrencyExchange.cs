@@ -73,7 +73,8 @@ namespace ProductionSchedulerLibrary
 
         public override string ToString()
         {
-            return sourceCurrency + "->" + "(" + sellingRate + ":" + buyingRate + ")" + "->" + targetCurrency;
+
+            return sourceCurrency + "->" + "(S " + String.Format("{0:N}", sellingRate) + ":B " + String.Format("{0:N}", buyingRate) + ")" + "->" + targetCurrency;
         }
     }
 }
